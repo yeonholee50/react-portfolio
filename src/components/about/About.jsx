@@ -14,7 +14,7 @@ const About = () => {
             <div className="about__data">
                 <Info />
                 <p className="about__description">
-                    Hi, I'm Yeon. I'm a recent graduate from Georgia Tech with a B.Sc. in Computer Science. Although I have experience in both ends of the stack, my passion lies in backend development. I am a quick learner and I am always looking for ways to improve my skills.
+                    Hi, I'm Yeon. I'm a recent graduate from Georgia Tech with a B.Sc. in Computer Science. Although I have experience in both ends of the stack, my passion lies in backend development. I'm a quick learner and I am always looking for ways to improve my skills.
 
                      
                      </p>
@@ -22,7 +22,7 @@ const About = () => {
                     LymphaTech where my team and I designed, implemented, and deployed the backend component of their facial feature measurement application, which helped our client estimate distances between two selected facial features through scans of patients with symptoms of lymphedema. </p>
                      
                      <p className="about__description">
-                        Currently I am working with a team of developers and traders on a startup company through Techrupt Innovations in developing a scalable trading bot that utilizes multiple AI agents.
+                        Currently I am working with a team of developers and traders on a startup company through Techrupt Innovations in developing a scalable trading system that utilizes multiple AI agents.
                      </p>
                 <a download="" href={CV} className="button button--flex">
                     Download CV
