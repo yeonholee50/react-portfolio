@@ -44,6 +44,7 @@
     font-size: var(--normal-font-size);
     font-weight: var(--font-medium);
     line-height: 18px;
+    width: max-content
 }
 
 .skills__level {

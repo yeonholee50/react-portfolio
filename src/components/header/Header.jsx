@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './header.css';
-import { HiOutlineHome, HiOutlineUser, HiOutlineBadgeCheck, HiOutlineClipboardList, HiOutlinePhotograph, HiOutlineMail, HiX, HiOutlineMenu } from "react-icons/hi";
+import { HiOutlineHome, HiOutlineUser, HiOutlineBadgeCheck, HiOutlinePhotograph, HiOutlineMail, HiX, HiOutlineMenu } from "react-icons/hi";
 
 
 const Header = () => {
@@ -16,7 +16,7 @@ const Header = () => {
     return(
         <header className="header">
             <nav className="nav container">
-                <a href="index.html" className="nav__logo">Portfolio</a>
+                <a href="index.html" className="nav__logo">My Portfolio</a>
                 <div className={Toggle ? "nav__menu show-menu" : "nav__menu"}>
                     <ul className="nav__list grid">
                         <li className="nav__item">
@@ -38,11 +38,12 @@ const Header = () => {
                             </a>
                         </li>
                         <li className="nav__item">
-                            <a href="#services" onClick={() => setActiveNav("#services")} 
-                            className={activeNav === "#services" ? "nav__link active-link" : "nav__link"}>
-                                <HiOutlineClipboardList className="nav__icon"/>Services
+                            <a href="#qualification" onClick={() => setActiveNav("#qualification")} 
+                            className={activeNav === "#qualification" ? "nav__link active-link" : "nav__link"}>
+                                <HiOutlineHome className="nav__icon"/>Qualification
                             </a>
                         </li>
+                        
                         <li className="nav__item">
                             <a href="#portfolio" onClick={() => setActiveNav("#portfolio")} 
                             className={activeNav === "#portfolio" ? "nav__link active-link" : "nav__link"}>
