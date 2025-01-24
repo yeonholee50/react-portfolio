@@ -12,6 +12,10 @@ a,
 }
 
 .btn {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    
+    
     font-weight: 600;
     transition: all 300ms ease;
     padding: 1rem;
@@ -19,10 +23,11 @@ a,
     border-radius: 2rem;
   }
 
-  .project-btn {
-    color: black;
+.project-btn {
+    background-color: rgb(44, 44, 43);
+    color: rgb(163, 163, 163);
     border-color: rgb(163, 163, 163);
-  }
+}
 
 .project__item {
     color: var(--title-color);
@@ -52,15 +57,27 @@ a,
 }
 
 .project__img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 295px;
     border-radius: 1rem;
     margin-bottom: var(--mb-1);
 }
 
 .project__title {
+    display: block;
+    text-align: center;
+    
+    
     font-size: var(--normal-font-size);
     font-weight: var(--font-medium);
     margin-bottom: var(--mb-0-5);
+}
+
+.button__row {
+    display: flex;
+    align-items: center;
 }
 
 .project__button {
@@ -101,7 +118,7 @@ a,
     }
 
     .project__title {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.1rem;
     }
 }
 
