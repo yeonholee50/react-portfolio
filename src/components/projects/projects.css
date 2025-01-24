@@ -11,9 +11,19 @@ a,
   transition: all 300ms ease;
 }
 
+.btn_left {
+    margin-right: 1rem;
+    left: 5%;
+}
+
+.btn_right {
+    margin-left: 1rem;
+    right: 5%;
+    
+    
+}
+
 .btn {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
     
     
     font-weight: 600;
@@ -44,6 +54,7 @@ a,
 }
 
 .project__container {
+    
     grid-template-columns: repeat(2, max-content);
     gap: 3rem;
     justify-content: center;
@@ -57,6 +68,9 @@ a,
 }
 
 .project__img {
+    width: 5rem;
+    height: 20rem;
+    object-fit: cover;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -78,6 +92,7 @@ a,
 .button__row {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .project__button {
