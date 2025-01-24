@@ -68,13 +68,14 @@ a,
 }
 
 .project__img {
-    width: 5rem;
+    width: 25rem;
     height: 20rem;
-    object-fit: cover;
+    object-fit: fill;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 295px;
+    
+    
     border-radius: 1rem;
     margin-bottom: var(--mb-1);
 }
