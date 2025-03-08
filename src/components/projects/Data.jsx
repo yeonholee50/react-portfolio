@@ -10,7 +10,7 @@ export const projectsData = [
     {
         id: 1,
         image: Project1,
-        link: "https://ampyfin.shop/",
+        link: "https://ampyfin.com/",
         title: "AmpyFin: Ranked Ensemble Learning Trading Bot",
         category: "AmpyFin",
         github: "https://github.com/yeonholee50/AmpyFin",
