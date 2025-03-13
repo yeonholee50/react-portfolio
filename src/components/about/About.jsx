@@ -19,7 +19,7 @@ const About = () => {
                      
                 </p>
                 <p className="about__description">
-                    I love working in fast-paced environments and I'm always looking for new challenges. I look for roles where I can play a crucial part in the development of a product or service. So far, I have worked on a few projects ranging from developing a facial feature measurement application to a building multiple AI agents for a trading system. 
+                    I love working in fast-paced environments and I'm always looking for new challenges. I look for roles where I can play a crucial part in the development of a product or service. So far, I have worked on a many projects ranging from the medical space where my team and I developed a facial feature measurement application for lymphadema patients to building multiple AI agents and creating a modeled ranking system for a trading system. 
                     
 
 
