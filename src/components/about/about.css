@@ -2,6 +2,8 @@
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     column-gap: 4rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .about__img {
@@ -41,7 +43,38 @@
 
 .about__description {
     padding: 0 4rem 0 0;
-    margin-bottom: var(--mb-2-5);
+    margin-bottom: var(--mb-1-5);
+    line-height: 1.7;
+}
+
+/* Make the last paragraph have proper bottom margin */
+.about__description:last-of-type {
+    margin-bottom: var(--mb-2);
+}
+
+/* Special styling for the personal statement */
+.about__statement {
+    font-style: italic;
+    font-weight: var(--font-medium);
+    position: relative;
+    padding-left: 1.5rem;
+    margin-top: var(--mb-1);
+}
+
+.about__statement::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: var(--title-color);
+    border-radius: 2px;
+}
+
+[data-theme="dark"] .about__statement::before {
+    background: linear-gradient(to bottom, hsl(0, 0%, 95%), hsl(180, 85%, 65%));
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
 /* BREAK POINTS */
@@ -87,4 +120,8 @@
    .about__info {
     grid-template-columns: repeat(2, 1fr);
    }
+}
+
+.about__section {
+    padding-bottom: 4rem;
 }

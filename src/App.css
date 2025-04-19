@@ -7,12 +7,17 @@
     /* HSL COLORS */
     --hue: 0;
     --sat: 0%;
+    
+    /* LIGHT MODE (default) */
     --title-color: hsl(var(--hue), var(--sat), 20%);
-    /* --title-color-dark: hsl(var(--hue), var(--sat), 0%); */
     --title-color-dark: hsl(75, 46%, 51%);
     --text-color: hsl(var(--hue), var(--sat), 46%);
     --body-color: hsl(var(--hue), var(--sat), 98%);
     --container-color: #fff;
+    --first-color-lighter: hsl(var(--hue), var(--sat), 92%);
+    --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    --card-hover-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    
     /* STATIC TYPOGRAPHY */
     --body-font: "Nunito", sans-serif;
     --big-font-size: 3.5rem;
@@ -40,6 +45,40 @@
     --z-tooltip: 10;
     --z-fixed: 100;
     --z-modal: 1000;
+}
+
+/* DARK MODE VARIABLES */
+[data-theme="dark"] {
+    --title-color: hsl(0, 0%, 95%);
+    --title-color-dark: hsl(180, 85%, 65%);
+    --text-color: hsl(0, 0%, 75%);
+    --body-color: hsl(220, 24%, 12%);
+    --container-color: hsl(220, 24%, 16%);
+    --first-color-lighter: hsl(220, 24%, 22%);
+    --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    --card-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+    position: fixed;
+    right: 2rem;
+    top: 1.5rem;
+    background-color: var(--container-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    padding: 0.5rem;
+    z-index: var(--z-fixed);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    font-size: 1.5rem;
+    color: var(--title-color);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* RESPONSIVE TYPOGRAPHY */
@@ -195,4 +234,31 @@ img {
         margin-right: var(--mb-1);
     }
 
+}
+
+/* DARK MODE SECTION TITLES */
+[data-theme="dark"] .section__title {
+    background: linear-gradient(90deg, hsl(0, 0%, 95%), hsl(180, 85%, 75%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: block;
+    width: 100%;
+    text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+[data-theme="dark"] .section__subtitle {
+    color: hsl(180, 75%, 60%);
+    text-align: center !important;
+    width: 100%;
+    display: block;
+}
+
+/* OVERRIDE FOR SPECIFIC SECTIONS */
+[data-theme="dark"] .skills .section__title,
+[data-theme="dark"] .about .section__title,
+[data-theme="dark"] .portfolio .section__title {
+    text-align: center !important;
 }

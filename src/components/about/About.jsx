@@ -14,28 +14,14 @@ const About = () => {
             <div className="about__data">
                 <Info />
                 <p className="about__description">
-                    Hi, I'm Yeon. I'm a recent graduate from Georgia Tech with a B.Sc. in Computer Science. Although I have experience in both ends of the stack, my passion lies in backend development. I'm a quick learner and I am always looking for ways to improve my skills.
-
-                     
+                    Hi, I'm Yeon. I'm a graduate from Georgia Tech with a B.Sc. in Computer Science. Although I have experience in both ends of the stack, my passion lies in backend development. I love working in fast-paced environments where I can play a crucial part in product development. From creating a facial feature measurement application for lymphadema patients to building AI agents for trading systems, I've worked on diverse and challenging projects.
                 </p>
                 <p className="about__description">
-                    I love working in fast-paced environments and I'm always looking for new challenges. I look for roles where I can play a crucial part in the development of a product or service. So far, I have worked on a many projects ranging from the medical space where my team and I developed a facial feature measurement application for lymphadema patients to building multiple AI agents and creating a modeled ranking system for a trading system. 
-                    
-
-
+                    My proudest project is AmpyFin, a transparent ensemble learning model for trading that has outperformed market benchmarks with 30%+ year-to-date returns. When not coding, I contribute to open source and enjoy family time, exploring new foods, and curating my Spotify playlist.
                 </p>
-
-                <p className="about__description">
-                    In my freetime, I enjoy creating projects of my own and contributing to open source projects that I find interesting. I also enjoy spending time with my family, trying out new foods, and modifying my Spotify playlist.
-                    
-
+                <p className="about__description about__statement">
+                    What drives me isn't the fear of being left behind, but rather the opportunity to create something that makes a real difference in the world.
                 </p>
-                <p className="about__description">
-                The project I'm most proud of is AmpyFin, which is a transparent ensemble learning model that ranks individual trading agents ranging from models that copy institutional portfolios to technical indicators.
-                It also allow users to train their own models and backtest them against historical data. 
-                </p>
-                <p className="about__description"> What motivates me isn't the fear of being left behind, but rather the opportunity to create something that can make a difference in the world.</p>
-                     
                      
                 <a download="" href={CV} className="button button--flex">
                     Download CV
