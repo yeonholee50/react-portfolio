@@ -1,16 +1,22 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./contact.css";
 import { HiOutlineMail, HiOutlineArrowSmRight } from "react-icons/hi"
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const form = useRef();
+    const navigate = useNavigate();
     
     const sendEmail = (e) => {
         e.preventDefault();
         
         emailjs.sendForm('service_n6tfxeu', 'template_x0ulldc', form.current, '9uBHdnl-ruCYoqKzA')
         e.target.reset();
+    };
+
+    const handleDoubleClick = () => {
+        navigate('/password-protection');
     };
   
     return (
@@ -38,7 +44,7 @@ const Contact = () => {
             </div>
 
             <div className="contact__content">
-                <h3 className="contact__title">What's the project?</h3>
+                <h3 className="contact__title" onDoubleClick={handleDoubleClick} style={{ userSelect: 'none', cursor: 'default' }}>What's the project?</h3>
 
                 <form ref={form} onSubmit={sendEmail} className="contact__form">
                     <div className="contact__form-div">
