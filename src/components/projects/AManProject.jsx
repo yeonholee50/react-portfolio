@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./projects.css";
 
 const AManProject = () => {
@@ -7,6 +7,27 @@ const AManProject = () => {
   const [expandedPhysicalSection, setExpandedPhysicalSection] = useState(null);
   const [expandedFinancialRule, setExpandedFinancialRule] = useState(null);
   const [expandedCareerRule, setExpandedCareerRule] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(prev => (prev + 1) % 360);
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth) * 100,
+        y: (e.clientY / window.innerHeight) * 100,
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const socialTraits = [
     {
@@ -637,30 +658,170 @@ const AManProject = () => {
 
   return (
     <section className="section" style={{
-      background: 'linear-gradient(135deg, rgba(16,20,30,0.95) 0%, rgba(8,17,38,0.95) 100%)',
+      background: `
+        linear-gradient(135deg, rgba(4,8,16,0.97) 0%, rgba(2,4,12,0.97) 100%),
+        radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(64,87,255,0.2) 0%, rgba(64,87,255,0) 50%),
+        linear-gradient(${time}deg, rgba(64,87,255,0.08) 0%, rgba(128,0,255,0.08) 100%)
+      `,
       color: '#fff',
       minHeight: '100vh',
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      transition: 'background 0.3s ease'
     }}>
-      {/* Decorative background elements */}
+      {/* Cyber grid background */}
       <div style={{
         position: 'absolute',
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        background: 'radial-gradient(circle at 50% 50%, rgba(64,87,255,0.05) 0%, rgba(64,87,255,0) 70%)',
-        zIndex: 0
-      }}></div>
-      <div style={{
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        background: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83zM22.343 0L13.857 8.485 15.272 9.9l7.9-7.9h-.83L25.172 0h-2.83zM32 0l-7.9 7.9 1.415 1.415 7.9-7.9h-1.414L34.828 0H32zm-3.656 0l-7.9 7.9 1.415 1.415 7.9-7.9H25.172L27.828 0h-2.83zM32 0l1.414 1.414 1.415-1.415L34.828 0H32zm21.172 0l-7.9 7.9 1.415 1.415 7.9-7.9h-2.83zM27.828 0l7.9 7.9-1.415 1.415-7.9-7.9h2.83zM22.344 0L30.2 7.9l-1.415 1.415-7.9-7.9h2.83zM16.686 0l7.9 7.9-1.415 1.415-7.9-7.9h2.83zM11.03 0l7.9 7.9-1.415 1.415-7.9-7.9h2.83zM5.373 0l7.9 7.9-1.415 1.415-7.9-7.9h2.83z\' fill=\'rgba(64,87,255,0.03)\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")',
-        opacity: 0.5,
-        zIndex: 0
-      }}></div>
+        backgroundImage: `
+          linear-gradient(rgba(64,87,255,0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(64,87,255,0.05) 1px, transparent 1px),
+          linear-gradient(rgba(128,0,255,0.03) 2px, transparent 2px),
+          linear-gradient(90deg, rgba(128,0,255,0.03) 2px, transparent 2px)
+        `,
+        backgroundSize: '50px 50px, 50px 50px, 100px 100px, 100px 100px',
+        transform: `perspective(1000px) rotateX(60deg) translateY(-50%) scale(3)`,
+        opacity: 0.3,
+        zIndex: 0,
+        animation: 'gridMove 20s linear infinite'
+      }}/>
+
+      {/* Enhanced floating particles */}
+      {[...Array(40)].map((_, i) => (
+        <div
+          key={i}
+          style={{
+            position: 'absolute',
+            width: i % 4 === 0 ? '4px' : i % 3 === 0 ? '3px' : '2px',
+            height: i % 4 === 0 ? '4px' : i % 3 === 0 ? '3px' : '2px',
+            background: i % 4 === 0 ? 'rgba(128,0,255,0.7)' : i % 3 === 0 ? 'rgba(64,87,255,0.5)' : 'rgba(255,255,255,0.3)',
+            boxShadow: i % 4 === 0 
+              ? '0 0 15px rgba(128,0,255,0.8), 0 0 30px rgba(128,0,255,0.6)' 
+              : i % 3 === 0 
+                ? '0 0 10px rgba(64,87,255,0.6), 0 0 20px rgba(64,87,255,0.4)'
+                : '0 0 5px rgba(255,255,255,0.3)',
+            borderRadius: '50%',
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animation: `float ${5 + Math.random() * 15}s linear infinite`,
+            opacity: Math.random() * 0.5 + 0.5
+          }}
+        />
+      ))}
+
+      <style>
+        {`
+          @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+          }
+          @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+          }
+          @keyframes float {
+            0% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-20px) translateX(10px) rotate(90deg) scale(1.1); }
+            50% { transform: translateY(0) translateX(20px) rotate(180deg) scale(1); }
+            75% { transform: translateY(20px) translateX(10px) rotate(270deg) scale(0.9); }
+            100% { transform: translateY(0) translateX(0) rotate(360deg) scale(1); }
+          }
+          @keyframes neonPulse {
+            0%, 100% { 
+              box-shadow: 0 0 10px rgba(64,87,255,0.5),
+                         0 0 20px rgba(64,87,255,0.3),
+                         0 0 30px rgba(64,87,255,0.2),
+                         inset 0 0 15px rgba(64,87,255,0.3);
+            }
+            50% { 
+              box-shadow: 0 0 15px rgba(64,87,255,0.6),
+                         0 0 25px rgba(64,87,255,0.4),
+                         0 0 35px rgba(64,87,255,0.3),
+                         inset 0 0 25px rgba(64,87,255,0.4);
+            }
+          }
+          @keyframes borderFlow {
+            0% { border-image-source: linear-gradient(0deg, rgba(64,87,255,0.5), rgba(128,0,255,0.5)); }
+            100% { border-image-source: linear-gradient(360deg, rgba(64,87,255,0.5), rgba(128,0,255,0.5)); }
+          }
+          .nav-button {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(64,87,255,0.3) !important;
+            backdrop-filter: blur(10px);
+          }
+          .nav-button:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(64,87,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+          }
+          .nav-button:hover:before {
+            width: 200%;
+            height: 200%;
+          }
+          .nav-button.active {
+            animation: neonPulse 2s infinite;
+            border: 1px solid rgba(64,87,255,0.5) !important;
+          }
+          .content-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(64,87,255,0.2);
+            position: relative;
+          }
+          .content-card:before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border: 1px solid transparent;
+            border-radius: 1rem;
+            animation: borderFlow 3s linear infinite;
+            pointer-events: none;
+          }
+          .content-card:hover {
+            transform: translateY(-2px) scale(1.002);
+            box-shadow: 0 12px 40px rgba(64,87,255,0.2);
+            border-color: rgba(64,87,255,0.4);
+          }
+          .content-card:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 1rem;
+            background: linear-gradient(45deg, transparent, rgba(64,87,255,0.1), transparent);
+            background-size: 200% 200%;
+            animation: gradient 3s linear infinite;
+            z-index: -1;
+          }
+          @keyframes gradient {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 200%; }
+          }
+          .title-glow {
+            animation: titleGlow 3s ease-in-out infinite;
+          }
+          @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(64,87,255,0.3)); }
+            50% { filter: drop-shadow(0 0 25px rgba(64,87,255,0.5)); }
+          }
+        `}
+      </style>
 
       <div style={{ position: 'relative', zIndex: 1 }}>
         <h2 className="section__title" style={{
@@ -668,8 +829,48 @@ const AManProject = () => {
           fontSize: '2.5rem',
           textAlign: 'center',
           marginBottom: '3rem',
-          textShadow: '0 0 20px rgba(64,87,255,0.3)'
-        }}>A-Man Project</h2>
+          position: 'relative'
+        }}>
+          <span className="title-glow" style={{
+            background: 'linear-gradient(45deg, #fff, rgba(64,87,255,0.8), rgba(128,0,255,0.8))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            display: 'inline-block',
+            padding: '0.5rem 2rem',
+            position: 'relative'
+          }}>
+            <span style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(90deg, transparent, rgba(64,87,255,0.2), transparent)',
+              filter: 'blur(8px)',
+              zIndex: -1
+            }}></span>
+            A-Man Project
+          </span>
+          <div style={{
+            width: '200px',
+            height: '2px',
+            background: 'linear-gradient(90deg, transparent, rgba(64,87,255,0.8), rgba(128,0,255,0.8), transparent)',
+            margin: '0.5rem auto',
+            boxShadow: '0 0 20px rgba(64,87,255,0.5)',
+            position: 'relative'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '-1px',
+              left: '0',
+              width: '10px',
+              height: '4px',
+              background: 'rgba(64,87,255,0.8)',
+              boxShadow: '0 0 10px rgba(64,87,255,0.8)',
+              animation: 'sliderMove 3s linear infinite'
+            }}></div>
+          </div>
+        </h2>
         
         <div className="container" style={{ padding: "2rem" }}>
           {/* Navigation Bar */}
@@ -678,32 +879,33 @@ const AManProject = () => {
             justifyContent: 'center',
             gap: '1rem',
             marginBottom: '2rem',
-            padding: '1rem',
-            background: 'rgba(255,255,255,0.03)',
+            padding: '1.5rem',
+            background: 'rgba(8,12,24,0.6)',
             borderRadius: '1rem',
             backdropFilter: 'blur(10px)',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+            boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
+            border: '1px solid rgba(64,87,255,0.2)'
           }}>
             {['social', 'physical', 'career', 'financial'].map((section) => (
               <button
                 key={section}
                 onClick={() => setActiveSection(section)}
+                className={`nav-button ${activeSection === section ? 'active' : ''}`}
                 style={{
                   padding: '0.75rem 1.5rem',
                   border: 'none',
                   borderRadius: '0.5rem',
                   background: activeSection === section 
-                    ? 'linear-gradient(135deg, rgba(64,87,255,0.9) 0%, rgba(64,87,255,0.7) 100%)'
-                    : 'rgba(255,255,255,0.05)',
+                    ? 'linear-gradient(135deg, rgba(64,87,255,0.3) 0%, rgba(128,0,255,0.3) 100%)'
+                    : 'rgba(8,12,24,0.6)',
                   color: activeSection === section ? '#fff' : 'rgba(255,255,255,0.7)',
                   cursor: 'pointer',
-                  transition: 'all 0.3s',
                   fontWeight: activeSection === section ? 'bold' : 'normal',
-                  textTransform: 'capitalize',
+                  textTransform: 'uppercase',
                   backdropFilter: 'blur(5px)',
-                  boxShadow: activeSection === section 
-                    ? '0 4px 15px rgba(64,87,255,0.3)'
-                    : 'none'
+                  letterSpacing: '2px',
+                  fontSize: '0.9rem',
+                  fontFamily: 'monospace'
                 }}
               >
                 {section}
@@ -712,23 +914,51 @@ const AManProject = () => {
           </div>
 
           {/* Content Section */}
-          <div style={{
-            background: 'rgba(255,255,255,0.03)',
+          <div className="content-card" style={{
+            background: 'rgba(8,12,24,0.6)',
             borderRadius: '1rem',
             padding: '2rem',
             backdropFilter: 'blur(10px)',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
             marginBottom: '2rem',
-            border: '1px solid rgba(255,255,255,0.05)'
+            position: 'relative',
+            overflow: 'hidden'
           }}>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '2px',
+              background: 'linear-gradient(90deg, transparent, rgba(64,87,255,0.5), rgba(128,0,255,0.5), transparent)',
+              boxShadow: '0 0 20px rgba(64,87,255,0.5)'
+            }}/>
             <h3 style={{ 
               fontSize: '1.5rem', 
-              color: '#fff',
               marginBottom: '1.5rem',
-              borderBottom: '1px solid rgba(255,255,255,0.1)',
+              borderBottom: '1px solid rgba(64,87,255,0.2)',
               paddingBottom: '0.5rem',
-              textTransform: 'capitalize'
-            }}>{activeSection}</h3>
+              textTransform: 'uppercase',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontFamily: 'monospace',
+              letterSpacing: '2px'
+            }}>
+              <span style={{
+                background: 'linear-gradient(45deg, #fff, rgba(64,87,255,0.8), rgba(128,0,255,0.8))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(0 0 10px rgba(64,87,255,0.3))'
+              }}>{activeSection}</span>
+              <span style={{ 
+                fontSize: '0.8rem', 
+                opacity: 0.7,
+                fontWeight: 'normal'
+              }}>
+                // ACTIVE MODULE
+              </span>
+            </h3>
             
             {renderContent()}
           </div>
