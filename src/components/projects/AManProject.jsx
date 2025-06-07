@@ -564,19 +564,19 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "June 5, 2025",
-        effective: "June 5, 2025"
+        signed: "June 7, 2025",
+        effective: "June 9, 2025"
       },
       physical: {
-        signed: "June 4, 2025",
+        signed: "June 7, 2025",
         effective: "June 15, 2025"
       },
       career: {
-        signed: "June 4, 2025",
+        signed: "June 7, 2025",
         effective: "June 15, 2025"
       },
       financial: {
-        signed: "June 4, 2025",
+        signed: "June 7, 2025",
         effective: "June 9, 2025"
       }
     };
