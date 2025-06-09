@@ -1,5 +1,176 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "./projects.css";
+
+const Stopwatch = () => {
+  const [time, setTime] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+  const [isRunning, setIsRunning] = useState(false);
+  const workerRef = useRef(null);
+
+  useEffect(() => {
+    // Create Web Worker
+    const worker = new Worker(new URL('../../workers/stopwatch.worker.js', import.meta.url), { type: 'module' });
+    workerRef.current = worker;
+
+    // Handle messages from worker
+    const handleWorkerMessage = (e) => {
+      if (e.data.type === 'UPDATE') {
+        const { elapsed, isRunning: workerIsRunning } = e.data;
+        setTime({
+          days: Math.floor(elapsed / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((elapsed % (1000 * 60)) / 1000)
+        });
+        setIsRunning(workerIsRunning);
+
+        // Save state to localStorage
+        if (workerIsRunning) {
+          localStorage.setItem('stopwatchStartTime', (Date.now() - elapsed).toString());
+          localStorage.setItem('stopwatchRunning', 'true');
+        } else {
+          localStorage.removeItem('stopwatchStartTime');
+          localStorage.setItem('stopwatchRunning', 'false');
+        }
+      }
+    };
+
+    worker.addEventListener('message', handleWorkerMessage);
+
+    // Check if stopwatch was running
+    const wasRunning = localStorage.getItem('stopwatchRunning') === 'true';
+    const savedStartTime = localStorage.getItem('stopwatchStartTime');
+    
+    if (wasRunning && savedStartTime) {
+      setIsRunning(true);
+      worker.postMessage({ 
+        type: 'INIT',
+        savedStartTime: parseInt(savedStartTime)
+      });
+    }
+
+    // Cleanup
+    return () => {
+      worker.removeEventListener('message', handleWorkerMessage);
+      worker.terminate();
+    };
+  }, []);
+
+  const handleStartStop = () => {
+    if (!workerRef.current) return;
+    
+    const newIsRunning = !isRunning;
+    const savedStartTime = newIsRunning ? Date.now() : null;
+    
+    workerRef.current.postMessage({ 
+      type: newIsRunning ? 'START' : 'STOP',
+      savedStartTime
+    });
+  };
+
+  // Add event listener for page visibility
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && isRunning && workerRef.current) {
+        workerRef.current.postMessage({ type: 'GET_STATE' });
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleVisibilityChange);
+    };
+  }, [isRunning]);
+
+  return (
+    <div style={{
+      background: 'rgba(8,12,24,0.6)',
+      borderRadius: '0.5rem',
+      padding: '1rem',
+      marginTop: '1rem',
+      border: '1px solid rgba(64,87,255,0.2)',
+      backdropFilter: 'blur(10px)',
+      animation: isRunning ? 'neonPulse 2s infinite' : 'none'
+    }}>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: '1rem',
+        fontFamily: 'monospace',
+        fontSize: '0.9rem'
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ 
+            fontSize: '1.2rem', 
+            fontWeight: 'bold',
+            color: isRunning ? '#64ffda' : '#fff',
+            textShadow: isRunning ? '0 0 10px rgba(100,255,218,0.5)' : 'none',
+            transition: 'all 0.3s ease'
+          }}>{String(time.days).padStart(2, '0')}</div>
+          <div style={{ opacity: 0.7 }}>DAYS</div>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ 
+            fontSize: '1.2rem', 
+            fontWeight: 'bold',
+            color: isRunning ? '#64ffda' : '#fff',
+            textShadow: isRunning ? '0 0 10px rgba(100,255,218,0.5)' : 'none',
+            transition: 'all 0.3s ease'
+          }}>{String(time.hours).padStart(2, '0')}</div>
+          <div style={{ opacity: 0.7 }}>HRS</div>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ 
+            fontSize: '1.2rem', 
+            fontWeight: 'bold',
+            color: isRunning ? '#64ffda' : '#fff',
+            textShadow: isRunning ? '0 0 10px rgba(100,255,218,0.5)' : 'none',
+            transition: 'all 0.3s ease'
+          }}>{String(time.minutes).padStart(2, '0')}</div>
+          <div style={{ opacity: 0.7 }}>MIN</div>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ 
+            fontSize: '1.2rem', 
+            fontWeight: 'bold',
+            color: isRunning ? '#64ffda' : '#fff',
+            textShadow: isRunning ? '0 0 10px rgba(100,255,218,0.5)' : 'none',
+            transition: 'all 0.3s ease'
+          }}>{String(time.seconds).padStart(2, '0')}</div>
+          <div style={{ opacity: 0.7 }}>SEC</div>
+        </div>
+        <button
+          onClick={handleStartStop}
+          style={{
+            background: isRunning ? 'rgba(255,64,87,0.2)' : 'rgba(64,255,218,0.2)',
+            border: `1px solid ${isRunning ? 'rgba(255,64,87,0.4)' : 'rgba(64,255,218,0.4)'}`,
+            color: '#fff',
+            padding: '0.5rem 1rem',
+            borderRadius: '0.25rem',
+            cursor: 'pointer',
+            fontFamily: 'monospace',
+            fontSize: '0.8rem',
+            transition: 'all 0.3s ease',
+            boxShadow: isRunning 
+              ? '0 0 15px rgba(255,64,87,0.2)' 
+              : '0 0 15px rgba(64,255,218,0.2)',
+            textShadow: '0 0 5px rgba(255,255,255,0.5)'
+          }}
+        >
+          {isRunning ? 'STOP' : 'START'}
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const AManProject = () => {
   const [expandedTrait, setExpandedTrait] = useState(null);
@@ -565,7 +736,7 @@ const AManProject = () => {
     const dates = {
       social: {
         signed: "June 7, 2025",
-        effective: "June 9, 2025"
+        effective: "June 10, 2025"
       },
       physical: {
         signed: "June 7, 2025",
@@ -577,7 +748,7 @@ const AManProject = () => {
       },
       financial: {
         signed: "June 7, 2025",
-        effective: "June 9, 2025"
+        effective: "June 10, 2025"
       }
     };
 
@@ -642,7 +813,8 @@ const AManProject = () => {
           fontFamily: 'serif',
           marginTop: '2rem'
         }}>
-          Effective {dates[activeSection].effective}
+          <div>Effective {dates[activeSection].effective}</div>
+          <Stopwatch />
         </div>
 
         <div style={{
