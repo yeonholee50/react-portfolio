@@ -351,3 +351,74 @@ a,
     background-color: var(--title-color-dark);
     transform: translateY(-3px);
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes neonPulse {
+  0%, 100% { 
+    box-shadow: 0 0 10px rgba(64,87,255,0.5),
+               0 0 20px rgba(64,87,255,0.3),
+               0 0 30px rgba(64,87,255,0.2),
+               inset 0 0 15px rgba(64,87,255,0.3);
+  }
+  50% { 
+    box-shadow: 0 0 15px rgba(64,87,255,0.6),
+               0 0 25px rgba(64,87,255,0.4),
+               0 0 35px rgba(64,87,255,0.3),
+               inset 0 0 25px rgba(64,87,255,0.4);
+  }
+}
+
+/* Add hover effects for the commitment modal buttons */
+.commitment-btn {
+  transition: all 0.3s ease;
+}
+
+.commitment-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.commitment-btn.cancel:hover {
+  background: rgba(255,64,87,0.3) !important;
+}
+
+.commitment-btn.commit:hover {
+  background: rgba(64,255,218,0.3) !important;
+}
+
+.commitment-btn.continue:hover {
+  background: rgba(64,255,218,0.3) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(64,255,218,0.2);
+}
+
+.commitment-btn.stop:hover {
+  background: rgba(255,64,87,0.3) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255,64,87,0.2);
+}
+
+/* Add pulse animation for the stop button */
+@keyframes warningPulse {
+  0%, 100% {
+    border-color: rgba(255,64,87,0.4);
+  }
+  50% {
+    border-color: rgba(255,64,87,0.8);
+    box-shadow: 0 0 20px rgba(255,64,87,0.3);
+  }
+}
+
+.commitment-btn.stop {
+  animation: warningPulse 2s infinite;
+}
