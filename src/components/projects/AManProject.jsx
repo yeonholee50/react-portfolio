@@ -1064,20 +1064,20 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "June 12, 2025",
-        effective: "June 12, 2025"
+        signed: "June 13, 2025",
+        effective: "June 14, 2025"
       },
       physical: {
-        signed: "June 12, 2025",
-        effective: "June 15, 2025"
+        signed: "June 13, 2025",
+        effective: "June 14, 2025"
       },
       career: {
-        signed: "June 12, 2025",
-        effective: "June 15, 2025"
+        signed: "June 13, 2025",
+        effective: "June 14, 2025"
       },
       financial: {
-        signed: "June 12, 2025",
-        effective: "June 12, 2025"
+        signed: "June 13, 2025",
+        effective: "June 14, 2025"
       }
     };
 
