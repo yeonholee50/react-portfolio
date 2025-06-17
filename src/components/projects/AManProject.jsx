@@ -507,6 +507,10 @@ const AManProject = () => {
   const [expandedPhysicalSection, setExpandedPhysicalSection] = useState(null);
   const [expandedFinancialRule, setExpandedFinancialRule] = useState(null);
   const [expandedCareerRule, setExpandedCareerRule] = useState(null);
+  const [expandedAmpyfinPlan, setExpandedAmpyfinPlan] = useState(null);
+  const [expandedWorkoutDay, setExpandedWorkoutDay] = useState(null);
+  const [bulkMode, setBulkMode] = useState(false);
+  const [cycleStartDate, setCycleStartDate] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [time, setTime] = useState(0);
 
@@ -698,7 +702,6 @@ const AManProject = () => {
       why: "Leading via competence and mentorship multiplies impact.",
       how: [
         "Host 'office hours' for junior colleagues",
-        "Ask teammates, 'What blocker can I remove this week?'"
       ]
     },
     {
@@ -851,6 +854,262 @@ const AManProject = () => {
         'Friday Evenings: AmpyFin exclusive',
         'Weekends: 10+ hours/day AmpyFin',
         'No time waste on non-purposeful activities'
+      ]
+    }
+  ];
+
+  const ampyfinPlans = [
+    {
+      id: 'june',
+      title: 'June Sprint',
+      content: [
+        'Second Two Week Sprint:',
+        '• Complete Hyper Model decision making system',
+        '• Complete Prag Model decision making system',
+        '• Integrate and test both models'
+      ]
+    },
+    {
+      id: 'july',
+      title: 'July Sprint',
+      content: [
+        'First Two Week Sprint:',
+        '• Complete Riemann Model',
+        '• Complete Euler Model',
+        '• Complete Tachyon Model',
+        '• Complete Aether Model',
+        '• Complete Sigma Model',
+        '• Complete Baek Model',
+        'Second Two Week Sprint:',
+        '• Wire all 8 models for full week integration',
+        '• Public release of Hyper and Prag models',
+        '• Maintain other 6 models as proprietary'
+      ]
+    },
+    {
+      id: 'august',
+      title: 'August Sprint',
+      content: [
+        'First Two Week Sprint:',
+        '• Mobile First Development - Convert website to mobile-first design',
+        '• Infrastructure Planning:',
+        '  - Design website infrastructure',
+        '  - Finalize end design',
+        '  - Plan revenue generation strategies',
+        '• Feature Planning:',
+        '  - Design search functionality',
+        '  - Plan plug-and-play model system',
+        '  - Design model toggling interface',
+        '  - Define end goal visualization',
+        '  - Optimize resource allocation per operation',
+        'Second Two Week Sprint:',
+        '• User Authentication Implementation:',
+        '  - Integrate Supabase authentication',
+        '  - Set up AWS infrastructure',
+        '  - Implement user attribute management',
+        '  - Test and optimize authentication flow'
+      ]
+    }
+  ];
+
+  const workoutSchedule = [
+    {
+      id: 'sunday',
+      title: 'Sunday - Leg Day',
+      exercises: [
+        { 
+          name: 'Squats', 
+          sets: [
+            { reps: 10, intensity: 'light', count: 4 },
+            { reps: 8, intensity: 'medium', count: 4 },
+            { reps: 4, intensity: 'heavy', count: 4 }
+          ]
+        },
+        { 
+          name: 'Seated Leg Curls', 
+          sets: [
+            { reps: 15, intensity: 'light', count: 4 },
+            { reps: 10, intensity: 'medium', count: 4 },
+            { reps: 5, intensity: 'heavy', count: 2 }
+          ]
+        },
+        { 
+          name: 'Seated Leg Extensions', 
+          sets: [
+            { reps: 15, intensity: 'light', count: 4 },
+            { reps: 10, intensity: 'medium', count: 4 },
+            { reps: 5, intensity: 'heavy', count: 2 }
+          ]
+        },
+        { 
+          name: 'Dumbbell Calf Raises', 
+          sets: [
+            { reps: 20, intensity: 'medium', count: 4 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'monday',
+      title: 'Monday - Back + Tricep Day',
+      exercises: [
+        { 
+          name: 'Dumbbell Bent Over Rows', 
+          sets: [
+            { reps: 15, intensity: 'light', count: 2 },
+            { reps: 12, intensity: 'medium', count: 4 },
+            { reps: 8, intensity: 'heavy', count: 2 }
+          ]
+        },
+        { 
+          name: 'Seated Cable Rows', 
+          sets: [
+            { reps: 15, intensity: 'light', count: 2 },
+            { reps: 12, intensity: 'medium', count: 4 },
+            { reps: 8, intensity: 'heavy', count: 2 }
+          ]
+        },
+        { 
+          name: 'Lat Cable Pull-downs', 
+          sets: [
+            { reps: 15, intensity: 'light', count: 2 },
+            { reps: 12, intensity: 'medium', count: 4 },
+            { reps: 8, intensity: 'heavy', count: 2 }
+          ]
+        },
+        { 
+          name: 'Cable Tricep Press Downs', 
+          sets: [
+            { reps: 20, intensity: 'medium', count: 8 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'tuesday',
+      title: 'Tuesday - Bicep Day',
+      exercises: [
+        { 
+          name: 'Bicep Curls', 
+          sets: [
+            { reps: 12, intensity: 'medium', count: 4 }
+          ]
+        },
+        { 
+          name: 'Hammer Curls', 
+          sets: [
+            { reps: 12, intensity: 'medium', count: 4 }
+          ]
+        },
+        { 
+          name: 'Incline Bicep Curls', 
+          sets: [
+            { reps: 12, intensity: 'light', count: 4 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'wednesday',
+      title: 'Wednesday - Rest Day',
+      exercises: [
+        { 
+          name: 'Lake Walk', 
+          sets: [
+            { reps: 1, intensity: 'light', count: 1, note: '1 hour walk at lake after work' }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'thursday',
+      title: 'Thursday - Shoulder Day',
+      exercises: [
+        { 
+          name: 'Shoulder Press', 
+          sets: [
+            { reps: 12, intensity: 'medium', count: 4 }
+          ]
+        },
+        { 
+          name: 'Arnold Press', 
+          sets: [
+            { reps: 12, intensity: 'medium', count: 4 }
+          ]
+        },
+        { 
+          name: 'Rear Delt Rows', 
+          sets: [
+            { reps: 12, intensity: 'medium', count: 4 }
+          ]
+        },
+        { 
+          name: 'Lateral Raises', 
+          sets: [
+            { reps: 10, intensity: 'light', count: 4 }
+          ]
+        },
+        { 
+          name: 'Front Raises', 
+          sets: [
+            { reps: 10, intensity: 'light', count: 4 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'friday',
+      title: 'Friday - Rest Day',
+      exercises: [
+        { 
+          name: 'Lake Walk', 
+          sets: [
+            { reps: 1, intensity: 'light', count: 1, note: '1 hour walk at lake after work' }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'saturday',
+      title: 'Saturday - Chest Day',
+      exercises: [
+        { 
+          name: 'Bench Press', 
+          sets: [
+            { reps: 10, intensity: 'light', count: 2 },
+            { reps: 8, intensity: 'medium', count: 4 },
+            { reps: 4, intensity: 'heavy', count: 4 },
+            { reps: 2, intensity: 'super heavy', count: 2 }
+          ]
+        },
+        { 
+          name: 'Incline Bench Press', 
+          sets: [
+            { reps: 10, intensity: 'light', count: 2 },
+            { reps: 8, intensity: 'medium', count: 4 },
+            { reps: 4, intensity: 'heavy', count: 4 }
+          ]
+        },
+        { 
+          name: 'Dumbbell Presses', 
+          sets: [
+            { reps: 10, intensity: 'light', count: 2 },
+            { reps: 8, intensity: 'medium', count: 4 },
+            { reps: 6, intensity: 'heavy', count: 4 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'daily',
+      title: 'Daily Core Workout',
+      exercises: [
+        { 
+          name: 'Crunches', 
+          sets: [
+            { reps: 20, intensity: 'medium', count: 4, note: 'Note: Abs are achieved through caloric deficit, not just exercises' }
+          ]
+        }
       ]
     }
   ];
@@ -1056,6 +1315,313 @@ const AManProject = () => {
             ))}
           </div>
         );
+      case 'ampyfin':
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {ampyfinPlans.map((plan) => (
+              <div 
+                key={plan.id}
+                className="ampyfin-item"
+                style={{
+                  borderRadius: '0.5rem',
+                  padding: '1rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s'
+                }}
+                onClick={() => setExpandedAmpyfinPlan(expandedAmpyfinPlan === plan.id ? null : plan.id)}
+              >
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-between', 
+                  alignItems: 'center',
+                  marginBottom: expandedAmpyfinPlan === plan.id ? '1rem' : 0
+                }}>
+                  <h4 style={{ 
+                    margin: 0, 
+                    color: 'var(--title-color)',
+                    fontSize: '1.1rem',
+                    fontFamily: 'monospace'
+                  }}>
+                    {plan.title}
+                  </h4>
+                  <span style={{
+                    color: 'rgba(64,87,255,0.8)',
+                    fontFamily: 'monospace'
+                  }}>{expandedAmpyfinPlan === plan.id ? '−' : '+'}</span>
+                </div>
+                
+                {expandedAmpyfinPlan === plan.id && (
+                  <div style={{ 
+                    marginTop: '0.5rem',
+                    background: 'rgba(64,87,255,0.1)',
+                    borderRadius: '0.5rem',
+                    padding: '1rem'
+                  }}>
+                    <ul style={{ 
+                      listStyle: 'none',
+                      padding: '0',
+                      margin: 0,
+                      fontSize: '0.9rem',
+                      color: 'var(--text-color)',
+                      fontFamily: 'monospace'
+                    }}>
+                      {plan.content.map((item, index) => (
+                        <li key={index} style={{ 
+                          marginBottom: '0.5rem',
+                          paddingLeft: item.startsWith('•') ? '1rem' : '0',
+                          color: item.startsWith('•') ? 'rgba(255,255,255,0.8)' : 'rgba(64,87,255,0.8)',
+                          fontWeight: item.startsWith('•') ? 'normal' : 'bold'
+                        }}>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        );
+      case 'workout':
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            {/* Bulk/Cut Mode Switcher */}
+            <div style={{
+              background: 'rgba(8,12,24,0.8)',
+              borderRadius: '1rem',
+              padding: '2rem',
+              border: '1px solid rgba(64,87,255,0.2)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '2rem',
+                flexWrap: 'wrap'
+              }}>
+                <div style={{
+                  flex: '1',
+                  minWidth: '200px'
+                }}>
+                  <h3 style={{
+                    color: bulkMode ? '#64ffda' : '#ff4057',
+                    marginBottom: '1rem',
+                    fontFamily: 'monospace'
+                  }}>
+                    Current Mode: {bulkMode ? 'BULK' : 'CUT'}
+                  </h3>
+                  <p style={{
+                    color: 'rgba(255,255,255,0.7)',
+                    fontSize: '0.9rem',
+                    marginBottom: '1rem'
+                  }}>
+                    {bulkMode ? 
+                      'Slow bulk phase - Focus on clean eating and progressive overload' :
+                      'Cut phase - Maintain strength while in caloric deficit'
+                    }
+                  </p>
+                  <button
+                    onClick={() => {
+                      setBulkMode(!bulkMode);
+                      setCycleStartDate(new Date());
+                    }}
+                    style={{
+                      background: bulkMode ? 
+                        'linear-gradient(135deg, rgba(64,255,218,0.2), rgba(64,255,218,0.1))' :
+                        'linear-gradient(135deg, rgba(255,64,87,0.2), rgba(255,64,87,0.1))',
+                      border: `1px solid ${bulkMode ? 'rgba(64,255,218,0.3)' : 'rgba(255,64,87,0.3)'}`,
+                      color: '#fff',
+                      padding: '0.75rem 1.5rem',
+                      borderRadius: '0.5rem',
+                      cursor: 'pointer',
+                      fontFamily: 'monospace',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    Switch to {bulkMode ? 'CUT' : 'BULK'} Mode
+                  </button>
+                </div>
+                
+                <div style={{
+                  flex: '1',
+                  minWidth: '200px',
+                  background: 'rgba(64,87,255,0.1)',
+                  padding: '1.5rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid rgba(64,87,255,0.2)'
+                }}>
+                  <h4 style={{
+                    color: '#64ffda',
+                    marginBottom: '1rem',
+                    fontFamily: 'monospace'
+                  }}>
+                    Cycle Progress
+                  </h4>
+                  {cycleStartDate ? (
+                    <>
+                      <p style={{
+                        color: 'rgba(255,255,255,0.7)',
+                        fontSize: '0.9rem',
+                        marginBottom: '0.5rem'
+                      }}>
+                        Started: {cycleStartDate.toLocaleDateString()}
+                      </p>
+                      <p style={{
+                        color: 'rgba(255,255,255,0.7)',
+                        fontSize: '0.9rem',
+                        marginBottom: '0.5rem'
+                      }}>
+                        Switch to {bulkMode ? 'CUT' : 'BULK'} on: {
+                          new Date(cycleStartDate.getTime() + (90 * 24 * 60 * 60 * 1000)).toLocaleDateString()
+                        }
+                      </p>
+                      <div style={{
+                        width: '100%',
+                        height: '4px',
+                        background: 'rgba(255,255,255,0.1)',
+                        borderRadius: '2px',
+                        marginTop: '1rem',
+                        position: 'relative',
+                        overflow: 'hidden'
+                      }}>
+                        <div style={{
+                          position: 'absolute',
+                          left: '0',
+                          top: '0',
+                          height: '100%',
+                          width: `${Math.min(100, (new Date() - cycleStartDate) / (90 * 24 * 60 * 60 * 1000) * 100)}%`,
+                          background: bulkMode ? 
+                            'linear-gradient(90deg, #64ffda, rgba(64,255,218,0.5))' :
+                            'linear-gradient(90deg, #ff4057, rgba(255,64,87,0.5))',
+                          borderRadius: '2px'
+                        }}/>
+                      </div>
+                    </>
+                  ) : (
+                    <p style={{
+                      color: 'rgba(255,255,255,0.7)',
+                      fontSize: '0.9rem'
+                    }}>
+                      Start a cycle by switching modes
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Workout Schedule */}
+            {workoutSchedule.map((day) => (
+              <div 
+                key={day.id}
+                className="workout-day"
+                style={{
+                  backgroundColor: 'rgba(8,12,24,0.6)',
+                  borderRadius: '1rem',
+                  padding: '1.5rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  border: '1px solid rgba(64,87,255,0.2)'
+                }}
+                onClick={() => setExpandedWorkoutDay(expandedWorkoutDay === day.id ? null : day.id)}
+              >
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-between', 
+                  alignItems: 'center'
+                }}>
+                  <h3 style={{ 
+                    margin: 0,
+                    color: '#64ffda',
+                    fontFamily: 'monospace',
+                    fontSize: '1.1rem'
+                  }}>
+                    {day.title}
+                  </h3>
+                  <span style={{
+                    color: 'rgba(64,87,255,0.8)',
+                    fontFamily: 'monospace'
+                  }}>
+                    {expandedWorkoutDay === day.id ? '−' : '+'}
+                  </span>
+                </div>
+
+                {expandedWorkoutDay === day.id && (
+                  <div style={{
+                    marginTop: '1.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1rem'
+                  }}>
+                    {day.exercises.map((exercise, index) => (
+                      <div 
+                        key={index}
+                        style={{
+                          background: 'rgba(64,87,255,0.1)',
+                          padding: '1rem',
+                          borderRadius: '0.5rem',
+                          border: '1px solid rgba(64,87,255,0.2)'
+                        }}
+                      >
+                        <h4 style={{
+                          margin: '0 0 0.5rem 0',
+                          color: '#fff',
+                          fontFamily: 'monospace'
+                        }}>
+                          {exercise.name}
+                        </h4>
+                        <div style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '0.5rem'
+                        }}>
+                          {exercise.sets.map((set, setIndex) => (
+                            <div 
+                              key={setIndex}
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                color: 'rgba(255,255,255,0.7)',
+                                fontSize: '0.9rem',
+                                fontFamily: 'monospace'
+                              }}
+                            >
+                              <span style={{
+                                color: set.intensity === 'light' ? '#64ffda' :
+                                       set.intensity === 'medium' ? '#ff4057' :
+                                       set.intensity === 'heavy' ? '#ff8f00' :
+                                       '#ff1744',
+                                fontWeight: 'bold'
+                              }}>
+                                {set.intensity.toUpperCase()}
+                              </span>
+                              <span>•</span>
+                              <span>{set.count} sets</span>
+                              <span>•</span>
+                              <span>{set.reps} reps</span>
+                              {set.note && (
+                                <span style={{
+                                  marginLeft: 'auto',
+                                  fontSize: '0.8rem',
+                                  fontStyle: 'italic',
+                                  color: 'rgba(255,255,255,0.5)'
+                                }}>
+                                  {set.note}
+                                </span>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        );
       default:
         return null;
     }
@@ -1076,6 +1642,14 @@ const AManProject = () => {
         effective: "June 17, 2025"
       },
       financial: {
+        signed: "June 17, 2025",
+        effective: "June 17, 2025"
+      },
+      ampyfin: {
+        signed: "June 17, 2025",
+        effective: "June 17, 2025"
+      },
+      workout: {
         signed: "June 17, 2025",
         effective: "June 17, 2025"
       }
@@ -1387,7 +1961,7 @@ const AManProject = () => {
             boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
             border: '1px solid rgba(64,87,255,0.2)'
           }}>
-            {['social', 'physical', 'career', 'financial'].map((section) => (
+            {['social', 'physical', 'career', 'financial', 'ampyfin', 'workout'].map((section) => (
               <button
                 key={section}
                 onClick={() => setActiveSection(section)}

@@ -422,3 +422,77 @@ a,
 .commitment-btn.stop {
   animation: warningPulse 2s infinite;
 }
+
+/* AmpyFin specific styles */
+[data-theme="dark"] .ampyfin-item {
+  background-color: rgba(8,12,24,0.6) !important;
+  border: 1px solid rgba(64,87,255,0.2);
+}
+
+[data-theme="dark"] .ampyfin-item:hover {
+  border-color: rgba(64,87,255,0.4);
+  box-shadow: 0 0 20px rgba(64,87,255,0.2);
+}
+
+[data-theme="light"] .ampyfin-item {
+  background-color: var(--first-color-lighter) !important;
+  border: 1px solid rgba(64,87,255,0.1);
+}
+
+[data-theme="light"] .ampyfin-item:hover {
+  border-color: rgba(64,87,255,0.3);
+  box-shadow: 0 0 15px rgba(64,87,255,0.1);
+}
+
+/* Workout specific styles */
+.workout-day {
+  transition: all 0.3s ease;
+}
+
+.workout-day:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(64,87,255,0.2);
+  border-color: rgba(64,87,255,0.4);
+}
+
+[data-theme="dark"] .workout-day {
+  background: rgba(8,12,24,0.6) !important;
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .workout-day:hover {
+  background: rgba(8,12,24,0.8) !important;
+  border-color: rgba(64,87,255,0.6);
+  box-shadow: 0 8px 32px rgba(64,87,255,0.3);
+}
+
+[data-theme="light"] .workout-day {
+  background: var(--container-color) !important;
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .workout-day:hover {
+  box-shadow: var(--card-hover-shadow);
+  border-color: rgba(64,87,255,0.3);
+}
+
+/* Workout mode switcher animations */
+@keyframes modeTransition {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  50% { transform: scale(1.02); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.workout-mode-switch {
+  animation: modeTransition 0.3s ease;
+}
+
+/* Progress bar animation */
+@keyframes progressGrow {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.cycle-progress-bar {
+  animation: progressGrow 0.5s ease;
+}
