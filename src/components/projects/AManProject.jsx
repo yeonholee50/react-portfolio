@@ -106,10 +106,14 @@ const Stopwatch = () => {
     if (stopConfirmationStep < stopConfirmationMessages.length - 1) {
       setStopConfirmationStep(prev => prev + 1);
     } else {
-      const savedStartTime = null;
+      // Immediately update localStorage on final confirmation for robustness
+      localStorage.removeItem('stopwatchStartTime');
+      localStorage.setItem('stopwatchRunning', 'false');
+      
+      // The savedStartTime variable is not used by the worker for the 'STOP' type message.
+      // The worker will internally set elapsed time to 0.
       workerRef.current.postMessage({ 
-        type: 'STOP',
-        savedStartTime
+        type: 'STOP'
       });
       setShowStopConfirmation(false);
       setStopConfirmationStep(0);
