@@ -11,7 +11,7 @@ export const projectsData = [
         link: "https://ampyfin.com/",
         title: "AmpyFin Trading System",
         category: "AmpyFin",
-        github: "https://github.com/yeonholee50/AmpyFin",
+        github: "https://github.com/AmpyFin/ampyfin",
         description: "A sophisticated trading platform leveraging high-fidelity market data from Data Bento across 6 Oracle Cloud clusters. Features include automated NASDAQ-100 trading strategies, optional Dockerized deployments, and a proprietary backtesting library powering seven production ensemble models. The system has delivered 30%+ year-to-date returns, outperforming market benchmarks and attracting partnership inquiries from hedge funds and trading firms.",
         tech: ["Oracle Cloud", "Docker", "Python", "Machine Learning", "Data Bento API"]
     },
