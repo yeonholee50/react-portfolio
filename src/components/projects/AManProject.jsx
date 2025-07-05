@@ -864,54 +864,61 @@ const AManProject = () => {
 
   const ampyfinPlans = [
     {
-      id: 'june',
-      title: 'June Sprint',
+      id: 'july',
+      title: 'July Goals',
       content: [
-        'Second Two Week Sprint:',
+        'OSS System Development:',
         '• Complete Hyper Model decision making system',
         '• Complete Prag Model decision making system',
-        '• Integrate and test both models'
-      ]
-    },
-    {
-      id: 'july',
-      title: 'July Sprint',
-      content: [
-        'First Two Week Sprint:',
         '• Complete Riemann Model',
         '• Complete Euler Model',
         '• Complete Tachyon Model',
         '• Complete Aether Model',
         '• Complete Sigma Model',
         '• Complete Baek Model',
-        'Second Two Week Sprint:',
-        '• Wire all 8 models for full week integration',
-        '• Public release of Hyper and Prag models',
-        '• Maintain other 6 models as proprietary'
+        '• Write clean and scalable code with inherent structure',
+        '• Implement good design practices throughout all models'
       ]
     },
     {
       id: 'august',
-      title: 'August Sprint',
+      title: 'August Goals',
       content: [
-        'First Two Week Sprint:',
-        '• Mobile First Development - Convert website to mobile-first design',
-        '• Infrastructure Planning:',
-        '  - Design website infrastructure',
-        '  - Finalize end design',
-        '  - Plan revenue generation strategies',
-        '• Feature Planning:',
-        '  - Design search functionality',
-        '  - Plan plug-and-play model system',
-        '  - Design model toggling interface',
-        '  - Define end goal visualization',
-        '  - Optimize resource allocation per operation',
-        'Second Two Week Sprint:',
-        '• User Authentication Implementation:',
-        '  - Integrate Supabase authentication',
-        '  - Set up AWS infrastructure',
-        '  - Implement user attribute management',
-        '  - Test and optimize authentication flow'
+        'Frontend Rewrite & Documentation:',
+        '• Rewrite frontend of AmpyFin completely',
+        '• Fix current hard-coded messy website structure',
+        '• Finalize website design and user interface',
+        '• Create comprehensive documentation on how to use AmpyFin',
+        '• Ensure all documentation is clear and user-friendly',
+        '• Test and optimize user experience across all devices'
+      ]
+    },
+    {
+      id: 'september',
+      title: 'September Goals',
+      content: [
+        'Model APIs & Subscription System:',
+        '• Release v3.0.1 model APIs',
+        '• Release v4.0.1 model APIs',
+        '• Plan and design phone/email update subscription model',
+        '• Integrate Stripe payment processing system',
+        '• Implement subscription management and billing',
+        '• Test payment flows and subscription features'
+      ]
+    },
+    {
+      id: 'october',
+      title: 'October Goals',
+      content: [
+        'Live Trading System & Legacy Retirement:',
+        '• Deploy Baek Model running all systems online',
+        '• Integrate recent trade APIs and portfolio changes API',
+        '• Implement WebSocket connection to live system',
+        '• Enable live system trading with $50,000 in cash',
+        '• Implement dynamic stop losses and take profits',
+        '• Release v5.0.1 for Baek Model',
+        '• Retire AmpyFin old as legacy model',
+        '• Complete system migration and optimization'
       ]
     }
   ];
@@ -1634,28 +1641,28 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "July 5, 2025 at 12:00 PM PST",
-        effective: "July 5, 2025 at 12:00 PM PST"
+        signed: "July 5, 2025 at 8:00 PM PST",
+        effective: "July 5, 2025 at 8:00 PM PST"
       },
       physical: {
-        signed: "July 5, 2025 at 12:00 PM PST",
-        effective: "July 5, 2025 at 12:00 PM PST"
+        signed: "July 5, 2025 at 8:00 PM PST",
+        effective: "July 5, 2025 at 8:00 PM PST"
       },
       career: {
-        signed: "July 5, 2025 at 12:00 PM PST",
-        effective: "July 5, 2025 at 12:00 PM PST"
+        signed: "July 5, 2025 at 8:00 PM PST",
+        effective: "July 5, 2025 at 8:00 PM PST"
       },
       financial: {
-        signed: "July 5, 2025 at 12:00 PM PST",
-        effective: "July 5, 2025 at 12:00 PM PST"
+        signed: "July 5, 2025 at 8:00 PM PST",
+        effective: "July 5, 2025 at 8:00 PM PST"
       },
       ampyfin: {
-        signed: "July 5, 2025 at 12:00 PM PST",
-        effective: "July 5, 2025 at 12:00 PM PST"
+        signed: "July 5, 2025 at 8:00 PM PST",
+        effective: "July 5, 2025 at 8:00 PM PST"
       },
       workout: {
-        signed: "July 5, 2025 at 12:00 PM PST",
-        effective: "July 5, 2025 at 12:00 PM PST"
+        signed: "July 5, 2025 at 8:00 PM PST",
+        effective: "July 5, 2025 at 8:00 PM PST"
       }
     };
 
