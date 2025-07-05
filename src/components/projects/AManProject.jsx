@@ -1703,6 +1703,27 @@ const AManProject = () => {
         </div>
         
         <div style={{
+          marginBottom: '2rem',
+          textAlign: 'center'
+        }}>
+          <iframe
+            width="100%"
+            height="315"
+            src="https://www.youtube.com/embed/UC1gzMszeLM"
+            title="A-Man Project Inspiration"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            style={{
+              borderRadius: '0.5rem',
+              border: '1px solid rgba(64,87,255,0.3)',
+              boxShadow: '0 0 20px rgba(64,87,255,0.2)',
+              maxWidth: '560px'
+            }}
+          ></iframe>
+        </div>
+        
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
