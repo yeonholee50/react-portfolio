@@ -1634,28 +1634,28 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "July 5, 2025 at 10:00 AM PST",
-        effective: "July 5, 2025 at 10:00 AM PST"
+        signed: "July 5, 2025 at 12:00 PM PST",
+        effective: "July 5, 2025 at 12:00 PM PST"
       },
       physical: {
-        signed: "July 5, 2025 at 10:00 AM PST",
-        effective: "July 5, 2025 at 10:00 AM PST"
+        signed: "July 5, 2025 at 12:00 PM PST",
+        effective: "July 5, 2025 at 12:00 PM PST"
       },
       career: {
-        signed: "July 5, 2025 at 10:00 AM PST",
-        effective: "July 5, 2025 at 10:00 AM PST"
+        signed: "July 5, 2025 at 12:00 PM PST",
+        effective: "July 5, 2025 at 12:00 PM PST"
       },
       financial: {
-        signed: "July 5, 2025 at 10:00 AM PST",
-        effective: "July 5, 2025 at 10:00 AM PST"
+        signed: "July 5, 2025 at 12:00 PM PST",
+        effective: "July 5, 2025 at 12:00 PM PST"
       },
       ampyfin: {
-        signed: "July 5, 2025 at 10:00 AM PST",
-        effective: "July 5, 2025 at 10:00 AM PST"
+        signed: "July 5, 2025 at 12:00 PM PST",
+        effective: "July 5, 2025 at 12:00 PM PST"
       },
       workout: {
-        signed: "July 5, 2025 at 10:00 AM PST",
-        effective: "July 5, 2025 at 10:00 AM PST"
+        signed: "July 5, 2025 at 12:00 PM PST",
+        effective: "July 5, 2025 at 12:00 PM PST"
       }
     };
 
@@ -1671,13 +1671,35 @@ const AManProject = () => {
         border: '1px solid rgba(255,255,255,0.05)'
       }}>
         <div style={{
-          marginBottom: '2rem',
+          marginBottom: '1rem',
           color: 'rgba(255,255,255,0.9)',
           fontSize: '0.9rem',
           fontStyle: 'italic',
           fontFamily: 'serif'
         }}>
           Signed on {dates[activeSection].signed}
+        </div>
+        
+        <div style={{
+          marginBottom: '2rem',
+          color: 'rgba(64,87,255,0.8)',
+          fontSize: '1rem',
+          fontStyle: 'italic',
+          fontFamily: 'serif',
+          textAlign: 'center',
+          padding: '1rem',
+          background: 'rgba(64,87,255,0.1)',
+          borderRadius: '0.5rem',
+          border: '1px solid rgba(64,87,255,0.2)'
+        }}>
+          "I came, I saw, I conquered. From the ashes of yesterday, I rise as the phoenix of tomorrow."
+          <div style={{
+            fontSize: '0.8rem',
+            color: 'rgba(255,255,255,0.7)',
+            marginTop: '0.5rem'
+          }}>
+            — Inspired by Julius Caesar
+          </div>
         </div>
         
         <div style={{
