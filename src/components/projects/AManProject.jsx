@@ -1641,28 +1641,28 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "July 6, 2025 at 10:00 PM PST",
-        effective: "July 6, 2025 at 10:00 PM PST"
+        signed: "July 7, 2025 at 8:00 PM PST",
+        effective: "July 7, 2025 at 8:00 PM PST"
       },
       physical: {
-        signed: "July 6, 2025 at 10:00 PM PST",
-        effective: "July 6, 2025 at 10:00 PM PST"
+        signed: "July 7, 2025 at 8:00 PM PST",
+        effective: "July 7, 2025 at 8:00 PM PST"
       },
       career: {
-        signed: "July 6, 2025 at 10:00 PM PST",
-        effective: "July 6, 2025 at 10:00 PM PST"
+        signed: "July 7, 2025 at 8:00 PM PST",
+        effective: "July 7, 2025 at 8:00 PM PST"
       },
       financial: {
-        signed: "July 6, 2025 at 10:00 PM PST",
-        effective: "July 6, 2025 at 10:00 PM PST"
+        signed: "July 7, 2025 at 8:00 PM PST",
+        effective: "July 7, 2025 at 8:00 PM PST"
       },
       ampyfin: {
-        signed: "July 6, 2025 at 10:00 PM PST",
-        effective: "July 6, 2025 at 10:00 PM PST"
+        signed: "July 7, 2025 at 8:00 PM PST",
+        effective: "July 7, 2025 at 8:00 PM PST"
       },
       workout: {
-        signed: "July 6, 2025 at 10:00 PM PST",
-        effective: "July 6, 2025 at 10:00 PM PST"
+        signed: "July 7, 2025 at 8:00 PM PST",
+        effective: "July 7, 2025 at 8:00 PM PST"
       }
     };
 
@@ -1699,13 +1699,13 @@ const AManProject = () => {
           borderRadius: '0.5rem',
           border: '1px solid rgba(64,87,255,0.2)'
         }}>
-          "I came, I saw, I conquered. From the ashes of yesterday, I rise as the phoenix of tomorrow."
+          "I'd rather eat one meal a day working on the thing I love than eating three meals a day working on something I hate."
           <div style={{
             fontSize: '0.8rem',
             color: 'rgba(255,255,255,0.7)',
             marginTop: '0.5rem'
           }}>
-            — Inspired by Julius Caesar
+            — A-Man Project Philosophy
           </div>
         </div>
         
