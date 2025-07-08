@@ -1716,7 +1716,7 @@ const AManProject = () => {
           <iframe
             width="100%"
             height="315"
-            src="https://www.youtube.com/embed/UC1gzMszeLM"
+            src="https://www.youtube.com/embed/M9WyKJvlN4c"
             title="A-Man Project Inspiration"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
