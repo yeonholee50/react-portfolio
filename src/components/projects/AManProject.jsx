@@ -1699,7 +1699,7 @@ const AManProject = () => {
           borderRadius: '0.5rem',
           border: '1px solid rgba(64,87,255,0.2)'
         }}>
-          "I'd rather eat one meal a day working on the thing I love than eating three meals a day working on something I hate."
+          "I'd happily live on one humble meal each day if it means spending my hours chasing the dream that keeps me up at night, rather than feast three times a day on work that never makes it into my dreams."
           <div style={{
             fontSize: '0.8rem',
             color: 'rgba(255,255,255,0.7)',
@@ -1716,8 +1716,14 @@ const AManProject = () => {
           <iframe
             width="100%"
             height="315"
-            src="https://www.youtube.com/embed/M9WyKJvlN4c"
-            title="A-Man Project Inspiration"
+            src={
+              activeSection === 'career' ? "https://www.youtube.com/embed/Tuw8hxrFBH8" :
+              activeSection === 'physical' ? "https://www.youtube.com/embed/xd-9D3GzUpo" :
+              activeSection === 'financial' ? "https://www.youtube.com/embed/VAE586HgwkQ" :
+              activeSection === 'social' ? "https://www.youtube.com/embed/YMeuk0ZtLM0" :
+              "https://www.youtube.com/embed/M9WyKJvlN4c"
+            }
+            title={`A-Man Project ${activeSection.charAt(0).toUpperCase() + activeSection.slice(1)} Inspiration`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
