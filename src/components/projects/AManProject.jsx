@@ -1718,9 +1718,11 @@ const AManProject = () => {
             height="315"
             src={
               activeSection === 'career' ? "https://www.youtube.com/embed/Tuw8hxrFBH8" :
-              activeSection === 'physical' ? "https://www.youtube.com/embed/xd-9D3GzUpo" :
+              activeSection === 'physical' ? "https://www.youtube.com/embed/G9LC9P2OKVE" :
               activeSection === 'financial' ? "https://www.youtube.com/embed/VAE586HgwkQ" :
               activeSection === 'social' ? "https://www.youtube.com/embed/YMeuk0ZtLM0" :
+              activeSection === 'ampyfin' ? "https://www.youtube.com/embed/nMctjmaYuhQ" :
+              activeSection === 'workout' ? "https://www.youtube.com/embed/xd-9D3GzUpo" :
               "https://www.youtube.com/embed/M9WyKJvlN4c"
             }
             title={`A-Man Project ${activeSection.charAt(0).toUpperCase() + activeSection.slice(1)} Inspiration`}
