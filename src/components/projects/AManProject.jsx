@@ -540,181 +540,46 @@ const AManProject = () => {
   const socialTraits = [
     {
       id: 1,
-      trait: "Strategic Self-Confidence",
-      why: "People trust a quiet, well-reasoned certainty.",
+      trait: "Mindful Communication",
+      why: "Think before acting or speaking.",
       how: [
-        "Keep a 'decision journal' logging predictions vs. outcomes",
-        "State conclusions as probabilities ('I'm 80% confident…')—signals rigor, not arrogance"
+        "If questioning whether to speak, choose silence",
+        "Never talk about yourself unless asked",
+        "Keep responses focused and relevant",
+        "Don't make unrelated topics about yourself"
       ]
     },
     {
       id: 2,
-      trait: "Precision-Tuned EQ",
-      why: "Reading subtleties offsets the INTJ 'poker face.'",
+      trait: "Responsibility & Independence",
+      why: "Take initiative in household duties.",
       how: [
-        "Before meetings, forecast emotional undercurrents",
-        "In conversation, label the emotion you observe ('Sounds frustrating—')"
+        "Washing dishes",
+        "Doing and folding laundry",
+        "Lawn mowing",
+        "Handle all chores currently done by mother"
       ]
     },
     {
       id: 3,
-      trait: "Directed Curiosity",
-      why: "An INTJ's deep questions can make others feel profoundly understood.",
+      trait: "Social Media Management",
+      why: "Maintain professional online presence.",
       how: [
-        "Prep two open-ended prompts per person you'll meet",
-        "After each interaction, jot one fascinating thing you learned"
+        "Keep Instagram private",
+        "Update by December 31",
+        "Follow closest connections first",
+        "Maintain clean and legitimate appearance"
       ]
     },
     {
       id: 4,
-      trait: "Purpose-Anchored Presence",
-      why: "Clear long-term vision is the INTJ superpower; sharing snippets inspires others.",
+      trait: "Balanced Personality",
+      why: "Be friendly but maintain boundaries.",
       how: [
-        "Craft and memorize a 15-second 'mission headline'",
-        "When speaking, connect current topic to that big-picture aim"
-      ]
-    },
-    {
-      id: 5,
-      trait: "Intentional Body Language",
-      why: "Minimalist gestures read as poise when posture and eye contact are deliberate.",
-      how: [
-        "Practice 'engineer stance': shoulders back, hands relaxed at sides",
-        "Hold eye contact for a full thought—not the whole time"
-      ]
-    },
-    {
-      id: 6,
-      trait: "Principled Assertiveness",
-      why: "Stating boundaries logically—and kindly—wins respect.",
-      how: [
-        "Use 'I value X, so I'll need Y' formulations",
-        "Script polite refusals for common asks; reuse them"
-      ]
-    },
-    {
-      id: 7,
-      trait: "Focused Attention Generosity",
-      why: "INTJs excel at deep, distraction-free focus—turn it toward people.",
-      how: [
-        "Treat every 1-on-1 like debugging code: no phone, full screen on them",
-        "Summarize their point back in one sentence before replying"
-      ]
-    },
-    {
-      id: 8,
-      trait: "Dry, Intelligent Humor",
-      why: "Wry observations soften the stoic stereotype.",
-      how: [
-        "Keep a 'quirky analogy' notebook; deploy sparingly",
-        "Aim for situational wit, not sarcasm at someone's expense"
-      ]
-    },
-    {
-      id: 9,
-      trait: "Stoic Resilience",
-      why: "Logical framing plus emotional composure makes setbacks look like data-gathering.",
-      how: [
-        "After any failure, write a bullet list: facts → lesson → next test",
-        "Share that framework publicly to model calm problem-solving"
-      ]
-    },
-    {
-      id: 10,
-      trait: "Reliability Loop",
-      why: "INTJs value systems; others value knowing you'll deliver.",
-      how: [
-        "Track commitments in your project manager, then send brief status pings unprompted",
-        "Arrive 5 min early—silently signals respect"
-      ]
-    },
-    {
-      id: 11,
-      trait: "Adaptive Social Calibration",
-      why: "Switching between analytical depth and lighter chat shows range.",
-      how: [
-        "Mentally tag contexts as 'whiteboard' (technical) or 'coffee' (relational)",
-        "Match 5% above the group's energy, never below"
-      ]
-    },
-    {
-      id: 12,
-      trait: "Concise Storytelling",
-      why: "A well-structured narrative turns raw data into persuasive vision.",
-      how: [
-        "Use 3-beat arc: context → complication → clever resolution",
-        "Time yourself—aim for <90 seconds per story"
-      ]
-    },
-    {
-      id: 13,
-      trait: "Sustainable Vitality",
-      why: "Physical discipline reinforces mental discipline—and perceived attractiveness.",
-      how: [
-        "Schedule workouts like code deploys: fixed, non-negotiable blocks",
-        "Track sleep with the same rigor as KPIs"
-      ]
-    },
-    {
-      id: 14,
-      trait: "Perpetual Growth Mindset",
-      why: "Viewing skill gaps as puzzles keeps the INTJ edge sharp.",
-      how: [
-        "Quarterly 'skill sprints' with clear learning OKRs",
-        "Swap 'I know' with 'Current model suggests…' in speech"
-      ]
-    },
-    {
-      id: 15,
-      trait: "Transparent Integrity",
-      why: "Straight-talk + evidence is persuasive currency for analytical types.",
-      how: [
-        "When you miss a deadline, share root-cause analysis, not excuses",
-        "Cite sources casually ('According to…') to show rigor"
-      ]
-    },
-    {
-      id: 16,
-      trait: "Systematic Networking",
-      why: "Curate a high-signal network that fuels your strategic goals.",
-      how: [
-        "Build a tagged contact database (interests, expertise, last contact)",
-        "Offer a resource or whitepaper whenever you reconnect"
-      ]
-    },
-    {
-      id: 17,
-      trait: "Cross-Cultural Literacy",
-      why: "Global empathy future-proofs strategy work.",
-      how: [
-        "Each quarter, read a book from a culture you'll encounter",
-        "Ask, 'How is this usually handled where you're from?'—then listen"
-      ]
-    },
-    {
-      id: 18,
-      trait: "Explicit Gratitude",
-      why: "Verbal acknowledgment counters the INTJ tendency to assume 'it's obvious.'",
-      how: [
-        "End emails with a specific thank-you line",
-        "Publicly credit teammates during retros or demos"
-      ]
-    },
-    {
-      id: 19,
-      trait: "Servant-Leader Mentality",
-      why: "Leading via competence and mentorship multiplies impact.",
-      how: [
-        "Host 'office hours' for junior colleagues",
-      ]
-    },
-    {
-      id: 20,
-      trait: "Balanced Independence",
-      why: "Diverse hobbies signal depth and prevent social over-investment in work alone.",
-      how: [
-        "Schedule a weekly solo pursuit (e.g., astrophotography)",
-        "Maintain at least one friend group outside your industry"
+        "Be friendly but not a pushover",
+        "Don't overcomplicate or overthink",
+        "Accept different thoughts/standards",
+        "Avoid judging others' different perspectives"
       ]
     }
   ];
@@ -724,201 +589,210 @@ const AManProject = () => {
       id: 'weight',
       title: 'Weight Management',
       content: [
-        'Target Range: 67 kg - 75 kg',
-        'Shred Phase: 2 meals/day (light breakfast + lunch, no dinner)',
-        'Bulk Phase: 3 meals/day (light breakfast + lunch + dinner)'
+        'Cut Phase (Until September 30, 2025): Target 75kg',
+        'October 2025: Bulk Phase - Target 80kg (Greek yogurt + fruit)',
+        'November-December 31, 2025: Cut Phase - Target 70kg',
+        'Body Goal: Woo Doo Hwan body and vibe of Choi Woo Shik',
+        'No sudden weight loss through excessive cardio',
+        'Focus on gradual progress and constant grind'
       ]
     },
     {
       id: 'workout',
       title: 'Weekly Workout Schedule',
       content: [
-        'Sunday: Leg Day + Tricep',
+        'Workout Time: 10:00 AM (avoid rush hour traffic + sunburn)',
+        'Gym Selection: Lifetime or Crunch - optimize for equipment quality and location (< $100/month)',
+        'Minimum 1 hour per workout session',
+        'Sunday: Leg Day',
         'Monday: Back Day',
-        'Tuesday: Arm Day (Bicep)',
-        'Wednesday: Rest Day',
+        'Tuesday: Arm Day',
+        'Wednesday: Rest Day (Skip Day)',
         'Thursday: Shoulder Day',
-        'Friday: Rest/Cardio (Rest during bulk, 40min run during shred)',
-        'Saturday: Chest Day'
+        'Friday: Jog at Fowler',
+        'Saturday: Chest Day',
+        'Evening: 1 hour walk daily (Watch Korean news KBS during solo walks)',
+        'Fix posture - no bend over waist and neck, maintain poised back'
       ]
     },
     {
-      id: 'skincare-am',
-      title: 'Morning Skincare Routine',
+      id: 'diet',
+      title: 'Diet & Nutrition',
       content: [
-        '1. Quick water rinse (or low-pH gel cleanse if woke up oily)',
-        '2. Pat on hydrating toner (10 sec)',
-        '3. Apply lightweight moisturizing gel (while skin is still damp)',
-        '4. Finish with broad-spectrum SPF 50'
+        'Avoid sugar and heavy oil substances',
+        'Focus on physical performance-oriented food',
+        'Prioritize organic food and mother\'s cooking',
+        'Example: For Korean fried chicken, eat chicken breast and avoid fried skin',
+        'Any food not planned or not aligned with goals is holding you back'
       ]
     },
     {
-      id: 'skincare-pm',
-      title: 'Evening Skincare Routine',
+      id: 'skincare',
+      title: 'Skincare & Hygiene',
       content: [
-        '1. Gentle cleanse (double-cleanse only if wore sunscreen/makeup)',
-        '2. Apply richer moisturizing cream — no other actives'
+        'Goal: Glass skin',
+        'Morning Routine:',
+        '  • Toner pads',
+        '  • Serum',
+        '  • Hydration gel/cream',
+        '  • Sunscreen',
+        '  • Carry sunstick for reapplication',
+        'Evening Routine:',
+        '  • Friday: Face mask treatment followed by serum and night cream',
+        '  • Other days: Serum followed by night cream/moisturizer',
+        'Post-workout: Thorough ice-cold shower',
+        'Post-walk: Lukewarm shower',
+        'Maintain consistent skincare routine'
       ]
     }
   ];
 
   const financialRules = [
     {
-      id: 'personal-spending',
-      title: 'Personal Spending Limit',
+      id: 'family-obligations',
+      title: 'Family Financial Obligations',
       content: [
-        'Maximum $200 per month on materialistic items',
-        'Materialistic = anything not essential for goals/survival',
-        'Track all non-essential purchases monthly'
+        'Monthly Parent Support:',
+        '  - $500/month (if net income > $6,000)',
+        '  - $300/month (if net income < $6,000)',
+        '  - $750/month (if net income ≈ $8,000)',
+        '  - $1,000/month (if net income ≥ $10,000)',
+        'November 2025 Black Friday Purchases:',
+        '  - ThinkPad for mother',
+        '  - Brother ThinkPad',
+        '  - DJI drone for dad (≤ $1,000, good range, phone controller)',
+        'May 2026 Korea Gifts:',
+        '  - 2 MacBook Airs for Hyewon and Hyeyoon'
       ]
     },
     {
-      id: 'necessities',
-      title: 'Essential Expenses',
+      id: 'personal-finance',
+      title: 'Personal Finance Management',
       content: [
-        'Food and Water',
-        'Shelter and Utilities',
-        'Gym Membership',
-        'Other goal-oriented investments'
+        'Monthly personal spending limit: $200 (after securing full-time job)',
+        'Rent should be maximum 25% of monthly income',
+        'Maintain minimum $5,000 in bank account',
+        'Investment allocation after expenses:',
+        '  - 50% of remaining income to Fidelity'
       ]
     },
     {
-      id: 'business',
-      title: 'Business Investment',
+      id: 'investment-strategy',
+      title: 'Investment Strategy',
       content: [
-        'Prioritize operational expenses for business growth',
-        'Focus on revenue-generating activities',
-        'Invest in business development'
-      ]
-    },
-    {
-      id: 'family',
-      title: 'Family Gifts',
-      content: [
-        'Korea trip gift budget: < 5% of total account balance',
-        'Focus on practical, frequently-used items',
-        'Prioritize parents and close relatives',
-        'Quality over quantity for gift selection'
+        'Fidelity Portfolio Allocation:',
+        '  - 40% Tech + SPY ETFs',
+        '  - 40% Big cap stocks',
+        '  - 10% ARK investment ETFs',
+        '  - 10% Small cap stocks (potential disruptors)',
+        'Focus: AI, quantum computing',
+        'VIX Index Strategy:',
+        '  - VIX > 30: Allocate 20% of savings',
+        '  - VIX > 40: Allocate 30% of savings',
+        '  - VIX > 50: Allocate 40% of savings'
       ]
     }
   ];
 
   const careerRules = [
     {
-      id: 'work-principles',
-      title: 'Work Hours Principles',
+      id: 'georgia-focus',
+      title: 'Georgia Period Focus',
       content: [
-        'Focus 100% on company goals and success',
-        'Be a team player, not a lone wolf',
-        'Prioritize organizational success over individual achievement',
-        'Maintain professional relationships and network',
-        'Build meaningful connections within work context'
+        'AmpyFin System Development: Minimum 6 hours per day',
+        'HPE System Development: Minimum 2 hours per day',
+        'Software Engineer Applications:',
+        '  - Focus on big firms / legitimate startups',
+        '  - Avoid recruitment agencies',
+        '  - Minimum 8 applications per day',
+        '  - At least 4 hours daily on applications',
+        'Leetcode Practice + Job Prep: 1 hour per day',
+        'Planning / Review: 1 hour per day',
+        'No Netflix or YouTube - time is short',
+        'Always be on the grind - relax only in Korea'
       ]
     },
     {
-      id: 'social-boundaries',
-      title: 'Professional Boundaries',
+      id: 'post-job',
+      title: 'After Securing Job (NYC/Chicago/Boston/SF)',
       content: [
-        'Keep relationships professional during work hours',
-        'Only engage in outside activities if:',
-        '  - Other person initiates the invitation',
-        '  - You see clear purpose/value in participating',
-        'Avoid social activities that deviate from goals'
-      ]
-    },
-    {
-      id: 'career-growth',
-      title: 'Career Growth Strategy',
-      content: [
-        'After 3 months at current company:',
-        '  - Apply to minimum 5 positions weekly',
-        '  - Focus on upward career moves',
-        '  - Track all applications and responses',
-        'Continuously assess market opportunities',
-        'Stay updated with industry trends'
-      ]
-    },
-    {
-      id: 'ampyfin-commitment',
-      title: 'AmpyFin Development',
-      content: [
-        'Weekdays: Minimum 2 hours per day',
-        'Friday evenings: Dedicated to AmpyFin',
-        'Weekends: Minimum 10 hours per day',
-        'Focus exclusively on AmpyFin during designated times',
-        'No compromises on AmpyFin development schedule'
-      ]
-    },
-    {
-      id: 'time-allocation',
-      title: 'Time Management',
-      content: [
-        'Work Hours: Company focus + professional networking',
-        'Weekday Evenings: 2+ hours AmpyFin',
-        'Friday Evenings: AmpyFin exclusive',
-        'Weekends: 10+ hours/day AmpyFin',
-        'No time waste on non-purposeful activities'
+        'Weekends: Dedicated to AmpyFin (minimum 8 hours per day)',
+        '2 hours per day on HPE system',
+        'Breaks allowed only when:',
+        '  - Completed planned tasks',
+        '  - Tottenham matches (Premier League/UCL)',
+        '  - Top quality UCL matches'
       ]
     }
   ];
 
   const ampyfinPlans = [
     {
-      id: 'july',
-      title: 'July Goals',
+      id: 'july-august',
+      title: 'July-August 2025: Core System Development',
       content: [
-        'OSS System Development:',
-        '• Complete Hyper Model decision making system',
-        '• Complete Prag Model decision making system',
-        '• Complete Riemann Model',
-        '• Complete Euler Model',
-        '• Complete Tachyon Model',
-        '• Complete Aether Model',
-        '• Complete Sigma Model',
-        '• Complete Baek Model',
-        '• Write clean and scalable code with inherent structure',
-        '• Implement good design practices throughout all models'
-      ]
-    },
-    {
-      id: 'august',
-      title: 'August Goals',
-      content: [
-        'Frontend Rewrite & Documentation:',
-        '• Rewrite frontend of AmpyFin completely',
-        '• Fix current hard-coded messy website structure',
-        '• Finalize website design and user interface',
-        '• Create comprehensive documentation on how to use AmpyFin',
-        '• Ensure all documentation is clear and user-friendly',
-        '• Test and optimize user experience across all devices'
+        'Complete OSS System Development:',
+        '• Build and deploy all trading models',
+        '• Implement real-time data processing',
+        '• Set up automated trading infrastructure',
+        '• Complete system integration testing',
+        '• Deploy production environment',
+        '• Have all systems running and stable'
       ]
     },
     {
       id: 'september',
-      title: 'September Goals',
+      title: 'September 2025: Mobile-First Infrastructure',
       content: [
-        'Model APIs & Subscription System:',
-        '• Release v3.0.1 model APIs',
-        '• Release v4.0.1 model APIs',
-        '• Plan and design phone/email update subscription model',
-        '• Integrate Stripe payment processing system',
-        '• Implement subscription management and billing',
-        '• Test payment flows and subscription features'
+        'Mobile-First Development:',
+        '• Implement responsive mobile-first website',
+        '• Set up RESTful APIs for all functionalities',
+        '• Implement WebSocket for real-time data streaming',
+        '• Set up secure API gateway',
+        '• Implement real-time notifications system',
+        '• Complete API documentation'
       ]
     },
     {
       id: 'october',
-      title: 'October Goals',
+      title: 'October 2025: Monetization & Apps',
       content: [
-        'Live Trading System & Legacy Retirement:',
-        '• Deploy Baek Model running all systems online',
-        '• Integrate recent trade APIs and portfolio changes API',
-        '• Implement WebSocket connection to live system',
-        '• Enable live system trading with $50,000 in cash',
-        '• Implement dynamic stop losses and take profits',
-        '• Release v5.0.1 for Baek Model',
-        '• Retire AmpyFin old as legacy model',
-        '• Complete system migration and optimization'
+        'Payment & Native Apps:',
+        '• Implement account management system',
+        '• Set up billing and subscription system',
+        '• Configure automated payment processing',
+        '• Begin Android app development',
+        '• Begin iOS app development',
+        '• Optimize user experience across all platforms',
+        '• Implement analytics and tracking'
+      ]
+    },
+    {
+      id: 'november',
+      title: 'November 2025: Finalization',
+      content: [
+        'System Finalization:',
+        '• Complete Android app development',
+        '• Complete iOS app development',
+        '• Conduct comprehensive testing',
+        '• Implement user feedback system',
+        '• Finalize security measures',
+        '• Complete performance optimization',
+        '• Prepare launch documentation'
+      ]
+    },
+    {
+      id: 'december',
+      title: 'December 2025: Launch',
+      content: [
+        'Product Launch:',
+        '• Launch marketing campaign',
+        '• Release mobile apps to stores',
+        '• Launch subscription service',
+        '• Monitor system performance',
+        '• Implement customer support system',
+        '• Begin collecting user feedback',
+        '• Plan future feature roadmap'
       ]
     }
   ];
@@ -1641,28 +1515,28 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "July 25, 2025 at 11:20 PM PDT",
-        effective: "July 25, 2025 at 11:20 PM PDT"
+        signed: "July 26, 2025 at 10:00 PM PDT",
+        effective: "July 26, 2025 at 10:00 PM PDT"
       },
       physical: {
-        signed: "July 25, 2025 at 11:20 PM PDT",
-        effective: "July 25, 2025 at 11:20 PM PDT"
+        signed: "July 26, 2025 at 10:00 PM PDT",
+        effective: "July 26, 2025 at 10:00 PM PDT"
       },
       career: {
-        signed: "July 25, 2025 at 11:20 PM PDT",
-        effective: "July 25, 2025 at 11:20 PM PDT"
+        signed: "July 26, 2025 at 10:00 PM PDT",
+        effective: "July 26, 2025 at 10:00 PM PDT"
       },
       financial: {
-        signed: "July 25, 2025 at 11:20 PM PDT",
-        effective: "July 25, 2025 at 11:20 PM PDT"
+        signed: "July 26, 2025 at 10:00 PM PDT",
+        effective: "July 26, 2025 at 10:00 PM PDT"
       },
       ampyfin: {
-        signed: "July 25, 2025 at 11:20 PM PDT",
-        effective: "July 25, 2025 at 11:20 PM PDT"
+        signed: "July 26, 2025 at 10:00 PM PDT",
+        effective: "July 26, 2025 at 10:00 PM PDT"
       },
       workout: {
-        signed: "July 25, 2025 at 11:20 PM PDT",
-        effective: "July 25, 2025 at 11:20 PM PDT"
+        signed: "July 26, 2025 at 10:00 PM PDT",
+        effective: "July 26, 2025 at 10:00 PM PDT"
       }
     };
 
