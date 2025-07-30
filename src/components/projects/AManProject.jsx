@@ -1593,8 +1593,8 @@ const AManProject = () => {
             src={
               activeSection === 'career' ? "https://www.youtube.com/embed/Tuw8hxrFBH8" :
               activeSection === 'physical' ? "https://www.youtube.com/embed/G9LC9P2OKVE" :
-              activeSection === 'financial' ? "https://www.youtube.com/embed/VAE586HgwkQ" :
-              activeSection === 'social' ? "https://www.youtube.com/embed/YMeuk0ZtLM0" :
+              activeSection === 'financial' ? "https://www.youtube.com/embed/BHyVg2sXy5w" :
+              activeSection === 'social' ? "https://www.youtube.com/embed/M9WyKJvlN4c" :
               activeSection === 'ampyfin' ? "https://www.youtube.com/embed/nMctjmaYuhQ" :
               activeSection === 'workout' ? "https://www.youtube.com/embed/xd-9D3GzUpo" :
               "https://www.youtube.com/embed/M9WyKJvlN4c"
