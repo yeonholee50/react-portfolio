@@ -1515,28 +1515,28 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "July 29, 2025 at 10:00 PM PDT",
-        effective: "July 29, 2025 at 10:00 PM PDT"
+        signed: "July 30, 2025 at 12:00 AM PDT",
+        effective: "July 30, 2025 at 12:00 AM PDT"
       },
       physical: {
-        signed: "July 29, 2025 at 10:00 PM PDT",
-        effective: "July 29, 2025 at 10:00 PM PDT"
+        signed: "July 30, 2025 at 12:00 AM PDT",
+        effective: "July 30, 2025 at 12:00 AM PDT"
       },
       career: {
-        signed: "July 29, 2025 at 10:00 PM PDT",
-        effective: "July 29, 2025 at 10:00 PM PDT"
+        signed: "July 30, 2025 at 12:00 AM PDT",
+        effective: "July 30, 2025 at 12:00 AM PDT"
       },
       financial: {
-        signed: "July 29, 2025 at 10:00 PM PDT",
-        effective: "July 29, 2025 at 10:00 PM PDT"
+        signed: "July 30, 2025 at 12:00 AM PDT",
+        effective: "July 30, 2025 at 12:00 AM PDT"
       },
       ampyfin: {
-        signed: "July 29, 2025 at 10:00 PM PDT",
-        effective: "July 29, 2025 at 10:00 PM PDT"
+        signed: "July 30, 2025 at 12:00 AM PDT",
+        effective: "July 30, 2025 at 12:00 AM PDT"
       },
       workout: {
-        signed: "July 29, 2025 at 10:00 PM PDT",
-        effective: "July 29, 2025 at 10:00 PM PDT"
+        signed: "July 30, 2025 at 12:00 AM PDT",
+        effective: "July 30, 2025 at 12:00 AM PDT"
       }
     };
 
