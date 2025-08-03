@@ -4,18 +4,16 @@ let isRunning = false;
 let intervalId = null;
 
 function sendUpdate() {
-  if (isRunning && startTime) {
-    const elapsed = Date.now() - startTime;
-    self.postMessage({
-      type: 'UPDATE',
-      elapsed,
-      isRunning
-    });
-  }
+  const elapsed = isRunning && startTime ? Date.now() - startTime : 0;
+  self.postMessage({
+    type: 'UPDATE',
+    elapsed,
+    isRunning
+  });
 }
 
 self.onmessage = function(e) {
-  const { type, savedStartTime } = e.data;
+  const { type, savedStartTime, reset } = e.data;
   
   switch (type) {
     case 'START':
@@ -28,10 +26,11 @@ self.onmessage = function(e) {
       break;
       
     case 'STOP':
-      if (isRunning) {
+      if (isRunning || reset) {
         clearInterval(intervalId);
         isRunning = false;
         startTime = null;
+        // Force an immediate update with 0 elapsed time
         self.postMessage({
           type: 'UPDATE',
           elapsed: 0,
@@ -41,7 +40,16 @@ self.onmessage = function(e) {
       break;
       
     case 'GET_STATE':
-      sendUpdate();
+      if (!isRunning) {
+        // If not running, ensure we send a 0 elapsed time
+        self.postMessage({
+          type: 'UPDATE',
+          elapsed: 0,
+          isRunning: false
+        });
+      } else {
+        sendUpdate();
+      }
       break;
 
     case 'INIT':
@@ -50,6 +58,15 @@ self.onmessage = function(e) {
         isRunning = true;
         intervalId = setInterval(sendUpdate, 1000);
         sendUpdate();
+      } else {
+        // If no saved start time, ensure timer is stopped
+        isRunning = false;
+        startTime = null;
+        self.postMessage({
+          type: 'UPDATE',
+          elapsed: 0,
+          isRunning: false
+        });
       }
       break;
   }

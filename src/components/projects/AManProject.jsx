@@ -106,14 +106,14 @@ const Stopwatch = () => {
     if (stopConfirmationStep < stopConfirmationMessages.length - 1) {
       setStopConfirmationStep(prev => prev + 1);
     } else {
-      // Immediately update localStorage on final confirmation for robustness
+      // Clear all stopwatch data from localStorage
       localStorage.removeItem('stopwatchStartTime');
-      localStorage.setItem('stopwatchRunning', 'false');
+      localStorage.removeItem('stopwatchRunning');
       
-      // The savedStartTime variable is not used by the worker for the 'STOP' type message.
-      // The worker will internally set elapsed time to 0.
+      // Send STOP message to worker and reset elapsed time to 0
       workerRef.current.postMessage({ 
-        type: 'STOP'
+        type: 'STOP',
+        reset: true
       });
       setShowStopConfirmation(false);
       setStopConfirmationStep(0);
@@ -1515,28 +1515,28 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "August 2, 2025 at 10:00 PM EST",
-        effective: "August 2, 2025 at 10:00 PM EST"
+        signed: "August 3, 2025 at 10:00 PM EST",
+        effective: "August 3, 2025 at 10:00 PM EST"
       },
       physical: {
-        signed: "August 2, 2025 at 10:00 PM EST",
-        effective: "August 2, 2025 at 10:00 PM EST"
+        signed: "August 3, 2025 at 10:00 PM EST",
+        effective: "August 3, 2025 at 10:00 PM EST"
       },
       career: {
-        signed: "August 2, 2025 at 10:00 PM EST",
-        effective: "August 2, 2025 at 10:00 PM EST"
+        signed: "August 3, 2025 at 10:00 PM EST",
+        effective: "August 3, 2025 at 10:00 PM EST"
       },
       financial: {
-        signed: "August 2, 2025 at 10:00 PM EST",
-        effective: "August 2, 2025 at 10:00 PM EST"
+        signed: "August 3, 2025 at 10:00 PM EST",
+        effective: "August 3, 2025 at 10:00 PM EST"
       },
       ampyfin: {
-        signed: "August 2, 2025 at 10:00 PM EST",
-        effective: "August 2, 2025 at 10:00 PM EST"
+        signed: "August 3, 2025 at 10:00 PM EST",
+        effective: "August 3, 2025 at 10:00 PM EST"
       },
       workout: {
-        signed: "August 2, 2025 at 10:00 PM EST",
-        effective: "August 2, 2025 at 10:00 PM EST"
+        signed: "August 3, 2025 at 10:00 PM EST",
+        effective: "August 3, 2025 at 10:00 PM EST"
       }
     };
 
