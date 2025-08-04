@@ -59,7 +59,7 @@ const Stopwatch = () => {
           localStorage.setItem('stopwatchRunning', 'true');
         } else {
           localStorage.removeItem('stopwatchStartTime');
-          localStorage.setItem('stopwatchRunning', 'false');
+          localStorage.removeItem('stopwatchRunning');
         }
       }
     };
@@ -70,11 +70,19 @@ const Stopwatch = () => {
     const wasRunning = localStorage.getItem('stopwatchRunning') === 'true';
     const savedStartTime = localStorage.getItem('stopwatchStartTime');
     
+    // Only start if both conditions are met: was running AND has start time
     if (wasRunning && savedStartTime) {
       setIsRunning(true);
       worker.postMessage({ 
         type: 'INIT',
         savedStartTime: parseInt(savedStartTime)
+      });
+    } else {
+      // Ensure timer is stopped if no valid state found
+      setIsRunning(false);
+      worker.postMessage({ 
+        type: 'STOP',
+        reset: true
       });
     }
 
