@@ -1,12 +1,3 @@
-July 25 @ 8:00 PM is final start - life is too short mentality
-
-
-
-
-
-
-
-
 
 
 
@@ -123,4 +114,16 @@ first clean meal - have greek yogurt + fruit + bananas
 chest day insane - let's push 2 hours here
 first clean meal - chicken breast + veggies
 ampyfin grind - 4 hour straight
-finalize a-man constitution - timer already started so no doing some random cheat meals etc.
+finalize a-man constitution - timer already started so no doing some random cheat meals etc. - 
+
+For a man project also add to physical to fix posture no bend over waist and neck and have back poised
+
+Also have Korean news every evening turned on live kbs during walk when walking alone. If not alone talk with mother
+
+also for social:
+stop overcomplciating and overthingking
+also if someone has different thought or do not share my standard don't think that htey are wrong - this kind of thought should be fixed
+
+and never make the conversation about me unless someone explicity asks
+
+i want signed and effective date as july 26, 10:00 PM PDT on 2025
