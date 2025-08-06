@@ -45,6 +45,8 @@ const Stopwatch = () => {
     const handleWorkerMessage = (e) => {
       if (e.data.type === 'UPDATE') {
         const { elapsed, isRunning: workerIsRunning } = e.data;
+        
+        // Update time state
         setTime({
           days: Math.floor(elapsed / (1000 * 60 * 60 * 24)),
           hours: Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
@@ -53,14 +55,12 @@ const Stopwatch = () => {
         });
         setIsRunning(workerIsRunning);
 
-        // Save state to localStorage
+        // Save state to localStorage only if running
         if (workerIsRunning) {
           localStorage.setItem('stopwatchStartTime', (Date.now() - elapsed).toString());
           localStorage.setItem('stopwatchRunning', 'true');
-        } else {
-          localStorage.removeItem('stopwatchStartTime');
-          localStorage.removeItem('stopwatchRunning');
         }
+        // Note: We don't save localStorage when stopped - that's handled in the stop function
       }
     };
 
@@ -117,6 +117,15 @@ const Stopwatch = () => {
       // Clear all stopwatch data from localStorage
       localStorage.removeItem('stopwatchStartTime');
       localStorage.removeItem('stopwatchRunning');
+      
+      // Immediately reset the timer state
+      setTime({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+      });
+      setIsRunning(false);
       
       // Send STOP message to worker and reset elapsed time to 0
       workerRef.current.postMessage({ 
