@@ -8,12 +8,11 @@ const Stopwatch = () => {
     minutes: 0,
     seconds: 0
   });
-  const [isRunning, setIsRunning] = useState(false);
-  const [showCommitmentModal, setShowCommitmentModal] = useState(false);
-  const [showStopConfirmation, setShowStopConfirmation] = useState(false);
-  const [stopConfirmationStep, setStopConfirmationStep] = useState(0);
-  const [signature, setSignature] = useState('');
+  const [isRunning, setIsRunning] = useState(true);
   const workerRef = useRef(null);
+  
+  // Set the exact start time: August 6, 2025 at 10:00 PM EDT
+  const START_TIME = new Date('2025-08-06T22:00:00-04:00').getTime(); // 10:00 PM EDT
 
   const stopConfirmationMessages = [
     {
@@ -54,37 +53,16 @@ const Stopwatch = () => {
           seconds: Math.floor((elapsed % (1000 * 60)) / 1000)
         });
         setIsRunning(workerIsRunning);
-
-        // Save state to localStorage only if running
-        if (workerIsRunning) {
-          localStorage.setItem('stopwatchStartTime', (Date.now() - elapsed).toString());
-          localStorage.setItem('stopwatchRunning', 'true');
-        }
-        // Note: We don't save localStorage when stopped - that's handled in the stop function
       }
     };
 
     worker.addEventListener('message', handleWorkerMessage);
 
-    // Check if stopwatch was running
-    const wasRunning = localStorage.getItem('stopwatchRunning') === 'true';
-    const savedStartTime = localStorage.getItem('stopwatchStartTime');
-    
-    // Only start if both conditions are met: was running AND has start time
-    if (wasRunning && savedStartTime) {
-      setIsRunning(true);
-      worker.postMessage({ 
-        type: 'INIT',
-        savedStartTime: parseInt(savedStartTime)
-      });
-    } else {
-      // Ensure timer is stopped if no valid state found
-      setIsRunning(false);
-      worker.postMessage({ 
-        type: 'STOP',
-        reset: true
-      });
-    }
+    // Always start the timer with the fixed start time
+    worker.postMessage({ 
+      type: 'INIT',
+      savedStartTime: START_TIME
+    });
 
     // Cleanup
     return () => {
@@ -93,71 +71,12 @@ const Stopwatch = () => {
     };
   }, []);
 
-  const handleStartStop = () => {
-    if (!workerRef.current) return;
-    
-    if (!isRunning) {
-      setShowCommitmentModal(true);
-    } else {
-      setShowStopConfirmation(true);
-      setStopConfirmationStep(0);
-    }
-  };
-
-  const handleStopConfirmation = (confirmed) => {
-    if (!confirmed) {
-      setShowStopConfirmation(false);
-      setStopConfirmationStep(0);
-      return;
-    }
-
-    if (stopConfirmationStep < stopConfirmationMessages.length - 1) {
-      setStopConfirmationStep(prev => prev + 1);
-    } else {
-      // Clear all stopwatch data from localStorage
-      localStorage.removeItem('stopwatchStartTime');
-      localStorage.removeItem('stopwatchRunning');
-      
-      // Immediately reset the timer state
-      setTime({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0
-      });
-      setIsRunning(false);
-      
-      // Send STOP message to worker
-      if (workerRef.current) {
-        workerRef.current.postMessage({ 
-          type: 'STOP',
-          reset: true
-        });
-      }
-      
-      setShowStopConfirmation(false);
-      setStopConfirmationStep(0);
-    }
-  };
-
-  const handleCommitmentSubmit = () => {
-    if (!signature.trim()) {
-      return;
-    }
-
-    const savedStartTime = Date.now();
-    workerRef.current.postMessage({ 
-      type: 'START',
-      savedStartTime
-    });
-    setShowCommitmentModal(false);
-    setSignature('');
-  };
+  // Timer is now read-only and automatically starts from August 6, 2025 at 10:00 PM EDT
 
   // Add event listener for page visibility
   useEffect(() => {
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible' && isRunning && workerRef.current) {
+      if (document.visibilityState === 'visible' && workerRef.current) {
         workerRef.current.postMessage({ type: 'GET_STATE' });
       }
     };
@@ -169,288 +88,21 @@ const Stopwatch = () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('focus', handleVisibilityChange);
     };
-  }, [isRunning]);
+  }, []);
 
   return (
     <>
-      {showStopConfirmation && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.85)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 1000,
-          backdropFilter: 'blur(8px)',
-          animation: 'fadeIn 0.3s ease'
+
+
+              <div style={{
+          background: 'rgba(8,12,24,0.6)',
+          borderRadius: '0.5rem',
+          padding: '1rem',
+          marginTop: '1rem',
+          border: '1px solid rgba(64,87,255,0.2)',
+          backdropFilter: 'blur(10px)',
+          animation: 'neonPulse 2s infinite'
         }}>
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(8,12,24,0.95) 0%, rgba(2,4,12,0.95) 100%)',
-            padding: '2rem',
-            borderRadius: '1rem',
-            maxWidth: '600px',
-            width: '90%',
-            border: '1px solid rgba(255,64,87,0.2)',
-            boxShadow: '0 0 50px rgba(255,64,87,0.1)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}>
-            {/* Cyber grid background */}
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundImage: `
-                linear-gradient(rgba(255,64,87,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,64,87,0.05) 1px, transparent 1px)
-              `,
-              backgroundSize: '20px 20px',
-              opacity: 0.5,
-              zIndex: 0
-            }}/>
-
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <h3 style={{
-                color: '#ff4057',
-                textAlign: 'center',
-                marginBottom: '1.5rem',
-                fontSize: '1.5rem',
-                textShadow: '0 0 10px rgba(255,64,87,0.5)'
-              }}>{stopConfirmationMessages[stopConfirmationStep].title}</h3>
-
-              <div style={{
-                color: '#fff',
-                marginBottom: '2rem',
-                lineHeight: 1.6,
-                fontSize: '0.9rem',
-                textAlign: 'center',
-                background: 'rgba(255,64,87,0.1)',
-                padding: '1.5rem',
-                borderRadius: '0.5rem',
-                border: '1px solid rgba(255,64,87,0.2)'
-              }}>
-                {stopConfirmationMessages[stopConfirmationStep].message}
-              </div>
-
-              <div style={{
-                display: 'flex',
-                gap: '1rem',
-                justifyContent: 'center'
-              }}>
-                <button
-                  onClick={() => handleStopConfirmation(false)}
-                  className="commitment-btn continue"
-                  style={{
-                    padding: '0.75rem 1.5rem',
-                    background: 'rgba(64,255,218,0.2)',
-                    border: '1px solid rgba(64,255,218,0.4)',
-                    borderRadius: '0.5rem',
-                    color: '#fff',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    fontSize: '0.9rem',
-                    fontWeight: 'bold'
-                  }}
-                >
-                  {stopConfirmationMessages[stopConfirmationStep].continueBtn}
-                </button>
-                <button
-                  onClick={() => handleStopConfirmation(true)}
-                  className="commitment-btn stop"
-                  style={{
-                    padding: '0.75rem 1.5rem',
-                    background: 'rgba(255,64,87,0.2)',
-                    border: '1px solid rgba(255,64,87,0.4)',
-                    borderRadius: '0.5rem',
-                    color: '#fff',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    fontSize: '0.9rem'
-                  }}
-                >
-                  {stopConfirmationMessages[stopConfirmationStep].stopBtn}
-                </button>
-              </div>
-
-              <div style={{
-                marginTop: '1.5rem',
-                textAlign: 'center',
-                color: 'rgba(255,255,255,0.5)',
-                fontSize: '0.8rem'
-              }}>
-                Time Invested: {time.days}d {time.hours}h {time.minutes}m {time.seconds}s
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {showCommitmentModal && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.85)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 1000,
-          backdropFilter: 'blur(8px)',
-          animation: 'fadeIn 0.3s ease'
-        }}>
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(8,12,24,0.95) 0%, rgba(2,4,12,0.95) 100%)',
-            padding: '2rem',
-            borderRadius: '1rem',
-            maxWidth: '600px',
-            width: '90%',
-            border: '1px solid rgba(64,87,255,0.2)',
-            boxShadow: '0 0 50px rgba(64,87,255,0.1)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}>
-            {/* Cyber grid background */}
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundImage: `
-                linear-gradient(rgba(64,87,255,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(64,87,255,0.05) 1px, transparent 1px)
-              `,
-              backgroundSize: '20px 20px',
-              opacity: 0.5,
-              zIndex: 0
-            }}/>
-
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <h3 style={{
-                color: '#64ffda',
-                textAlign: 'center',
-                marginBottom: '1.5rem',
-                fontSize: '1.5rem',
-                textShadow: '0 0 10px rgba(100,255,218,0.5)'
-              }}>A-Man Project Commitment</h3>
-
-              <div style={{
-                color: '#fff',
-                marginBottom: '2rem',
-                lineHeight: 1.6,
-                fontSize: '0.9rem'
-              }}>
-                <p>By initiating this timer, I solemnly commit to:</p>
-                <ul style={{ 
-                  listStyle: 'none', 
-                  padding: '1rem',
-                  background: 'rgba(64,87,255,0.1)',
-                  borderRadius: '0.5rem',
-                  margin: '1rem 0'
-                }}>
-                  <li style={{ marginBottom: '0.5rem' }}>• Uphold and embody all principles outlined in the A-Man Project</li>
-                  <li style={{ marginBottom: '0.5rem' }}>• Maintain unwavering focus on personal growth and development</li>
-                  <li style={{ marginBottom: '0.5rem' }}>• Follow the established guidelines for social, physical, career, and financial domains</li>
-                  <li style={{ marginBottom: '0.5rem' }}>• Track and measure progress against defined objectives</li>
-                  <li>• Remain accountable to the standards set forth in this document</li>
-                </ul>
-                <p style={{ 
-                  fontStyle: 'italic',
-                  color: 'rgba(255,255,255,0.7)',
-                  textAlign: 'center',
-                  marginTop: '1rem'
-                }}>
-                  This timer serves as a constant reminder of my commitment to excellence and personal transformation.
-                </p>
-              </div>
-
-              <div style={{
-                marginBottom: '1.5rem'
-              }}>
-                <label style={{
-                  display: 'block',
-                  color: '#fff',
-                  marginBottom: '0.5rem',
-                  fontSize: '0.9rem'
-                }}>Digital Signature:</label>
-                <input
-                  type="text"
-                  value={signature}
-                  onChange={(e) => setSignature(e.target.value)}
-                  placeholder="Enter your full name"
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem',
-                    background: 'rgba(64,87,255,0.1)',
-                    border: '1px solid rgba(64,87,255,0.3)',
-                    borderRadius: '0.5rem',
-                    color: '#fff',
-                    fontSize: '1rem',
-                    outline: 'none',
-                    transition: 'all 0.3s ease'
-                  }}
-                />
-              </div>
-
-              <div style={{
-                display: 'flex',
-                gap: '1rem',
-                justifyContent: 'center'
-              }}>
-                <button
-                  onClick={() => setShowCommitmentModal(false)}
-                  className="commitment-btn cancel"
-                  style={{
-                    padding: '0.75rem 1.5rem',
-                    background: 'rgba(255,64,87,0.2)',
-                    border: '1px solid rgba(255,64,87,0.4)',
-                    borderRadius: '0.5rem',
-                    color: '#fff',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleCommitmentSubmit}
-                  disabled={!signature.trim()}
-                  className={`commitment-btn commit ${!signature.trim() ? 'disabled' : ''}`}
-                  style={{
-                    padding: '0.75rem 1.5rem',
-                    background: signature.trim() ? 'rgba(64,255,218,0.2)' : 'rgba(255,255,255,0.1)',
-                    border: `1px solid ${signature.trim() ? 'rgba(64,255,218,0.4)' : 'rgba(255,255,255,0.2)'}`,
-                    borderRadius: '0.5rem',
-                    color: '#fff',
-                    cursor: signature.trim() ? 'pointer' : 'not-allowed',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  I Commit
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div style={{
-        background: 'rgba(8,12,24,0.6)',
-        borderRadius: '0.5rem',
-        padding: '1rem',
-        marginTop: '1rem',
-        border: '1px solid rgba(64,87,255,0.2)',
-        backdropFilter: 'blur(10px)',
-        animation: isRunning ? 'neonPulse 2s infinite' : 'none'
-      }}>
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
@@ -463,8 +115,8 @@ const Stopwatch = () => {
             <div style={{ 
               fontSize: '1.2rem', 
               fontWeight: 'bold',
-              color: isRunning ? '#64ffda' : '#fff',
-              textShadow: isRunning ? '0 0 10px rgba(100,255,218,0.5)' : 'none',
+              color: '#64ffda',
+              textShadow: '0 0 10px rgba(100,255,218,0.5)',
               transition: 'all 0.3s ease'
             }}>{String(time.days).padStart(2, '0')}</div>
             <div style={{ opacity: 0.7 }}>DAYS</div>
@@ -473,8 +125,8 @@ const Stopwatch = () => {
             <div style={{ 
               fontSize: '1.2rem', 
               fontWeight: 'bold',
-              color: isRunning ? '#64ffda' : '#fff',
-              textShadow: isRunning ? '0 0 10px rgba(100,255,218,0.5)' : 'none',
+              color: '#64ffda',
+              textShadow: '0 0 10px rgba(100,255,218,0.5)',
               transition: 'all 0.3s ease'
             }}>{String(time.hours).padStart(2, '0')}</div>
             <div style={{ opacity: 0.7 }}>HRS</div>
@@ -483,8 +135,8 @@ const Stopwatch = () => {
             <div style={{ 
               fontSize: '1.2rem', 
               fontWeight: 'bold',
-              color: isRunning ? '#64ffda' : '#fff',
-              textShadow: isRunning ? '0 0 10px rgba(100,255,218,0.5)' : 'none',
+              color: '#64ffda',
+              textShadow: '0 0 10px rgba(100,255,218,0.5)',
               transition: 'all 0.3s ease'
             }}>{String(time.minutes).padStart(2, '0')}</div>
             <div style={{ opacity: 0.7 }}>MIN</div>
@@ -493,32 +145,25 @@ const Stopwatch = () => {
             <div style={{ 
               fontSize: '1.2rem', 
               fontWeight: 'bold',
-              color: isRunning ? '#64ffda' : '#fff',
-              textShadow: isRunning ? '0 0 10px rgba(100,255,218,0.5)' : 'none',
+              color: '#64ffda',
+              textShadow: '0 0 10px rgba(100,255,218,0.5)',
               transition: 'all 0.3s ease'
             }}>{String(time.seconds).padStart(2, '0')}</div>
             <div style={{ opacity: 0.7 }}>SEC</div>
           </div>
-          <button
-            onClick={handleStartStop}
-            style={{
-              background: isRunning ? 'rgba(255,64,87,0.2)' : 'rgba(64,255,218,0.2)',
-              border: `1px solid ${isRunning ? 'rgba(255,64,87,0.4)' : 'rgba(64,255,218,0.4)'}`,
-              color: '#fff',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.25rem',
-              cursor: 'pointer',
-              fontFamily: 'monospace',
-              fontSize: '0.8rem',
-              transition: 'all 0.3s ease',
-              boxShadow: isRunning 
-                ? '0 0 15px rgba(255,64,87,0.2)' 
-                : '0 0 15px rgba(64,255,218,0.2)',
-              textShadow: '0 0 5px rgba(255,255,255,0.5)'
-            }}
-          >
-            {isRunning ? 'STOP' : 'START'}
-          </button>
+          <div style={{
+            color: '#64ffda',
+            fontFamily: 'monospace',
+            fontSize: '0.8rem',
+            textAlign: 'center',
+            padding: '0.5rem 1rem',
+            background: 'rgba(64,255,218,0.1)',
+            border: '1px solid rgba(64,255,218,0.3)',
+            borderRadius: '0.25rem',
+            textShadow: '0 0 5px rgba(64,255,218,0.5)'
+          }}>
+            ACTIVE
+          </div>
         </div>
       </div>
     </>
