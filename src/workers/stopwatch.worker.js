@@ -26,17 +26,17 @@ self.onmessage = function(e) {
       break;
       
     case 'STOP':
-      if (isRunning || reset) {
-        clearInterval(intervalId);
-        isRunning = false;
-        startTime = null;
-        // Force an immediate update with 0 elapsed time
-        self.postMessage({
-          type: 'UPDATE',
-          elapsed: 0,
-          isRunning: false
-        });
-      }
+      // Always stop regardless of current state
+      clearInterval(intervalId);
+      intervalId = null;
+      isRunning = false;
+      startTime = null;
+      // Force an immediate update with 0 elapsed time
+      self.postMessage({
+        type: 'UPDATE',
+        elapsed: 0,
+        isRunning: false
+      });
       break;
       
     case 'GET_STATE':

@@ -127,11 +127,14 @@ const Stopwatch = () => {
       });
       setIsRunning(false);
       
-      // Send STOP message to worker and reset elapsed time to 0
-      workerRef.current.postMessage({ 
-        type: 'STOP',
-        reset: true
-      });
+      // Send STOP message to worker
+      if (workerRef.current) {
+        workerRef.current.postMessage({ 
+          type: 'STOP',
+          reset: true
+        });
+      }
+      
       setShowStopConfirmation(false);
       setStopConfirmationStep(0);
     }
