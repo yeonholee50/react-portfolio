@@ -11,8 +11,8 @@ const Stopwatch = () => {
   const [isRunning, setIsRunning] = useState(true);
   const workerRef = useRef(null);
   
-  // Set the exact start time: August 6, 2025 at 10:00 PM EDT
-  const START_TIME = new Date('2025-08-06T22:00:00-04:00').getTime(); // 10:00 PM EDT
+  // Set the exact start time: August 8, 2025 at 8:00 PM EST (August 9, 2025 at 1:00 AM UTC)
+  const START_TIME = new Date('2025-08-09T01:00:00Z').getTime(); // 8:00 PM EST converted to UTC
 
   const stopConfirmationMessages = [
     {
@@ -71,7 +71,7 @@ const Stopwatch = () => {
     };
   }, []);
 
-  // Timer is now read-only and automatically starts from August 6, 2025 at 10:00 PM EDT
+  // Timer is now read-only and automatically starts from August 8, 2025 at 8:00 PM EST
 
   // Add event listener for page visibility
   useEffect(() => {
@@ -1180,28 +1180,28 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "August 7, 2025 at 10:00 PM EST",
-        effective: "August 7, 2025 at 10:00 PM EST"
+        signed: "August 8, 2025 at 8:00 PM EST",
+        effective: "August 8, 2025 at 8:00 PM EST"
       },
       physical: {
-        signed: "August 7, 2025 at 10:00 PM EST",
-        effective: "August 7, 2025 at 10:00 PM EST"
+        signed: "August 8, 2025 at 8:00 PM EST",
+        effective: "August 8, 2025 at 8:00 PM EST"
       },
       career: {
-        signed: "August 7, 2025 at 10:00 PM EST",
-        effective: "August 7, 2025 at 10:00 PM EST"
+        signed: "August 8, 2025 at 8:00 PM EST",
+        effective: "August 8, 2025 at 8:00 PM EST"
       },
       financial: {
-        signed: "August 7, 2025 at 10:00 PM EST",
-        effective: "August 7, 2025 at 10:00 PM EST"
+        signed: "August 8, 2025 at 8:00 PM EST",
+        effective: "August 8, 2025 at 8:00 PM EST"
       },
       ampyfin: {
-        signed: "August 7, 2025 at 10:00 PM EST",
-        effective: "August 7, 2025 at 10:00 PM EST"
+        signed: "August 8, 2025 at 8:00 PM EST",
+        effective: "August 8, 2025 at 8:00 PM EST"
       },
       workout: {
-        signed: "August 7, 2025 at 10:00 PM EST",
-        effective: "August 7, 2025 at 10:00 PM EST"
+        signed: "August 8, 2025 at 8:00 PM EST",
+        effective: "August 8, 2025 at 8:00 PM EST"
       }
     };
 
