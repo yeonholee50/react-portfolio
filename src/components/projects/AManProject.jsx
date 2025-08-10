@@ -58,10 +58,9 @@ const Stopwatch = () => {
 
     worker.addEventListener('message', handleWorkerMessage);
 
-    // Initialize the worker with the fixed start time but don't start automatically
+    // Initialize the worker but don't start automatically
     worker.postMessage({ 
-      type: 'INIT',
-      savedStartTime: START_TIME
+      type: 'INIT'
     });
 
     // Cleanup
@@ -159,10 +158,18 @@ const Stopwatch = () => {
             <button
               onClick={() => {
                 if (workerRef.current) {
-                  workerRef.current.postMessage({ 
-                    type: isRunning ? 'STOP' : 'START',
-                    savedStartTime: START_TIME
-                  });
+                  if (isRunning) {
+                    // Stop the timer
+                    workerRef.current.postMessage({ 
+                      type: 'STOP'
+                    });
+                  } else {
+                    // Start the timer from current time (reset to 0)
+                    workerRef.current.postMessage({ 
+                      type: 'START',
+                      savedStartTime: Date.now() // Start from current time instead of fixed date
+                    });
+                  }
                 }
               }}
               style={{
