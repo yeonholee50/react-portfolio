@@ -53,15 +53,42 @@ const Stopwatch = () => {
           seconds: Math.floor((elapsed % (1000 * 60)) / 1000)
         });
         setIsRunning(workerIsRunning);
+        
+        // Save current state to localStorage
+        localStorage.setItem('amanTimerState', JSON.stringify({
+          isRunning: workerIsRunning,
+          startTime: workerIsRunning ? Date.now() - elapsed : null,
+          elapsed: elapsed
+        }));
       }
     };
 
     worker.addEventListener('message', handleWorkerMessage);
 
-    // Initialize the worker but don't start automatically
-    worker.postMessage({ 
-      type: 'INIT'
-    });
+    // Check for saved timer state
+    const savedState = localStorage.getItem('amanTimerState');
+    if (savedState) {
+      const { isRunning: savedIsRunning, startTime: savedStartTime, elapsed: savedElapsed } = JSON.parse(savedState);
+      
+      if (savedIsRunning && savedStartTime) {
+        // Resume timer from saved state
+        worker.postMessage({ 
+          type: 'START',
+          savedStartTime: savedStartTime
+        });
+      } else {
+        // Initialize with saved elapsed time but not running
+        worker.postMessage({ 
+          type: 'INIT',
+          savedElapsed: savedElapsed || 0
+        });
+      }
+    } else {
+      // Initialize the worker but don't start automatically
+      worker.postMessage({ 
+        type: 'INIT'
+      });
+    }
 
     // Cleanup
     return () => {
@@ -163,12 +190,21 @@ const Stopwatch = () => {
                     workerRef.current.postMessage({ 
                       type: 'STOP'
                     });
+                    // Clear saved state when stopping
+                    localStorage.removeItem('amanTimerState');
                   } else {
                     // Start the timer from current time (reset to 0)
+                    const startTime = Date.now();
                     workerRef.current.postMessage({ 
                       type: 'START',
-                      savedStartTime: Date.now() // Start from current time instead of fixed date
+                      savedStartTime: startTime
                     });
+                    // Save state when starting
+                    localStorage.setItem('amanTimerState', JSON.stringify({
+                      isRunning: true,
+                      startTime: startTime,
+                      elapsed: 0
+                    }));
                   }
                 }
               }}

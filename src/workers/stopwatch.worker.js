@@ -13,7 +13,7 @@ function sendUpdate() {
 }
 
 self.onmessage = function(e) {
-  const { type, savedStartTime, reset } = e.data;
+  const { type, savedStartTime, savedElapsed } = e.data;
   
   switch (type) {
     case 'START':
@@ -58,8 +58,17 @@ self.onmessage = function(e) {
         isRunning = true;
         intervalId = setInterval(sendUpdate, 1000);
         sendUpdate();
+      } else if (savedElapsed !== undefined) {
+        // Initialize with saved elapsed time but not running
+        isRunning = false;
+        startTime = null;
+        self.postMessage({
+          type: 'UPDATE',
+          elapsed: savedElapsed,
+          isRunning: false
+        });
       } else {
-        // If no saved start time, ensure timer is stopped
+        // If no saved data, ensure timer is stopped
         isRunning = false;
         startTime = null;
         self.postMessage({
