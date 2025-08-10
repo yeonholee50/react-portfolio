@@ -8,7 +8,7 @@ const Stopwatch = () => {
     minutes: 0,
     seconds: 0
   });
-  const [isRunning, setIsRunning] = useState(true);
+  const [isRunning, setIsRunning] = useState(false);
   const workerRef = useRef(null);
   
     // Set the exact start time: August 10, 2025 at 4:00 PM EST (August 10, 2025 at 11:00 PM UTC)
@@ -58,7 +58,7 @@ const Stopwatch = () => {
 
     worker.addEventListener('message', handleWorkerMessage);
 
-    // Always start the timer with the fixed start time
+    // Initialize the worker with the fixed start time but don't start automatically
     worker.postMessage({ 
       type: 'INIT',
       savedStartTime: START_TIME
@@ -152,17 +152,49 @@ const Stopwatch = () => {
             <div style={{ opacity: 0.7 }}>SEC</div>
           </div>
           <div style={{
-            color: '#64ffda',
-            fontFamily: 'monospace',
-            fontSize: '0.8rem',
-            textAlign: 'center',
-            padding: '0.5rem 1rem',
-            background: 'rgba(64,255,218,0.1)',
-            border: '1px solid rgba(64,255,218,0.3)',
-            borderRadius: '0.25rem',
-            textShadow: '0 0 5px rgba(64,255,218,0.5)'
+            display: 'flex',
+            gap: '0.5rem',
+            alignItems: 'center'
           }}>
-            ACTIVE
+            <button
+              onClick={() => {
+                if (workerRef.current) {
+                  workerRef.current.postMessage({ 
+                    type: isRunning ? 'STOP' : 'START',
+                    savedStartTime: START_TIME
+                  });
+                }
+              }}
+              style={{
+                background: isRunning ? 
+                  'linear-gradient(135deg, rgba(255,64,87,0.2), rgba(255,64,87,0.1))' :
+                  'linear-gradient(135deg, rgba(64,255,218,0.2), rgba(64,255,218,0.1))',
+                border: `1px solid ${isRunning ? 'rgba(255,64,87,0.3)' : 'rgba(64,255,218,0.3)'}`,
+                color: '#fff',
+                padding: '0.5rem 1rem',
+                borderRadius: '0.25rem',
+                cursor: 'pointer',
+                fontFamily: 'monospace',
+                fontSize: '0.8rem',
+                transition: 'all 0.3s ease',
+                textShadow: `0 0 5px ${isRunning ? 'rgba(255,64,87,0.5)' : 'rgba(64,255,218,0.5)'}`
+              }}
+            >
+              {isRunning ? 'STOP' : 'START'}
+            </button>
+            <div style={{
+              color: isRunning ? '#64ffda' : 'rgba(255,255,255,0.5)',
+              fontFamily: 'monospace',
+              fontSize: '0.8rem',
+              textAlign: 'center',
+              padding: '0.5rem 1rem',
+              background: isRunning ? 'rgba(64,255,218,0.1)' : 'rgba(255,255,255,0.05)',
+              border: `1px solid ${isRunning ? 'rgba(64,255,218,0.3)' : 'rgba(255,255,255,0.1)'}`,
+              borderRadius: '0.25rem',
+              textShadow: isRunning ? '0 0 5px rgba(64,255,218,0.5)' : 'none'
+            }}>
+              {isRunning ? 'ACTIVE' : 'PAUSED'}
+            </div>
           </div>
         </div>
       </div>
