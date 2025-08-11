@@ -329,12 +329,12 @@ const AManProject = () => {
       id: 'weight',
       title: 'Weight Management',
       content: [
-        'Cut Phase (Until September 30, 2025): Target 75kg',
+        'Cut Phase (Until October 4, 2025): Target 75kg',
         'October 2025: Bulk Phase - Target 80kg (Greek yogurt + fruit)',
         'November-December 31, 2025: Cut Phase - Target 70kg',
-        'Body Goal: Woo Doo Hwan body and vibe of Choi Woo Shik',
+        'Body Goal: Captain America body with Iron Man vibe',
         'No sudden weight loss through excessive cardio',
-        'Focus on gradual progress and constant grind'
+        'Focus on gradual progress and constant grind rather than sudden changes'
       ]
     },
     {
@@ -393,43 +393,50 @@ const AManProject = () => {
       title: 'Family Financial Obligations',
       content: [
         'Monthly Parent Support:',
-        '  - $500/month (if net income > $6,000)',
         '  - $300/month (if net income < $6,000)',
-        '  - $750/month (if net income ≈ $8,000)',
-        '  - $1,000/month (if net income ≥ $10,000)',
-        'November 2025 Black Friday Purchases:',
-        '  - ThinkPad for mother',
-        '  - Brother ThinkPad',
-        '  - DJI drone for dad (≤ $1,000, good range, phone controller)',
+        '  - $500/month (if net income > $6,000 but less than $8,000)',
+        '  - $750/month (if net income is between $8,000 and $10,000)',
+        '  - $1,000/month (if net income is more than $10,000 per month)',
+        'Before Going to Korea:',
+        '  - Sony XM4 headphones for mother (ask for color preference: white, blue, or black)',
+        '  - Get black color as requested',
+        'Black Friday / Cyber Monday Deals (ship to 3760 Kentwood Ct, Suwanee, GA 30024):',
+        '  - Brother: ThinkPad (Lenovo AMD Ryzen 7730U)',
+        '  - Mother: ASUS TUF A16 Gaming Laptop',
         'May 2026 Korea Gifts:',
-        '  - 2 MacBook Airs for Hyewon and Hyeyoon'
+        '  - 3 MacBook Air 15 inch M3/M4 with 512GB storage for cousins',
+        '  - Use 12-month financing, ask for color preferences',
+        '  - Present discretely'
       ]
     },
     {
       id: 'personal-finance',
       title: 'Personal Finance Management',
       content: [
-        'Monthly personal spending limit: $200 (after securing full-time job)',
-        'Rent should be maximum 25% of monthly income',
+        'Monthly personal spending on goods, electronics, luxury: $100',
+        '  - Can save up and accumulate but must be documented in spreadsheet',
+        'Rent should be maximum 25% of net monthly income (parents contribution)',
         'Maintain minimum $5,000 in bank account',
-        'Investment allocation after expenses:',
-        '  - 50% of remaining income to Fidelity'
+        'Monthly investment: 50% of net income after parents contribution and rent + additional planned expenses to Fidelity'
       ]
     },
     {
       id: 'investment-strategy',
       title: 'Investment Strategy',
       content: [
-        'Fidelity Portfolio Allocation:',
-        '  - 40% Tech + SPY ETFs',
-        '  - 40% Big cap stocks',
-        '  - 10% ARK investment ETFs',
-        '  - 10% Small cap stocks (potential disruptors)',
-        'Focus: AI, quantum computing',
         'VIX Index Strategy:',
-        '  - VIX > 30: Allocate 20% of savings',
-        '  - VIX > 40: Allocate 30% of savings',
-        '  - VIX > 50: Allocate 40% of savings'
+        '  - VIX > 30: Dump 20% of savings into Fidelity right away',
+        '  - VIX > 40: Dump 30% of savings into Fidelity right away',
+        '  - VIX > 50: Dump 40% of savings into Fidelity right away',
+        'Otherwise, monthly investment allocation:',
+        '  - 5% into ARK Invest ETFs',
+        '  - 25% to Technology ETFs',
+        '  - 20% into Technology Securities',
+        '  - 10% into Chip Securities',
+        '  - 10% into Semiconductor Securities',
+        '  - 5% into Medical Securities',
+        '  - 25% into SPY ETFs',
+        'Portfolio Rule: A single security shouldn\'t be more than 10% of a portfolio'
       ]
     }
   ];
@@ -468,36 +475,37 @@ const AManProject = () => {
 
   const ampyfinPlans = [
     {
-      id: 'july-august',
-      title: 'July-August 2025: Core System Development',
+      id: 'august-september',
+      title: 'August-September 2025: OSS Models Release',
       content: [
-        'Complete OSS System Development:',
-        '• Build and deploy all trading models',
-        '• Implement real-time data processing',
-        '• Set up automated trading infrastructure',
-        '• Complete system integration testing',
-        '• Deploy production environment',
-        '• Have all systems running and stable'
-      ]
-    },
-    {
-      id: 'september',
-      title: 'September 2025: Mobile-First Infrastructure',
-      content: [
-        'Mobile-First Development:',
-        '• Implement responsive mobile-first website',
-        '• Set up RESTful APIs for all functionalities',
-        '• Implement WebSocket for real-time data streaming',
-        '• Set up secure API gateway',
-        '• Implement real-time notifications system',
-        '• Complete API documentation'
+        'Release all OSS Models:',
+        '• Running golang to fetch data, not hardcoded',
+        '• Pipelined designs, fully customizable',
+        '• Can run GUI mode using PyQt5 or golang equivalent',
+        '• Can run quietly on console to feed to enterprise system',
+        '• Have enterprise system running on Oracle Cloud trading actual securities ($1000 upfront)',
+        '• Documentation of how to run each system',
+        '• Supports plugin architecture to enterprise system (also open source)'
       ]
     },
     {
       id: 'october',
-      title: 'October 2025: Monetization & Apps',
+      title: 'October 2025: Mobile-First Infrastructure',
       content: [
-        'Payment & Native Apps:',
+        'Mobile-First Infrastructure & Website Revamp:',
+        '• RESTful API support for v3.0.1 short term, medium term, and long term decisions',
+        '• WebSocket for real-time data streaming of live trades',
+        '• Set up secure API gateway',
+        '• Implement real-time notification system',
+        '• Complete API documentation',
+        '• Overall make the website robust'
+      ]
+    },
+    {
+      id: 'november',
+      title: 'November 2025: Monetization & App Features',
+      content: [
+        'Monetization & App Features:',
         '• Implement account management system',
         '• Set up billing and subscription system',
         '• Configure automated payment processing',
@@ -508,31 +516,19 @@ const AManProject = () => {
       ]
     },
     {
-      id: 'november',
-      title: 'November 2025: Finalization',
+      id: 'december',
+      title: 'December 2025: Finalization & Launch',
       content: [
-        'System Finalization:',
+        'System Finalization & Launch:',
         '• Complete Android app development',
         '• Complete iOS app development',
         '• Conduct comprehensive testing',
         '• Implement user feedback system',
         '• Finalize security measures',
         '• Complete performance optimization',
-        '• Prepare launch documentation'
-      ]
-    },
-    {
-      id: 'december',
-      title: 'December 2025: Launch',
-      content: [
-        'Product Launch:',
-        '• Launch marketing campaign',
-        '• Release mobile apps to stores',
-        '• Launch subscription service',
-        '• Monitor system performance',
-        '• Implement customer support system',
-        '• Begin collecting user feedback',
-        '• Plan future feature roadmap'
+        '• December 31, 2025: Launch date of AmpyFin App and Billing',
+        '• Plan marketing campaign - announce on LinkedIn',
+        '• Announce in YCombinator application'
       ]
     }
   ];
@@ -1021,14 +1017,11 @@ const AManProject = () => {
             }}>
               <div style={{
                 display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                gap: '2rem',
-                flexWrap: 'wrap'
+                justifyContent: 'center',
+                alignItems: 'center'
               }}>
                 <div style={{
-                  flex: '1',
-                  minWidth: '200px'
+                  textAlign: 'center'
                 }}>
                   <h3 style={{
                     color: bulkMode ? '#64ffda' : '#ff4057',
@@ -1067,71 +1060,6 @@ const AManProject = () => {
                   >
                     Switch to {bulkMode ? 'CUT' : 'BULK'} Mode
                   </button>
-                </div>
-                
-                <div style={{
-                  flex: '1',
-                  minWidth: '200px',
-                  background: 'rgba(64,87,255,0.1)',
-                  padding: '1.5rem',
-                  borderRadius: '0.5rem',
-                  border: '1px solid rgba(64,87,255,0.2)'
-                }}>
-                  <h4 style={{
-                    color: '#64ffda',
-                    marginBottom: '1rem',
-                    fontFamily: 'monospace'
-                  }}>
-                    Cycle Progress
-                  </h4>
-                  {cycleStartDate ? (
-                    <>
-                      <p style={{
-                        color: 'rgba(255,255,255,0.7)',
-                        fontSize: '0.9rem',
-                        marginBottom: '0.5rem'
-                      }}>
-                        Started: {cycleStartDate.toLocaleDateString()}
-                      </p>
-                      <p style={{
-                        color: 'rgba(255,255,255,0.7)',
-                        fontSize: '0.9rem',
-                        marginBottom: '0.5rem'
-                      }}>
-                        Switch to {bulkMode ? 'CUT' : 'BULK'} on: {
-                          new Date(cycleStartDate.getTime() + (90 * 24 * 60 * 60 * 1000)).toLocaleDateString()
-                        }
-                      </p>
-                      <div style={{
-                        width: '100%',
-                        height: '4px',
-                        background: 'rgba(255,255,255,0.1)',
-                        borderRadius: '2px',
-                        marginTop: '1rem',
-                        position: 'relative',
-                        overflow: 'hidden'
-                      }}>
-                        <div style={{
-                          position: 'absolute',
-                          left: '0',
-                          top: '0',
-                          height: '100%',
-                          width: `${Math.min(100, (new Date() - cycleStartDate) / (90 * 24 * 60 * 60 * 1000) * 100)}%`,
-                          background: bulkMode ? 
-                            'linear-gradient(90deg, #64ffda, rgba(64,255,218,0.5))' :
-                            'linear-gradient(90deg, #ff4057, rgba(255,64,87,0.5))',
-                          borderRadius: '2px'
-                        }}/>
-                      </div>
-                    </>
-                  ) : (
-                    <p style={{
-                      color: 'rgba(255,255,255,0.7)',
-                      fontSize: '0.9rem'
-                    }}>
-                      Start a cycle by switching modes
-                    </p>
-                  )}
                 </div>
               </div>
             </div>
@@ -1255,28 +1183,28 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "August 11, 2025 at 8:00 AM EST",
-        effective: "August 11, 2025 at 8:00 AM EST"
+        signed: "August 11, 2025 at 10:00 PM EST",
+        effective: "August 11, 2025 at 10:00 PM EST"
       },
       physical: {
-        signed: "August 11, 2025 at 8:00 AM EST",
-        effective: "August 11, 2025 at 8:00 AM EST"
+        signed: "August 11, 2025 at 10:00 PM EST",
+        effective: "August 11, 2025 at 10:00 PM EST"
       },
       career: {
-        signed: "August 11, 2025 at 8:00 AM EST",
-        effective: "August 11, 2025 at 8:00 AM EST"
+        signed: "August 11, 2025 at 10:00 PM EST",
+        effective: "August 11, 2025 at 10:00 PM EST"
       },
       financial: {
-        signed: "August 11, 2025 at 8:00 AM EST",
-        effective: "August 11, 2025 at 8:00 AM EST"
+        signed: "August 11, 2025 at 10:00 PM EST",
+        effective: "August 11, 2025 at 10:00 PM EST"
       },
       ampyfin: {
-        signed: "August 11, 2025 at 8:00 AM EST",
-        effective: "August 11, 2025 at 8:00 AM EST"
+        signed: "August 11, 2025 at 10:00 PM EST",
+        effective: "August 11, 2025 at 10:00 PM EST"
       },
       workout: {
-        signed: "August 11, 2025 at 8:00 AM EST",
-        effective: "August 11, 2025 at 8:00 AM EST"
+        signed: "August 11, 2025 at 10:00 PM EST",
+        effective: "August 11, 2025 at 10:00 PM EST"
       }
     };
 
