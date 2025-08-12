@@ -429,12 +429,11 @@ const AManProject = () => {
         '  - VIX > 40: Dump 30% of savings into Fidelity right away',
         '  - VIX > 50: Dump 40% of savings into Fidelity right away',
         'Otherwise, monthly investment allocation:',
-        '  - 5% into ARK Invest ETFs',
         '  - 25% to Technology ETFs',
         '  - 20% into Technology Securities',
         '  - 10% into Chip Securities',
         '  - 10% into Semiconductor Securities',
-        '  - 5% into Medical Securities',
+        '  - 10% into Medical Securities',
         '  - 25% into SPY ETFs',
         'Portfolio Rule: A single security shouldn\'t be more than 10% of a portfolio'
       ]
@@ -1183,28 +1182,28 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "August 11, 2025 at 10:00 PM EST",
-        effective: "August 11, 2025 at 10:00 PM EST"
+        signed: "August 12, 2025 at 10:00 PM EST",
+        effective: "August 12, 2025 at 10:00 PM EST"
       },
       physical: {
-        signed: "August 11, 2025 at 10:00 PM EST",
-        effective: "August 11, 2025 at 10:00 PM EST"
+        signed: "August 12, 2025 at 10:00 PM EST",
+        effective: "August 12, 2025 at 10:00 PM EST"
       },
       career: {
-        signed: "August 11, 2025 at 10:00 PM EST",
-        effective: "August 11, 2025 at 10:00 PM EST"
+        signed: "August 12, 2025 at 10:00 PM EST",
+        effective: "August 12, 2025 at 10:00 PM EST"
       },
       financial: {
-        signed: "August 11, 2025 at 10:00 PM EST",
-        effective: "August 11, 2025 at 10:00 PM EST"
+        signed: "August 12, 2025 at 10:00 PM EST",
+        effective: "August 12, 2025 at 10:00 PM EST"
       },
       ampyfin: {
-        signed: "August 11, 2025 at 10:00 PM EST",
-        effective: "August 11, 2025 at 10:00 PM EST"
+        signed: "August 12, 2025 at 10:00 PM EST",
+        effective: "August 12, 2025 at 10:00 PM EST"
       },
       workout: {
-        signed: "August 11, 2025 at 10:00 PM EST",
-        effective: "August 11, 2025 at 10:00 PM EST"
+        signed: "August 12, 2025 at 10:00 PM EST",
+        effective: "August 12, 2025 at 10:00 PM EST"
       }
     };
 
