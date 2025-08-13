@@ -10,6 +10,17 @@ const Stopwatch = () => {
   });
   const [isRunning, setIsRunning] = useState(false);
   const workerRef = useRef(null);
+
+  const resetTimer = () => {
+    setTime({
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0
+    });
+    setIsRunning(false);
+    localStorage.removeItem('amanTimerState');
+  };
   
     // Set the exact start time: August 11, 2025 at 8:00 AM EST (August 10, 2025 at 11:00 PM UTC)
   const START_TIME = new Date('2025-08-10T23:00:00Z').getTime(); // 4:00 PM EST converted to UTC
@@ -190,8 +201,8 @@ const Stopwatch = () => {
                     workerRef.current.postMessage({ 
                       type: 'STOP'
                     });
-                    // Clear saved state when stopping
-                    localStorage.removeItem('amanTimerState');
+                    // Reset timer state completely
+                    resetTimer();
                   } else {
                     // Start the timer from current time (reset to 0)
                     const startTime = Date.now();
