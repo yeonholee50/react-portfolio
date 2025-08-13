@@ -415,7 +415,7 @@ const AManProject = () => {
         '  - Brother: ThinkPad (Lenovo AMD Ryzen 7730U)',
         '  - Mother: ASUS TUF A16 Gaming Laptop',
         'May 2026 Korea Gifts:',
-        '  - 3 MacBook Air 15 inch M3/M4 with 512GB storage for cousins',
+        '  - 2 MacBook Air 15 inch M3/M4 with 512GB storage for cousins',
         '  - Use 12-month financing, ask for color preferences',
         '  - Present discretely'
       ]
