@@ -3,27 +3,16 @@ import "./projects.css";
 
 const Stopwatch = () => {
   const [time, setTime] = useState({
+    weeks: 0,
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0
   });
   const [isRunning, setIsRunning] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [confirmationStep, setConfirmationStep] = useState(0);
   const workerRef = useRef(null);
-
-  const resetTimer = () => {
-    setTime({
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0
-    });
-    setIsRunning(false);
-    localStorage.removeItem('amanTimerState');
-  };
-  
-    // Set the exact start time: August 11, 2025 at 8:00 AM EST (August 10, 2025 at 11:00 PM UTC)
-  const START_TIME = new Date('2025-08-10T23:00:00Z').getTime(); // 4:00 PM EST converted to UTC
 
   const stopConfirmationMessages = [
     {
@@ -46,6 +35,60 @@ const Stopwatch = () => {
     }
   ];
 
+  const resetTimer = () => {
+    setTime({
+      weeks: 0,
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0
+    });
+    setIsRunning(false);
+    setShowConfirmation(false);
+    setConfirmationStep(0);
+    localStorage.removeItem('amanTimerState');
+  };
+
+  const handleStopClick = () => {
+    if (isRunning) {
+      setShowConfirmation(true);
+      setConfirmationStep(0);
+    } else {
+      // Start the timer from 0
+      const startTime = Date.now();
+      if (workerRef.current) {
+        workerRef.current.postMessage({ 
+          type: 'START',
+          savedStartTime: startTime
+        });
+      }
+      // Save state when starting
+      localStorage.setItem('amanTimerState', JSON.stringify({
+        isRunning: true,
+        startTime: startTime,
+        elapsed: 0
+      }));
+    }
+  };
+
+  const handleConfirmation = (confirmed) => {
+    if (confirmed) {
+      if (confirmationStep < stopConfirmationMessages.length - 1) {
+        setConfirmationStep(confirmationStep + 1);
+      } else {
+        // Final confirmation - reset timer
+        if (workerRef.current) {
+          workerRef.current.postMessage({ type: 'STOP' });
+        }
+        resetTimer();
+      }
+    } else {
+      // User chose to continue
+      setShowConfirmation(false);
+      setConfirmationStep(0);
+    }
+  };
+
   useEffect(() => {
     // Create Web Worker
     const worker = new Worker(new URL('../../workers/stopwatch.worker.js', import.meta.url), { type: 'module' });
@@ -56,12 +99,21 @@ const Stopwatch = () => {
       if (e.data.type === 'UPDATE') {
         const { elapsed, isRunning: workerIsRunning } = e.data;
         
-        // Update time state
+        // Update time state with weeks included
+        const totalSeconds = Math.floor(elapsed / 1000);
+        const weeks = Math.floor(totalSeconds / (7 * 24 * 60 * 60));
+        const remainingSeconds = totalSeconds % (7 * 24 * 60 * 60);
+        const days = Math.floor(remainingSeconds / (24 * 60 * 60));
+        const hours = Math.floor((remainingSeconds % (24 * 60 * 60)) / (60 * 60));
+        const minutes = Math.floor((remainingSeconds % (60 * 60)) / 60);
+        const seconds = remainingSeconds % 60;
+        
         setTime({
-          days: Math.floor(elapsed / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((elapsed % (1000 * 60)) / 1000)
+          weeks,
+          days,
+          hours,
+          minutes,
+          seconds
         });
         setIsRunning(workerIsRunning);
         
@@ -95,9 +147,10 @@ const Stopwatch = () => {
         });
       }
     } else {
-      // Initialize the worker but don't start automatically
+      // Initialize the worker with 0 elapsed time
       worker.postMessage({ 
-        type: 'INIT'
+        type: 'INIT',
+        savedElapsed: 0
       });
     }
 
@@ -108,7 +161,7 @@ const Stopwatch = () => {
     };
   }, []);
 
-  // Timer is now read-only and automatically starts from August 11, 2025 at 8:00 AM EST
+  // Counter that resets to 0 when stopped and confirmed
 
   // Add event listener for page visibility
   useEffect(() => {
@@ -129,64 +182,153 @@ const Stopwatch = () => {
 
   return (
     <>
-
-
-              <div style={{
-          background: 'rgba(8,12,24,0.6)',
-          borderRadius: '0.5rem',
-          padding: '1rem',
-          marginTop: '1rem',
-          border: '1px solid rgba(64,87,255,0.2)',
-          backdropFilter: 'blur(10px)',
-          animation: 'neonPulse 2s infinite'
+      {/* Confirmation Modal */}
+      {showConfirmation && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0,0,0,0.8)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 1000,
+          backdropFilter: 'blur(10px)'
         }}>
+          <div style={{
+            background: 'rgba(8,12,24,0.95)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            maxWidth: '500px',
+            width: '90%',
+            border: '1px solid rgba(255,64,87,0.3)',
+            boxShadow: '0 0 30px rgba(255,64,87,0.3)',
+            textAlign: 'center'
+          }}>
+            <h3 style={{
+              color: '#ff4057',
+              marginBottom: '1rem',
+              fontFamily: 'monospace',
+              fontSize: '1.2rem'
+            }}>
+              {stopConfirmationMessages[confirmationStep].title}
+            </h3>
+            <p style={{
+              color: 'rgba(255,255,255,0.8)',
+              marginBottom: '2rem',
+              lineHeight: '1.6',
+              fontSize: '0.9rem'
+            }}>
+              {stopConfirmationMessages[confirmationStep].message}
+            </p>
+            <div style={{
+              display: 'flex',
+              gap: '1rem',
+              justifyContent: 'center'
+            }}>
+              <button
+                onClick={() => handleConfirmation(false)}
+                style={{
+                  background: 'linear-gradient(135deg, rgba(64,255,218,0.2), rgba(64,255,218,0.1))',
+                  border: '1px solid rgba(64,255,218,0.3)',
+                  color: '#fff',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '0.5rem',
+                  cursor: 'pointer',
+                  fontFamily: 'monospace',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                {stopConfirmationMessages[confirmationStep].continueBtn}
+              </button>
+              <button
+                onClick={() => handleConfirmation(true)}
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,64,87,0.2), rgba(255,64,87,0.1))',
+                  border: '1px solid rgba(255,64,87,0.3)',
+                  color: '#fff',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '0.5rem',
+                  cursor: 'pointer',
+                  fontFamily: 'monospace',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                {stopConfirmationMessages[confirmationStep].stopBtn}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div style={{
+        background: 'rgba(8,12,24,0.6)',
+        borderRadius: '0.5rem',
+        padding: '1rem',
+        marginTop: '1rem',
+        border: '1px solid rgba(64,87,255,0.2)',
+        backdropFilter: 'blur(10px)',
+        animation: 'neonPulse 2s infinite'
+      }}>
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          gap: '1rem',
+          gap: '0.5rem',
           fontFamily: 'monospace',
-          fontSize: '0.9rem'
+          fontSize: '0.8rem'
         }}>
           <div style={{ textAlign: 'center' }}>
             <div style={{ 
-              fontSize: '1.2rem', 
+              fontSize: '1rem', 
+              fontWeight: 'bold',
+              color: '#64ffda',
+              textShadow: '0 0 10px rgba(100,255,218,0.5)',
+              transition: 'all 0.3s ease'
+            }}>{String(time.weeks).padStart(2, '0')}</div>
+            <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>WKS</div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ 
+              fontSize: '1rem', 
               fontWeight: 'bold',
               color: '#64ffda',
               textShadow: '0 0 10px rgba(100,255,218,0.5)',
               transition: 'all 0.3s ease'
             }}>{String(time.days).padStart(2, '0')}</div>
-            <div style={{ opacity: 0.7 }}>DAYS</div>
+            <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>DAYS</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ 
-              fontSize: '1.2rem', 
+              fontSize: '1rem', 
               fontWeight: 'bold',
               color: '#64ffda',
               textShadow: '0 0 10px rgba(100,255,218,0.5)',
               transition: 'all 0.3s ease'
             }}>{String(time.hours).padStart(2, '0')}</div>
-            <div style={{ opacity: 0.7 }}>HRS</div>
+            <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>HRS</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ 
-              fontSize: '1.2rem', 
+              fontSize: '1rem', 
               fontWeight: 'bold',
               color: '#64ffda',
               textShadow: '0 0 10px rgba(100,255,218,0.5)',
               transition: 'all 0.3s ease'
             }}>{String(time.minutes).padStart(2, '0')}</div>
-            <div style={{ opacity: 0.7 }}>MIN</div>
+            <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>MIN</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ 
-              fontSize: '1.2rem', 
+              fontSize: '1rem', 
               fontWeight: 'bold',
               color: '#64ffda',
               textShadow: '0 0 10px rgba(100,255,218,0.5)',
               transition: 'all 0.3s ease'
             }}>{String(time.seconds).padStart(2, '0')}</div>
-            <div style={{ opacity: 0.7 }}>SEC</div>
+            <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>SEC</div>
           </div>
           <div style={{
             display: 'flex',
@@ -194,31 +336,7 @@ const Stopwatch = () => {
             alignItems: 'center'
           }}>
             <button
-              onClick={() => {
-                if (workerRef.current) {
-                  if (isRunning) {
-                    // Stop the timer
-                    workerRef.current.postMessage({ 
-                      type: 'STOP'
-                    });
-                    // Reset timer state completely
-                    resetTimer();
-                  } else {
-                    // Start the timer from current time (reset to 0)
-                    const startTime = Date.now();
-                    workerRef.current.postMessage({ 
-                      type: 'START',
-                      savedStartTime: startTime
-                    });
-                    // Save state when starting
-                    localStorage.setItem('amanTimerState', JSON.stringify({
-                      isRunning: true,
-                      startTime: startTime,
-                      elapsed: 0
-                    }));
-                  }
-                }
-              }}
+              onClick={handleStopClick}
               style={{
                 background: isRunning ? 
                   'linear-gradient(135deg, rgba(255,64,87,0.2), rgba(255,64,87,0.1))' :
@@ -239,9 +357,9 @@ const Stopwatch = () => {
             <div style={{
               color: isRunning ? '#64ffda' : 'rgba(255,255,255,0.5)',
               fontFamily: 'monospace',
-              fontSize: '0.8rem',
+              fontSize: '0.7rem',
               textAlign: 'center',
-              padding: '0.5rem 1rem',
+              padding: '0.5rem 0.75rem',
               background: isRunning ? 'rgba(64,255,218,0.1)' : 'rgba(255,255,255,0.05)',
               border: `1px solid ${isRunning ? 'rgba(64,255,218,0.3)' : 'rgba(255,255,255,0.1)'}`,
               borderRadius: '0.25rem',
