@@ -2,9 +2,10 @@
 let startTime = null;
 let isRunning = false;
 let intervalId = null;
+let savedElapsed = 0;
 
 function sendUpdate() {
-  const elapsed = isRunning && startTime ? Date.now() - startTime : 0;
+  const elapsed = isRunning && startTime ? Date.now() - startTime + savedElapsed : savedElapsed;
   self.postMessage({
     type: 'UPDATE',
     elapsed,
@@ -31,6 +32,7 @@ self.onmessage = function(e) {
       intervalId = null;
       isRunning = false;
       startTime = null;
+      savedElapsed = 0; // Reset saved elapsed time to 0
       // Force an immediate update with 0 elapsed time
       self.postMessage({
         type: 'UPDATE',
@@ -62,6 +64,7 @@ self.onmessage = function(e) {
         // Initialize with saved elapsed time but not running
         isRunning = false;
         startTime = null;
+        savedElapsed = savedElapsed || 0;
         self.postMessage({
           type: 'UPDATE',
           elapsed: savedElapsed,
@@ -71,6 +74,7 @@ self.onmessage = function(e) {
         // If no saved data, ensure timer is stopped
         isRunning = false;
         startTime = null;
+        savedElapsed = 0;
         self.postMessage({
           type: 'UPDATE',
           elapsed: 0,

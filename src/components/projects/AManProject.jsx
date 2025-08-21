@@ -80,7 +80,18 @@ const Stopwatch = () => {
         if (workerRef.current) {
           workerRef.current.postMessage({ type: 'STOP' });
         }
-        resetTimer();
+        // Force immediate reset to 0
+        setTime({
+          weeks: 0,
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0
+        });
+        setIsRunning(false);
+        setShowConfirmation(false);
+        setConfirmationStep(0);
+        localStorage.removeItem('amanTimerState');
       }
     } else {
       // User chose to continue
@@ -117,12 +128,17 @@ const Stopwatch = () => {
         });
         setIsRunning(workerIsRunning);
         
-        // Save current state to localStorage
-        localStorage.setItem('amanTimerState', JSON.stringify({
-          isRunning: workerIsRunning,
-          startTime: workerIsRunning ? Date.now() - elapsed : null,
-          elapsed: elapsed
-        }));
+        // Save current state to localStorage only if running or if elapsed > 0
+        if (workerIsRunning || elapsed > 0) {
+          localStorage.setItem('amanTimerState', JSON.stringify({
+            isRunning: workerIsRunning,
+            startTime: workerIsRunning ? Date.now() - elapsed : null,
+            elapsed: elapsed
+          }));
+        } else {
+          // If elapsed is 0 and not running, remove from localStorage
+          localStorage.removeItem('amanTimerState');
+        }
       }
     };
 
