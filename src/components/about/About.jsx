@@ -14,13 +14,13 @@ const About = () => {
             <div className="about__data">
                 <Info />
                 <p className="about__description">
-                    Hi, I'm Yeon. I'm a graduate from Georgia Tech with a B.Sc. in Computer Science. Although I have experience in both ends of the stack, my passion lies in backend development. I love working in fast-paced environments where I can play a crucial part in product development. From creating a facial feature measurement application for lymphadema patients to building AI agents for trading systems, I've worked on diverse and challenging projects.
+                    Hi, I'm Yeon. I'm passionate about developing products that can change the world for the better. What excites me most is building things that truly matter and make people's lives better. I contribute to open source projects that are essential to my work and use them as a way to continuously learn and grow. I genuinely enjoy Friday evening coding sessions while listening to EDM music—there's something magical about solving problems when the world gets quiet.
                 </p>
                 <p className="about__description">
-                    My proudest project is AmpyFin, a transparent ensemble learning model for trading that has outperformed market benchmarks with 30%+ year-to-date returns. When not coding, I contribute to open source and enjoy family time, exploring new foods, and curating my Spotify playlist.
+                    My proudest project is AmpyFin—not just a project anymore, but an organization that aims to develop tools for the nonprofit, open-source community. We're building transparent, horizon-aligned guidance for retail investors (short: 1 day–1 week; medium: 1 week–3 months; long: 3–12 months). We keep subsystem code open while a private orchestration layer handles safety and delivery. We never trade on anyone's behalf, avoid multi-year promises, and prioritize education, privacy, and user control.
                 </p>
                 <p className="about__description about__statement">
-                    What drives me isn't the fear of being left behind, but rather the opportunity to create something that makes a real difference in the world.
+                    I'm not afraid of being left behind—I'm excited about what I can build with the emerging technologies of tomorrow. Every new framework, every breakthrough, every innovation is an opportunity to create something that didn't exist yesterday and solve problems we haven't even discovered yet.
                 </p>
                      
                 <a download="" href={CV} className="button button--flex">

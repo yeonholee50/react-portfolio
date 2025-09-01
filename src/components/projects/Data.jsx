@@ -1,8 +1,9 @@
 import Project1 from "../../assets/ampyfin.webp";
-import Project2 from "../../assets/nyxhub.webp";
-import Project3 from "../../assets/leetcodetwitter.webp";
-import Project4 from "../../assets/minidog.webp";
-import Project5 from "../../assets/jin.webp";
+import Project2 from "../../assets/val.webp";
+import Project3 from "../../assets/nyxhub.webp";
+import Project4 from "../../assets/leetcodetwitter.webp";
+import Project5 from "../../assets/minidog.webp";
+import Project6 from "../../assets/jin.webp";
 
 export const projectsData = [
     {
@@ -12,12 +13,22 @@ export const projectsData = [
         title: "AmpyFin Trading System",
         category: "AmpyFin",
         github: "https://github.com/AmpyFin/ampyfin",
-        description: "A sophisticated trading platform leveraging high-fidelity market data from Data Bento across 6 Oracle Cloud clusters. Features include automated NASDAQ-100 trading strategies, optional Dockerized deployments, and a proprietary backtesting library powering seven production ensemble models. The system has delivered 30%+ year-to-date returns, outperforming market benchmarks and attracting partnership inquiries from hedge funds and trading firms.",
+        description: "AmpyFin is an organization, not a business—a nonprofit, open-source community project giving retail investors transparent, horizon-aligned guidance. Our platform keeps subsystem code open while a private orchestration layer handles safety and delivery. Decision systems emit standardized JSON (timestamps, IDs, hashes), predictive and reactive market-condition scores shape capital exposure, and dynamic fine-tuning adjusts subsystem weights to each user's cadence. We never trade on anyone's behalf and prioritize education, privacy, and user control.",
         tech: ["Oracle Cloud", "Docker", "Python", "Machine Learning", "Data Bento API"]
     },
     {
         id: 2,
         image: Project2,
+        link: "https://ampyfin.com/",
+        title: "Val System",
+        category: "AmpyFin",
+        github: "https://github.com/AmpyFin/Val",
+        description: "A modular, adapter-driven equity valuation engine that pulls metrics from pluggable sources and runs proven strategies (DCF, EPV, Residual Income, etc.) through a simple pipeline to output consensus fair value with optional live GUI and UDP broadcast. Built with Python and PyQt5, featuring pluggable adapters for different data providers and extensible valuation strategies.",
+        tech: ["Python", "PyQt5", "Financial Modeling", "UDP Broadcasting", "MongoDB", "Equity Analysis"]
+    },
+    {
+        id: 3,
+        image: Project3,
         link: "https://nyxhub.shop/",
         title: "NyxHub",
         category: "NyxHub",
@@ -26,8 +37,8 @@ export const projectsData = [
         tech: ["React", "MongoDB", "Flask", "JWT", "REST API"]
     },
     {
-        id: 3,
-        image: Project3,
+        id: 4,
+        image: Project4,
         link: "https://leetcodetwitter.onrender.com/",
         title: "LeetCode Twitter",
         category: "LeetCode Twitter",
@@ -36,8 +47,8 @@ export const projectsData = [
         tech: ["React", "MongoDB", "FastAPI", "JWT", "CORS"]
     },
     {
-        id: 4,
-        image: Project4,
+        id: 5,
+        image: Project5,
         link: "https://youtu.be/1oapv1quKkc",
         title: "MiniDog",
         category: "MiniDog",
@@ -46,8 +57,8 @@ export const projectsData = [
         tech: ["Raspberry Pi", "Arduino", "Python", "Sensors", "Robotics"]
     },
     {
-        id: 5,
-        image: Project5,
+        id: 6,
+        image: Project6,
         link: "https://slackbot-5i97.onrender.com/",
         title: "Jin Slackbot",
         category: "Jin",

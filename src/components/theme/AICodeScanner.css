@@ -1,0 +1,259 @@
+.ai-code-scanner {
+  position: fixed;
+  top: 20%;
+  right: -400px;
+  z-index: 999;
+  animation: scannerSlideIn 4s ease-in-out;
+}
+
+@keyframes scannerSlideIn {
+  0% {
+    right: -400px;
+    opacity: 0;
+  }
+  25% {
+    right: 20px;
+    opacity: 1;
+  }
+  75% {
+    right: 20px;
+    opacity: 1;
+  }
+  100% {
+    right: -400px;
+    opacity: 0;
+  }
+}
+
+.scanner-container {
+  width: 350px;
+  background: rgba(10, 15, 25, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(0, 255, 255, 0.2);
+  font-family: 'JetBrains Mono', monospace;
+  overflow: hidden;
+}
+
+.scanner-header {
+  padding: 10px 15px;
+  background: linear-gradient(90deg, 
+    rgba(0, 255, 255, 0.1), 
+    rgba(128, 0, 255, 0.1)
+  );
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.scanner-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #00ffff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00ff88;
+  animation: statusPulse 1.5s infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+.scanner-progress {
+  height: 3px;
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-line {
+  height: 100%;
+  background: linear-gradient(90deg, #00ffff, #8000ff);
+  animation: progressScan 4s ease-in-out;
+}
+
+@keyframes progressScan {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.scanner-content {
+  padding: 15px;
+}
+
+.code-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 8px;
+  background: rgba(0, 255, 255, 0.05);
+  border-left: 3px solid #00ffff;
+  border-radius: 3px;
+}
+
+.line-number {
+  color: #666;
+  font-size: 12px;
+  margin-right: 10px;
+  min-width: 30px;
+}
+
+.code-text {
+  color: #00ff88;
+  font-size: 13px;
+  font-weight: 500;
+  text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
+  animation: codeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes codeGlow {
+  0% { text-shadow: 0 0 5px rgba(0, 255, 136, 0.3); }
+  100% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.6); }
+}
+
+.analysis-results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.analysis-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.analysis-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #888;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.value {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.value.type {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.value.confidence {
+  color: #4ecdc4;
+  font-weight: 600;
+}
+
+.value.status {
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.scanner-footer {
+  height: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-beam {
+  position: absolute;
+  top: 0;
+  left: -50px;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 255, 255, 0.8), 
+    rgba(255, 255, 255, 0.9), 
+    rgba(0, 255, 255, 0.8), 
+    transparent
+  );
+  animation: scanBeam 4s ease-in-out;
+}
+
+@keyframes scanBeam {
+  0% { left: -50px; }
+  100% { left: 350px; }
+}
+
+/* Light theme adjustments */
+[data-theme="light"] .scanner-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .scanner-status {
+  color: #333;
+}
+
+[data-theme="light"] .code-text {
+  color: #0066cc;
+}
+
+[data-theme="light"] .analysis-item {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .ai-code-scanner {
+    right: -320px;
+  }
+  
+  @keyframes scannerSlideIn {
+    0% {
+      right: -320px;
+      opacity: 0;
+    }
+    25% {
+      right: 10px;
+      opacity: 1;
+    }
+    75% {
+      right: 10px;
+      opacity: 1;
+    }
+    100% {
+      right: -320px;
+      opacity: 0;
+    }
+  }
+  
+  .scanner-container {
+    width: 300px;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ai-code-scanner {
+    display: none;
+  }
+}

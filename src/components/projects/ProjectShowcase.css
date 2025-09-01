@@ -1,0 +1,64 @@
+.project-showcase {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.project-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+}
+
+[data-theme="dark"] .cursor-glow {
+  mix-blend-mode: screen;
+  background: radial-gradient(circle, hsla(var(--accent-hue), 85%, 70%, 0.4) 0%, transparent 70%);
+}
+
+.cursor-glow--active {
+  opacity: 1;
+}
+
+/* Project card magnetic effect */
+.project-showcase .project__card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-showcase .project__card:hover {
+  transform: translateY(-10px);
+}
+
+/* Removed floating animation - static cards */
+.project-showcase .project__card {
+  /* No more floating animation */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .cursor-glow {
+    display: none;
+  }
+  
+  .project-showcase__grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .project-showcase .project__card {
+    animation: none;
+  }
+}

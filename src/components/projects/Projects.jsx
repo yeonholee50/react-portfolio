@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { projectsData } from "./Data";
 import { projectsNav } from './Data';
 import ProjectItems from "./ProjectItems";
+import ProjectShowcase from './ProjectShowcase';
 
 const Projects = () => {
     const [item, setItem] =  useState({ name: "All" });
@@ -38,11 +39,11 @@ const Projects = () => {
                     )
                 })}
             </div>
-            <div className="project__container container grid">
+            <ProjectShowcase>
                 {projects.map((item) => {
                     return <ProjectItems item={item} key={item.id}/>
                 })}
-            </div>
+            </ProjectShowcase>
         </div>
     );
 }
