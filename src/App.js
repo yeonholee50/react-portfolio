@@ -16,7 +16,7 @@ import ThemeToggle from './components/theme/ThemeToggle';
 import ScrollProgress from './components/theme/ScrollProgress';
 import NeuralNetwork from './components/theme/NeuralNetwork';
 import MatrixRain from './components/theme/MatrixRain';
-import AICodeScanner from './components/theme/AICodeScanner';
+// import AICodeScanner from './components/theme/AICodeScanner';
 import { useEffect } from 'react';
 
 const MainContent = () => {
@@ -24,7 +24,7 @@ const MainContent = () => {
     <>
       <MatrixRain />
       <NeuralNetwork />
-      <AICodeScanner />
+      {/* <AICodeScanner /> */}
       <ScrollProgress />
       <Header/>
       <main className='main'>
