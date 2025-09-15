@@ -1328,27 +1328,27 @@ const AManProject = () => {
     const dates = {
       social: {
         signed: "September 11, 2025 at 10:00 PM EST",
-        effective: "September 14, 2025 at 12:40 AM EST"
+        effective: "September 15, 2025 at 10:00 PM EST"
       },
       physical: {
         signed: "September 11, 2025 at 10:00 PM EST",
-        effective: "September 14, 2025 at 12:40 AM EST"
+        effective: "September 15, 2025 at 10:00 PM EST"
       },
       career: {
         signed: "September 11, 2025 at 10:00 PM EST",
-        effective: "September 14, 2025 at 12:40 AM EST"
+        effective: "September 15, 2025 at 10:00 PM EST"
       },
       financial: {
         signed: "September 11, 2025 at 10:00 PM EST",
-        effective: "September 14, 2025 at 12:40 AM EST"
+        effective: "September 15, 2025 at 10:00 PM EST"
       },
       ampyfin: {
         signed: "September 11, 2025 at 10:00 PM EST",
-        effective: "September 14, 2025 at 12:40 AM EST"
+        effective: "September 15, 2025 at 10:00 PM EST"
       },
       workout: {
         signed: "September 11, 2025 at 10:00 PM EST",
-        effective: "September 14, 2025 at 12:40 AM EST"
+        effective: "September 15, 2025 at 10:00 PM EST"
       }
     };
 
