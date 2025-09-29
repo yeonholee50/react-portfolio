@@ -200,6 +200,11 @@ a,
     transition: transform 0.5s ease;
 }
 
+/* Position ampy project images to show upper left important parts */
+.project__img--ampy {
+    object-position: top left !important;
+}
+
 .project__card:hover .project__img {
     transform: scale(1.05);
 }
@@ -256,6 +261,18 @@ a,
     margin-bottom: 1rem;
     color: var(--title-color);
     text-align: left;
+}
+
+.project__description-card {
+    font-size: var(--small-font-size);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+[data-theme="dark"] .project__description-card {
+    color: hsl(0, 0%, 85%);
 }
 
 .project__tech-stack {

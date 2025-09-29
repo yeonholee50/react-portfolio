@@ -15,14 +15,12 @@ import ThemeToggle from './components/theme/ThemeToggle';
 // import FloatingElements from './components/theme/FloatingElements';
 import ScrollProgress from './components/theme/ScrollProgress';
 import NeuralNetwork from './components/theme/NeuralNetwork';
-import MatrixRain from './components/theme/MatrixRain';
 // import AICodeScanner from './components/theme/AICodeScanner';
 import { useEffect } from 'react';
 
 const MainContent = () => {
   return (
     <>
-      <MatrixRain />
       <NeuralNetwork />
       {/* <AICodeScanner /> */}
       <ScrollProgress />

@@ -47,8 +47,22 @@ const DatabaseCloud = () => {
                     <div className="skills__data">
                         <HiCheckBadge />
                         <div>
-                            <h3 className="skills__name">Bash 🖥️</h3>
+                            <h3 className="skills__name">PostgreSQL 🐘</h3>
                             <span className="skills__level">Intermediate</span>
+                        </div>
+                    </div>
+                    <div className="skills__data">
+                        <HiCheckBadge />
+                        <div>
+                            <h3 className="skills__name">AWS Neptune 🔮</h3>
+                            <span className="skills__level">Basic</span>
+                        </div>
+                    </div>
+                    <div className="skills__data">
+                        <HiCheckBadge />
+                        <div>
+                            <h3 className="skills__name">DuckDB 🦆</h3>
+                            <span className="skills__level">Basic</span>
                         </div>
                     </div>
                 </div>

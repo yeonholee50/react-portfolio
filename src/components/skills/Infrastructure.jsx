@@ -1,30 +1,37 @@
 import React from "react";
 import { HiCheckBadge } from "react-icons/hi2";
 
-const ProgrammingLanguages = () => {
+const Infrastructure = () => {
     return (
         <div className="skills__content">
-            <h3 className="skills__title">Programming Languages</h3>
+            <h3 className="skills__title">Infrastructure & Tools</h3>
             <div className="skills__box">
                 <div className="skills__group">
                     <div className="skills__data">
                         <HiCheckBadge />
                         <div>
-                            <h3 className="skills__name">Python 🐍</h3>
-                            <span className="skills__level">Advanced</span>
-                        </div>
-                    </div>
-                    <div className="skills__data">
-                        <HiCheckBadge />
-                        <div>
-                            <h3 className="skills__name">Java ☕</h3>
+                            <h3 className="skills__name">Docker 🐳</h3>
                             <span className="skills__level">Intermediate</span>
                         </div>
                     </div>
                     <div className="skills__data">
                         <HiCheckBadge />
                         <div>
-                            <h3 className="skills__name">C/C++ ⚙️</h3>
+                            <h3 className="skills__name">Render 🚀</h3>
+                            <span className="skills__level">Intermediate</span>
+                        </div>
+                    </div>
+                    <div className="skills__data">
+                        <HiCheckBadge />
+                        <div>
+                            <h3 className="skills__name">Grafana 📊</h3>
+                            <span className="skills__level">Intermediate</span>
+                        </div>
+                    </div>
+                    <div className="skills__data">
+                        <HiCheckBadge />
+                        <div>
+                            <h3 className="skills__name">Prometheus 🔍</h3>
                             <span className="skills__level">Intermediate</span>
                         </div>
                     </div>
@@ -33,35 +40,28 @@ const ProgrammingLanguages = () => {
                     <div className="skills__data">
                         <HiCheckBadge />
                         <div>
-                            <h3 className="skills__name">JavaScript ⚡</h3>
+                            <h3 className="skills__name">OpenTelemetry 📡</h3>
                             <span className="skills__level">Intermediate</span>
                         </div>
                     </div>
                     <div className="skills__data">
                         <HiCheckBadge />
                         <div>
-                            <h3 className="skills__name">Go 🚀</h3>
+                            <h3 className="skills__name">Kafka ⚡</h3>
+                            <span className="skills__level">Basic</span>
+                        </div>
+                    </div>
+                    <div className="skills__data">
+                        <HiCheckBadge />
+                        <div>
+                            <h3 className="skills__name">NATS JetStream 🚀</h3>
                             <span className="skills__level">Intermediate</span>
                         </div>
                     </div>
                     <div className="skills__data">
                         <HiCheckBadge />
                         <div>
-                            <h3 className="skills__name">SQL 📊</h3>
-                            <span className="skills__level">Intermediate</span>
-                        </div>
-                    </div>
-                    <div className="skills__data">
-                        <HiCheckBadge />
-                        <div>
-                            <h3 className="skills__name">Bash 🖥️</h3>
-                            <span className="skills__level">Intermediate</span>
-                        </div>
-                    </div>
-                    <div className="skills__data">
-                        <HiCheckBadge />
-                        <div>
-                            <h3 className="skills__name">HTML/CSS 🎨</h3>
+                            <h3 className="skills__name">Protobuf 📦</h3>
                             <span className="skills__level">Intermediate</span>
                         </div>
                     </div>
@@ -71,4 +71,4 @@ const ProgrammingLanguages = () => {
     );
 }
 
-export default ProgrammingLanguages; 
+export default Infrastructure;

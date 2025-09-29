@@ -4,6 +4,8 @@ import ProgrammingLanguages from './ProgrammingLanguages';
 import Technologies from './Technologies';
 import DatabaseCloud from './DatabaseCloud';
 import MachineLearning from './MachineLearning';
+import Infrastructure from './Infrastructure';
+import Tools from './Tools';
 
 const Skills = () => {
   return (
@@ -15,6 +17,8 @@ const Skills = () => {
             <Technologies /> 
             <DatabaseCloud />
             <MachineLearning />
+            <Infrastructure />
+            <Tools />
         </div>
     </section>
   );

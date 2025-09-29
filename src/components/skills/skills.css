@@ -1,9 +1,9 @@
 .skills__container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 2rem;
     row-gap: 2rem;
     justify-content: center;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -83,6 +83,13 @@
 }
 
 /* BREAK POINTS */
+@media screen and (max-width: 1400px) {
+   .skills__container {
+     grid-template-columns: repeat(3, 1fr);
+     row-gap: 2rem;
+   }
+}
+
 @media screen and (max-width: 1200px) {
    .skills__container {
      grid-template-columns: repeat(2, 1fr);
