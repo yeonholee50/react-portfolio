@@ -543,11 +543,10 @@ const AManProject = () => {
         '  - $750/month (if net income is between $8,000 and $10,000)',
         '  - $1,000/month (if net income is more than $10,000 per month)',
         'Before Going to Korea:',
-        '  - Sony XM4 headphones for mother (ask for color preference: white, blue, or black)',
-        '  - Get black color as requested',
+        '  - Mother declined Sony XM4 headphones',
         'Black Friday / Cyber Monday Deals (ship to 3760 Kentwood Ct, Suwanee, GA 30024):',
-        '  - Brother: ThinkPad (Lenovo AMD Ryzen 7730U)',
-        '  - Mother: ASUS TUF A16 Gaming Laptop',
+        '  - Brother: ThinkPad (Lenovo AMD Ryzen 7730U) ✅ COMPLETED',
+        '  - Mother: Ominbook X 16 ✅ COMPLETED',
         'May 2026 Korea Gifts:',
         '  - 2 MacBook Air 15 inch M3/M4 with 512GB storage for cousins',
         '  - Use 12-month financing, ask for color preferences',
@@ -566,21 +565,103 @@ const AManProject = () => {
       ]
     },
     {
-      id: 'investment-strategy',
-      title: 'Investment Strategy',
+      id: 'enhanced-investment-strategy',
+      title: 'Enhanced Investment Strategy (Based on Yeon Simple Investment Strategy)',
       content: [
-        'VIX Index Strategy:',
-        '  - VIX > 30: Dump 20% of savings into Fidelity right away',
-        '  - VIX > 40: Dump 30% of savings into Fidelity right away',
-        '  - VIX > 50: Dump 40% of savings into Fidelity right away',
-        'Otherwise, monthly investment allocation:',
-        '  - 25% to Technology ETFs',
-        '  - 20% into Technology Securities',
-        '  - 10% into Chip Securities',
-        '  - 10% into Semiconductor Securities',
-        '  - 10% into Medical Securities',
-        '  - 25% into SPY ETFs',
-        'Portfolio Rule: A single security shouldn\'t be more than 10% of a portfolio'
+        'VIX Volatility-Based Strategy:',
+        '  - VIX > 30: Deploy 20% of available cash into market immediately',
+        '  - VIX > 40: Deploy 30% of available cash into market immediately',
+        '  - VIX > 50: Deploy 40% of available cash into market immediately',
+        '  - VIX < 20: Reduce position sizes, focus on defensive stocks',
+        'Core Portfolio Allocation (Monthly DCA):',
+        '  - 30% Technology ETFs (QQQ, XLK)',
+        '  - 25% S&P 500 ETFs (SPY, VOO)',
+        '  - 15% Semiconductor ETFs (SMH, SOXX)',
+        '  - 10% Healthcare/Biotech ETFs (XLV, IBB)',
+        '  - 10% International ETFs (VXUS, EFA)',
+        '  - 10% Individual Growth Stocks (max 5% per position)',
+        'Risk Management Rules:',
+        '  - No single position > 10% of total portfolio',
+        '  - Rebalance quarterly or when allocation drifts >5%',
+        '  - Maintain 10-20% cash buffer for opportunities',
+        '  - Stop losses at 15% for individual stocks',
+        'Tax Optimization:',
+        '  - Use tax-advantaged accounts (401k, IRA) for high-dividend holdings',
+        '  - Taxable accounts for growth stocks and ETFs',
+        '  - Tax-loss harvesting in December'
+      ]
+    },
+    {
+      id: 'credit-card-management',
+      title: 'Credit Card Registration & Management',
+      content: [
+        'Credit Card Requirements:',
+        '  - Apply for secured credit card: Discover It Secured OR Capital One Platinum Secured',
+        '  - Purpose: Credit building, not spending',
+        '  - Monthly spending range: $20-100 to optimize credit score',
+        '  - Set up automatic payments to avoid interest charges',
+        '  - Monitor credit utilization (keep below 30%)',
+        'Monthly Usage Strategy:',
+        '  - Primary: Gym membership (if lower cost option available)',
+        '  - Secondary: Groceries and food expenses',
+        '  - Pay off balance in full each month',
+        '  - Track all expenses in financial spreadsheet',
+        '  - Focus on credit building, not rewards',
+        'Credit Building Goals:',
+        '  - Target credit score: 750+ within 12 months',
+        '  - Request credit limit increases every 6 months',
+        '  - Never miss a payment deadline',
+        '  - Keep oldest accounts open to maintain credit history'
+      ]
+    },
+    {
+      id: 'planned-expenses',
+      title: 'Planned Expenses Tracking System',
+      content: [
+        'Monthly Planned Expenses (Minimum $20+):',
+        '  - Groceries: $150-200/month',
+        '  - Gas/Transportation: $80-120/month',
+        '  - Gym Membership: $50-100/month',
+        '  - Phone Bill: $60-80/month',
+        '  - Internet: $60-80/month',
+        'Tracking Requirements:',
+        '  - Document all expenses in Google Sheets/Excel',
+        '  - Categorize by type (essential, discretionary, investment)',
+        '  - Monthly review and budget adjustment',
+        '  - Set spending alerts at 80% of budget limits',
+        'Emergency Fund:',
+        '  - Maintain 3-6 months of expenses in high-yield savings',
+        '  - Separate from investment accounts',
+        '  - Review and adjust based on income changes'
+      ]
+    },
+    {
+      id: 'gpt-financial-consultation',
+      title: 'GPT Financial Consultation & Best Practices',
+      content: [
+        'Monthly GPT Consultation Topics:',
+        '  - Market analysis and investment opportunities',
+        '  - Tax optimization strategies',
+        '  - Credit score improvement techniques',
+        '  - Budget optimization and expense reduction',
+        '  - Retirement planning and 401k optimization',
+        'GPT Consultation Schedule:',
+        '  - First Sunday of each month: Market analysis',
+        '  - Second Sunday: Tax and credit optimization',
+        '  - Third Sunday: Budget review and planning',
+        '  - Fourth Sunday: Long-term financial goals',
+        'Key Questions to Ask GPT:',
+        '  - "What are the best investment opportunities this month?"',
+        '  - "How can I optimize my tax strategy for this quarter?"',
+        '  - "Discover It Secured vs Capital One Platinum Secured - which is better for credit building?"',
+        '  - "How should I adjust my portfolio allocation?"',
+        '  - "What are the risks I should watch out for?"',
+        '  - "How to optimize $20-100 monthly secured card usage for credit score?"',
+        '  - "When should I graduate from secured to unsecured credit cards?"',
+        'Documentation:',
+        '  - Save all GPT recommendations in financial notes',
+        '  - Track implementation of suggested strategies',
+        '  - Review results monthly and adjust approach'
       ]
     }
   ];
@@ -1034,50 +1115,54 @@ const AManProject = () => {
         );
       case 'financial':
         return (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {financialRules.map((rule) => (
-              <div 
-                key={rule.id}
-                style={{
-                  backgroundColor: 'var(--first-color-lighter)',
-                  borderRadius: '0.5rem',
-                  padding: '1rem',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s'
-                }}
-                onClick={() => setExpandedFinancialRule(expandedFinancialRule === rule.id ? null : rule.id)}
-              >
-                <div style={{ 
-                  display: 'flex', 
-                  justifyContent: 'space-between', 
-                  alignItems: 'center',
-                  marginBottom: expandedFinancialRule === rule.id ? '1rem' : 0
-                }}>
-                  <h4 style={{ margin: 0, color: 'var(--title-color)' }}>
-                    {rule.title}
-                  </h4>
-                  <span>{expandedFinancialRule === rule.id ? '−' : '+'}</span>
-                </div>
-                
-                {expandedFinancialRule === rule.id && (
-                  <div style={{ marginTop: '0.5rem' }}>
-                    <ul style={{ 
-                      listStyle: 'none',
-                      padding: '0.5rem 0 0 1rem',
-                      margin: 0,
-                      fontSize: '0.9rem',
-                      color: 'var(--text-color)'
-                    }}>
-                      {rule.content.map((item, index) => (
-                        <li key={index} style={{ marginBottom: '0.5rem' }}>
-                          • {item}
-                        </li>
-                      ))}
-                    </ul>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            {/* Financial Rules Section */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {financialRules.map((rule) => (
+                <div 
+                  key={rule.id}
+                  style={{
+                    backgroundColor: 'var(--first-color-lighter)',
+                    borderRadius: '0.5rem',
+                    padding: '1rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s'
+                  }}
+                  onClick={() => setExpandedFinancialRule(expandedFinancialRule === rule.id ? null : rule.id)}
+                >
+                  <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'space-between', 
+                    alignItems: 'center',
+                    marginBottom: expandedFinancialRule === rule.id ? '1rem' : 0
+                  }}>
+                    <h4 style={{ margin: 0, color: 'var(--title-color)' }}>
+                      {rule.title}
+                    </h4>
+                    <span>{expandedFinancialRule === rule.id ? '−' : '+'}</span>
                   </div>
-                )}
-              </div>
-            ))}
+                  
+                  {expandedFinancialRule === rule.id && (
+                    <div style={{ marginTop: '0.5rem' }}>
+                      <ul style={{ 
+                        listStyle: 'none',
+                        padding: '0.5rem 0 0 1rem',
+                        margin: 0,
+                        fontSize: '0.9rem',
+                        color: 'var(--text-color)'
+                      }}>
+                        {rule.content.map((item, index) => (
+                          <li key={index} style={{ marginBottom: '0.5rem' }}>
+                            • {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
           </div>
         );
       case 'ampyfin':
@@ -1327,28 +1412,28 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "September 30, 2025 at 10:00 PM EST",
-        effective: "September 30, 2025 at 10:00 PM EST"
+        signed: "October 1, 2025 at 6:00 PM EST",
+        effective: "October 1, 2025 at 6:00 PM EST"
       },
       physical: {
-        signed: "September 30, 2025 at 10:00 PM EST",
-        effective: "September 30, 2025 at 10:00 PM EST"
+        signed: "October 1, 2025 at 6:00 PM EST",
+        effective: "October 1, 2025 at 6:00 PM EST"
       },
       career: {
-        signed: "September 30, 2025 at 10:00 PM EST",
-        effective: "September 30, 2025 at 10:00 PM EST"
+        signed: "October 1, 2025 at 6:00 PM EST",
+        effective: "October 1, 2025 at 6:00 PM EST"
       },
       financial: {
-        signed: "September 30, 2025 at 10:00 PM EST",
-        effective: "September 30, 2025 at 10:00 PM EST"
+        signed: "October 1, 2025 at 6:00 PM EST",
+        effective: "October 1, 2025 at 6:00 PM EST"
       },
       ampyfin: {
-        signed: "September 30, 2025 at 10:00 PM EST",
-        effective: "September 30, 2025 at 10:00 PM EST"
+        signed: "October 1, 2025 at 6:00 PM EST",
+        effective: "October 1, 2025 at 6:00 PM EST"
       },
       workout: {
-        signed: "September 30, 2025 at 10:00 PM EST",
-        effective: "September 30, 2025 at 10:00 PM EST"
+        signed: "October 1, 2025 at 6:00 PM EST",
+        effective: "October 1, 2025 at 6:00 PM EST"
       }
     };
 
