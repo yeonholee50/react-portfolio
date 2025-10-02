@@ -565,6 +565,33 @@ const AManProject = () => {
       ]
     },
     {
+      id: 'enhanced-investment-strategy',
+      title: 'Enhanced Investment Strategy (Based on Yeon Simple Investment Strategy)',
+      content: [
+        'VIX Volatility-Based Strategy:',
+        '  - VIX > 30: Deploy 20% of available cash into market immediately',
+        '  - VIX > 40: Deploy 30% of available cash into market immediately',
+        '  - VIX > 50: Deploy 40% of available cash into market immediately',
+        '  - VIX < 20: Reduce position sizes, focus on defensive stocks',
+        'Core Portfolio Allocation (Monthly DCA):',
+        '  - 30% Technology ETFs (QQQ, XLK)',
+        '  - 25% S&P 500 ETFs (SPY, VOO)',
+        '  - 15% Semiconductor ETFs (SMH, SOXX)',
+        '  - 10% Healthcare/Biotech ETFs (XLV, IBB)',
+        '  - 10% International ETFs (VXUS, EFA)',
+        '  - 10% Individual Growth Stocks (max 5% per position)',
+        'Risk Management Rules:',
+        '  - No single position > 10% of total portfolio',
+        '  - Rebalance quarterly or when allocation drifts >5%',
+        '  - Maintain 10-20% cash buffer for opportunities',
+        '  - Stop losses at 15% for individual stocks',
+        'Tax Optimization:',
+        '  - Use tax-advantaged accounts (401k, IRA) for high-dividend holdings',
+        '  - Taxable accounts for growth stocks and ETFs',
+        '  - Tax-loss harvesting in December'
+      ]
+    },
+    {
       id: 'credit-card-management',
       title: 'Credit Card Registration & Management',
       content: [
@@ -572,16 +599,64 @@ const AManProject = () => {
         '  - Apply for secured credit card: Discover It Secured OR Capital One Platinum Secured',
         '  - Purpose: Credit building, not spending',
         '  - Monthly spending range: $20-100 to optimize credit score',
+        '  - Set up automatic payments to avoid interest charges',
+        '  - Monitor credit utilization (keep below 30%)',
+        'Monthly Usage Strategy:',
         '  - Primary: Gym membership with auto-pay (cost-effective gym with good equipment)',
-        '  - Target: Clean environment, essential equipment, NOT Equinox'
+        '  - Target: Clean environment, essential equipment, NOT Equinox',
+        '  - Pay off balance in full each month',
+        '  - Track all expenses in financial spreadsheet',
+        '  - Focus on credit building, not rewards',
+        'Credit Building Goals:',
+        '  - Target credit score: 750+ within 12 months',
+        '  - Request credit limit increases every 6 months',
+        '  - Never miss a payment deadline',
+        '  - Keep oldest accounts open to maintain credit history'
+      ]
+    },
+    {
+      id: 'planned-expenses',
+      title: 'Planned Expenses Tracking System',
+      content: [
+        'Tracking Requirements:',
+        '  - Document all expenses in Google Sheets/Excel',
+        '  - Categorize by type (essential, discretionary, investment)',
+        '  - Monthly review and budget adjustment',
+        '  - Set spending alerts at 80% of budget limits',
+        'Emergency Fund:',
+        '  - Maintain 3-6 months of expenses in high-yield savings',
+        '  - Separate from investment accounts',
+        '  - Review and adjust based on income changes'
       ]
     },
     {
       id: 'gpt-financial-consultation',
-      title: 'GPT Financial Consultation',
+      title: 'GPT Financial Consultation & Best Practices',
       content: [
-        'Consult GPT on how to use credit card best and what to watch out for',
-        'Ask for advice on secured credit cards and credit building strategies'
+        'Monthly GPT Consultation Topics:',
+        '  - Market analysis and investment opportunities',
+        '  - Tax optimization strategies',
+        '  - Credit score improvement techniques',
+        '  - Budget optimization and expense reduction',
+        '  - Retirement planning and 401k optimization',
+        'GPT Consultation Schedule:',
+        '  - First Sunday of each month: Market analysis',
+        '  - Second Sunday: Tax and credit optimization',
+        '  - Third Sunday: Budget review and planning',
+        '  - Fourth Sunday: Long-term financial goals',
+        'Key Questions to Ask GPT:',
+        '  - "What are the best investment opportunities this month?"',
+        '  - "How can I optimize my tax strategy for this quarter?"',
+        '  - "Discover It Secured vs Capital One Platinum Secured - which is better for credit building?"',
+        '  - "How should I adjust my portfolio allocation?"',
+        '  - "What are the risks I should watch out for?"',
+        '  - "How to optimize $20-100 monthly secured card usage for credit score?"',
+        '  - "When should I graduate from secured to unsecured credit cards?"',
+        '  - "Best cost-effective gyms with good equipment and clean environment (not Equinox)?"',
+        'Documentation:',
+        '  - Save all GPT recommendations in financial notes',
+        '  - Track implementation of suggested strategies',
+        '  - Review results monthly and adjust approach'
       ]
     }
   ];
