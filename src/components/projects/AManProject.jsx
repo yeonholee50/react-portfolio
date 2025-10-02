@@ -618,12 +618,6 @@ const AManProject = () => {
       id: 'planned-expenses',
       title: 'Planned Expenses Tracking System',
       content: [
-        'Monthly Planned Expenses (Minimum $20+):',
-        '  - Groceries: $150-200/month',
-        '  - Gas/Transportation: $80-120/month',
-        '  - Gym Membership: $20-100/month (on credit card with auto-pay)',
-        '  - Phone Bill: $60-80/month',
-        '  - Internet: $60-80/month',
         'Tracking Requirements:',
         '  - Document all expenses in Google Sheets/Excel',
         '  - Categorize by type (essential, discretionary, investment)',
