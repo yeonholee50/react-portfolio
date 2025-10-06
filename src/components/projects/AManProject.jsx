@@ -425,270 +425,453 @@ const AManProject = () => {
   const socialTraits = [
     {
       id: 1,
-      trait: "Mindful Communication",
-      why: "Think before acting or speaking.",
+      trait: "Warm-Competent",
+      why: "Friendly, present, remembers details; makes others feel smart and safe.",
       how: [
-        "If questioning whether to speak, choose silence",
-        "Never talk about yourself unless asked",
-        "Keep responses focused and relevant",
-        "Don't make unrelated topics about yourself"
+        "Remember personal details from conversations",
+        "Ask follow-up questions about others' interests",
+        "Acknowledge others' contributions publicly",
+        "Create safe spaces for honest communication"
       ]
     },
     {
       id: 2,
-      trait: "Responsibility & Independence",
-      why: "Take initiative in household duties.",
+      trait: "High-Signal Communicator",
+      why: "Talks in decisions, trade-offs, and next steps; keeps messages short but complete.",
       how: [
-        "Washing dishes",
-        "Doing and folding laundry",
-        "Lawn mowing",
-        "Handle all chores currently done by mother"
+        "Structure messages: Context → decision/ask → two options → next step → owner & date",
+        "Keep communications concise but complete",
+        "Focus on actionable outcomes",
+        "Avoid unnecessary elaboration"
       ]
     },
     {
       id: 3,
-      trait: "Social Media Management",
-      why: "Maintain professional online presence.",
+      trait: "Credit-Forward",
+      why: "Thanks publicly, critiques privately with specifics.",
       how: [
-        "Keep Instagram private",
-        "Update by December 31",
-        "Follow closest connections first",
-        "Maintain clean and legitimate appearance"
+        "Publicly acknowledge others' contributions",
+        "Give specific, actionable feedback privately",
+        "Highlight team achievements in meetings",
+        "Document wins with proper attribution"
       ]
     },
     {
       id: 4,
-      trait: "Balanced Personality",
-      why: "Be friendly but maintain boundaries.",
+      trait: "Conflict Style",
+      why: "Steel-mans the other side, proposes a small, reversible experiment over big debates.",
       how: [
-        "Be friendly but not a pushover",
-        "Don't overcomplicate or overthink",
-        "Accept different thoughts/standards",
-        "Avoid judging others' different perspectives"
+        "Present the strongest version of opposing arguments",
+        "Propose small, testable experiments",
+        "Focus on reversible changes first",
+        "Avoid large philosophical debates"
+      ]
+    },
+    {
+      id: 5,
+      trait: "Boundary Hygiene",
+      why: "Says 'no' to vague asks; offers a time-boxed pilot instead.",
+      how: [
+        "Decline vague or unclear requests",
+        "Offer specific, time-limited alternatives",
+        "Set clear expectations upfront",
+        "Protect deep work time"
+      ]
+    },
+    {
+      id: 6,
+      trait: "Network Strategy",
+      why: "Depth over breadth; quarterly value-adds to mentors/peers (useful link, small help, no ask).",
+      how: [
+        "Focus on fewer, deeper relationships",
+        "Quarterly check-ins with value-adds",
+        "Share useful resources without asking for anything",
+        "Provide small, meaningful help regularly"
+      ]
+    },
+    {
+      id: 7,
+      trait: "Reliability Brand",
+      why: "Shows up early, delivers when promised, updates proactively if risk to timeline appears.",
+      how: [
+        "Arrive 5-10 minutes early to meetings",
+        "Deliver on commitments or communicate delays early",
+        "Proactively update stakeholders on risks",
+        "Build reputation through consistent execution"
       ]
     }
   ];
 
   const physicalSections = [
     {
-      id: 'weight',
-      title: 'Weight Management',
-      content: [
-        'Cut Phase (Until October 4, 2025): Target 75kg',
-        'October 2025: Bulk Phase - Target 80kg (Greek yogurt + fruit)',
-        'November-December 31, 2025: Cut Phase - Target 70kg',
-        'Body Goal: Captain America body with Iron Man vibe',
-        'No sudden weight loss through excessive cardio',
-        'Focus on gradual progress and constant grind rather than sudden changes'
+      id: 'consistency',
+      title: 'Consistency Over Intensity',
+      why: "Never breaks the chain; minimum viable session on bad days.",
+      how: [
+        "Maintain daily minimum viable sessions even on difficult days",
+        "Focus on showing up rather than perfect performance",
+        "Build unbreakable habits through small, consistent actions",
+        "Track streaks and protect them at all costs"
       ]
     },
     {
-      id: 'workout',
-      title: 'Weekly Workout Schedule',
-      content: [
-        'Workout Time: 10:00 AM (avoid rush hour traffic + sunburn)',
-        'Gym Selection: Lifetime or Crunch - optimize for equipment quality and location (< $100/month)',
-        'Minimum 1 hour per workout session',
-        'Sunday: Leg Day',
-        'Monday: Back Day',
-        'Tuesday: Arm Day',
-        'Wednesday: Rest Day (Skip Day)',
-        'Thursday: Shoulder Day',
-        'Friday: Jog at Fowler',
-        'Saturday: Chest Day',
-        'Evening: 1 hour walk daily (Watch Korean news KBS during solo walks)',
-        'Fix posture - no bend over waist and neck, maintain poised back'
+      id: 'risk-aware',
+      title: 'Risk-Aware Training',
+      why: "Avoids injury tail-risk; prioritizes longevity, posture, and sleep regularity.",
+      how: [
+        "Prioritize injury prevention over intensity",
+        "Maintain proper form over heavy weights",
+        "Focus on sleep quality and recovery",
+        "Regular posture checks and corrections"
       ]
     },
     {
-      id: 'diet',
-      title: 'Diet & Nutrition',
-      content: [
-        'Avoid sugar and heavy oil substances',
-        'Focus on physical performance-oriented food',
-        'Prioritize organic food and mother\'s cooking',
-        'Example: For Korean fried chicken, eat chicken breast and avoid fried skin',
-        'Any food not planned or not aligned with goals is holding you back'
+      id: 'process-fidelity',
+      title: 'Process Fidelity',
+      why: "Logs basics (sleep regularity, resting HR, posture checks) like production metrics.",
+      how: [
+        "Track sleep patterns and quality daily",
+        "Monitor resting heart rate trends",
+        "Regular posture assessments",
+        "Treat health metrics like production KPIs"
       ]
     },
     {
-      id: 'skincare',
-      title: 'Skincare & Hygiene',
-      content: [
-        'Goal: Glass skin',
-        'Morning Routine:',
-        'Step 1: Toner pads',
-        'Step 2: Serum',
-        'Step 3: Hydration gel/cream',
-        'Step 4: Sunscreen',
-        'Note: Carry sunstick for reapplication',
-        'Evening Routine:',
-        'Friday: Face mask treatment followed by serum and night cream',
-        'Other days: Serum followed by night cream/moisturizer',
-        'Post-workout: Thorough ice-cold shower',
-        'Post-walk: Lukewarm shower',
-        'Maintain consistent skincare routine'
+      id: 'calm-presence',
+      title: 'Calm Presence',
+      why: "Tall posture, relaxed shoulders, economical movement; simple, durable clothes.",
+      how: [
+        "Maintain tall, confident posture",
+        "Keep shoulders relaxed and open",
+        "Move with purpose and efficiency",
+        "Wear simple, durable, well-fitted clothes"
+      ]
+    },
+    {
+      id: 'recovery-policy',
+      title: 'Recovery is Policy',
+      why: "Treats recovery as a requirement, not a reward.",
+      how: [
+        "Schedule recovery time like any other commitment",
+        "Prioritize sleep, nutrition, and stress management",
+        "View recovery as investment, not luxury",
+        "Never skip recovery for more training"
+      ]
+    }
+  ];
+
+  const mentalTraits = [
+    {
+      id: 'systems-thinker',
+      title: 'Systems Thinker',
+      why: "Frames work as contracts, interfaces, and feedback loops.",
+      how: [
+        "Think in terms of system architecture and interfaces",
+        "Design for observability and rollback paths",
+        "Create clear contracts between components",
+        "Build feedback loops for continuous improvement"
+      ]
+    },
+    {
+      id: 'evidence-led',
+      title: 'Evidence-Led Decision Making',
+      why: "Assumptions → experiment → result → next action; updates beliefs when data disagrees.",
+      how: [
+        "Start with clear assumptions and hypotheses",
+        "Design small, testable experiments",
+        "Measure results objectively",
+        "Update beliefs based on evidence, not opinions"
+      ]
+    },
+    {
+      id: 'focus-protocol',
+      title: 'Focus Protocol',
+      why: "Pomodoro/blocks, '1-3-5' daily outcomes, inbox in short windows.",
+      how: [
+        "Use time-blocking for deep work sessions",
+        "Define 1 big, 3 medium, 5 small daily outcomes",
+        "Process inbox in dedicated, short time windows",
+        "Protect focus time from interruptions"
+      ]
+    },
+    {
+      id: 'stress-playbook',
+      title: 'Stress Playbook',
+      why: "4-7-8 breathing → 10-minute walk → 3-bullet journal → call a friend if needed.",
+      how: [
+        "Practice 4-7-8 breathing technique",
+        "Take 10-minute walks for mental reset",
+        "Write 3-bullet journal entries for clarity",
+        "Reach out to friends when stress persists"
+      ]
+    },
+    {
+      id: 'learning-cadence',
+      title: 'Learning Cadence',
+      why: "Daily reading + 15-minute teach-back note; weekly mini-project or replication.",
+      how: [
+        "Read for at least 30 minutes daily",
+        "Write 15-minute teach-back notes",
+        "Complete weekly mini-projects or replications",
+        "Share learnings with others"
+      ]
+    },
+    {
+      id: 'ego-management',
+      title: 'Ego Management',
+      why: "Low-ego, high-ownership; documents mistakes in a 'failure ledger.'",
+      how: [
+        "Take full ownership of outcomes",
+        "Document failures and lessons learned",
+        "Separate self-worth from performance",
+        "Focus on growth over being right"
       ]
     }
   ];
 
   const financialRules = [
     {
-      id: 'family-obligations',
-      title: 'Family Financial Obligations',
+      id: 'buckets',
+      title: 'Financial Buckets System',
       content: [
-        'Monthly Parent Support:',
-        '  - $300/month (if net income < $6,000)',
-        '  - $500/month (if net income > $6,000 but less than $8,000)',
-        '  - $750/month (if net income is between $8,000 and $10,000)',
-        '  - $1,000/month (if net income is more than $10,000 per month)',
-        'Before Going to Korea:',
-        '  - Mother declined Sony XM4 headphones',
-        'Black Friday / Cyber Monday Deals (ship to 3760 Kentwood Ct, Suwanee, GA 30024):',
-        '  - Brother: ThinkPad (Lenovo AMD Ryzen 7730U) ✅ COMPLETED',
-        '  - Mother: Ominbook X 16 ✅ COMPLETED',
-        'May 2026 Korea Gifts:',
-        '  - 2 MacBook Air 15 inch M3/M4 with 512GB storage for cousins',
-        '  - Use 12-month financing, ask for color preferences',
-        '  - Present discretely'
+        'Brokerage Core: Investable assets only. DRIP on until portfolio hits $5,000,000. No lifestyle withdrawals.',
+        'Fidelity Cash Reserve (FCR): Dry powder for volatility triggers only.',
+        'Bank Insurance Reserves (Fundamental + Secondary): OFF-LIMITS for investing. For large planned purchases or genuine emergencies only.',
+        'Tax Sink: Set-aside for tax liabilities (esp. contract income with no withholding).'
       ]
     },
     {
-      id: 'personal-finance',
-      title: 'Personal Finance Management',
+      id: 'vix-deployment',
+      title: 'VIX Deployment Ladder (Mechanical, Not Emotional)',
       content: [
-        'Monthly personal spending on goods, electronics, luxury: $100',
-        '  - Can save up and accumulate but must be documented in spreadsheet',
-        'Rent should be maximum 25% of net monthly income (parents contribution)',
-        'Maintain minimum $5,000 in bank account',
-        'Monthly investment: 50% of net income after parents contribution and rent + additional planned expenses to Fidelity'
+        'VIX ≥ 30: Invest 20% of FCR',
+        'VIX ≥ 35: Invest 37.5% of the remaining FCR',
+        'VIX ≥ 40: Invest 100% of the remaining FCR',
+        'Computation example:',
+        '  Let F0 = current FCR.',
+        '  30+ → invest 0.20*F0; remaining R1=0.80*F0.',
+        '  35+ → invest 0.375*R1; remaining R2=0.625*R1.',
+        '  40+ → invest R2 (all).'
       ]
     },
     {
-      id: 'enhanced-investment-strategy',
-      title: 'Enhanced Investment Strategy (Based on Yeon Simple Investment Strategy)',
+      id: 'discipline-rules',
+      title: 'Discipline Rules (Operationalized)',
       content: [
-        'VIX Volatility-Based Strategy:',
-        '  - VIX > 30: Deploy 20% of available cash into market immediately',
-        '  - VIX > 40: Deploy 30% of available cash into market immediately',
-        '  - VIX > 50: Deploy 40% of available cash into market immediately',
-        '  - VIX < 20: Reduce position sizes, focus on defensive stocks',
-        'Core Portfolio Allocation (Monthly DCA):',
-        '  - 30% Technology ETFs (QQQ, XLK)',
-        '  - 25% S&P 500 ETFs (SPY, VOO)',
-        '  - 15% Semiconductor ETFs (SMH, SOXX)',
-        '  - 10% Healthcare/Biotech ETFs (XLV, IBB)',
-        '  - 10% International ETFs (VXUS, EFA)',
-        '  - 10% Individual Growth Stocks (max 5% per position)',
-        'Risk Management Rules:',
-        '  - No single position > 10% of total portfolio',
-        '  - Rebalance quarterly or when allocation drifts >5%',
-        '  - Maintain 10-20% cash buffer for opportunities',
-        '  - Stop losses at 15% for individual stocks',
-        'Tax Optimization:',
-        '  - Use tax-advantaged accounts (401k, IRA) for high-dividend holdings',
-        '  - Taxable accounts for growth stocks and ETFs',
-        '  - Tax-loss harvesting in December'
+        'NEVER DEVIATE from the written plan. Read the runbook before placing orders.',
+        'Ignore market noise & headlines. Fed moves ≠ reasons.',
+        'Ignore "price vibes." "Too high/low" isn\'t a criterion.',
+        'Criteria-only: If the pre-set screen fits, invest; if not, pass.',
+        'Valid "no": P/E in the 80s (violates guardrail).',
+        'Invalid "no": "I\'m scared about rate moves."',
+        'Invest as scheduled/triggered. No exceptions.',
+        'Brokerage stays brokerage. No discretionary withdrawals.',
+        'Reinvest all dividends until $5M portfolio.'
       ]
     },
     {
-      id: 'credit-card-management',
-      title: 'Credit Card Registration & Management',
+      id: 'withdrawal-order',
+      title: 'Withdrawal Order (Emergencies Only)',
       content: [
-        'Credit Card Requirements:',
-        '  - Apply for secured credit card: Discover It Secured OR Capital One Platinum Secured',
-        '  - Purpose: Credit building, not spending',
-        '  - Monthly spending range: $20-100 to optimize credit score',
-        '  - Set up automatic payments to avoid interest charges',
-        '  - Monitor credit utilization (keep below 30%)',
-        'Monthly Usage Strategy:',
-        '  - Primary: Gym membership with auto-pay (cost-effective gym with good equipment)',
-        '  - Target: Clean environment, essential equipment, NOT Equinox',
-        '  - Pay off balance in full each month',
-        '  - Track all expenses in financial spreadsheet',
-        '  - Focus on credit building, not rewards',
-        'Credit Building Goals:',
-        '  - Target credit score: 750+ within 12 months',
-        '  - Request credit limit increases every 6 months',
-        '  - Never miss a payment deadline',
-        '  - Keep oldest accounts open to maintain credit history'
+        '1. Secondary Bank Insurance Reserve',
+        '2. Fundamental Bank Insurance Reserve',
+        '3. Speculative investments',
+        '4. Cash Reserves (Fidelity)',
+        '5. Healthcare investments',
+        '6. Technology investments',
+        '7. ETFs',
+        '8. Final resort: Roth IRA (penalty + lost contribution space)',
+        'Valid emergency reasons: Can\'t afford rent/insurance/food/water; accident compensation.',
+        'Invalid: Gadgets, headphones, casual flights, etc.'
       ]
     },
     {
-      id: 'planned-expenses',
-      title: 'Planned Expenses Tracking System',
+      id: 'milestone-rewards',
+      title: 'Milestone Rewards (30-Day Cool-Off)',
       content: [
-        'Tracking Requirements:',
-        '  - Document all expenses in Google Sheets/Excel',
-        '  - Categorize by type (essential, discretionary, investment)',
-        '  - Monthly review and budget adjustment',
-        '  - Set spending alerts at 80% of budget limits',
-        'Emergency Fund:',
-        '  - Maintain 3-6 months of expenses in high-yield savings',
-        '  - Separate from investment accounts',
-        '  - Review and adjust based on income changes'
+        '$12.5k → 125 push-ups (5×25)',
+        '$15k → 150 push-ups (6×25)',
+        '$20k → 200 push-ups (8×25)',
+        '$25k → Mom AirPods Pro 2 (<$200)',
+        '$50k → Dad AirPods Pro 2 (<$200)',
+        '$75k → Self AirPods Pro 2 (<$200)',
+        '$100k → Hamilton Murph (~$1k; aim 5–10% off)',
+        '$200k → Dad DJI drone set (<$750, on sale)',
+        '$500k → Mom laptop (<$3000)',
+        '$750k → Dad laptop (<$3000)',
+        '$1M → Junhee & Minjoon laptops (<$2000 each, their choice)',
+        '$2M → Save $5k; $1k Visa cards to Jennifer & Vicky; $3k travel to meet, one meal each (no "ask," just gratitude)',
+        '$5M → Dream PC setup (<$10k total, planned)',
+        '$10M → Retire (keep building AmpyFin). Stop dividend reinvestment in Roth IRA; live on dividends + AmpyFin + bank savings. Donate $50k of school supplies to Korean orphanages'
       ]
     },
     {
-      id: 'gpt-financial-consultation',
-      title: 'GPT Financial Consultation & Best Practices',
+      id: 'monthly-cadence',
+      title: 'Monthly Cadence',
       content: [
-        'Monthly GPT Consultation Topics:',
-        '  - Market analysis and investment opportunities',
-        '  - Tax optimization strategies',
-        '  - Credit score improvement techniques',
-        '  - Budget optimization and expense reduction',
-        '  - Retirement planning and 401k optimization',
-        'GPT Consultation Schedule:',
-        '  - First Sunday of each month: Market analysis',
-        '  - Second Sunday: Tax and credit optimization',
-        '  - Third Sunday: Budget review and planning',
-        '  - Fourth Sunday: Long-term financial goals',
-        'Key Questions to Ask GPT:',
-        '  - "What are the best investment opportunities this month?"',
-        '  - "How can I optimize my tax strategy for this quarter?"',
-        '  - "Discover It Secured vs Capital One Platinum Secured - which is better for credit building?"',
-        '  - "How should I adjust my portfolio allocation?"',
-        '  - "What are the risks I should watch out for?"',
-        '  - "How to optimize $20-100 monthly secured card usage for credit score?"',
-        '  - "When should I graduate from secured to unsecured credit cards?"',
-        '  - "Best cost-effective gyms with good equipment and clean environment (not Equinox)?"',
-        'Documentation:',
-        '  - Save all GPT recommendations in financial notes',
-        '  - Track implementation of suggested strategies',
-        '  - Review results monthly and adjust approach'
+        'First weekday: net-worth snapshot, fee check, confirm DRIP/auto-transfers; verify Bank Insurance Reserves untouched.',
+        'Mid-month: rule audit, subscription cull, confirm no brokerage leaks.',
+        'All actions documented in a Google Doc (date, trigger, amount, instrument, rule cited).'
+      ]
+    },
+    {
+      id: 'automation-guardrails',
+      title: 'Automation & Guardrails',
+      content: [
+        'DRIP on; no margin; options trading disabled.',
+        'Pre-trade 60-second checklist (threshold met? step? remaining FCR? order size? cite rule).',
+        'Bank Insurance Reserves in separate bank/app to reduce temptation.',
+        'Accountability partner receives monthly one-pager.'
       ]
     }
   ];
 
   const careerRules = [
     {
-      id: 'georgia-focus',
-      title: 'Georgia Period Focus',
-      content: [
-        'AmpyFin System Development: Minimum 6 hours per day',
-        'HPE System Development: Minimum 2 hours per day',
-        'Software Engineer Applications:',
-        '  - Focus on big firms / legitimate startups',
-        '  - Avoid recruitment agencies',
-        '  - Minimum 8 applications per day',
-        '  - At least 4 hours daily on applications',
-        'Leetcode Practice + Job Prep: 1 hour per day',
-        'Planning / Review: 1 hour per day',
-        'No Netflix or YouTube - time is short',
-        'Always be on the grind - relax only in Korea'
+      id: 'first-principles-builder',
+      title: 'First-Principles Builder',
+      why: "Starts with schemas/contracts, then transport; favors observability and rollback paths.",
+      how: [
+        "Design systems from first principles",
+        "Start with clear schemas and contracts",
+        "Build observability into every system",
+        "Always plan rollback paths"
       ]
     },
     {
-      id: 'post-job',
-      title: 'After Securing Job (NYC/Chicago/Boston/SF)',
+      id: 'conservative-operator',
+      title: 'Conservative Operator',
+      why: "Reversible changes, feature flags, p95/p99 tracked, error budgets respected.",
+      how: [
+        "Make all changes reversible by default",
+        "Use feature flags for gradual rollouts",
+        "Track p95/p99 performance metrics",
+        "Respect error budgets and SLAs"
+      ]
+    },
+    {
+      id: 'credibility-strategy',
+      title: 'Credibility Strategy',
+      why: "Ships small, end-to-end examples others can run; clean READMEs, reproducible environments.",
+      how: [
+        "Ship small, complete examples",
+        "Write clean, comprehensive READMEs",
+        "Ensure reproducible environments",
+        "Make code runnable by others"
+      ]
+    },
+    {
+      id: 'stakeholder-fluent',
+      title: 'Stakeholder Fluent',
+      why: "Can explain the same system to quants, SREs, compliance, and PMs with consistent logic.",
+      how: [
+        "Adapt communication style to audience",
+        "Maintain consistent technical logic",
+        "Explain complex systems simply",
+        "Build bridges between different teams"
+      ]
+    },
+    {
+      id: 'long-game',
+      title: 'Long-Game Strategy',
+      why: "Chooses roles/projects that compound skills, signal, and network; keeps lifestyle flat while income rises.",
+      how: [
+        "Choose projects that compound skills",
+        "Build strong professional network",
+        "Keep lifestyle costs flat",
+        "Focus on long-term value creation"
+      ]
+    },
+    {
+      id: 'public-artifacts',
+      title: 'Public Artifacts',
+      why: "Treats AmpyFin repos/docs as proof of judgment and standards (clean contracts, typed configs, tracing).",
+      how: [
+        "Maintain high-quality public repos",
+        "Write clean, typed configurations",
+        "Implement proper tracing and monitoring",
+        "Use AmpyFin as portfolio showcase"
+      ]
+    },
+    {
+      id: 'communication-style',
+      title: 'Communication Style',
+      why: "Tone: Calm, specific, kind. Message structure: Context → decision/ask → two options → next step → owner & date.",
+      how: [
+        "Maintain calm, specific, kind tone",
+        "Structure messages clearly",
+        "Provide context and options",
+        "Always include next steps and ownership"
+      ]
+    },
+    {
+      id: 'meeting-habits',
+      title: 'Meeting Habits',
+      why: "Agenda or cancel; wraps with a 60-second summary and assignments.",
+      how: [
+        "Require agenda or cancel meeting",
+        "Provide 60-second summary at end",
+        "Assign clear action items",
+        "Follow up on commitments"
+      ]
+    }
+  ];
+
+  const dailyWeeklyOS = [
+    {
+      id: 'morning-routine',
+      title: 'Morning Routine',
       content: [
-        'Weekends: Dedicated to AmpyFin (minimum 8 hours per day)',
-        '2 hours per day on HPE system',
-        'Breaks allowed only when:',
-        '  - Completed planned tasks',
-        '  - Tottenham matches (Premier League/UCL)',
-        '  - Top quality UCL matches'
+        'Hydrate → 10-minute mobility → top 3 outcomes → deep-work block before comms',
+        'Start with hydration and light movement',
+        'Define top 3 outcomes for the day',
+        'Protect deep work time before checking communications',
+        'Focus on high-impact work first'
+      ]
+    },
+    {
+      id: 'midday-routine',
+      title: 'Midday Routine',
+      content: [
+        'Short walk; focused inbox pass',
+        'Take a 10-minute walk for mental reset',
+        'Process inbox in focused, time-limited sessions',
+        'Avoid reactive communication patterns',
+        'Maintain energy and focus'
+      ]
+    },
+    {
+      id: 'evening-routine',
+      title: 'Evening Routine',
+      content: [
+        'Skill block or review; plan tomorrow',
+        'Dedicate time to skill development or review',
+        'Plan the next day\'s priorities',
+        'Reflect on daily outcomes',
+        'Prepare for tomorrow\'s deep work'
+      ]
+    },
+    {
+      id: 'weekly-review',
+      title: 'Weekly Review',
+      content: [
+        'Money (delta + fees), Body (basics), Mind (what I learned), Work (shipped), Social (who I helped)',
+        'Review financial progress and fees',
+        'Assess physical health basics',
+        'Document key learnings',
+        'Track work deliverables',
+        'Reflect on social contributions'
+      ]
+    },
+    {
+      id: 'red-green-flags',
+      title: 'Red / Green Flags',
+      content: [
+        'Green: On-time deliverables, DRIP active, rule-based executions, transparent post-mortems',
+        'Red: "Gut-feel" trades, brokerage withdrawals for lifestyle, tool-buying sprees, skipping reviews',
+        'Monitor these indicators weekly',
+        'Celebrate green flags, address red flags immediately',
+        'Use as early warning system'
       ]
     }
   ];
@@ -1041,19 +1224,81 @@ const AManProject = () => {
                 
                 {expandedPhysicalSection === section.id && (
                   <div style={{ marginTop: '0.5rem' }}>
-                    <ul style={{ 
-                      listStyle: 'none',
-                      padding: '0.5rem 0 0 1rem',
-                      margin: 0,
+                    <p style={{ 
+                      marginBottom: '0.5rem',
                       fontSize: '0.9rem',
                       color: 'var(--text-color)'
                     }}>
-                      {section.content.map((item, index) => (
-                        <li key={index} style={{ marginBottom: '0.5rem' }}>
-                          • {item}
-                        </li>
-                      ))}
-                    </ul>
+                      <strong>Why It Matters:</strong> {section.why}
+                    </p>
+                    <div style={{ fontSize: '0.9rem' }}>
+                      <strong>Practical Ways to Cultivate:</strong>
+                      <ul style={{ 
+                        listStyle: 'none',
+                        padding: '0.5rem 0 0 1rem'
+                      }}>
+                        {section.how.map((step, index) => (
+                          <li key={index} style={{ marginBottom: '0.25rem' }}>
+                            • {step}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        );
+      case 'mental':
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {mentalTraits.map((trait) => (
+              <div 
+                key={trait.id}
+                style={{
+                  backgroundColor: 'var(--first-color-lighter)',
+                  borderRadius: '0.5rem',
+                  padding: '1rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s'
+                }}
+                onClick={() => setExpandedTrait(expandedTrait === trait.id ? null : trait.id)}
+              >
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-between', 
+                  alignItems: 'center',
+                  marginBottom: expandedTrait === trait.id ? '1rem' : 0
+                }}>
+                  <h4 style={{ margin: 0, color: 'var(--title-color)' }}>
+                    {trait.title}
+                  </h4>
+                  <span>{expandedTrait === trait.id ? '−' : '+'}</span>
+                </div>
+                
+                {expandedTrait === trait.id && (
+                  <div style={{ marginTop: '0.5rem' }}>
+                    <p style={{ 
+                      marginBottom: '0.5rem',
+                      fontSize: '0.9rem',
+                      color: 'var(--text-color)'
+                    }}>
+                      <strong>Why It Matters:</strong> {trait.why}
+                    </p>
+                    <div style={{ fontSize: '0.9rem' }}>
+                      <strong>Practical Ways to Cultivate:</strong>
+                      <ul style={{ 
+                        listStyle: 'none',
+                        padding: '0.5rem 0 0 1rem'
+                      }}>
+                        {trait.how.map((step, index) => (
+                          <li key={index} style={{ marginBottom: '0.25rem' }}>
+                            • {step}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 )}
               </div>
@@ -1089,6 +1334,61 @@ const AManProject = () => {
                 
                 {expandedCareerRule === rule.id && (
                   <div style={{ marginTop: '0.5rem' }}>
+                    <p style={{ 
+                      marginBottom: '0.5rem',
+                      fontSize: '0.9rem',
+                      color: 'var(--text-color)'
+                    }}>
+                      <strong>Why It Matters:</strong> {rule.why}
+                    </p>
+                    <div style={{ fontSize: '0.9rem' }}>
+                      <strong>Practical Ways to Cultivate:</strong>
+                      <ul style={{ 
+                        listStyle: 'none',
+                        padding: '0.5rem 0 0 1rem'
+                      }}>
+                        {rule.how.map((step, index) => (
+                          <li key={index} style={{ marginBottom: '0.25rem' }}>
+                            • {step}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        );
+      case 'daily-os':
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {dailyWeeklyOS.map((routine) => (
+              <div 
+                key={routine.id}
+                style={{
+                  backgroundColor: 'var(--first-color-lighter)',
+                  borderRadius: '0.5rem',
+                  padding: '1rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s'
+                }}
+                onClick={() => setExpandedTrait(expandedTrait === routine.id ? null : routine.id)}
+              >
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-between', 
+                  alignItems: 'center',
+                  marginBottom: expandedTrait === routine.id ? '1rem' : 0
+                }}>
+                  <h4 style={{ margin: 0, color: 'var(--title-color)' }}>
+                    {routine.title}
+                  </h4>
+                  <span>{expandedTrait === routine.id ? '−' : '+'}</span>
+                </div>
+                
+                {expandedTrait === routine.id && (
+                  <div style={{ marginTop: '0.5rem' }}>
                     <ul style={{ 
                       listStyle: 'none',
                       padding: '0.5rem 0 0 1rem',
@@ -1096,7 +1396,7 @@ const AManProject = () => {
                       fontSize: '0.9rem',
                       color: 'var(--text-color)'
                     }}>
-                      {rule.content.map((item, index) => (
+                      {routine.content.map((item, index) => (
                         <li key={index} style={{ marginBottom: '0.5rem' }}>
                           • {item}
                         </li>
@@ -1160,73 +1460,6 @@ const AManProject = () => {
 
           </div>
         );
-      case 'ampyfin':
-        return (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {ampyfinPlans.map((plan) => (
-              <div 
-                key={plan.id}
-                className="ampyfin-item"
-                style={{
-                  borderRadius: '0.5rem',
-                  padding: '1rem',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s'
-                }}
-                onClick={() => setExpandedAmpyfinPlan(expandedAmpyfinPlan === plan.id ? null : plan.id)}
-              >
-                <div style={{ 
-                  display: 'flex', 
-                  justifyContent: 'space-between', 
-                  alignItems: 'center',
-                  marginBottom: expandedAmpyfinPlan === plan.id ? '1rem' : 0
-                }}>
-                  <h4 style={{ 
-                    margin: 0, 
-                    color: 'var(--title-color)',
-                    fontSize: '1.1rem',
-                    fontFamily: 'monospace'
-                  }}>
-                    {plan.title}
-                  </h4>
-                  <span style={{
-                    color: 'rgba(64,87,255,0.8)',
-                    fontFamily: 'monospace'
-                  }}>{expandedAmpyfinPlan === plan.id ? '−' : '+'}</span>
-                </div>
-                
-                {expandedAmpyfinPlan === plan.id && (
-                  <div style={{ 
-                    marginTop: '0.5rem',
-                    background: 'rgba(64,87,255,0.1)',
-                    borderRadius: '0.5rem',
-                    padding: '1rem'
-                  }}>
-                    <ul style={{ 
-                      listStyle: 'none',
-                      padding: '0',
-                      margin: 0,
-                      fontSize: '0.9rem',
-                      color: 'var(--text-color)',
-                      fontFamily: 'monospace'
-                    }}>
-                      {plan.content.map((item, index) => (
-                        <li key={index} style={{ 
-                          marginBottom: '0.5rem',
-                          paddingLeft: item.startsWith('•') ? '1rem' : '0',
-                          color: item.startsWith('•') ? 'rgba(255,255,255,0.8)' : 'rgba(64,87,255,0.8)',
-                          fontWeight: item.startsWith('•') ? 'normal' : 'bold'
-                        }}>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        );
       case 'workout':
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -1248,7 +1481,7 @@ const AManProject = () => {
                   textAlign: 'center'
                 }}>
                   <h3 style={{
-                    color: bulkMode ? '#64ffda' : '#ff4057',
+                    color: bulkMode ? '#000000' : '#ff4057',
                     marginBottom: '1rem',
                     fontFamily: 'monospace'
                   }}>
@@ -1310,7 +1543,7 @@ const AManProject = () => {
                 }}>
                   <h3 style={{ 
                     margin: 0,
-                    color: '#64ffda',
+                    color: '#000000',
                     fontFamily: 'monospace',
                     fontSize: '1.1rem'
                   }}>
@@ -1366,7 +1599,7 @@ const AManProject = () => {
                               }}
                             >
                               <span style={{
-                                color: set.intensity === 'light' ? '#64ffda' :
+                                color: set.intensity === 'light' ? '#000000' :
                                        set.intensity === 'medium' ? '#ff4057' :
                                        set.intensity === 'heavy' ? '#ff8f00' :
                                        '#ff1744',
@@ -1414,7 +1647,7 @@ const AManProject = () => {
         signed: "October 5, 2025 at 10:00 PM EST",
         effective: "October 5, 2025 at 10:00 PM EST"
       },
-      career: {
+      mental: {
         signed: "October 5, 2025 at 10:00 PM EST",
         effective: "October 5, 2025 at 10:00 PM EST"
       },
@@ -1422,7 +1655,11 @@ const AManProject = () => {
         signed: "October 5, 2025 at 10:00 PM EST",
         effective: "October 5, 2025 at 10:00 PM EST"
       },
-      ampyfin: {
+      career: {
+        signed: "October 5, 2025 at 10:00 PM EST",
+        effective: "October 5, 2025 at 10:00 PM EST"
+      },
+      'daily-os': {
         signed: "October 5, 2025 at 10:00 PM EST",
         effective: "October 5, 2025 at 10:00 PM EST"
       },
@@ -1485,9 +1722,10 @@ const AManProject = () => {
             src={
               activeSection === 'career' ? "https://www.youtube.com/embed/Tuw8hxrFBH8" :
               activeSection === 'physical' ? "https://www.youtube.com/embed/G9LC9P2OKVE" :
+              activeSection === 'mental' ? "https://www.youtube.com/embed/BHyVg2sXy5w" :
               activeSection === 'financial' ? "https://www.youtube.com/embed/BHyVg2sXy5w" :
+              activeSection === 'daily-os' ? "https://www.youtube.com/embed/M9WyKJvlN4c" :
               activeSection === 'social' ? "https://www.youtube.com/embed/M9WyKJvlN4c" :
-              activeSection === 'ampyfin' ? "https://www.youtube.com/embed/nMctjmaYuhQ" :
               activeSection === 'workout' ? "https://www.youtube.com/embed/xd-9D3GzUpo" :
               "https://www.youtube.com/embed/M9WyKJvlN4c"
             }
@@ -1780,16 +2018,17 @@ const AManProject = () => {
           <div style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '1rem',
+            gap: '0.5rem',
             marginBottom: '2rem',
             padding: '1.5rem',
             background: 'rgba(8,12,24,0.6)',
             borderRadius: '1rem',
             backdropFilter: 'blur(10px)',
             boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
-            border: '1px solid rgba(64,87,255,0.2)'
+            border: '1px solid rgba(64,87,255,0.2)',
+            flexWrap: 'wrap'
           }}>
-            {['social', 'physical', 'career', 'financial', 'ampyfin', 'workout'].map((section) => (
+            {['social', 'physical', 'mental', 'financial', 'career', 'daily-os', 'workout'].map((section) => (
               <button
                 key={section}
                 onClick={() => setActiveSection(section)}
@@ -1806,9 +2045,12 @@ const AManProject = () => {
                   fontWeight: activeSection === section ? 'bold' : 'normal',
                   textTransform: 'uppercase',
                   backdropFilter: 'blur(5px)',
-                  letterSpacing: '2px',
-                  fontSize: '0.9rem',
-                  fontFamily: 'monospace'
+                  letterSpacing: '1px',
+                  fontSize: '0.85rem',
+                  fontFamily: 'monospace',
+                  minWidth: '100px',
+                  whiteSpace: 'nowrap',
+                  flex: '0 0 auto'
                 }}
               >
                 {section}
