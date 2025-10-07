@@ -634,10 +634,62 @@ const AManProject = () => {
       id: 'buckets',
       title: 'Financial Buckets System',
       content: [
-        'Brokerage Core: Investable assets only. DRIP on until portfolio hits $5,000,000. No lifestyle withdrawals.',
-        'Fidelity Cash Reserve (FCR): Dry powder for volatility triggers only.',
-        'Bank Insurance Reserves (Fundamental + Secondary): OFF-LIMITS for investing. For large planned purchases or genuine emergencies only.',
-        'Tax Sink: Set-aside for tax liabilities (esp. contract income with no withholding).'
+        'Bank Account: Daily expenses & buffer. Maintain $5,000-$7,500 minimum. Primary checking for rent, living expenses, insurance. After expenses + $1,000 buffer, excess goes to reserves.',
+        'Fidelity Cash Reserve: Market crash deployment fund. 90% SGOV (0-3 month treasury), 10% BAR (gold ETF). NEVER transfer to bank. Only for deploying to other Fidelity accounts during crashes.',
+        'Fidelity Investment Portfolio: Long-term wealth building. 30% Tech investments, 5% Speculative, 50% Exchange Traded Funds, 15% Healthcare. Hold until fundamentals change.',
+        'Roth IRA (Regular): Tax-free retirement growth. 30% SPY-themed (SPLG, SPYV, VIG), 50% Nasdaq-themed (QQQM, SCHG, XLC), 20% Dow-themed (DJD, VTV). Max $7,000/year by May.',
+        'Roth IRA (Dad\'s): Dad\'s retirement fund. 50% SCHG, 30% SPLG, 20% SCHD. Mom manages, you control investments. Never sell until Dad reaches 60. $500/month from Mom\'s gift starting Jan 2026.',
+        'Fundamental Bank Insurance Reserve: Long-term emergency fund. 100% SGOV (0-3 month treasury). High yield savings account - no caps. 2:1 ratio with Secondary Reserve. Last resort emergency fund. NEVER use for investing.',
+        'Secondary Bank Insurance Reserve: Short-term emergency fund. 100% SGOV (0-3 month treasury). High yield savings account - no caps. 1:2 ratio with Fundamental Reserve. First line emergency fund. NEVER use for investing.'
+      ]
+    },
+    {
+      id: 'income-flow',
+      title: 'Monthly Income Flow ($7,000)',
+      content: [
+        'Step 1: Receive after-tax income - $7,000 total monthly take-home pay',
+        'Step 2: Pay fixed expenses (rent, insurance, living costs) - $4,000 (DO NOT sacrifice health - hospital fees cost more)',
+        'Step 3: Set aside unaccounted expenditure buffer - $1,000 buffer for unexpected expenses',
+        'Step 4: Available for investment - $2,000 remaining after all expenses and buffer (Be frugal when alone - spend when with others/Korea)',
+        'Step 5: Investment obligation - $1,600/month minimum ($700 to Roth IRA until maxed + $900 split: $300 Cash Reserve + $600 Investment Portfolio)',
+        'Step 6: Bank allocation (flexible) - $400 remaining to bank ($200 to Fundamental Bank Insurance Reserve optional, $100 to Secondary Bank Insurance Reserve optional, $100 can stay in bank account)'
+      ]
+    },
+    {
+      id: 'investment-portfolio-split',
+      title: 'Investment Portfolio Split ($900/month)',
+      content: [
+        'Exchange Traded Funds Portfolio ($300/month):',
+        '  32.5% QQQM = $97.5',
+        '  25% SCHG = $75',
+        '  25% SPLG = $75',
+        '  12.5% VT = $37.5',
+        'Tech Investments (30% of $600 = $180): Market cap >$100B, P/E <30. 50% forever holdings, 50% other candidates. Never sell unless thesis breaks.',
+        'Healthcare (15% of $600 = $90): P/E <20, very undervalued. 1/N across holdings. Never sell unless thesis breaks.',
+        'Speculative (5% of $600 = $30): EXCEPTION TO NEVER SELL RULE. Market cap <$100B, undervalued with high upside. Can sell after 3 months or choose to keep.'
+      ]
+    },
+    {
+      id: 'roth-ira-strategy',
+      title: 'Roth IRA Strategy (Market-Based Allocation)',
+      content: [
+        'If market has collapsed: Max out on NDAQ 100 Roth first',
+        'If market is relatively neutral: Max out on SPY 500 Roth first',
+        'If market is overvalued by a lot: Max out on Dow Jones Roth first',
+        'Regular Roth IRA allocation: 30% SPY-themed (SPLG, SPYV, VIG), 50% Nasdaq-themed (QQQM, SCHG, XLC), 20% Dow-themed (DJD, VTV)',
+        'Max $7,000/year by May. After Roth IRA maxed: $500 to Cash Reserve (33.33% of $1,500), $1,000 to Investment Portfolio (66.67% of $1,500)'
+      ]
+    },
+    {
+      id: 'family-contributions-2026',
+      title: 'Family Contributions (Starting Jan 2026)',
+      content: [
+        '$500/month to Mom - she invests in accordance with Dad\'s Roth IRA',
+        'Dad\'s Roth IRA (over 50, max $8,000): Contingent on him putting $2,000 of his own money',
+        'Our monthly contribution split: $250 in QQQM, $150 in SPLG, $100 in SCHD',
+        'Take the money out of our "buffer" so we have $500 buffer',
+        'Mom manages Dad\'s Roth IRA in Fidelity - she has access and executes trades, you control what to buy',
+        'Never sell until Dad reaches 60 - this is his retirement fund'
       ]
     },
     {
@@ -652,6 +704,25 @@ const AManProject = () => {
         '  30+ → invest 0.20*F0; remaining R1=0.80*F0.',
         '  35+ → invest 0.375*R1; remaining R2=0.625*R1.',
         '  40+ → invest R2 (all).'
+      ]
+    },
+    {
+      id: '2025-investment-plan',
+      title: '2025 Investment Plan (Completed & Upcoming)',
+      content: [
+        'COMPLETED PURCHASES:',
+        '  ✅ Laptop for Yeonsung - $800',
+        '  ✅ Laptop for Mom - $800', 
+        '  ✅ Laptop for Dad - $800 (came in wrong order)',
+        '  ✅ Birthday present for Mom - $150',
+        '  ✅ Birthday present for Dad - $150',
+        'LATE OCTOBER 2025:',
+        '  • $400 in Roth IRA - all in on SPY Roth',
+        'LATE NOVEMBER 2025:',
+        '  • $1,000 in Roth IRA - all in on SPY Roth and rest in NDAQ 100 composite',
+        '  • Purchase 2 laptops during Cyber Monday - Best Buy Silver 13 inch 16GB 512 SSD',
+        'LATE DECEMBER 2025:',
+        '  • $1,000 in Roth IRA - all in on NDAQ 100 composite'
       ]
     },
     {
@@ -697,8 +768,8 @@ const AManProject = () => {
         '$75k → Self AirPods Pro 2 (<$200)',
         '$100k → Hamilton Murph (~$1k; aim 5–10% off)',
         '$200k → Dad DJI drone set (<$750, on sale)',
-        '$500k → Mom laptop (<$3000)',
-        '$750k → Dad laptop (<$3000)',
+        '$500k → Mom laptop (<$3000) ✅ COMPLETED',
+        '$750k → Dad laptop (<$3000) ✅ COMPLETED',
         '$1M → Junhee & Minjoon laptops (<$2000 each, their choice)',
         '$2M → Save $5k; $1k Visa cards to Jennifer & Vicky; $3k travel to meet, one meal each (no "ask," just gratitude)',
         '$5M → Dream PC setup (<$10k total, planned)',
