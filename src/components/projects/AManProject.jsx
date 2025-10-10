@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect, useCallback, useMemo } from 'react';
+import ReactFlow, { MarkerType } from 'reactflow';
+import 'reactflow/dist/style.css';
 import "./projects.css";
 
 const Stopwatch = () => {
@@ -412,6 +414,50 @@ const AManProject = () => {
   const [lastFetchTime, setLastFetchTime] = useState(null);
   const [vixIndex, setVixIndex] = useState(null);
   const [vixLastFetchTime, setVixLastFetchTime] = useState(null);
+  // Palantir-themed interactive layer
+  const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+  const [paletteQuery, setPaletteQuery] = useState('');
+  const [showOpsConsole, setShowOpsConsole] = useState(false);
+  const [logs, setLogs] = useState([]);
+  const [nodesPosition, setNodesPosition] = useState({ vix: { x: 78, y: 72 }, buffett: { x: 18, y: 72 } });
+  const [draggingNode, setDraggingNode] = useState(null);
+  const [overlays, setOverlays] = useState({ scanlines: false, hexGrid: true });
+  const [founderMode, setFounderMode] = useState(false);
+  const [vixSimEnabled, setVixSimEnabled] = useState(false);
+  const [vixSimValue, setVixSimValue] = useState(30);
+  const [showIntelGraph, setShowIntelGraph] = useState(false);
+  const [selectedGraphNode, setSelectedGraphNode] = useState(null);
+  // Suspend background updates/animations while graph is open
+  const suspendUiRef = useRef(false);
+  const animationsStyleElRef = useRef(null);
+
+  useEffect(() => {
+    suspendUiRef.current = showIntelGraph;
+    // Inject/remove global animation pause
+    if (showIntelGraph) {
+      const styleEl = document.createElement('style');
+      styleEl.setAttribute('data-suspend-animations', 'true');
+      styleEl.textContent = `
+        html body * { animation-play-state: paused !important; transition: none !important; }
+        canvas, video { visibility: hidden !important; }
+      `;
+      document.head.appendChild(styleEl);
+      animationsStyleElRef.current = styleEl;
+    } else {
+      const el = animationsStyleElRef.current || document.querySelector('style[data-suspend-animations="true"]');
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      animationsStyleElRef.current = null;
+    }
+  }, [showIntelGraph]);
+  const keyBufferRef = useRef([]);
+
+  const logEvent = (message) => {
+    const entry = { time: new Date(), message };
+    setLogs((prev) => [entry, ...prev].slice(0, 200));
+  };
+
+  // Derived VIX (simulation overrides live)
+  const displayedVix = vixSimEnabled && vixSimValue !== null ? vixSimValue : vixIndex;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -420,8 +466,137 @@ const AManProject = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Load persisted UI state
+  useEffect(() => {
+    try {
+      const savedNodes = localStorage.getItem('amanNodesPos');
+      if (savedNodes) setNodesPosition(JSON.parse(savedNodes));
+      const savedOverlays = localStorage.getItem('amanOverlays');
+      if (savedOverlays) setOverlays(JSON.parse(savedOverlays));
+      const savedFounder = localStorage.getItem('amanFounderMode');
+      if (savedFounder) setFounderMode(JSON.parse(savedFounder));
+      const savedSim = localStorage.getItem('amanVixSim');
+      if (savedSim) {
+        const { enabled, value } = JSON.parse(savedSim);
+        setVixSimEnabled(Boolean(enabled));
+        if (typeof value === 'number') setVixSimValue(value);
+      }
+    } catch (_) {
+      // ignore
+    }
+  }, []);
+
+  // Persist overlays and simulation
+  useEffect(() => {
+    localStorage.setItem('amanOverlays', JSON.stringify(overlays));
+  }, [overlays]);
+
+  useEffect(() => {
+    localStorage.setItem('amanFounderMode', JSON.stringify(founderMode));
+  }, [founderMode]);
+
+  useEffect(() => {
+    localStorage.setItem('amanVixSim', JSON.stringify({ enabled: vixSimEnabled, value: vixSimValue }));
+  }, [vixSimEnabled, vixSimValue]);
+
+  // Keyboard shortcuts and Konami Founder Mode
+  useEffect(() => {
+    const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    const onKeyDown = (e) => {
+      // Command Palette: Cmd/Ctrl+K
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsPaletteOpen((v) => !v);
+        if (!isPaletteOpen) setPaletteQuery('');
+        return;
+      }
+      // Ops Console: Shift+?
+      if (e.shiftKey && e.key === '?') {
+        e.preventDefault();
+        setShowOpsConsole((v) => !v);
+        return;
+      }
+      // Konami detection
+      const key = e.key.length === 1 ? e.key.toLowerCase() : e.key; // normalize
+      keyBufferRef.current = [...keyBufferRef.current, key].slice(-konami.length);
+      if (konami.every((k, i) => keyBufferRef.current[i] === k)) {
+        if (!founderMode) {
+          setFounderMode(true);
+          logEvent('Founder Mode activated');
+        }
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isPaletteOpen, founderMode]);
+
+  // Drag handlers for market nodes
+  useEffect(() => {
+    const onMove = (e) => {
+      if (!draggingNode) return;
+      const x = Math.max(2, Math.min(95, (e.clientX / window.innerWidth) * 100));
+      const y = Math.max(10, Math.min(88, (e.clientY / window.innerHeight) * 100));
+      setNodesPosition((prev) => {
+        const next = { ...prev, [draggingNode]: { x, y } };
+        localStorage.setItem('amanNodesPos', JSON.stringify(next));
+        return next;
+      });
+    };
+    const onUp = () => setDraggingNode(null);
+    const wrappedOnMove = (e) => { if (!suspendUiRef.current) onMove(e); };
+    window.addEventListener('mousemove', wrappedOnMove);
+    window.addEventListener('mouseup', onUp);
+    return () => {
+      window.removeEventListener('mousemove', wrappedOnMove);
+      window.removeEventListener('mouseup', onUp);
+    };
+  }, [draggingNode]);
+
+  // Manual data fetchers (Ops/Palette actions)
+  const refetchBuffett = async () => {
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+      const response = await fetch(`${apiUrl}/api/buffett-indicator`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      if (data.success && data.buffettIndicator) {
+        setBuffettIndicator(data.buffettIndicator);
+        setLastFetchTime(new Date());
+        let newRatio;
+        if (data.buffettIndicator > 200) newRatio = '2:1';
+        else if (data.buffettIndicator >= 100 && data.buffettIndicator <= 200) newRatio = '3:1';
+        else newRatio = '4:1';
+        setInvestmentRatio(newRatio);
+        logEvent(`Buffett Indicator refreshed → ${data.buffettIndicator}% | Ratio ${newRatio}`);
+      } else {
+        throw new Error(data.error || 'Failed to fetch Buffett Indicator');
+      }
+    } catch (err) {
+      logEvent(`Error refreshing Buffett Indicator: ${err.message}`);
+    }
+  };
+
+  const refetchVix = async () => {
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+      const response = await fetch(`${apiUrl}/api/vix`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      if (data.success && data.vix) {
+        setVixIndex(data.vix);
+        setVixLastFetchTime(new Date());
+        logEvent(`VIX refreshed → ${data.vix} (${data.source || 'api'})`);
+      } else {
+        throw new Error(data.error || 'Failed to fetch VIX');
+      }
+    } catch (err) {
+      logEvent(`Error refreshing VIX: ${err.message}`);
+    }
+  };
+
   useEffect(() => {
     const handleMouseMove = (e) => {
+      if (suspendUiRef.current) return;
       setMousePosition({
         x: (e.clientX / window.innerWidth) * 100,
         y: (e.clientY / window.innerHeight) * 100,
@@ -464,6 +639,7 @@ const AManProject = () => {
           setInvestmentRatio(newRatio);
           
           console.log(`✅ Buffett Indicator updated: ${data.buffettIndicator}% | Ratio: ${newRatio}`);
+          logEvent(`Buffett Indicator updated → ${data.buffettIndicator}% | Ratio ${newRatio}`);
         } else {
           throw new Error(data.error || 'Failed to fetch Buffett Indicator');
         }
@@ -472,14 +648,17 @@ const AManProject = () => {
         // NO FALLBACK DATA - show the error clearly
         setBuffettIndicator(null);
         setInvestmentRatio(null);
+        logEvent('Buffett Indicator fetch failed');
       }
     };
 
     // Fetch immediately on mount
     fetchBuffettIndicator();
 
-    // Fetch every hour (3600000 milliseconds)
-    const interval = setInterval(fetchBuffettIndicator, 3600000);
+    // Fetch every hour unless graph is open
+    const interval = setInterval(() => {
+      if (!suspendUiRef.current) fetchBuffettIndicator();
+    }, 3600000);
 
     return () => clearInterval(interval);
   }, []);
@@ -504,6 +683,7 @@ const AManProject = () => {
           setVixIndex(data.vix);
           setVixLastFetchTime(new Date());
           console.log(`✅ VIX INDEX: ${data.vix} (via ${data.source})`);
+          logEvent(`VIX updated → ${data.vix} (${data.source})`);
         } else {
           throw new Error(data.error || 'Failed to fetch VIX');
         }
@@ -512,14 +692,17 @@ const AManProject = () => {
         console.error('❌ Error fetching VIX:', error.message);
         console.error('💡 Make sure backend server is running at:', process.env.REACT_APP_API_URL || 'http://localhost:5001');
         setVixIndex(null);
+        logEvent('VIX fetch failed');
       }
     };
 
     // Fetch immediately on mount
     fetchVixIndex();
 
-    // Fetch every hour (3600000 milliseconds) - same as Buffett Indicator
-    const interval = setInterval(fetchVixIndex, 3600000);
+    // Fetch every hour unless graph is open
+    const interval = setInterval(() => {
+      if (!suspendUiRef.current) fetchVixIndex();
+    }, 3600000);
 
     return () => clearInterval(interval);
   }, []);
@@ -1418,6 +1601,616 @@ const AManProject = () => {
     workout: "Strength is not forged in single heroic efforts, but in the accumulation of disciplined repetitions—where progressive overload meets unwavering consistency, and patience transforms into power."
   };
 
+  // Intelligence Graph - Starting fresh with ReactFlow
+  const IntelligenceGraphComponent = () => {
+    // Capture values ONCE when graph opens - no live updates needed
+    const [frozenBuffett] = useState(() => {
+      const val = buffettIndicator || 0; // Keep exact value
+      console.log('🔒 [GRAPH] Frozen Buffett Indicator:', val, '(exact, no rounding)');
+      return val;
+    });
+    const [frozenVix] = useState(() => {
+      const val = displayedVix || 0; // Keep exact value
+      console.log('🔒 [GRAPH] Frozen VIX:', val, '(exact, no rounding)');
+      return val;
+    });
+    const [frozenRatio] = useState(() => {
+      const val = investmentRatio || '3:1';
+      console.log('🔒 [GRAPH] Frozen Ratio:', val);
+      return val;
+    });
+    
+    const now = new Date();
+    const isRothSeason = now.getMonth() >= 0 && now.getMonth() <= 9; // Jan (0) - Oct (9)
+    const ratio = frozenRatio.split(':');
+    const ratioInvest = parseInt(ratio[0] || '3', 10);
+    const ratioCash = parseInt(ratio[1] || '1', 10);
+
+    // Static nodes - never recreate
+    const nodes = useMemo(() => {
+      console.log('🔄 [GRAPH FLICKER?] Nodes array recreated (should only happen ONCE on mount)');
+      return [
+      { 
+        id: 'paycheck', 
+        position: { x: 156, y: 188 }, 
+        data: { label: 'Paycheck' },
+        style: { 
+          background: '#000', 
+          color: '#fff', 
+          border: '1px solid #fff', 
+          borderRadius: '5px', 
+          padding: '8px 13px',
+          fontSize: '9px',
+          fontWeight: 'bold'
+        }
+      },
+      { 
+        id: 'taxes', 
+        position: { x: 344, y: 63 }, 
+        data: { label: 'Taxes' },
+        style: { 
+          background: '#111', 
+          color: '#E5E5E5', 
+          border: '1px solid #E5E5E5', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px'
+        }
+      },
+      { 
+        id: 'rent', 
+        position: { x: 344, y: 125 }, 
+        data: { label: 'Rent' },
+        style: { 
+          background: '#111', 
+          color: '#E5E5E5', 
+          border: '1px solid #E5E5E5', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px'
+        }
+      },
+      { 
+        id: 'water-food', 
+        position: { x: 344, y: 188 }, 
+        data: { label: 'Water & Food' },
+        style: { 
+          background: '#111', 
+          color: '#E5E5E5', 
+          border: '1px solid #E5E5E5', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px'
+        }
+      },
+      { 
+        id: 'buffer', 
+        position: { x: 344, y: 250 }, 
+        data: { label: '$500 Buffer Insurance' },
+        style: { 
+          background: '#111', 
+          color: '#E5E5E5', 
+          border: '1px solid #E5E5E5', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px'
+        }
+      },
+      { 
+        id: 'fundamental', 
+        position: { x: 138, y: 31 }, 
+        data: { label: 'Fundamental Reserve\n(Cap $600)' },
+        style: { 
+          background: '#000', 
+          color: '#fff', 
+          border: '1px solid #fff', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px',
+          textAlign: 'center',
+          whiteSpace: 'pre-line'
+        }
+      },
+      { 
+        id: 'secondary', 
+        position: { x: 144, y: 313 }, 
+        data: { label: 'Secondary Reserve\n(Cap $300)' },
+        style: { 
+          background: '#111', 
+          color: '#E5E5E5', 
+          border: '1px solid #E5E5E5', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px',
+          textAlign: 'center',
+          whiteSpace: 'pre-line'
+        }
+      },
+      // New nodes for remaining income flow
+      { 
+        id: 'remaining', 
+        position: { x: 500, y: 360 }, 
+        data: { label: 'Remaining Income' },
+        style: { 
+          background: '#000', 
+          color: '#fff', 
+          border: '1px solid #fff', 
+          borderRadius: '5px', 
+          padding: '8px 13px',
+          fontSize: '9px',
+          fontWeight: 'bold'
+        }
+      },
+      { 
+        id: 'roth', 
+        position: { x: 656, y: 94 }, 
+        data: { label: `Roth IRA $700/month\n${isRothSeason ? '(Jan-Oct ACTIVE)' : '(Nov-Dec INACTIVE)'}` },
+        style: { 
+          background: isRothSeason ? '#0a3d2e' : '#1a1a1a', 
+          color: isRothSeason ? '#40FFDA' : '#666', 
+          border: `1px solid ${isRothSeason ? '#40FFDA' : '#333'}`, 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px',
+          whiteSpace: 'pre-line',
+          textAlign: 'center'
+        }
+      },
+      { 
+        id: 'remaining2', 
+        position: { x: 656, y: 188 }, 
+        data: { label: 'After Roth' },
+        style: { 
+          background: '#111', 
+          color: '#E5E5E5', 
+          border: '1px solid #E5E5E5', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px'
+        }
+      },
+      { 
+        id: 'schwab', 
+        position: { x: 813, y: 125 }, 
+        data: { label: 'Charles Schwab (20%)\nSGOV' },
+        style: { 
+          background: '#1a1a00', 
+          color: '#FFB81C', 
+          border: '1px solid #FFB81C', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px',
+          whiteSpace: 'pre-line',
+          textAlign: 'center'
+        }
+      },
+      { 
+        id: 'brokerage', 
+        position: { x: 813, y: 219 }, 
+        data: { label: 'Fidelity Brokerage (80%)' },
+        style: { 
+          background: '#0a2a2a', 
+          color: '#40FFDA', 
+          border: '1px solid #40FFDA', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px',
+          textAlign: 'center'
+        }
+      },
+      { 
+        id: 'split', 
+        position: { x: 969, y: 219 }, 
+        data: { label: `Investment:Cash\n${ratioInvest}:${ratioCash}\nBuffett: ${frozenBuffett ? frozenBuffett.toFixed(1) : '—'}%` },
+        style: { 
+          background: '#000', 
+          color: '#fff', 
+          border: '1px solid #fff', 
+          borderRadius: '5px', 
+          padding: '6px 9px',
+          fontSize: '7px',
+          whiteSpace: 'pre-line',
+          textAlign: 'center'
+        }
+      },
+      // Investment allocations
+      { 
+        id: 'portfolio', 
+        position: { x: 1125, y: 156 }, 
+        data: { label: 'Portfolio\n(Investments)' },
+        style: { 
+          background: '#000', 
+          color: '#fff', 
+          border: '1px solid #fff', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px',
+          textAlign: 'center',
+          whiteSpace: 'pre-line'
+        }
+      },
+      { 
+        id: 'cash-reserve', 
+        position: { x: 1125, y: 281 }, 
+        data: { label: 'Cash Reserve\n(No Cap)' },
+        style: { 
+          background: '#000', 
+          color: '#fff', 
+          border: '1px solid #fff', 
+          borderRadius: '4px', 
+          padding: '6px 9px',
+          fontSize: '7.5px',
+          textAlign: 'center',
+          whiteSpace: 'pre-line'
+        }
+      },
+      { 
+        id: 'etfs', 
+        position: { x: 1281, y: 63 }, 
+        data: { label: 'ETFs 50%' },
+        style: { 
+          background: '#111', 
+          color: '#E5E5E5', 
+          border: '1px solid #E5E5E5', 
+          borderRadius: '4px', 
+          padding: '5px 8px',
+          fontSize: '7px'
+        }
+      },
+      { 
+        id: 'tech', 
+        position: { x: 1281, y: 113 }, 
+        data: { label: 'Technology 30%' },
+        style: { 
+          background: '#111', 
+          color: '#E5E5E5', 
+          border: '1px solid #E5E5E5', 
+          borderRadius: '4px', 
+          padding: '5px 8px',
+          fontSize: '7px'
+        }
+      },
+      { 
+        id: 'healthcare', 
+        position: { x: 1281, y: 163 }, 
+        data: { label: 'Healthcare 15%' },
+        style: { 
+          background: '#111', 
+          color: '#E5E5E5', 
+          border: '1px solid #E5E5E5', 
+          borderRadius: '4px', 
+          padding: '5px 8px',
+          fontSize: '7px'
+        }
+      },
+      { 
+        id: 'speculative', 
+        position: { x: 1281, y: 213 }, 
+        data: { label: 'Speculative 5%' },
+        style: { 
+          background: '#111', 
+          color: '#E5E5E5', 
+          border: '1px solid #E5E5E5', 
+          borderRadius: '4px', 
+          padding: '5px 8px',
+          fontSize: '7px'
+        }
+      },
+      // VIX Trigger
+      { 
+        id: 'vix-trigger', 
+        position: { x: 969, y: 344 }, 
+        data: { label: `VIX ${frozenVix || '—'}\n${frozenVix >= 40 ? '🚨 100%' : frozenVix >= 35 ? '⚠️ 37.5%' : frozenVix >= 30 ? '📢 25%' : '✅'}` },
+        style: { 
+          background: frozenVix >= 30 ? '#3d0a0a' : '#0a0a0a', 
+          color: frozenVix >= 30 ? '#FF0000' : '#40FFDA', 
+          border: `1px solid ${frozenVix >= 30 ? '#FF0000' : '#40FFDA'}`, 
+          borderRadius: '5px', 
+          padding: '6px 9px',
+          fontSize: '7px',
+          whiteSpace: 'pre-line',
+          textAlign: 'center',
+          fontWeight: 'bold'
+        }
+      },
+    ];
+    }, []); // Empty deps - nodes are 100% static
+
+    // Static edges - never recreate
+    const edges = useMemo(() => {
+      console.log('🔄 [GRAPH FLICKER?] Edges array recreated (should only happen ONCE on mount)');
+      return [
+      { 
+        id: 'e-paycheck-taxes', 
+        source: 'paycheck', 
+        target: 'taxes',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25, strokeDasharray: '4' },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      { 
+        id: 'e-paycheck-rent', 
+        source: 'paycheck', 
+        target: 'rent',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25, strokeDasharray: '4' },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      { 
+        id: 'e-paycheck-water', 
+        source: 'paycheck', 
+        target: 'water-food',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25, strokeDasharray: '4' },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      { 
+        id: 'e-paycheck-buffer', 
+        source: 'paycheck', 
+        target: 'buffer',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25, strokeDasharray: '4' },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      { 
+        id: 'e-paycheck-secondary', 
+        source: 'paycheck', 
+        target: 'secondary',
+        sourceHandle: 'bottom',
+        targetHandle: 'top',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      { 
+        id: 'e-paycheck-fundamental', 
+        source: 'paycheck', 
+        target: 'fundamental',
+        sourceHandle: 'top',
+        targetHandle: 'bottom',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      // New edges for remaining income flow
+      { 
+        id: 'e-paycheck-remaining', 
+        source: 'paycheck', 
+        target: 'remaining',
+        sourceHandle: 'bottom',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      { 
+        id: 'e-remaining-roth', 
+        source: 'remaining', 
+        target: 'roth',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: isRothSeason ? '#40FFDA' : '#333', strokeWidth: 1.25 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: isRothSeason ? '#40FFDA' : '#333' }
+      },
+      { 
+        id: 'e-remaining-remaining2', 
+        source: 'remaining', 
+        target: 'remaining2',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      { 
+        id: 'e-remaining2-schwab', 
+        source: 'remaining2', 
+        target: 'schwab',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#FFB81C', strokeWidth: 1.25 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#FFB81C' }
+      },
+      { 
+        id: 'e-remaining2-brokerage', 
+        source: 'remaining2', 
+        target: 'brokerage',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#40FFDA', strokeWidth: 1.25 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#40FFDA' }
+      },
+      { 
+        id: 'e-brokerage-split', 
+        source: 'brokerage', 
+        target: 'split',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      // Investment allocations
+      { 
+        id: 'e-split-portfolio', 
+        source: 'split', 
+        target: 'portfolio',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      { 
+        id: 'e-split-cash', 
+        source: 'split', 
+        target: 'cash-reserve',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#fff', strokeWidth: 1.25 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
+      },
+      { 
+        id: 'e-portfolio-etfs', 
+        source: 'portfolio', 
+        target: 'etfs',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#E5E5E5', strokeWidth: 0.94, strokeDasharray: '2.5' },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#E5E5E5' }
+      },
+      { 
+        id: 'e-portfolio-tech', 
+        source: 'portfolio', 
+        target: 'tech',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#E5E5E5', strokeWidth: 0.94, strokeDasharray: '2.5' },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#E5E5E5' }
+      },
+      { 
+        id: 'e-portfolio-healthcare', 
+        source: 'portfolio', 
+        target: 'healthcare',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#E5E5E5', strokeWidth: 0.94, strokeDasharray: '2.5' },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#E5E5E5' }
+      },
+      { 
+        id: 'e-portfolio-speculative', 
+        source: 'portfolio', 
+        target: 'speculative',
+        sourceHandle: 'right',
+        targetHandle: 'left',
+        type: 'smoothstep',
+        style: { stroke: '#E5E5E5', strokeWidth: 0.94, strokeDasharray: '2.5' },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#E5E5E5' }
+      },
+      // VIX triggered deployments (only show when VIX >= 30)
+      ...(frozenVix >= 30 ? [
+        { 
+          id: 'e-cash-portfolio-vix', 
+          source: 'cash-reserve', 
+          target: 'portfolio',
+          sourceHandle: 'top',
+          targetHandle: 'bottom',
+          type: 'smoothstep',
+          style: { stroke: '#FF0000', strokeWidth: 1.88, strokeDasharray: '4,4' },
+          markerEnd: { type: MarkerType.ArrowClosed, color: '#FF0000' }
+        },
+        { 
+          id: 'e-fundamental-portfolio-vix', 
+          source: 'fundamental', 
+          target: 'portfolio',
+          sourceHandle: 'right',
+          targetHandle: 'left',
+          type: 'smoothstep',
+          style: { stroke: '#FF0000', strokeWidth: 1.88, strokeDasharray: '4,4' },
+          markerEnd: { type: MarkerType.ArrowClosed, color: '#FF0000' }
+        },
+      ] : []),
+    ];
+    }, []); // Empty deps - edges are 100% static
+
+    console.log('🔄 [GRAPH FLICKER?] IntelligenceGraphComponent rendered');
+
+    return (
+      <div style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 6,
+        background: 'rgba(0,0,0,0.95)',
+        // contain and GPU-accelerate to avoid expensive repaints
+        contain: 'layout paint size style',
+        willChange: 'transform',
+        transform: 'translateZ(0)',
+        display: 'flex',
+        flexDirection: 'column'
+      }}>
+        {/* Header */}
+        <div style={{
+          padding: '1.5rem',
+          borderBottom: '1px solid rgba(255,255,255,0.2)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
+          <div>
+               <h2 style={{ margin: 0, color: '#fff', fontFamily: 'monospace', letterSpacing: '3px', fontSize: '1.5rem' }}>
+                 INTELLIGENCE GRAPH
+               </h2>
+               <p style={{ margin: '0.5rem 0 0 0', color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem' }}>
+                 Financial Network • Paycheck Flow
+               </p>
+               <div style={{ marginTop: '0.5rem', display: 'flex', gap: '2rem', fontSize: '0.8rem' }}>
+                 <div style={{ color: frozenBuffett >= 120 ? '#FF0000' : '#40FFDA' }}>
+                   <span style={{ fontWeight: 'bold' }}>Buffett Indicator:</span> {Number.isFinite(frozenBuffett) ? frozenBuffett.toFixed(1) : '—'}%
+                   <span style={{ marginLeft: '0.5rem', opacity: 0.7 }}>
+                     ({frozenRatio || '3:1'})
+                   </span>
+                 </div>
+                 <div style={{ color: frozenVix >= 30 ? '#FF0000' : frozenVix >= 20 ? '#FFB81C' : '#40FFDA' }}>
+                   <span style={{ fontWeight: 'bold' }}>VIX:</span> {Number.isFinite(frozenVix) ? frozenVix.toFixed(2) : '—'}
+                   <span style={{ marginLeft: '0.5rem', opacity: 0.7 }}>
+                     {frozenVix >= 40 ? '🚨 CRISIS' : frozenVix >= 35 ? '⚠️ HIGH' : frozenVix >= 30 ? '📢 ELEVATED' : '✅ NORMAL'}
+                   </span>
+                 </div>
+               </div>
+          </div>
+          <button 
+            onClick={() => { setShowIntelGraph(false); setSelectedGraphNode(null); }}
+            className="nav-button"
+            style={{ color: '#E5E5E5', padding: '0.75rem 1.5rem', fontSize: '0.8rem' }}
+          >
+            CLOSE
+          </button>
+        </div>
+
+            {/* Graph */}
+            <div style={{ flex: 1 }}>
+              <ReactFlow
+                key="intelligence-graph"
+                nodes={nodes}
+                edges={edges}
+                fitViewOnInit
+                fitViewOptions={{ padding: 0.2, duration: 0 }}
+                nodesDraggable={false}
+                nodesConnectable={false}
+                elementsSelectable={false}
+                zoomOnScroll={false}
+                panOnDrag={false}
+                zoomOnDoubleClick={false}
+                minZoom={1}
+                maxZoom={1}
+                preventScrolling={false}
+                style={{ background: 'rgba(0,0,0,0)' }}
+                proOptions={{ hideAttribution: true }}
+              />
+            </div>
+      </div>
+    );
+  };
+
+  // Memoized wrapper to isolate from parent re-renders
+  const IntelligenceGraph = React.memo(IntelligenceGraphComponent);
+
+
   const renderContent = () => {
     // Quote component for each section
     const SectionQuote = ({ quote }) => (
@@ -1808,14 +2601,27 @@ const AManProject = () => {
                     </div>
                     
                     <div style={{
-                      background: vixIndex && vixIndex >= 30 ? 'rgba(255,255,255,0.1)' : 'rgba(64,255,218,0.1)',
+                      background: displayedVix && displayedVix >= 30 ? 'rgba(255,255,255,0.1)' : 'rgba(64,255,218,0.1)',
                       padding: '1rem',
                       borderRadius: '0.5rem',
-                      border: `1px solid ${vixIndex && vixIndex >= 30 ? 'rgba(255,255,255,0.4)' : 'rgba(64,255,218,0.3)'}`,
-                      boxShadow: vixIndex && vixIndex >= 30 ? '0 0 20px rgba(255,255,255,0.2)' : 'none'
+                      border: `1px solid ${displayedVix && displayedVix >= 30 ? 'rgba(255,255,255,0.4)' : 'rgba(64,255,218,0.3)'}`,
+                      boxShadow: displayedVix && displayedVix >= 30 ? '0 0 20px rgba(255,255,255,0.2)' : 'none'
                     }}>
                       <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.5rem' }}>
                         VIX Index (Fear Gauge)
+                        {vixSimEnabled && (
+                          <span style={{ 
+                            marginLeft: '0.5rem', 
+                            fontSize: '0.7rem',
+                            color: '#FFFFFF',
+                            background: 'rgba(255,255,255,0.2)',
+                            padding: '0.2rem 0.5rem',
+                            borderRadius: '0.25rem',
+                            fontWeight: 'bold'
+                          }}>
+                            SIMULATED
+                          </span>
+                        )}
                         <a 
                           href="https://finance.yahoo.com/quote/%5EVIX/" 
                           target="_blank" 
@@ -1834,29 +2640,41 @@ const AManProject = () => {
                       <div style={{ 
                         fontSize: '2rem', 
                         fontWeight: 'bold',
-                        color: vixIndex ? (
-                          vixIndex >= 40 ? '#FFFFFF' :
-                          vixIndex >= 35 ? '#FFFFFF' :
-                          vixIndex >= 30 ? '#FFFFFF' : '#E5E5E5'
+                        color: displayedVix ? (
+                          displayedVix >= 40 ? '#FFFFFF' :
+                          displayedVix >= 35 ? '#FFFFFF' :
+                          displayedVix >= 30 ? '#FFFFFF' : '#E5E5E5'
                         ) : '#FFFFFF',
-                        textShadow: vixIndex && vixIndex >= 30 ? '0 0 10px rgba(255,255,255,0.6)' : 'none'
+                        textShadow: displayedVix && displayedVix >= 30 ? '0 0 10px rgba(255,255,255,0.6)' : 'none'
                       }}>
-                        {vixIndex !== null && vixIndex !== undefined ? vixIndex.toFixed(2) : '⚠️ FETCH FAILED'}
+                        {displayedVix !== null && displayedVix !== undefined ? displayedVix.toFixed(2) : '⚠️ FETCH FAILED'}
                       </div>
                       <div style={{ 
                         fontSize: '0.8rem', 
                         opacity: 0.7, 
                         marginTop: '0.3rem',
-                        fontWeight: vixIndex && vixIndex >= 30 ? 'bold' : 'normal',
-                        color: vixIndex && vixIndex >= 30 ? '#FFFFFF' : vixIndex === null ? '#FFFFFF' : 'inherit'
+                        fontWeight: displayedVix && displayedVix >= 30 ? 'bold' : 'normal',
+                        color: displayedVix && displayedVix >= 30 ? '#FFFFFF' : displayedVix === null ? '#FFFFFF' : 'inherit'
                       }}>
-                        {vixIndex !== null && vixIndex !== undefined ? (
-                          vixIndex >= 40 ? '🚨 DEPLOY 100% CASH RESERVE!' :
-                          vixIndex >= 35 ? '⚠️ DEPLOY 37.5% CASH RESERVE' :
-                          vixIndex >= 30 ? '📢 DEPLOY 25% CASH RESERVE' :
+                        {displayedVix !== null && displayedVix !== undefined ? (
+                          displayedVix >= 40 ? '🚨 DEPLOY 100% CASH RESERVE!' :
+                          displayedVix >= 35 ? '⚠️ DEPLOY 37.5% CASH RESERVE' :
+                          displayedVix >= 30 ? '📢 DEPLOY 25% CASH RESERVE' :
                           '✅ Normal Market - Stay The Course'
                         ) : 'Check browser console for error details'}
                       </div>
+                      {vixSimEnabled && (
+                        <div style={{
+                          marginTop: '0.5rem',
+                          padding: '0.5rem',
+                          background: 'rgba(255,255,255,0.05)',
+                          borderRadius: '0.25rem',
+                          fontSize: '0.75rem',
+                          color: 'rgba(255,255,255,0.8)'
+                        }}>
+                          💡 Simulation active. Real VIX: {vixIndex !== null ? vixIndex.toFixed(2) : 'Loading...'}
+                        </div>
+                      )}
                     </div>
                   </div>
                   
@@ -2453,6 +3271,21 @@ const AManProject = () => {
               text-shadow: 0 0 15px rgba(255,255,255,0.3);
             }
           }
+          .global-scanlines {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+              0deg,
+              rgba(255,255,255,0.03),
+              rgba(255,255,255,0.03) 1px,
+              transparent 1px,
+              transparent 4px
+            );
+            mix-blend-mode: overlay;
+            opacity: 0.5;
+            z-index: 2;
+          }
         `}
       </style>
 
@@ -2523,6 +3356,29 @@ const AManProject = () => {
         </h2>
         
         <div className="container" style={{ padding: "2rem" }}>
+          {/* Palantir HUD */}
+          <div style={{
+            position: 'fixed',
+            top: '12px',
+            right: '12px',
+            zIndex: 3,
+            display: 'flex',
+            gap: '0.5rem',
+            background: 'rgba(0,0,0,0.6)',
+            border: '1px solid rgba(255,255,255,0.2)',
+            borderLeft: '2px solid rgba(255,255,255,0.3)',
+            padding: '0.5rem 0.75rem',
+            clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)'
+          }}>
+            <button className="nav-button" onClick={() => setIsPaletteOpen(true)} style={{ color: '#E5E5E5', padding: '0.4rem 0.7rem', fontSize: '0.7rem' }}>CMD ⌘K</button>
+            <button className="nav-button" onClick={() => setShowOpsConsole(v => !v)} style={{ color: '#E5E5E5', padding: '0.4rem 0.7rem', fontSize: '0.7rem' }}>OPS</button>
+            <button className="nav-button" onClick={() => setOverlays(o => ({ ...o, scanlines: !o.scanlines }))} style={{ color: overlays.scanlines ? '#FFFFFF' : '#E5E5E5', padding: '0.4rem 0.7rem', fontSize: '0.7rem' }}>SCAN</button>
+            <button className="nav-button" onClick={() => { const en = !vixSimEnabled; setVixSimEnabled(en); logEvent(`VIX simulation ${en ? 'enabled' : 'disabled'}`); }} style={{ color: vixSimEnabled ? '#FFFFFF' : '#E5E5E5', padding: '0.4rem 0.7rem', fontSize: '0.7rem' }}>SIM</button>
+            <button className="nav-button" onClick={() => { setShowIntelGraph(true); logEvent('Intelligence Graph opened'); }} style={{ color: '#40FFDA', padding: '0.4rem 0.7rem', fontSize: '0.7rem' }}>GRAPH</button>
+            {founderMode && (
+              <span style={{ color: '#FFFFFF', fontSize: '0.7rem', letterSpacing: '2px', alignSelf: 'center' }}>FOUNDER</span>
+            )}
+          </div>
           {/* Intelligence Control Panel - Navigation Bar */}
           <div style={{
             display: 'flex',
@@ -2626,6 +3482,133 @@ const AManProject = () => {
 
           {/* Signature Section */}
           {renderSignature()}
+          {/* Global overlays */}
+          {overlays.scanlines && (<div className="global-scanlines" />)}
+          {/* Draggable market nodes (financial only) */}
+          {activeSection === 'financial' && (
+            <>
+              {/* Buffett Node */}
+              <div
+                onMouseDown={() => setDraggingNode('buffett')}
+                onDoubleClick={() => { navigator.clipboard?.writeText(`${buffettIndicator ?? 'N/A'}%`); logEvent('Copied Buffett Indicator'); }}
+                style={{
+                  position: 'fixed',
+                  left: `${nodesPosition.buffett.x}%`,
+                  top: `${nodesPosition.buffett.y}%`,
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 3,
+                  background: 'rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(255,255,255,0.3)',
+                  borderLeft: '2px solid rgba(255,255,255,0.6)',
+                  padding: '0.5rem 0.75rem',
+                  cursor: 'grab',
+                  fontFamily: 'monospace',
+                  fontSize: '0.8rem',
+                  backdropFilter: 'blur(6px)'
+                }}
+              >
+                BI: {buffettIndicator ? `${buffettIndicator.toFixed(1)}%` : '—'}
+              </div>
+              {/* VIX Node */}
+              <div
+                onMouseDown={() => setDraggingNode('vix')}
+                onDoubleClick={() => { navigator.clipboard?.writeText(`${displayedVix ?? 'N/A'}`); logEvent('Copied VIX'); }}
+                style={{
+                  position: 'fixed',
+                  left: `${nodesPosition.vix.x}%`,
+                  top: `${nodesPosition.vix.y}%`,
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 3,
+                  background: displayedVix && displayedVix >= 30 ? 'rgba(255,255,255,0.12)' : 'rgba(64,255,218,0.12)',
+                  border: `1px solid ${displayedVix && displayedVix >= 30 ? 'rgba(255,255,255,0.6)' : 'rgba(64,255,218,0.5)'}`,
+                  borderLeft: `2px solid ${displayedVix && displayedVix >= 30 ? '#FFFFFF' : 'rgba(64,255,218,0.8)'}`,
+                  padding: '0.5rem 0.75rem',
+                  cursor: 'grab',
+                  fontFamily: 'monospace',
+                  fontSize: '0.8rem',
+                  backdropFilter: 'blur(6px)'
+                }}
+              >
+                VIX: {displayedVix !== null && displayedVix !== undefined ? displayedVix.toFixed(2) : '—'}
+              </div>
+            </>
+          )}
+          {/* Ops Console */}
+          {showOpsConsole && (
+            <div style={{
+              position: 'fixed',
+              bottom: '12px',
+              right: '12px',
+              width: '360px',
+              maxHeight: '50vh',
+              overflow: 'auto',
+              zIndex: 4,
+              background: 'rgba(0,0,0,0.85)',
+              border: '1px solid rgba(255,255,255,0.3)',
+              borderLeft: '2px solid #FFFFFF',
+              padding: '0.75rem'
+            }}>
+              <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
+                <button className="nav-button" onClick={refetchBuffett} style={{ color: '#E5E5E5', padding: '0.35rem 0.6rem', fontSize: '0.7rem' }}>REFRESH BI</button>
+                <button className="nav-button" onClick={refetchVix} style={{ color: '#E5E5E5', padding: '0.35rem 0.6rem', fontSize: '0.7rem' }}>REFRESH VIX</button>
+                <button className="nav-button" onClick={() => { setVixSimEnabled(true); setVixSimValue(30); logEvent('Simulating VIX = 30'); }} style={{ color: '#E5E5E5', padding: '0.35rem 0.6rem', fontSize: '0.7rem' }}>SIM 30</button>
+                <button className="nav-button" onClick={() => { setVixSimEnabled(true); setVixSimValue(35); logEvent('Simulating VIX = 35'); }} style={{ color: '#E5E5E5', padding: '0.35rem 0.6rem', fontSize: '0.7rem' }}>SIM 35</button>
+                <button className="nav-button" onClick={() => { setVixSimEnabled(true); setVixSimValue(40); logEvent('Simulating VIX = 40'); }} style={{ color: '#E5E5E5', padding: '0.35rem 0.6rem', fontSize: '0.7rem' }}>SIM 40</button>
+                <button className="nav-button" onClick={() => { setVixSimEnabled(false); logEvent('VIX simulation reset'); }} style={{ color: '#E5E5E5', padding: '0.35rem 0.6rem', fontSize: '0.7rem' }}>SIM OFF</button>
+                <button className="nav-button" onClick={() => { const text = logs.map(l => `[${l.time.toLocaleTimeString()}] ${l.message}`).join('\n'); navigator.clipboard?.writeText(text); }} style={{ color: '#E5E5E5', padding: '0.35rem 0.6rem', fontSize: '0.7rem' }}>COPY LOGS</button>
+              </div>
+              <div style={{ fontFamily: 'monospace', fontSize: '0.75rem', color: '#E5E5E5' }}>
+                {logs.length === 0 ? (
+                  <div style={{ opacity: 0.6 }}>No events yet…</div>
+                ) : (
+                  logs.map((l, i) => (
+                    <div key={i} style={{ padding: '0.25rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                      <span style={{ opacity: 0.6, marginRight: '0.5rem' }}>[{l.time.toLocaleTimeString()}]</span>
+                      <span>{l.message}</span>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
+          {/* Intelligence Graph */}
+          {showIntelGraph && <IntelligenceGraph />}
+          {/* Command Palette */}
+          {isPaletteOpen && (
+            <div onClick={() => setIsPaletteOpen(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', zIndex: 5, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: '10vh' }}>
+              <div onClick={(e) => e.stopPropagation()} style={{ width: 'min(680px, 94vw)', background: 'rgba(6,0,32,0.95)', border: '1px solid rgba(255,255,255,0.3)', borderLeft: '2px solid #FFFFFF', padding: '1rem', clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
+                <input autoFocus value={paletteQuery} onChange={(e) => setPaletteQuery(e.target.value)} placeholder="Type a command…" style={{ width: '100%', padding: '0.75rem', background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.3)', color: '#fff', fontFamily: 'monospace' }} />
+                {(() => {
+                  const commands = [
+                    { id: 'open-graph', title: '🔷 Open Intelligence Graph', run: () => { setShowIntelGraph(true); logEvent('Intelligence Graph opened'); } },
+                    { id: 'toggle-scan', title: 'Toggle Scanlines Overlay', run: () => setOverlays(o => ({ ...o, scanlines: !o.scanlines })) },
+                    { id: 'toggle-ops', title: 'Toggle Ops Console', run: () => setShowOpsConsole(v => !v) },
+                    { id: 'refetch-bi', title: 'Refetch Buffett Indicator', run: refetchBuffett },
+                    { id: 'refetch-vix', title: 'Refetch VIX Index', run: refetchVix },
+                    { id: 'sim-30', title: 'Simulate VIX = 30', run: () => { setVixSimEnabled(true); setVixSimValue(30); logEvent('Simulating VIX = 30'); } },
+                    { id: 'sim-35', title: 'Simulate VIX = 35', run: () => { setVixSimEnabled(true); setVixSimValue(35); logEvent('Simulating VIX = 35'); } },
+                    { id: 'sim-40', title: 'Simulate VIX = 40', run: () => { setVixSimEnabled(true); setVixSimValue(40); logEvent('Simulating VIX = 40'); } },
+                    { id: 'sim-off', title: 'Disable VIX Simulation', run: () => { setVixSimEnabled(false); logEvent('VIX simulation disabled'); } },
+                    { id: 'goto-fin', title: 'Go to FINANCIAL module', run: () => setActiveSection('financial') },
+                    { id: 'goto-workout', title: 'Go to WORKOUT module', run: () => setActiveSection('workout') },
+                  ];
+                  const list = commands.filter(c => c.title.toLowerCase().includes(paletteQuery.toLowerCase()));
+                  return (
+                    <div style={{ marginTop: '0.75rem', maxHeight: '40vh', overflow: 'auto' }}>
+                      {list.map((cmd) => (
+                        <div key={cmd.id} onClick={() => { cmd.run(); setIsPaletteOpen(false); }} className="content-card" style={{ background: 'rgba(255,255,255,0.03)', padding: '0.6rem 0.75rem', marginBottom: '0.5rem', cursor: 'pointer', color: '#fff' }}>
+                          {cmd.title}
+                        </div>
+                      ))}
+                      {list.length === 0 && (
+                        <div style={{ color: 'rgba(255,255,255,0.7)', padding: '0.5rem', fontFamily: 'monospace' }}>No matching commands</div>
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
