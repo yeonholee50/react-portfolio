@@ -432,46 +432,40 @@ const AManProject = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Fetch Buffett Indicator data
+  // Fetch Buffett Indicator data from backend API
   useEffect(() => {
     const fetchBuffettIndicator = async () => {
       try {
-        // Using CORS proxy to bypass CORS restrictions
-        const proxyUrl = 'https://api.allorigins.win/raw?url=';
-        const targetUrl = encodeURIComponent('https://buffettindicator.net/');
+        console.log('🔄 Fetching Buffett Indicator from backend...');
         
-        const response = await fetch(proxyUrl + targetUrl);
+        // Use backend API endpoint
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+        const response = await fetch(`${apiUrl}/api/buffett-indicator`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        const html = await response.text();
+        const data = await response.json();
         
-        // Parse the HTML to extract autoRatio
-        const match = html.match(/let\s+autoRatio\s*=\s*([\d.]+);/);
-        
-        if (match && match[1]) {
-          const ratio = parseFloat(match[1]);
-          setBuffettIndicator(ratio);
+        if (data.success && data.buffettIndicator) {
+          setBuffettIndicator(data.buffettIndicator);
           setLastFetchTime(new Date());
           
           // Automatically set investment ratio based on Buffett Indicator
           let newRatio;
-          if (ratio > 200) {
+          if (data.buffettIndicator > 200) {
             newRatio = '2:1'; // Conservative - build more cash reserve
-          } else if (ratio >= 100 && ratio <= 200) {
+          } else if (data.buffettIndicator >= 100 && data.buffettIndicator <= 200) {
             newRatio = '3:1'; // Balanced
           } else {
             newRatio = '4:1'; // Aggressive - market undervalued
           }
           setInvestmentRatio(newRatio);
           
-          console.log(`✅ Buffett Indicator updated: ${ratio}% | Ratio: ${newRatio}`);
+          console.log(`✅ Buffett Indicator updated: ${data.buffettIndicator}% | Ratio: ${newRatio}`);
         } else {
-          console.error('❌ Could not parse Buffett Indicator from HTML');
-          setBuffettIndicator(null);
-          setInvestmentRatio(null);
+          throw new Error(data.error || 'Failed to fetch Buffett Indicator');
         }
       } catch (error) {
         console.error('❌ Error fetching Buffett Indicator:', error);
@@ -490,149 +484,33 @@ const AManProject = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Fetch VIX Index data - Using CORS proxies to access Yahoo Finance APIs
+  // Fetch VIX Index data from backend API
   useEffect(() => {
     const fetchVixIndex = async () => {
-      console.log('🔄 Fetching VIX Index...');
-      console.log('='.repeat(80));
-      console.log('⚠️ Yahoo Finance APIs have CORS restrictions');
-      console.log('📡 Using CORS proxies to bypass browser security...');
-      console.log('');
+      console.log('🔄 Fetching VIX Index from backend...');
       
       try {
-        // CORS Proxy configurations
-        const corsProxies = [
-          {
-            name: 'AllOrigins',
-            buildUrl: (target) => `https://api.allorigins.win/get?url=${encodeURIComponent(target)}`,
-            extractData: (json) => JSON.parse(json.contents)
-          },
-          {
-            name: 'CORS.SH',
-            buildUrl: (target) => `https://cors.sh/${target}`,
-            extractData: (json) => json,
-            headers: { 'x-requested-with': 'XMLHttpRequest' }
-          },
-          {
-            name: 'ThingProxy',
-            buildUrl: (target) => `https://thingproxy.freeboard.io/fetch/${target}`,
-            extractData: (json) => json
-          }
-        ];
+        // Use backend API endpoint
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+        const response = await fetch(`${apiUrl}/api/vix`);
         
-        // Yahoo Finance API endpoints
-        const yahooEndpoints = [
-          {
-            name: 'Quote API (v7)',
-            url: 'https://query2.finance.yahoo.com/v7/finance/quote?symbols=%5EVIX',
-            extractVix: (data) => {
-              const result = data?.quoteResponse?.result?.[0];
-              return {
-                vix: result?.regularMarketPrice,
-                symbol: result?.symbol,
-                metadata: {
-                  marketState: result?.marketState,
-                  exchange: result?.exchange
-                }
-              };
-            }
-          },
-          {
-            name: 'Chart API (v8)',
-            url: 'https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?interval=1d&range=1d',
-            extractVix: (data) => {
-              const meta = data?.chart?.result?.[0]?.meta;
-              return {
-                vix: meta?.regularMarketPrice,
-                symbol: meta?.symbol,
-                metadata: {
-                  currency: meta?.currency,
-                  exchange: meta?.exchangeName
-                }
-              };
-            }
-          }
-        ];
-        
-        // Try each combination of proxy + endpoint
-        for (const proxy of corsProxies) {
-          for (const endpoint of yahooEndpoints) {
-            try {
-              const proxyUrl = proxy.buildUrl(endpoint.url);
-              console.log(`🔍 Trying: ${proxy.name} + ${endpoint.name}`);
-              console.log(`   URL: ${proxyUrl.substring(0, 80)}...`);
-              
-              const response = await fetch(proxyUrl, {
-                headers: proxy.headers || {}
-              });
-              
-              console.log(`   Status: ${response.status}`);
-              
-              if (response.ok) {
-                const proxyResponse = await response.json();
-                console.log('   📦 Proxy response keys:', Object.keys(proxyResponse));
-                console.log('   📦 Proxy response sample:', JSON.stringify(proxyResponse).substring(0, 200) + '...');
-                
-                let yahooData;
-                try {
-                  yahooData = proxy.extractData(proxyResponse);
-                  console.log('   ✓ Extracted Yahoo data');
-                  console.log('   📦 Yahoo data keys:', Object.keys(yahooData || {}));
-                  console.log('   📦 Yahoo data sample:', JSON.stringify(yahooData).substring(0, 300) + '...');
-                } catch (extractError) {
-                  console.error('   ❌ Failed to extract data:', extractError.message);
-                  continue;
-                }
-                
-                const { vix, symbol, metadata } = endpoint.extractVix(yahooData);
-                
-                console.log('   🔍 Extracted:');
-                console.log(`      Symbol: ${symbol}`);
-                console.log(`      VIX: ${vix}`);
-                console.log(`      Metadata:`, metadata);
-                
-                if (vix && !isNaN(vix) && vix > 5 && vix < 100) {
-                  setVixIndex(vix);
-                  setVixLastFetchTime(new Date());
-                  console.log('');
-                  console.log(`✅✅✅ VIX INDEX: ${vix} ✅✅✅`);
-                  console.log(`📡 Via: ${proxy.name} + ${endpoint.name}`);
-                  console.log('='.repeat(80));
-                  return; // Success!
-                } else {
-                  console.warn(`   ⚠️ Invalid VIX value: ${vix} (must be 5-100 and not NaN)`);
-                }
-              }
-            } catch (error) {
-              console.log(`   ❌ Failed: ${error.message}`);
-            }
-          }
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        // If we get here, all methods failed
-        console.log('');
-        console.error('❌ All proxy + API combinations failed');
-        throw new Error('Unable to fetch VIX - all CORS proxies and Yahoo Finance APIs failed');
+        const data = await response.json();
+        
+        if (data.success && data.vix) {
+          setVixIndex(data.vix);
+          setVixLastFetchTime(new Date());
+          console.log(`✅ VIX INDEX: ${data.vix} (via ${data.source})`);
+        } else {
+          throw new Error(data.error || 'Failed to fetch VIX');
+        }
         
       } catch (error) {
-        console.error('❌❌❌ ALL VIX FETCH METHODS FAILED ❌❌❌');
-        console.error('Error:', error.message);
-        console.error('');
-        console.error('🔧 TROUBLESHOOTING:');
-        console.error('1. Check browser console Network tab for CORS errors');
-        console.error('2. Yahoo Finance APIs (query1/query2.finance.yahoo.com) may be blocked');
-        console.error('3. Try disabling ad blockers or browser extensions');
-        console.error('4. Verify internet connection');
-        console.error('');
-        console.error('🌐 APIs Tried:');
-        console.error('   • https://query2.finance.yahoo.com/v7/finance/quote (Quote API)');
-        console.error('   • https://query1.finance.yahoo.com/v8/finance/chart (Chart API)');
-        console.error('   • CORS proxy fallbacks');
-        console.error('');
-        console.error('💡 WORKAROUND: Click the [Live Data] link to check VIX manually');
-        console.error('💡 Current VIX can be found at: https://finance.yahoo.com/quote/%5EVIX/');
-        console.error('='.repeat(80));
-        
+        console.error('❌ Error fetching VIX:', error.message);
+        console.error('💡 Make sure backend server is running at:', process.env.REACT_APP_API_URL || 'http://localhost:5001');
         setVixIndex(null);
       }
     };
@@ -2232,32 +2110,32 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "October 10, 2025 at 12:00 AM EST",
-        effective: "October 10, 2025 at 12:00 AM EST"
+        signed: "October 10, 2025 at 12:40 AM EST",
+        effective: "October 10, 2025 at 12:40 AM EST"
       },
       physical: {
-        signed: "October 10, 2025 at 12:00 AM EST",
-        effective: "October 10, 2025 at 12:00 AM EST"
+        signed: "October 10, 2025 at 12:40 AM EST",
+        effective: "October 10, 2025 at 12:40 AM EST"
       },
       mental: {
-        signed: "October 10, 2025 at 12:00 AM EST",
-        effective: "October 10, 2025 at 12:00 AM EST"
+        signed: "October 10, 2025 at 12:40 AM EST",
+        effective: "October 10, 2025 at 12:40 AM EST"
       },
       financial: {
-        signed: "October 10, 2025 at 12:00 AM EST",
-        effective: "October 10, 2025 at 12:00 AM EST"
+        signed: "October 10, 2025 at 12:40 AM EST",
+        effective: "October 10, 2025 at 12:40 AM EST"
       },
       career: {
-        signed: "October 10, 2025 at 12:00 AM EST",
-        effective: "October 10, 2025 at 12:00 AM EST"
+        signed: "October 10, 2025 at 12:40 AM EST",
+        effective: "October 10, 2025 at 12:40 AM EST"
       },
       'daily-os': {
-        signed: "October 10, 2025 at 12:00 AM EST",
-        effective: "October 10, 2025 at 12:00 AM EST"
+        signed: "October 10, 2025 at 12:40 AM EST",
+        effective: "October 10, 2025 at 12:40 AM EST"
       },
       workout: {
-        signed: "October 10, 2025 at 12:00 AM EST",
-        effective: "October 10, 2025 at 12:00 AM EST"
+        signed: "October 10, 2025 at 12:40 AM EST",
+        effective: "October 10, 2025 at 12:40 AM EST"
       }
     };
 
