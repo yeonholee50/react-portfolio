@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5001;
 // Enable CORS for your frontend
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-render-frontend-url.onrender.com'] // Update with your actual Render URL
+    ? '*' // Allow all origins for now - you can restrict this later
     : ['http://localhost:3000']
 }));
 
