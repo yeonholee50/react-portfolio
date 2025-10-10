@@ -214,17 +214,17 @@ const Stopwatch = () => {
           backdropFilter: 'blur(10px)'
         }}>
           <div style={{
-            background: 'rgba(8,12,24,0.95)',
+            background: 'rgba(6,0,32,0.95)',
             borderRadius: '1rem',
             padding: '2rem',
             maxWidth: '500px',
             width: '90%',
-            border: '1px solid rgba(255,64,87,0.3)',
-            boxShadow: '0 0 30px rgba(255,64,87,0.3)',
+            border: '1px solid rgba(255,255,255,0.2)',
+            boxShadow: '0 0 30px rgba(0,0,0,0.8)',
             textAlign: 'center'
           }}>
             <h3 style={{
-              color: '#ff4057',
+              color: '#FFFFFF',
               marginBottom: '1rem',
               fontFamily: 'monospace',
               fontSize: '1.2rem'
@@ -247,8 +247,8 @@ const Stopwatch = () => {
               <button
                 onClick={() => handleConfirmation(false)}
                 style={{
-                  background: 'linear-gradient(135deg, rgba(64,255,218,0.2), rgba(64,255,218,0.1))',
-                  border: '1px solid rgba(64,255,218,0.3)',
+                  background: 'linear-gradient(135deg, rgba(229,229,229,0.3), rgba(229,229,229,0.2))',
+                  border: '1px solid rgba(229,229,229,0.5)',
                   color: '#fff',
                   padding: '0.75rem 1.5rem',
                   borderRadius: '0.5rem',
@@ -262,8 +262,8 @@ const Stopwatch = () => {
               <button
                 onClick={() => handleConfirmation(true)}
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255,64,87,0.2), rgba(255,64,87,0.1))',
-                  border: '1px solid rgba(255,64,87,0.3)',
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.15), rgba(0,0,0,0.9))',
+                border: '1px solid rgba(255,255,255,0.3)',
                   color: '#fff',
                   padding: '0.75rem 1.5rem',
                   borderRadius: '0.5rem',
@@ -280,13 +280,14 @@ const Stopwatch = () => {
       )}
 
       <div style={{
-        background: 'rgba(8,12,24,0.6)',
-        borderRadius: '0.5rem',
+        background: 'rgba(0,0,0,0.8)',
+        borderRadius: '0',
         padding: '1rem',
         marginTop: '1rem',
-        border: '1px solid rgba(64,87,255,0.2)',
+        border: '1px solid rgba(255,255,255,0.15)',
+        borderLeft: '2px solid rgba(255,255,255,0.3)',
         backdropFilter: 'blur(10px)',
-        animation: 'neonPulse 2s infinite'
+        clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)'
       }}>
         <div style={{
           display: 'flex',
@@ -298,53 +299,53 @@ const Stopwatch = () => {
         }}>
           <div style={{ textAlign: 'center' }}>
             <div style={{ 
-              fontSize: '1rem', 
-              fontWeight: 'bold',
-              color: '#64ffda',
-              textShadow: '0 0 10px rgba(100,255,218,0.5)',
+              fontSize: '1.2rem', 
+              fontWeight: '600',
+              color: '#FFFFFF',
+              letterSpacing: '1px',
               transition: 'all 0.3s ease'
             }}>{String(time.weeks).padStart(2, '0')}</div>
-            <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>WKS</div>
+            <div style={{ opacity: 0.5, fontSize: '0.65rem', color: '#E5E5E5', letterSpacing: '1px' }}>WKS</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ 
-              fontSize: '1rem', 
-              fontWeight: 'bold',
-              color: '#64ffda',
-              textShadow: '0 0 10px rgba(100,255,218,0.5)',
+              fontSize: '1.2rem', 
+              fontWeight: '600',
+              color: '#FFFFFF',
+              letterSpacing: '1px',
               transition: 'all 0.3s ease'
             }}>{String(time.days).padStart(2, '0')}</div>
-            <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>DAYS</div>
+            <div style={{ opacity: 0.5, fontSize: '0.65rem', color: '#E5E5E5', letterSpacing: '1px' }}>DAYS</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ 
-              fontSize: '1rem', 
-              fontWeight: 'bold',
-              color: '#64ffda',
-              textShadow: '0 0 10px rgba(100,255,218,0.5)',
+              fontSize: '1.2rem', 
+              fontWeight: '600',
+              color: '#FFFFFF',
+              letterSpacing: '1px',
               transition: 'all 0.3s ease'
             }}>{String(time.hours).padStart(2, '0')}</div>
-            <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>HRS</div>
+            <div style={{ opacity: 0.5, fontSize: '0.65rem', color: '#E5E5E5', letterSpacing: '1px' }}>HRS</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ 
-              fontSize: '1rem', 
-              fontWeight: 'bold',
-              color: '#64ffda',
-              textShadow: '0 0 10px rgba(100,255,218,0.5)',
+              fontSize: '1.2rem', 
+              fontWeight: '600',
+              color: '#FFFFFF',
+              letterSpacing: '1px',
               transition: 'all 0.3s ease'
             }}>{String(time.minutes).padStart(2, '0')}</div>
-            <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>MIN</div>
+            <div style={{ opacity: 0.5, fontSize: '0.65rem', color: '#E5E5E5', letterSpacing: '1px' }}>MIN</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ 
-              fontSize: '1rem', 
-              fontWeight: 'bold',
-              color: '#64ffda',
-              textShadow: '0 0 10px rgba(100,255,218,0.5)',
+              fontSize: '1.2rem', 
+              fontWeight: '600',
+              color: '#FFFFFF',
+              letterSpacing: '1px',
               transition: 'all 0.3s ease'
             }}>{String(time.seconds).padStart(2, '0')}</div>
-            <div style={{ opacity: 0.7, fontSize: '0.7rem' }}>SEC</div>
+            <div style={{ opacity: 0.5, fontSize: '0.65rem', color: '#E5E5E5', letterSpacing: '1px' }}>SEC</div>
           </div>
           <div style={{
             display: 'flex',
@@ -355,31 +356,35 @@ const Stopwatch = () => {
               onClick={handleStopClick}
               style={{
                 background: isRunning ? 
-                  'linear-gradient(135deg, rgba(255,64,87,0.2), rgba(255,64,87,0.1))' :
-                  'linear-gradient(135deg, rgba(64,255,218,0.2), rgba(64,255,218,0.1))',
-                border: `1px solid ${isRunning ? 'rgba(255,64,87,0.3)' : 'rgba(64,255,218,0.3)'}`,
-                color: '#fff',
+                  'linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1))' :
+                  'linear-gradient(135deg, rgba(255,255,255,0.15), rgba(0,0,0,0.5))',
+                border: `1px solid ${isRunning ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.2)'}`,
+                color: '#FFFFFF',
                 padding: '0.5rem 1rem',
-                borderRadius: '0.25rem',
+                borderRadius: '0',
                 cursor: 'pointer',
-                fontFamily: 'monospace',
-                fontSize: '0.8rem',
-                transition: 'all 0.3s ease',
-                textShadow: `0 0 5px ${isRunning ? 'rgba(255,64,87,0.5)' : 'rgba(64,255,218,0.5)'}`
+                fontFamily: '"Helvetica Neue", "Arial", sans-serif',
+                fontSize: '0.75rem',
+                fontWeight: '600',
+                letterSpacing: '2px',
+                transition: 'all 0.2s ease',
+                clipPath: 'polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px)'
               }}
             >
               {isRunning ? 'STOP' : 'START'}
             </button>
             <div style={{
-              color: isRunning ? '#64ffda' : 'rgba(255,255,255,0.5)',
-              fontFamily: 'monospace',
+              color: isRunning ? '#FFFFFF' : 'rgba(229,229,229,0.6)',
+              fontFamily: '"Helvetica Neue", "Arial", sans-serif',
               fontSize: '0.7rem',
+              fontWeight: '500',
+              letterSpacing: '2px',
               textAlign: 'center',
               padding: '0.5rem 0.75rem',
-              background: isRunning ? 'rgba(64,255,218,0.1)' : 'rgba(255,255,255,0.05)',
-              border: `1px solid ${isRunning ? 'rgba(64,255,218,0.3)' : 'rgba(255,255,255,0.1)'}`,
-              borderRadius: '0.25rem',
-              textShadow: isRunning ? '0 0 5px rgba(64,255,218,0.5)' : 'none'
+              background: isRunning ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.03)',
+              border: `1px solid ${isRunning ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.1)'}`,
+              borderRadius: '0',
+              clipPath: 'polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px)'
             }}>
               {isRunning ? 'ACTIVE' : 'PAUSED'}
             </div>
@@ -402,6 +407,11 @@ const AManProject = () => {
   const [cycleStartDate, setCycleStartDate] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [time, setTime] = useState(0);
+  const [buffettIndicator, setBuffettIndicator] = useState(null);
+  const [investmentRatio, setInvestmentRatio] = useState('3:1');
+  const [lastFetchTime, setLastFetchTime] = useState(null);
+  const [vixIndex, setVixIndex] = useState(null);
+  const [vixLastFetchTime, setVixLastFetchTime] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -420,6 +430,220 @@ const AManProject = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Fetch Buffett Indicator data
+  useEffect(() => {
+    const fetchBuffettIndicator = async () => {
+      try {
+        // Using CORS proxy to bypass CORS restrictions
+        const proxyUrl = 'https://api.allorigins.win/raw?url=';
+        const targetUrl = encodeURIComponent('https://buffettindicator.net/');
+        
+        const response = await fetch(proxyUrl + targetUrl);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const html = await response.text();
+        
+        // Parse the HTML to extract autoRatio
+        const match = html.match(/let\s+autoRatio\s*=\s*([\d.]+);/);
+        
+        if (match && match[1]) {
+          const ratio = parseFloat(match[1]);
+          setBuffettIndicator(ratio);
+          setLastFetchTime(new Date());
+          
+          // Automatically set investment ratio based on Buffett Indicator
+          let newRatio;
+          if (ratio > 200) {
+            newRatio = '2:1'; // Conservative - build more cash reserve
+          } else if (ratio >= 100 && ratio <= 200) {
+            newRatio = '3:1'; // Balanced
+          } else {
+            newRatio = '4:1'; // Aggressive - market undervalued
+          }
+          setInvestmentRatio(newRatio);
+          
+          console.log(`✅ Buffett Indicator updated: ${ratio}% | Ratio: ${newRatio}`);
+        } else {
+          console.error('❌ Could not parse Buffett Indicator from HTML');
+          setBuffettIndicator(null);
+          setInvestmentRatio(null);
+        }
+      } catch (error) {
+        console.error('❌ Error fetching Buffett Indicator:', error);
+        // NO FALLBACK DATA - show the error clearly
+        setBuffettIndicator(null);
+        setInvestmentRatio(null);
+      }
+    };
+
+    // Fetch immediately on mount
+    fetchBuffettIndicator();
+
+    // Fetch every hour (3600000 milliseconds)
+    const interval = setInterval(fetchBuffettIndicator, 3600000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Fetch VIX Index data - Using CORS proxies to access Yahoo Finance APIs
+  useEffect(() => {
+    const fetchVixIndex = async () => {
+      console.log('🔄 Fetching VIX Index...');
+      console.log('='.repeat(80));
+      console.log('⚠️ Yahoo Finance APIs have CORS restrictions');
+      console.log('📡 Using CORS proxies to bypass browser security...');
+      console.log('');
+      
+      try {
+        // CORS Proxy configurations
+        const corsProxies = [
+          {
+            name: 'AllOrigins',
+            buildUrl: (target) => `https://api.allorigins.win/get?url=${encodeURIComponent(target)}`,
+            extractData: (json) => JSON.parse(json.contents)
+          },
+          {
+            name: 'CORS.SH',
+            buildUrl: (target) => `https://cors.sh/${target}`,
+            extractData: (json) => json,
+            headers: { 'x-requested-with': 'XMLHttpRequest' }
+          },
+          {
+            name: 'ThingProxy',
+            buildUrl: (target) => `https://thingproxy.freeboard.io/fetch/${target}`,
+            extractData: (json) => json
+          }
+        ];
+        
+        // Yahoo Finance API endpoints
+        const yahooEndpoints = [
+          {
+            name: 'Quote API (v7)',
+            url: 'https://query2.finance.yahoo.com/v7/finance/quote?symbols=%5EVIX',
+            extractVix: (data) => {
+              const result = data?.quoteResponse?.result?.[0];
+              return {
+                vix: result?.regularMarketPrice,
+                symbol: result?.symbol,
+                metadata: {
+                  marketState: result?.marketState,
+                  exchange: result?.exchange
+                }
+              };
+            }
+          },
+          {
+            name: 'Chart API (v8)',
+            url: 'https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?interval=1d&range=1d',
+            extractVix: (data) => {
+              const meta = data?.chart?.result?.[0]?.meta;
+              return {
+                vix: meta?.regularMarketPrice,
+                symbol: meta?.symbol,
+                metadata: {
+                  currency: meta?.currency,
+                  exchange: meta?.exchangeName
+                }
+              };
+            }
+          }
+        ];
+        
+        // Try each combination of proxy + endpoint
+        for (const proxy of corsProxies) {
+          for (const endpoint of yahooEndpoints) {
+            try {
+              const proxyUrl = proxy.buildUrl(endpoint.url);
+              console.log(`🔍 Trying: ${proxy.name} + ${endpoint.name}`);
+              console.log(`   URL: ${proxyUrl.substring(0, 80)}...`);
+              
+              const response = await fetch(proxyUrl, {
+                headers: proxy.headers || {}
+              });
+              
+              console.log(`   Status: ${response.status}`);
+              
+              if (response.ok) {
+                const proxyResponse = await response.json();
+                console.log('   📦 Proxy response keys:', Object.keys(proxyResponse));
+                console.log('   📦 Proxy response sample:', JSON.stringify(proxyResponse).substring(0, 200) + '...');
+                
+                let yahooData;
+                try {
+                  yahooData = proxy.extractData(proxyResponse);
+                  console.log('   ✓ Extracted Yahoo data');
+                  console.log('   📦 Yahoo data keys:', Object.keys(yahooData || {}));
+                  console.log('   📦 Yahoo data sample:', JSON.stringify(yahooData).substring(0, 300) + '...');
+                } catch (extractError) {
+                  console.error('   ❌ Failed to extract data:', extractError.message);
+                  continue;
+                }
+                
+                const { vix, symbol, metadata } = endpoint.extractVix(yahooData);
+                
+                console.log('   🔍 Extracted:');
+                console.log(`      Symbol: ${symbol}`);
+                console.log(`      VIX: ${vix}`);
+                console.log(`      Metadata:`, metadata);
+                
+                if (vix && !isNaN(vix) && vix > 5 && vix < 100) {
+                  setVixIndex(vix);
+                  setVixLastFetchTime(new Date());
+                  console.log('');
+                  console.log(`✅✅✅ VIX INDEX: ${vix} ✅✅✅`);
+                  console.log(`📡 Via: ${proxy.name} + ${endpoint.name}`);
+                  console.log('='.repeat(80));
+                  return; // Success!
+                } else {
+                  console.warn(`   ⚠️ Invalid VIX value: ${vix} (must be 5-100 and not NaN)`);
+                }
+              }
+            } catch (error) {
+              console.log(`   ❌ Failed: ${error.message}`);
+            }
+          }
+        }
+        
+        // If we get here, all methods failed
+        console.log('');
+        console.error('❌ All proxy + API combinations failed');
+        throw new Error('Unable to fetch VIX - all CORS proxies and Yahoo Finance APIs failed');
+        
+      } catch (error) {
+        console.error('❌❌❌ ALL VIX FETCH METHODS FAILED ❌❌❌');
+        console.error('Error:', error.message);
+        console.error('');
+        console.error('🔧 TROUBLESHOOTING:');
+        console.error('1. Check browser console Network tab for CORS errors');
+        console.error('2. Yahoo Finance APIs (query1/query2.finance.yahoo.com) may be blocked');
+        console.error('3. Try disabling ad blockers or browser extensions');
+        console.error('4. Verify internet connection');
+        console.error('');
+        console.error('🌐 APIs Tried:');
+        console.error('   • https://query2.finance.yahoo.com/v7/finance/quote (Quote API)');
+        console.error('   • https://query1.finance.yahoo.com/v8/finance/chart (Chart API)');
+        console.error('   • CORS proxy fallbacks');
+        console.error('');
+        console.error('💡 WORKAROUND: Click the [Live Data] link to check VIX manually');
+        console.error('💡 Current VIX can be found at: https://finance.yahoo.com/quote/%5EVIX/');
+        console.error('='.repeat(80));
+        
+        setVixIndex(null);
+      }
+    };
+
+    // Fetch immediately on mount
+    fetchVixIndex();
+
+    // Fetch every hour (3600000 milliseconds) - same as Buffett Indicator
+    const interval = setInterval(fetchVixIndex, 3600000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const socialTraits = [
@@ -631,134 +855,198 @@ const AManProject = () => {
 
   const financialRules = [
     {
-      id: 'buckets',
-      title: 'Financial Buckets System',
+      id: 'account-structure',
+      title: '🏦 Account Structure',
       content: [
-        'Bank Account: Daily expenses & buffer. Maintain $5,000-$7,500 minimum. Primary checking for rent, living expenses, insurance. After expenses + $1,000 buffer, excess goes to reserves.',
-        'Fidelity Cash Reserve: Market crash deployment fund. 90% SGOV (0-3 month treasury), 10% BAR (gold ETF). NEVER transfer to bank. Only for deploying to other Fidelity accounts during crashes.',
-        'Fidelity Investment Portfolio: Long-term wealth building. 30% Tech investments, 5% Speculative, 50% Exchange Traded Funds, 15% Healthcare. Hold until fundamentals change.',
-        'Roth IRA (Regular): Tax-free retirement growth. 30% SPY-themed (SPLG, SPYV, VIG), 50% Nasdaq-themed (QQQM, SCHG, XLC), 20% Dow-themed (DJD, VTV). Max $7,000/year by May.',
-        'Roth IRA (Dad\'s): Dad\'s retirement fund. 50% SCHG, 30% SPLG, 20% SCHD. Mom manages, you control investments. Never sell until Dad reaches 60. $500/month from Mom\'s gift starting Jan 2026.',
-        'Fundamental Bank Insurance Reserve: Long-term emergency fund. 100% SGOV (0-3 month treasury). High yield savings account - no caps. 2:1 ratio with Secondary Reserve. Last resort emergency fund. NEVER use for investing.',
-        'Secondary Bank Insurance Reserve: Short-term emergency fund. 100% SGOV (0-3 month treasury). High yield savings account - no caps. 1:2 ratio with Fundamental Reserve. First line emergency fund. NEVER use for investing.'
+        '💰 Bank of America Checking: Daily expenses & buffer. NEVER exceed $7,500. Once exceeded, split 80% to Fidelity Brokerage, 20% to Charles Schwab.',
+        '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Tech, Healthcare, Speculative, ETFs).',
+        '📊 Cash Reserve (Fidelity): Market crash deployment fund. ONLY used when market crashes (VIX-based triggers). Deploys in specific ratios: 5% Speculative, 30% Tech, 15% Healthcare, 50% ETFs.',
+        '🛡️ Fundamental Bank Insurance Reserve: Backup after Cash Reserve depleted. Used ONLY after Cash Reserve is 100% deployed during sustained market crashes.',
+        '🚨 Secondary Bank Insurance Reserve: LAST RESORT emergency fund. Market cap: $1,000. Held in SPAXX (highly liquid). NEVER touch unless absolute emergency.',
+        '💎 Charles Schwab Account: Savings account extension (NOT investment account). All funds in SGOV. Higher yield than traditional savings. Pull from here for discretionary spending.'
       ]
     },
     {
-      id: 'income-flow',
-      title: 'Monthly Income Flow ($7,000)',
+      id: 'key-accounts-summary',
+      title: '🗂️ Key Accounts Summary',
       content: [
-        'Step 1: Receive after-tax income - $7,000 total monthly take-home pay',
-        'Step 2: Pay fixed expenses (rent, insurance, living costs) - $4,000 (DO NOT sacrifice health - hospital fees cost more)',
-        'Step 3: Set aside unaccounted expenditure buffer - $1,000 buffer for unexpected expenses',
-        'Step 4: Available for investment - $2,000 remaining after all expenses and buffer (Be frugal when alone - spend when with others/Korea)',
-        'Step 5: Investment obligation - $1,600/month minimum ($700 to Roth IRA until maxed + $900 split: $300 Cash Reserve + $600 Investment Portfolio)',
-        'Step 6: Bank allocation (flexible) - $400 remaining to bank ($200 to Fundamental Bank Insurance Reserve optional, $100 to Secondary Bank Insurance Reserve optional, $100 can stay in bank account)'
+        '🏦 Bank of America: ≤$7,500 (daily expenses)',
+        '💎 Charles Schwab: Savings in SGOV (for spending)',
+        '📈 Fidelity Brokerage: All investments (stocks + ETFs)',
+        '💰 Cash Reserve (Fidelity): Market crash deployment',
+        '🛡️ Fundamental Reserve: After Cash Reserve depleted',
+        '🚨 Secondary Reserve: $1,000 cap (SPAXX)',
+        '🎯 Personal Roth IRA: $700/month (tax-free retirement)',
+        '👨‍👦 Dad\'s Roth IRA: $500/month (until 2032)'
       ]
     },
     {
-      id: 'investment-portfolio-split',
-      title: 'Investment Portfolio Split ($900/month)',
+      id: 'income-allocation',
+      title: '💸 Monthly Income Allocation',
       content: [
-        'Exchange Traded Funds Portfolio ($300/month):',
-        '  32.5% QQQM = $97.5',
-        '  25% SCHG = $75',
-        '  25% SPLG = $75',
-        '  12.5% VT = $37.5',
-        'Tech Investments (30% of $600 = $180): Market cap >$100B, P/E <30. 50% forever holdings, 50% other candidates. Never sell unless thesis breaks.',
-        'Healthcare (15% of $600 = $90): P/E <20, very undervalued. 1/N across holdings. Never sell unless thesis breaks.',
-        'Speculative (5% of $600 = $30): EXCEPTION TO NEVER SELL RULE. Market cap <$100B, undervalued with high upside. Can sell after 3 months or choose to keep.'
+        '📥 After all monthly expenses (rent, food, water, transportation, Roth IRA contributions, Dad\'s Roth IRA, emergency $500 buffer)...',
+        '📊 Split remaining net income:',
+        '   • 80% → Fidelity Brokerage Account (investment ratio based on Buffett Indicator)',
+        '   • 20% → Charles Schwab Account (buy SGOV)',
+        '',
+        '🎚️ Buffett Indicator Investment Ratios (Investment:Cash Reserve):',
+        '   • >200%: 2:1 ratio (more conservative, build cash reserve)',
+        '   • 100-200%: 3:1 ratio (balanced approach)',
+        '   • <100%: 4:1 ratio (aggressive, market is undervalued)',
+        '',
+        '🤖 AUTOMATIC LIVE UPDATES:',
+        '   • System fetches live data from buffettindicator.net every hour',
+        '   • Ratio automatically adjusts based on market conditions',
+        '   • Check the "Live Market Valuation" panel above for current settings',
+        '   • ⚙️ Manual override available if needed'
       ]
     },
     {
-      id: 'roth-ira-strategy',
-      title: 'Roth IRA Strategy (Market-Based Allocation)',
+      id: 'investment-splits',
+      title: '📈 Investment Portfolio Splits',
       content: [
-        'If market has collapsed: Max out on NDAQ 100 Roth first',
-        'If market is relatively neutral: Max out on SPY 500 Roth first',
-        'If market is overvalued by a lot: Max out on Dow Jones Roth first',
-        'Regular Roth IRA allocation: 30% SPY-themed (SPLG, SPYV, VIG), 50% Nasdaq-themed (QQQM, SCHG, XLC), 20% Dow-themed (DJD, VTV)',
-        'Max $7,000/year by May. After Roth IRA maxed: $500 to Cash Reserve (33.33% of $1,500), $1,000 to Investment Portfolio (66.67% of $1,500)'
+        '🔷 50% Exchange Traded Funds (ETFs):',
+        '   • QQQM: 37.5% of the 50%',
+        '   • SCHG: 25% of the 50%',
+        '   • SPLG: 25% of the 50%',
+        '   • VT: 12.5% of the 50%',
+        '',
+        '💻 30% Technology Investments:',
+        '   • Requirements: >$100B market cap, big/pivotal player, proven sales, undervalued',
+        '   • Current holdings: GOOGL, GOOG, TSM',
+        '   • 🔒 HOLD FOREVER - never sell these positions',
+        '   • Bull case: [Google] Dominant search + cloud growth + AI leadership',
+        '   • Bull case: [TSM] Global chip leader + Apple/Nvidia supplier + monopolistic moat',
+        '',
+        '🏥 15% Healthcare Investments:',
+        '   • Requirements: >$100B market cap, reputable names, undervalued medical companies',
+        '   • Current: UNH (UnitedHealth Group)',
+        '   • Future considerations: PFE (Pfizer), NVO (Novo Nordisk) if criteria met',
+        '   • 🔒 HOLD FOREVER - never sell unless fundamentals break',
+        '',
+        '🎲 5% Speculative Investments:',
+        '   • AmpyFin AI recommendations: undervalued assets expected to rise within 12 months',
+        '   • ⚠️ EXCEPTION: Can sell after 3-month minimum hold period',
+        '   • Lock period: Cannot sell until 3 months expire from purchase date'
       ]
     },
     {
-      id: 'family-contributions-2026',
-      title: 'Family Contributions (Starting Jan 2026)',
+      id: 'roth-ira-personal',
+      title: '🎯 Personal Roth IRA (Starting 2026)',
       content: [
-        '$500/month to Mom - she invests in accordance with Dad\'s Roth IRA',
-        'Dad\'s Roth IRA (over 50, max $8,000): Contingent on him putting $2,000 of his own money',
-        'Our monthly contribution split: $250 in QQQM, $150 in SPLG, $100 in SCHD',
-        'Take the money out of our "buffer" so we have $500 buffer',
-        'Mom manages Dad\'s Roth IRA in Fidelity - she has access and executes trades, you control what to buy',
-        'Never sell until Dad reaches 60 - this is his retirement fund'
+        '💰 Monthly Contribution: $700/month',
+        '⏰ Goal: Fully funded by end of October each year',
+        '',
+        '📊 50% Nasdaq Roth IRA ($3,500 annually):',
+        '   • QQQM: $2,100',
+        '   • SCHG: $1,050',
+        '   • XLC: $350',
+        '',
+        '📊 30% SPY Roth IRA ($2,100 annually):',
+        '   • SPLG: $1,680',
+        '   • VIG: $210',
+        '   • SPYV: $210',
+        '',
+        '📊 20% Dow Jones Roth IRA ($1,400 annually):',
+        '   • DJD: $560',
+        '   • SCHD: $560',
+        '   • VTV: $280',
+        '',
+        '✅ Once Roth IRA is maxed: Redirect $700/month to Brokerage/Cash Reserve per Buffet Indicator ratio'
+      ]
+    },
+    {
+      id: 'roth-ira-dad',
+      title: '👨‍👦 Dad\'s Roth IRA (Starting 2026)',
+      content: [
+        '💰 Our Contribution: $500/month until Dad reaches age 60 (year 2032)',
+        '⚠️ Contingency: Dad MUST contribute $2,000 of his own money',
+        '',
+        '📊 Investment Allocation (Total $8,000 annually):',
+        '   • 50% QQQM: $3,500',
+        '   • 30% SPLG: $2,100',
+        '   • 20% SCHD: $1,400',
+        '',
+        '🔐 Management: Mom executes trades in Fidelity, we control what to buy',
+        '🔒 HOLD UNTIL DAD IS 60 - This is his retirement fund',
+        '💡 After Roth IRA maxed: Redirect $500/month to Brokerage/Cash Reserve'
       ]
     },
     {
       id: 'vix-deployment',
-      title: 'VIX Deployment Ladder (Mechanical, Not Emotional)',
+      title: '🚨 Market Crash Deployment Protocol (VIX-Based)',
       content: [
-        'VIX ≥ 30: Invest 20% of FCR',
-        'VIX ≥ 35: Invest 37.5% of the remaining FCR',
-        'VIX ≥ 40: Invest 100% of the remaining FCR',
-        'Computation example:',
-        '  Let F0 = current FCR.',
-        '  30+ → invest 0.20*F0; remaining R1=0.80*F0.',
-        '  35+ → invest 0.375*R1; remaining R2=0.625*R1.',
-        '  40+ → invest R2 (all).'
-      ]
-    },
-    {
-      id: '2025-investment-plan',
-      title: '2025 Investment Plan (Completed & Upcoming)',
-      content: [
-        'COMPLETED PURCHASES:',
-        '  ✅ Laptop for Yeonsung - $800',
-        '  ✅ Laptop for Mom - $800', 
-        '  ✅ Laptop for Dad - $800 (came in wrong order)',
-        '  ✅ Birthday present for Mom - $150',
-        '  ✅ Birthday present for Dad - $150',
-        'LATE OCTOBER 2025:',
-        '  • $400 in Roth IRA - all in on SPY Roth',
-        'LATE NOVEMBER 2025:',
-        '  • $1,000 in Roth IRA - all in on SPY Roth and rest in NDAQ 100 composite',
-        '  • Purchase 2 laptops during Cyber Monday - Best Buy Silver 13 inch 16GB 512 SSD',
-        'LATE DECEMBER 2025:',
-        '  • $1,000 in Roth IRA - all in on NDAQ 100 composite'
+        '⚡ WHEN MARKET CRASHES - Deploy Cash Reserve:',
+        '',
+        '📉 Cash Reserve Deployment:',
+        '   • VIX ≥ 30: Deploy 25% of Cash Reserve',
+        '   • VIX ≥ 35: Deploy 37.5% of remaining Cash Reserve',
+        '   • VIX ≥ 40: Deploy 100% of remaining Cash Reserve',
+        '',
+        '🛡️ Fundamental Bank Insurance Reserve Deployment:',
+        '   • VIX ≥ 40 (Day 2): Deploy 25% of Fundamental Reserve',
+        '   • VIX ≥ 40 (Day 3): Deploy 37.5% of remaining Fundamental Reserve',
+        '   • VIX ≥ 40 (Day 4): Deploy 100% of remaining Fundamental Reserve',
+        '',
+        '💎 Deployment Ratios (ALWAYS):',
+        '   • 5% → Speculative investments',
+        '   • 30% → Technology investments',
+        '   • 15% → Healthcare investments',
+        '   • 50% → Exchange Traded Funds',
+        '',
+        '🔒 IRON RULE: We NEVER EVER sell investments. NEVER.'
       ]
     },
     {
       id: 'discipline-rules',
-      title: 'Discipline Rules (Operationalized)',
+      title: '⚔️ Discipline Rules (NON-NEGOTIABLE)',
       content: [
-        'NEVER DEVIATE from the written plan. Read the runbook before placing orders.',
-        'Ignore market noise & headlines. Fed moves ≠ reasons.',
-        'Ignore "price vibes." "Too high/low" isn\'t a criterion.',
-        'Criteria-only: If the pre-set screen fits, invest; if not, pass.',
-        'Valid "no": P/E in the 80s (violates guardrail).',
-        'Invalid "no": "I\'m scared about rate moves."',
-        'Invest as scheduled/triggered. No exceptions.',
-        'Brokerage stays brokerage. No discretionary withdrawals.',
-        'Reinvest all dividends until $5M portfolio.'
+        '🚫 NEVER DEVIATE from the written plan. Read the runbook before placing orders.',
+        '🔇 Ignore market noise & headlines. Fed moves ≠ investment reasons.',
+        '🎯 Criteria-only decisions: If pre-set screen fits → invest. If not → pass.',
+        '❌ Invalid "no": "I\'m scared about rate moves" or "price feels too high/low"',
+        '✅ Valid "no": Violates fundamental guardrails (e.g., P/E in the 80s)',
+        '',
+        '💎 BROKERAGE STAYS BROKERAGE:',
+        '   • No discretionary withdrawals for lifestyle',
+        '   • Charles Schwab is for spending, NOT brokerage',
+        '   • Bank of America checking: ≤ $7,500 maximum',
+        '',
+        '🔄 Reinvest ALL dividends until $5M portfolio',
+        '📊 Invest as scheduled/triggered. NO EXCEPTIONS.',
+        '',
+        '🔒 WE NEVER SELL. NEVER EVER. NEVER.'
       ]
     },
     {
       id: 'withdrawal-order',
-      title: 'Withdrawal Order (Emergencies Only)',
+      title: '🆘 Emergency Withdrawal Order (LAST RESORT ONLY)',
       content: [
-        '1. Secondary Bank Insurance Reserve',
-        '2. Fundamental Bank Insurance Reserve',
-        '3. Speculative investments',
-        '4. Cash Reserves (Fidelity)',
-        '5. Healthcare investments',
-        '6. Technology investments',
-        '7. ETFs',
-        '8. Final resort: Roth IRA (penalty + lost contribution space)',
-        'Valid emergency reasons: Can\'t afford rent/insurance/food/water; accident compensation.',
-        'Invalid: Gadgets, headphones, casual flights, etc.'
+        '⚠️ USE CHARLES SCHWAB FIRST - That\'s what it\'s for!',
+        '',
+        '🔻 If you MUST withdraw from investments (in order):',
+        '   1. Secondary Bank Insurance Reserve (SPAXX)',
+        '   2. Fundamental Bank Insurance Reserve',
+        '   3. Speculative investments (already have 3-month hold)',
+        '   4. Cash Reserve (Fidelity - but this defeats the purpose)',
+        '   5. Healthcare investments',
+        '   6. Technology investments (GOOGL, GOOG, TSM)',
+        '   7. ETFs (core holdings)',
+        '   8. ☢️ NUCLEAR OPTION: Roth IRA (penalty + lost contribution space)',
+        '',
+        '✅ Valid Emergency Reasons:',
+        '   • Cannot afford rent/insurance/food/water',
+        '   • Medical emergency / accident compensation',
+        '',
+        '❌ INVALID Reasons (Use Charles Schwab instead):',
+        '   • Gadgets, headphones, electronics',
+        '   • Casual flights, vacations',
+        '   • "Want" vs "Need" purchases'
       ]
     },
     {
       id: 'milestone-rewards',
-      title: 'Milestone Rewards (30-Day Cool-Off)',
+      title: '🎯 Milestone Rewards',
       content: [
         '$12.5k → 125 push-ups (5×25)',
         '$15k → 150 push-ups (6×25)',
@@ -778,21 +1066,39 @@ const AManProject = () => {
     },
     {
       id: 'monthly-cadence',
-      title: 'Monthly Cadence',
+      title: '📅 Monthly Cadence & Reviews',
       content: [
-        'First weekday: net-worth snapshot, fee check, confirm DRIP/auto-transfers; verify Bank Insurance Reserves untouched.',
-        'Mid-month: rule audit, subscription cull, confirm no brokerage leaks.',
-        'All actions documented in a Google Doc (date, trigger, amount, instrument, rule cited).'
-      ]
-    },
-    {
-      id: 'automation-guardrails',
-      title: 'Automation & Guardrails',
-      content: [
-        'DRIP on; no margin; options trading disabled.',
-        'Pre-trade 60-second checklist (threshold met? step? remaining FCR? order size? cite rule).',
-        'Bank Insurance Reserves in separate bank/app to reduce temptation.',
-        'Accountability partner receives monthly one-pager.'
+        '📊 First Monday of Every Month:',
+        '   • Review plan and verify using spreadsheet and Google Doc',
+        '   • Determine where to transfer how much',
+        '   • Decide what to buy and how much of it to buy',
+        '   • Verify decisions on Google Doc and spreadsheet',
+        '   • Buy those assets according to the plan',
+        '   • Make necessary changes in accounts',
+        '   • Reflect all changes on spreadsheet and Google Doc',
+        '   • Log out and close brokerage',
+        '',
+        '🔒 Brokerage Access Protocol:',
+        '   • We DO NOT look at brokerage accounts regularly',
+        '   • Only check brokerage when VIX Index > 30',
+        '   • VIX > 30 = Market crash = Deploy cash reserve time',
+        '   • Monitor VIX at: https://finance.yahoo.com/quote/%5EVIX/',
+        '',
+        '⚠️ CRITICAL REMINDERS:',
+        '   • NEVER SELL - DO NOT PANIC',
+        '   • We invest in ratios specified and amounts planned',
+        '   • DO NOT try to time the market',
+        '   • Time in the market TRIUMPHS over timing the market',
+        '   • Our wealth is built through consistency, not timing',
+        '',
+        '🔍 Mid-Month Review:',
+        '   • Rule audit: Did I follow the plan?',
+        '   • Subscription cull: Cancel unused services',
+        '   • Confirm no brokerage leaks or withdrawals',
+        '',
+        '📝 Documentation (Google Doc):',
+        '   • Every action recorded: date, trigger, amount, instrument, rule cited',
+        '   • Monthly summary: wins, mistakes, lessons learned'
       ]
     }
   ];
@@ -1106,12 +1412,21 @@ const AManProject = () => {
     },
     {
       id: 'wednesday',
-      title: 'Wednesday - Rest Day',
+      title: 'Wednesday - Core Day',
       exercises: [
         { 
-          name: 'Lake Walk', 
+          name: 'Crunches', 
           sets: [
-            { reps: 1, intensity: 'light', count: 1, note: '1 hour walk at lake after work' }
+            { reps: 15, intensity: 'light', count: 3 },
+            { reps: 20, intensity: 'medium', count: 3 },
+            { reps: 25, intensity: 'heavy', count: 2 }
+          ]
+        },
+        { 
+          name: 'Plank', 
+          sets: [
+            { reps: 30, intensity: 'light', count: 3, note: '30 seconds each' },
+            { reps: 45, intensity: 'medium', count: 2, note: '45 seconds each' }
           ]
         }
       ]
@@ -1154,12 +1469,18 @@ const AManProject = () => {
     },
     {
       id: 'friday',
-      title: 'Friday - Rest Day',
+      title: 'Friday - Cardio Day',
       exercises: [
         { 
-          name: 'Lake Walk', 
+          name: 'Outdoor Run', 
           sets: [
-            { reps: 1, intensity: 'light', count: 1, note: '1 hour walk at lake after work' }
+            { reps: 4, intensity: 'medium', count: 1, note: '4 miles outside - maintain steady pace' }
+          ]
+        },
+        { 
+          name: 'Cool Down Walk', 
+          sets: [
+            { reps: 5, intensity: 'light', count: 1, note: '5 minutes walking to cool down' }
           ]
         }
       ]
@@ -1194,26 +1515,65 @@ const AManProject = () => {
           ]
         }
       ]
-    },
-    {
-      id: 'daily',
-      title: 'Daily Core Workout',
-      exercises: [
-        { 
-          name: 'Crunches', 
-          sets: [
-            { reps: 20, intensity: 'medium', count: 4, note: 'Note: Abs are achieved through caloric deficit, not just exercises' }
-          ]
-        }
-      ]
     }
   ];
 
+  // Section quotes - inspirational philosophy for each pillar
+  const sectionQuotes = {
+    social: "The measure of character lives not in the words we speak, but in the warmth we bring to others, the credit we give freely, and the space we create where truth feels safe.",
+    physical: "The body is not a temple to be worshipped, but a system to be optimized—where consistency compounds into strength, and every day protected becomes a year extended.",
+    mental: "Clarity emerges not from thinking harder, but from thinking better—building systems that think for you, experiments that teach you, and evidence that liberates you from ego.",
+    financial: "Wealth is not built in the moments of fear or greed, but in the patient execution of a plan—where discipline outlasts emotion, and time in the market defeats timing the market.",
+    career: "Mastery is not accidental brilliance, but deliberate architecture—where every system you build teaches others, every decision compounds your credibility, and every project extends your reach.",
+    'daily-os': "Excellence is not an event but an operating system—where morning clarity sets intention, midday movement resets focus, and evening reflection compounds wisdom.",
+    workout: "Strength is not forged in single heroic efforts, but in the accumulation of disciplined repetitions—where progressive overload meets unwavering consistency, and patience transforms into power."
+  };
+
   const renderContent = () => {
+    // Quote component for each section
+    const SectionQuote = ({ quote }) => (
+      <div style={{
+        marginBottom: '2rem',
+        padding: '1.5rem',
+        background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.8) 100%)',
+        borderLeft: '3px solid #FFFFFF',
+        borderRadius: '0',
+        fontStyle: 'italic',
+        fontSize: '1.05rem',
+        lineHeight: '1.8',
+        color: '#E5E5E5',
+        position: 'relative',
+        clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)'
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: '-8px',
+          left: '20px',
+          fontSize: '3rem',
+          color: 'rgba(255,255,255,0.2)',
+          fontFamily: 'Georgia, serif',
+          lineHeight: 1
+        }}>"</div>
+        <div style={{ paddingLeft: '1rem', paddingTop: '0.5rem' }}>
+          {quote}
+        </div>
+        <div style={{
+          position: 'absolute',
+          bottom: '5px',
+          right: '20px',
+          fontSize: '3rem',
+          color: 'rgba(255,255,255,0.2)',
+          fontFamily: 'Georgia, serif',
+          lineHeight: 1
+        }}>"</div>
+      </div>
+    );
+
     switch(activeSection) {
       case 'social':
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <SectionQuote quote={sectionQuotes.social} />
             {socialTraits.map((item) => (
               <div 
                 key={item.id}
@@ -1269,6 +1629,7 @@ const AManProject = () => {
       case 'physical':
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <SectionQuote quote={sectionQuotes.physical} />
             {physicalSections.map((section) => (
               <div 
                 key={section.id}
@@ -1324,6 +1685,7 @@ const AManProject = () => {
       case 'mental':
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <SectionQuote quote={sectionQuotes.mental} />
             {mentalTraits.map((trait) => (
               <div 
                 key={trait.id}
@@ -1379,6 +1741,7 @@ const AManProject = () => {
       case 'career':
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <SectionQuote quote={sectionQuotes.career} />
             {careerRules.map((rule) => (
               <div 
                 key={rule.id}
@@ -1434,6 +1797,7 @@ const AManProject = () => {
       case 'daily-os':
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <SectionQuote quote={sectionQuotes['daily-os']} />
             {dailyWeeklyOS.map((routine) => (
               <div 
                 key={routine.id}
@@ -1482,6 +1846,162 @@ const AManProject = () => {
       case 'financial':
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <SectionQuote quote={sectionQuotes.financial} />
+            {/* Live Buffett Indicator Display */}
+            <div style={{
+              background: 'rgba(6,0,32,0.8)',
+              borderRadius: '1rem',
+              padding: '2rem',
+              border: buffettIndicator > 200 ? '1px solid rgba(255,255,255,0.3)' : 
+                      buffettIndicator >= 100 ? '1px solid rgba(229,229,229,0.4)' : 
+                      '1px solid rgba(64,255,218,0.4)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <h3 style={{
+                color: '#FFFFFF',
+                marginBottom: '1rem',
+                fontFamily: 'monospace',
+                fontSize: '1.3rem'
+              }}>
+                📊 Live Market Valuation
+              </h3>
+              
+              {buffettIndicator ? (
+                <>
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gap: '1rem',
+                    marginBottom: '1.5rem'
+                  }}>
+                    <div style={{
+                      background: 'rgba(255,255,255,0.03)',
+                      padding: '1rem',
+                      borderRadius: '0.5rem',
+                      border: '1px solid rgba(255,255,255,0.2)'
+                    }}>
+                      <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.5rem' }}>Buffett Indicator</div>
+                      <div style={{ 
+                        fontSize: '2rem', 
+                        fontWeight: 'bold',
+                        color: buffettIndicator > 200 ? '#FFFFFF' : 
+                               buffettIndicator >= 100 ? '#FFFFFF' : '#E5E5E5'
+                      }}>
+                        {buffettIndicator.toFixed(1)}%
+                      </div>
+                      <div style={{ fontSize: '0.8rem', opacity: 0.7, marginTop: '0.3rem' }}>
+                        {buffettIndicator > 200 ? '🔴 Significantly Overvalued' :
+                         buffettIndicator > 160 ? '🟠 Modestly Overvalued' :
+                         buffettIndicator > 135 ? '🟡 Fair Valued' :
+                         buffettIndicator > 111 ? '🟢 Modestly Undervalued' :
+                         '🟢 Significantly Undervalued'}
+                      </div>
+                    </div>
+                    
+                    <div style={{
+                      background: 'rgba(255,201,6,0.1)',
+                      padding: '1rem',
+                      borderRadius: '0.5rem',
+                      border: '1px solid rgba(229,229,229,0.3)'
+                    }}>
+                      <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.5rem' }}>Auto Investment Ratio</div>
+                      <div style={{ 
+                        fontSize: '2rem', 
+                        fontWeight: 'bold',
+                        color: '#FFFFFF'
+                      }}>
+                        {investmentRatio}
+                      </div>
+                      <div style={{ fontSize: '0.8rem', opacity: 0.7, marginTop: '0.3rem' }}>
+                        Investment : Cash Reserve
+                      </div>
+                    </div>
+                    
+                    <div style={{
+                      background: vixIndex && vixIndex >= 30 ? 'rgba(255,255,255,0.1)' : 'rgba(64,255,218,0.1)',
+                      padding: '1rem',
+                      borderRadius: '0.5rem',
+                      border: `1px solid ${vixIndex && vixIndex >= 30 ? 'rgba(255,255,255,0.4)' : 'rgba(64,255,218,0.3)'}`,
+                      boxShadow: vixIndex && vixIndex >= 30 ? '0 0 20px rgba(255,255,255,0.2)' : 'none'
+                    }}>
+                      <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.5rem' }}>
+                        VIX Index (Fear Gauge)
+                        <a 
+                          href="https://finance.yahoo.com/quote/%5EVIX/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{ 
+                            marginLeft: '0.5rem', 
+                            fontSize: '0.7rem', 
+                            opacity: 0.6,
+                            color: '#E5E5E5',
+                            textDecoration: 'none'
+                          }}
+                        >
+                          [Live Data]
+                        </a>
+                      </div>
+                      <div style={{ 
+                        fontSize: '2rem', 
+                        fontWeight: 'bold',
+                        color: vixIndex ? (
+                          vixIndex >= 40 ? '#FFFFFF' :
+                          vixIndex >= 35 ? '#FFFFFF' :
+                          vixIndex >= 30 ? '#FFFFFF' : '#E5E5E5'
+                        ) : '#FFFFFF',
+                        textShadow: vixIndex && vixIndex >= 30 ? '0 0 10px rgba(255,255,255,0.6)' : 'none'
+                      }}>
+                        {vixIndex !== null && vixIndex !== undefined ? vixIndex.toFixed(2) : '⚠️ FETCH FAILED'}
+                      </div>
+                      <div style={{ 
+                        fontSize: '0.8rem', 
+                        opacity: 0.7, 
+                        marginTop: '0.3rem',
+                        fontWeight: vixIndex && vixIndex >= 30 ? 'bold' : 'normal',
+                        color: vixIndex && vixIndex >= 30 ? '#FFFFFF' : vixIndex === null ? '#FFFFFF' : 'inherit'
+                      }}>
+                        {vixIndex !== null && vixIndex !== undefined ? (
+                          vixIndex >= 40 ? '🚨 DEPLOY 100% CASH RESERVE!' :
+                          vixIndex >= 35 ? '⚠️ DEPLOY 37.5% CASH RESERVE' :
+                          vixIndex >= 30 ? '📢 DEPLOY 25% CASH RESERVE' :
+                          '✅ Normal Market - Stay The Course'
+                        ) : 'Check browser console for error details'}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div style={{
+                    fontSize: '0.85rem',
+                    opacity: 0.7,
+                    textAlign: 'center',
+                    padding: '0.75rem',
+                    background: 'rgba(0,0,0,0.2)',
+                    borderRadius: '0.5rem'
+                  }}>
+                    📡 Buffett Indicator: {lastFetchTime ? lastFetchTime.toLocaleTimeString() : 'Loading...'}
+                    <br />
+                    📡 VIX Index: {vixLastFetchTime ? vixLastFetchTime.toLocaleTimeString() : 'Loading...'}
+                    <br />
+                    <span style={{ fontSize: '0.75rem' }}>
+                      Updates automatically every hour from live sources
+                      {buffettIndicator === 220.8 && ' (using fallback data if fetch failed)'}
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <div style={{ textAlign: 'center', padding: '2rem' }}>
+                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⏳</div>
+                  <div style={{ opacity: 0.7, marginBottom: '0.5rem' }}>Loading live market data...</div>
+                  <div style={{ fontSize: '0.75rem', opacity: 0.5 }}>
+                    Fetching from buffettindicator.net via CORS proxy
+                    <br />
+                    Check browser console for details
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Financial Rules Section */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {financialRules.map((rule) => (
@@ -1534,12 +2054,13 @@ const AManProject = () => {
       case 'workout':
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <SectionQuote quote={sectionQuotes.workout} />
             {/* Bulk/Cut Mode Switcher */}
             <div style={{
-              background: 'rgba(8,12,24,0.8)',
+              background: 'rgba(6,0,32,0.8)',
               borderRadius: '1rem',
               padding: '2rem',
-              border: '1px solid rgba(64,87,255,0.2)',
+              border: '1px solid rgba(255,255,255,0.2)',
               position: 'relative',
               overflow: 'hidden'
             }}>
@@ -1552,7 +2073,7 @@ const AManProject = () => {
                   textAlign: 'center'
                 }}>
                   <h3 style={{
-                    color: bulkMode ? '#000000' : '#ff4057',
+                    color: bulkMode ? '#FFFFFF' : '#FFFFFF',
                     marginBottom: '1rem',
                     fontFamily: 'monospace'
                   }}>
@@ -1575,9 +2096,9 @@ const AManProject = () => {
                     }}
                     style={{
                       background: bulkMode ? 
-                        'linear-gradient(135deg, rgba(64,255,218,0.2), rgba(64,255,218,0.1))' :
-                        'linear-gradient(135deg, rgba(255,64,87,0.2), rgba(255,64,87,0.1))',
-                      border: `1px solid ${bulkMode ? 'rgba(64,255,218,0.3)' : 'rgba(255,64,87,0.3)'}`,
+                        'linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1))' :
+                        'linear-gradient(135deg, rgba(229,229,229,0.3), rgba(229,229,229,0.2))',
+                      border: `1px solid ${bulkMode ? 'rgba(255,255,255,0.4)' : 'rgba(229,229,229,0.5)'}`,
                       color: '#fff',
                       padding: '0.75rem 1.5rem',
                       borderRadius: '0.5rem',
@@ -1598,12 +2119,12 @@ const AManProject = () => {
                 key={day.id}
                 className="workout-day"
                 style={{
-                  backgroundColor: 'rgba(8,12,24,0.6)',
+                  backgroundColor: 'rgba(6,0,32,0.6)',
                   borderRadius: '1rem',
                   padding: '1.5rem',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
-                  border: '1px solid rgba(64,87,255,0.2)'
+                  border: '1px solid rgba(255,255,255,0.2)'
                 }}
                 onClick={() => setExpandedWorkoutDay(expandedWorkoutDay === day.id ? null : day.id)}
               >
@@ -1614,14 +2135,14 @@ const AManProject = () => {
                 }}>
                   <h3 style={{ 
                     margin: 0,
-                    color: '#000000',
+                    color: '#FFFFFF',
                     fontFamily: 'monospace',
                     fontSize: '1.1rem'
                   }}>
                     {day.title}
                   </h3>
                   <span style={{
-                    color: 'rgba(64,87,255,0.8)',
+                    color: 'rgba(255,255,255,0.6)',
                     fontFamily: 'monospace'
                   }}>
                     {expandedWorkoutDay === day.id ? '−' : '+'}
@@ -1639,10 +2160,10 @@ const AManProject = () => {
                       <div 
                         key={index}
                         style={{
-                          background: 'rgba(64,87,255,0.1)',
+                          background: 'rgba(255,255,255,0.03)',
                           padding: '1rem',
                           borderRadius: '0.5rem',
-                          border: '1px solid rgba(64,87,255,0.2)'
+                          border: '1px solid rgba(255,255,255,0.1)'
                         }}
                       >
                         <h4 style={{
@@ -1670,10 +2191,10 @@ const AManProject = () => {
                               }}
                             >
                               <span style={{
-                                color: set.intensity === 'light' ? '#000000' :
-                                       set.intensity === 'medium' ? '#ff4057' :
-                                       set.intensity === 'heavy' ? '#ff8f00' :
-                                       '#ff1744',
+                                color: set.intensity === 'light' ? '#FFFFFF' :
+                                       set.intensity === 'medium' ? '#FFB81C' :
+                                       set.intensity === 'heavy' ? '#FFFFFF' :
+                                       '#8B0000',
                                 fontWeight: 'bold'
                               }}>
                                 {set.intensity.toUpperCase()}
@@ -1711,32 +2232,32 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "October 8, 2025 at 10:00 PM EST",
-        effective: "October 8, 2025 at 10:00 PM EST"
+        signed: "October 10, 2025 at 12:00 AM EST",
+        effective: "October 10, 2025 at 12:00 AM EST"
       },
       physical: {
-        signed: "October 8, 2025 at 10:00 PM EST",
-        effective: "October 8, 2025 at 10:00 PM EST"
+        signed: "October 10, 2025 at 12:00 AM EST",
+        effective: "October 10, 2025 at 12:00 AM EST"
       },
       mental: {
-        signed: "October 8, 2025 at 10:00 PM EST",
-        effective: "October 8, 2025 at 10:00 PM EST"
+        signed: "October 10, 2025 at 12:00 AM EST",
+        effective: "October 10, 2025 at 12:00 AM EST"
       },
       financial: {
-        signed: "October 8, 2025 at 10:00 PM EST",
-        effective: "October 8, 2025 at 10:00 PM EST"
+        signed: "October 10, 2025 at 12:00 AM EST",
+        effective: "October 10, 2025 at 12:00 AM EST"
       },
       career: {
-        signed: "October 8, 2025 at 10:00 PM EST",
-        effective: "October 8, 2025 at 10:00 PM EST"
+        signed: "October 10, 2025 at 12:00 AM EST",
+        effective: "October 10, 2025 at 12:00 AM EST"
       },
       'daily-os': {
-        signed: "October 8, 2025 at 10:00 PM EST",
-        effective: "October 8, 2025 at 10:00 PM EST"
+        signed: "October 10, 2025 at 12:00 AM EST",
+        effective: "October 10, 2025 at 12:00 AM EST"
       },
       workout: {
-        signed: "October 8, 2025 at 10:00 PM EST",
-        effective: "October 8, 2025 at 10:00 PM EST"
+        signed: "October 10, 2025 at 12:00 AM EST",
+        effective: "October 10, 2025 at 12:00 AM EST"
       }
     };
 
@@ -1763,17 +2284,17 @@ const AManProject = () => {
         
         <div style={{
           marginBottom: '2rem',
-          color: 'rgba(64,87,255,0.8)',
+          color: 'rgba(255,255,255,0.6)',
           fontSize: '1rem',
           fontStyle: 'italic',
           fontFamily: 'serif',
           textAlign: 'center',
           padding: '1rem',
-          background: 'rgba(64,87,255,0.1)',
+          background: 'rgba(255,255,255,0.03)',
           borderRadius: '0.5rem',
-          border: '1px solid rgba(64,87,255,0.2)'
+          border: '1px solid rgba(255,255,255,0.2)'
         }}>
-          "I'd happily live on one humble meal each day if it means spending my hours chasing the dream that keeps me up at night, rather than feast three times a day on work that never makes it into my dreams."
+          "I'd rather survive on one meal a day pursuing work that keeps me awake at night, than feast three times daily on work that never enters my dreams."
           <div style={{
             fontSize: '0.8rem',
             color: 'rgba(255,255,255,0.7)',
@@ -1790,25 +2311,18 @@ const AManProject = () => {
           <iframe
             width="100%"
             height="315"
-            src={
-              activeSection === 'career' ? "https://www.youtube.com/embed/Tuw8hxrFBH8" :
-              activeSection === 'physical' ? "https://www.youtube.com/embed/G9LC9P2OKVE" :
-              activeSection === 'mental' ? "https://www.youtube.com/embed/BHyVg2sXy5w" :
-              activeSection === 'financial' ? "https://www.youtube.com/embed/BHyVg2sXy5w" :
-              activeSection === 'daily-os' ? "https://www.youtube.com/embed/M9WyKJvlN4c" :
-              activeSection === 'social' ? "https://www.youtube.com/embed/M9WyKJvlN4c" :
-              activeSection === 'workout' ? "https://www.youtube.com/embed/xd-9D3GzUpo" :
-              "https://www.youtube.com/embed/M9WyKJvlN4c"
-            }
+            src="https://www.youtube.com/embed/hj6Tmm90tOE"
             title={`A-Man Project ${activeSection.charAt(0).toUpperCase() + activeSection.slice(1)} Inspiration`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             style={{
-              borderRadius: '0.5rem',
-              border: '1px solid rgba(64,87,255,0.3)',
-              boxShadow: '0 0 20px rgba(64,87,255,0.2)',
-              maxWidth: '560px'
+              borderRadius: '0',
+              border: '1px solid rgba(255,255,255,0.2)',
+              borderLeft: '2px solid rgba(255,255,255,0.3)',
+              boxShadow: '0 8px 30px rgba(0,0,0,0.6)',
+              maxWidth: '560px',
+              clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)'
             }}
           ></iframe>
         </div>
@@ -1825,7 +2339,7 @@ const AManProject = () => {
             color: '#fff',
             fontFamily: 'Pinyon Script, cursive',
             transform: 'rotate(-5deg)',
-            textShadow: '0 0 20px rgba(64,87,255,0.5)',
+            textShadow: '0 0 20px rgba(255,255,255,0.5)',
             padding: '1rem'
           }}>
             Yeon Lee
@@ -1833,7 +2347,7 @@ const AManProject = () => {
           <div style={{
             width: '250px',
             height: '2px',
-            background: 'linear-gradient(90deg, transparent, rgba(64,87,255,0.5), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)',
             margin: '0.5rem 0'
           }}></div>
           <div style={{
@@ -1859,7 +2373,7 @@ const AManProject = () => {
 
         <div style={{
           fontSize: '2rem',
-          color: 'rgba(64,87,255,0.5)',
+          color: 'rgba(255,255,255,0.5)',
           marginTop: '1rem'
         }}>
           ❦
@@ -1871,17 +2385,32 @@ const AManProject = () => {
   return (
     <section className="section" style={{
       background: `
-        linear-gradient(135deg, rgba(4,8,16,0.97) 0%, rgba(2,4,12,0.97) 100%),
-        radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(64,87,255,0.2) 0%, rgba(64,87,255,0) 50%),
-        linear-gradient(${time}deg, rgba(64,87,255,0.08) 0%, rgba(128,0,255,0.08) 100%)
+        linear-gradient(135deg, #000000 0%, #0A0A0A 50%, #000000 100%),
+        radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 50%),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 100px,
+          rgba(255,255,255,0.02) 100px,
+          rgba(255,255,255,0.02) 101px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 100px,
+          rgba(255,255,255,0.02) 100px,
+          rgba(255,255,255,0.02) 101px
+        )
       `,
-      color: '#fff',
+      color: '#E5E5E5',
       minHeight: '100vh',
       position: 'relative',
       overflow: 'hidden',
-      transition: 'background 0.3s ease'
+      transition: 'background 0.3s ease',
+      borderTop: '1px solid #FFFFFF',
+      borderBottom: '1px solid #FFFFFF'
     }}>
-      {/* Cyber grid background */}
+      {/* Hexagonal data grid pattern */}
       <div style={{
         position: 'absolute',
         top: 0,
@@ -1889,148 +2418,151 @@ const AManProject = () => {
         right: 0,
         bottom: 0,
         backgroundImage: `
-          linear-gradient(rgba(64,87,255,0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(64,87,255,0.05) 1px, transparent 1px),
-          linear-gradient(rgba(128,0,255,0.03) 2px, transparent 2px),
-          linear-gradient(90deg, rgba(128,0,255,0.03) 2px, transparent 2px)
+          radial-gradient(circle at 25% 25%, transparent 40%, rgba(255,255,255,0.03) 40%, rgba(255,255,255,0.03) 41%, transparent 41%),
+          radial-gradient(circle at 75% 75%, transparent 40%, rgba(255,255,255,0.03) 40%, rgba(255,255,255,0.03) 41%, transparent 41%)
         `,
-        backgroundSize: '50px 50px, 50px 50px, 100px 100px, 100px 100px',
-        transform: `perspective(1000px) rotateX(60deg) translateY(-50%) scale(3)`,
-        opacity: 0.3,
-        zIndex: 0,
-        animation: 'gridMove 20s linear infinite'
+        backgroundSize: '60px 60px',
+        opacity: 0.5,
+        zIndex: 0
       }}/>
 
-      {/* Enhanced floating particles */}
-      {[...Array(40)].map((_, i) => (
-        <div
-          key={i}
-          style={{
-            position: 'absolute',
-            width: i % 4 === 0 ? '4px' : i % 3 === 0 ? '3px' : '2px',
-            height: i % 4 === 0 ? '4px' : i % 3 === 0 ? '3px' : '2px',
-            background: i % 4 === 0 ? 'rgba(128,0,255,0.7)' : i % 3 === 0 ? 'rgba(64,87,255,0.5)' : 'rgba(255,255,255,0.3)',
-            boxShadow: i % 4 === 0 
-              ? '0 0 15px rgba(128,0,255,0.8), 0 0 30px rgba(128,0,255,0.6)' 
-              : i % 3 === 0 
-                ? '0 0 10px rgba(64,87,255,0.6), 0 0 20px rgba(64,87,255,0.4)'
-                : '0 0 5px rgba(255,255,255,0.3)',
-            borderRadius: '50%',
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animation: `float ${5 + Math.random() * 15}s linear infinite`,
-            opacity: Math.random() * 0.5 + 0.5
-          }}
-        />
-      ))}
+      {/* Intelligence data streams - corner accents */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        width: '150px',
+        height: '150px',
+        background: `
+          linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.15) 48%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.15) 52%, transparent 55%),
+          linear-gradient(135deg, transparent 45%, rgba(255,255,255,0.1) 48%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 52%, transparent 55%)
+        `,
+        opacity: 0.3,
+        zIndex: 0,
+        clipPath: 'polygon(70% 0, 100% 0, 100% 30%)'
+      }}/>
+      
+      <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '150px',
+        height: '150px',
+        background: `
+          linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.15) 48%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.15) 52%, transparent 55%),
+          linear-gradient(135deg, transparent 45%, rgba(255,255,255,0.1) 48%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 52%, transparent 55%)
+        `,
+        opacity: 0.3,
+        zIndex: 0,
+        clipPath: 'polygon(0 70%, 0 100%, 30% 100%)'
+      }}/>
 
       <style>
         {`
-          @keyframes gridMove {
+          @keyframes dataStream {
             0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
+            100% { background-position: 100px 100px; }
           }
           @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.01); }
           }
-          @keyframes float {
-            0% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); }
-            25% { transform: translateY(-20px) translateX(10px) rotate(90deg) scale(1.1); }
-            50% { transform: translateY(0) translateX(20px) rotate(180deg) scale(1); }
-            75% { transform: translateY(20px) translateX(10px) rotate(270deg) scale(0.9); }
-            100% { transform: translateY(0) translateX(0) rotate(360deg) scale(1); }
-          }
-          @keyframes neonPulse {
+          @keyframes palantirGlow {
             0%, 100% { 
-              box-shadow: 0 0 10px rgba(64,87,255,0.5),
-                         0 0 20px rgba(64,87,255,0.3),
-                         0 0 30px rgba(64,87,255,0.2),
-                         inset 0 0 15px rgba(64,87,255,0.3);
+              box-shadow: 0 0 10px rgba(255,255,255,0.3),
+                         0 0 20px rgba(255,255,255,0.1),
+                         inset 0 0 10px rgba(255,255,255,0.1);
             }
             50% { 
-              box-shadow: 0 0 15px rgba(64,87,255,0.6),
-                         0 0 25px rgba(64,87,255,0.4),
-                         0 0 35px rgba(64,87,255,0.3),
-                         inset 0 0 25px rgba(64,87,255,0.4);
+              box-shadow: 0 0 15px rgba(255,255,255,0.5),
+                         0 0 30px rgba(255,255,255,0.2),
+                         inset 0 0 15px rgba(255,255,255,0.15);
             }
           }
-          @keyframes borderFlow {
-            0% { border-image-source: linear-gradient(0deg, rgba(64,87,255,0.5), rgba(128,0,255,0.5)); }
-            100% { border-image-source: linear-gradient(360deg, rgba(64,87,255,0.5), rgba(128,0,255,0.5)); }
+          @keyframes dataScan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(100%); opacity: 0; }
+          }
+          @keyframes scanLine {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(300px); }
           }
           .nav-button {
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(64,87,255,0.3) !important;
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            border-left: 2px solid rgba(255,255,255,0.3) !important;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(10,10,10,0.9) 100%) !important;
+            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
           }
           .nav-button:before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(64,87,255,0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
           }
           .nav-button:hover:before {
-            width: 200%;
-            height: 200%;
+            left: 100%;
           }
           .nav-button.active {
-            animation: neonPulse 2s infinite;
-            border: 1px solid rgba(64,87,255,0.5) !important;
+            animation: palantirGlow 3s infinite;
+            border: 1px solid rgba(255,255,255,0.6) !important;
+            border-left: 2px solid #FFFFFF !important;
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.9) 100%) !important;
           }
           .content-card {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(64,87,255,0.2);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-left: 2px solid rgba(255,255,255,0.3);
             position: relative;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
           }
           .content-card:before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: -1px;
-            right: -1px;
-            bottom: -1px;
-            border: 1px solid transparent;
-            border-radius: 1rem;
-            animation: borderFlow 3s linear infinite;
-            pointer-events: none;
-          }
-          .content-card:hover {
-            transform: translateY(-2px) scale(1.002);
-            box-shadow: 0 12px 40px rgba(64,87,255,0.2);
-            border-color: rgba(64,87,255,0.4);
-          }
-          .content-card:after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            border-radius: 1rem;
-            background: linear-gradient(45deg, transparent, rgba(64,87,255,0.1), transparent);
-            background-size: 200% 200%;
-            animation: gradient 3s linear infinite;
-            z-index: -1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
+            background-size: 200% 100%;
+            animation: dataScan 4s linear infinite;
+            pointer-events: none;
+            opacity: 0.5;
           }
-          @keyframes gradient {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 200% 200%; }
+          .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+              0 0 20px rgba(255,255,255,0.2),
+              0 8px 25px rgba(0,0,0,0.6),
+              inset 0 0 15px rgba(255,255,255,0.03);
+            border-color: rgba(255,255,255,0.4);
+            border-left-color: #FFFFFF;
+          }
+          .content-card:hover:before {
+            opacity: 1;
           }
           .title-glow {
             animation: titleGlow 3s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 700;
           }
           @keyframes titleGlow {
-            0%, 100% { filter: drop-shadow(0 0 15px rgba(64,87,255,0.3)); }
-            50% { filter: drop-shadow(0 0 25px rgba(64,87,255,0.5)); }
+            0%, 100% { 
+              filter: drop-shadow(0 0 3px rgba(255,255,255,0.4));
+              text-shadow: 0 0 10px rgba(255,255,255,0.2);
+            }
+            50% { 
+              filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+              text-shadow: 0 0 15px rgba(255,255,255,0.3);
+            }
           }
         `}
       </style>
@@ -2044,12 +2576,9 @@ const AManProject = () => {
           position: 'relative'
         }}>
           <span className="title-glow" style={{
-            background: 'linear-gradient(45deg, #fff, rgba(64,87,255,0.8), rgba(128,0,255,0.8))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            position: 'relative',
             display: 'inline-block',
-            padding: '0.5rem 2rem',
-            position: 'relative'
+            padding: '0.5rem 2rem'
           }}>
             <span style={{
               position: 'absolute',
@@ -2057,47 +2586,73 @@ const AManProject = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              background: 'linear-gradient(90deg, transparent, rgba(64,87,255,0.2), transparent)',
-              filter: 'blur(8px)',
-              zIndex: -1
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
+              filter: 'blur(4px)',
+              zIndex: -1,
+              pointerEvents: 'none'
             }}></span>
-            A-Man Project
+            <span style={{
+              color: '#FFFFFF',
+              background: 'linear-gradient(135deg, #E5E5E5 0%, #FFFFFF 40%, #E5E5E5 60%, #FFFFFF 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontFamily: '"Helvetica Neue", "Arial", sans-serif'
+            }}>
+              A-MAN PROJECT
+            </span>
           </span>
           <div style={{
-            width: '200px',
+            width: '400px',
             height: '2px',
-            background: 'linear-gradient(90deg, transparent, rgba(64,87,255,0.8), rgba(128,0,255,0.8), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3) 20%, #FFFFFF 50%, rgba(255,255,255,0.3) 80%, transparent)',
             margin: '0.5rem auto',
-            boxShadow: '0 0 20px rgba(64,87,255,0.5)',
+            boxShadow: '0 0 10px rgba(255,255,255,0.4)',
             position: 'relative'
           }}>
             <div style={{
               position: 'absolute',
               top: '-1px',
               left: '0',
-              width: '10px',
+              width: '8px',
               height: '4px',
-              background: 'rgba(64,87,255,0.8)',
-              boxShadow: '0 0 10px rgba(64,87,255,0.8)',
-              animation: 'sliderMove 3s linear infinite'
+              background: '#FFFFFF',
+              boxShadow: '0 0 8px #FFFFFF',
+              animation: 'scanLine 3s linear infinite'
+            }}></div>
+            <div style={{
+              position: 'absolute',
+              top: '-1px',
+              right: '0',
+              width: '8px',
+              height: '4px',
+              background: '#FFFFFF',
+              boxShadow: '0 0 8px #FFFFFF',
+              animation: 'scanLine 3s linear infinite reverse'
             }}></div>
           </div>
         </h2>
         
         <div className="container" style={{ padding: "2rem" }}>
-          {/* Navigation Bar */}
+          {/* Intelligence Control Panel - Navigation Bar */}
           <div style={{
             display: 'flex',
             justifyContent: 'center',
             gap: '0.5rem',
             marginBottom: '2rem',
             padding: '1.5rem',
-            background: 'rgba(8,12,24,0.6)',
-            borderRadius: '1rem',
+            background: 'linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(10,10,10,0.95) 100%)',
+            borderRadius: '0',
+            clipPath: 'polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px)',
             backdropFilter: 'blur(10px)',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
-            border: '1px solid rgba(64,87,255,0.2)',
-            flexWrap: 'wrap'
+            boxShadow: 
+              '0 8px 32px rgba(0,0,0,0.8), ' +
+              'inset 0 1px 0 rgba(255,255,255,0.2), ' +
+              'inset 0 -1px 0 rgba(255,255,255,0.1)',
+            border: '1px solid rgba(255,255,255,0.3)',
+            borderTop: '1px solid #FFFFFF',
+            flexWrap: 'wrap',
+            position: 'relative'
           }}>
             {['social', 'physical', 'mental', 'financial', 'career', 'daily-os', 'workout'].map((section) => (
               <button
@@ -2106,36 +2661,30 @@ const AManProject = () => {
                 className={`nav-button ${activeSection === section ? 'active' : ''}`}
                 style={{
                   padding: '0.75rem 1.5rem',
-                  border: 'none',
-                  borderRadius: '0.5rem',
-                  background: activeSection === section 
-                    ? 'linear-gradient(135deg, rgba(64,87,255,0.3) 0%, rgba(128,0,255,0.3) 100%)'
-                    : 'rgba(8,12,24,0.6)',
-                  color: activeSection === section ? '#fff' : 'rgba(255,255,255,0.7)',
+                  color: activeSection === section ? '#FFFFFF' : 'rgba(229,229,229,0.7)',
                   cursor: 'pointer',
-                  fontWeight: activeSection === section ? 'bold' : 'normal',
+                  fontWeight: activeSection === section ? '700' : '500',
                   textTransform: 'uppercase',
-                  backdropFilter: 'blur(5px)',
-                  letterSpacing: '1px',
-                  fontSize: '0.85rem',
-                  fontFamily: 'monospace',
-                  minWidth: '100px',
+                  letterSpacing: '3px',
+                  fontSize: '0.75rem',
+                  fontFamily: '"Helvetica Neue", "Arial", sans-serif',
+                  minWidth: '110px',
                   whiteSpace: 'nowrap',
                   flex: '0 0 auto'
                 }}
               >
-                {section}
+                {section.toUpperCase()}
               </button>
             ))}
           </div>
 
-          {/* Content Section */}
+          {/* Intelligence Module - Content Section */}
           <div className="content-card" style={{
-            background: 'rgba(8,12,24,0.6)',
-            borderRadius: '1rem',
+            background: 'linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(10,10,10,0.95) 100%)',
+            borderRadius: '0',
             padding: '2rem',
             backdropFilter: 'blur(10px)',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.8), inset 0 0 30px rgba(255,255,255,0.03)',
             marginBottom: '2rem',
             position: 'relative',
             overflow: 'hidden'
@@ -2145,32 +2694,39 @@ const AManProject = () => {
               top: 0,
               left: 0,
               right: 0,
-              height: '2px',
-              background: 'linear-gradient(90deg, transparent, rgba(64,87,255,0.5), rgba(128,0,255,0.5), transparent)',
-              boxShadow: '0 0 20px rgba(64,87,255,0.5)'
+              height: '1px',
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), #FFFFFF, rgba(255,255,255,0.5), transparent)',
+              boxShadow: '0 0 15px rgba(255,255,255,0.4)'
             }}/>
             <h3 style={{ 
               fontSize: '1.5rem', 
               marginBottom: '1.5rem',
-              borderBottom: '1px solid rgba(64,87,255,0.2)',
+              borderBottom: '1px solid rgba(255,255,255,0.2)',
               paddingBottom: '0.5rem',
               textTransform: 'uppercase',
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem',
-              fontFamily: 'monospace',
-              letterSpacing: '2px'
+              fontFamily: '"Helvetica Neue", "Arial", sans-serif',
+              letterSpacing: '3px'
             }}>
               <span style={{
-                background: 'linear-gradient(45deg, #fff, rgba(64,87,255,0.8), rgba(128,0,255,0.8))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                filter: 'drop-shadow(0 0 10px rgba(64,87,255,0.3))'
-              }}>{activeSection}</span>
+                display: 'inline-block'
+              }}>
+                <span style={{
+                  color: '#FFFFFF',
+                  background: 'linear-gradient(45deg, #E5E5E5, #FFFFFF, #E5E5E5, #FFFFFF)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.3))'
+                }}>{activeSection}</span>
+              </span>
               <span style={{ 
-                fontSize: '0.8rem', 
-                opacity: 0.7,
-                fontWeight: 'normal'
+                fontSize: '0.75rem', 
+                opacity: 0.5,
+                fontWeight: 'normal',
+                color: 'rgba(255,255,255,0.6)'
               }}>
                 // ACTIVE MODULE
               </span>
