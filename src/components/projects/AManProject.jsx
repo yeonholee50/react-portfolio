@@ -433,13 +433,16 @@ const AManProject = () => {
 
   useEffect(() => {
     suspendUiRef.current = showIntelGraph;
-    // Inject/remove global animation pause
+    // Inject/remove global animation pause (but don't affect the graph itself)
     if (showIntelGraph) {
       const styleEl = document.createElement('style');
       styleEl.setAttribute('data-suspend-animations', 'true');
       styleEl.textContent = `
-        html body * { animation-play-state: paused !important; transition: none !important; }
-        canvas, video { visibility: hidden !important; }
+        html body *:not([data-graph-ui]):not([data-graph-ui] *) { 
+          animation-play-state: paused !important; 
+          transition: none !important; 
+        }
+        canvas:not([data-graph-ui] canvas), video { visibility: hidden !important; }
       `;
       document.head.appendChild(styleEl);
       animationsStyleElRef.current = styleEl;
@@ -1602,7 +1605,9 @@ const AManProject = () => {
   };
 
   // Intelligence Graph - Starting fresh with ReactFlow
-  const IntelligenceGraphComponent = () => {
+  const IntelligenceGraphComponent = ({ onClose }) => {
+    console.log('⚡ [GRAPH MOUNT] IntelligenceGraphComponent is mounting/rendering');
+    
     // Capture values ONCE when graph opens - no live updates needed
     const [frozenBuffett] = useState(() => {
       const val = buffettIndicator || 0; // Keep exact value
@@ -2131,18 +2136,23 @@ const AManProject = () => {
     console.log('🔄 [GRAPH FLICKER?] IntelligenceGraphComponent rendered');
 
     return (
-      <div style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 6,
-        background: 'rgba(0,0,0,0.95)',
-        // contain and GPU-accelerate to avoid expensive repaints
-        contain: 'layout paint size style',
-        willChange: 'transform',
-        transform: 'translateZ(0)',
-        display: 'flex',
-        flexDirection: 'column'
-      }}>
+      <div 
+        data-graph-ui="true"
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log('🖱️ Overlay clicked');
+        }}
+        onMouseDown={(e) => console.log('🖱️ Mouse down on overlay')}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 9999,
+          background: 'rgba(0,0,0,0.95)',
+          display: 'flex',
+          flexDirection: 'column',
+          pointerEvents: 'auto',
+          isolation: 'isolate'
+        }}>
         {/* Header */}
         <div style={{
           padding: '1.5rem',
@@ -2174,9 +2184,32 @@ const AManProject = () => {
                </div>
           </div>
           <button 
-            onClick={() => { setShowIntelGraph(false); setSelectedGraphNode(null); }}
+            onMouseDown={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log('🚨 CLOSE button mouse down!');
+              if (onClose) {
+                onClose();
+              } else {
+                console.error('❌ onClose is not defined!');
+              }
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log('🚨 CLOSE button clicked!');
+            }}
             className="nav-button"
-            style={{ color: '#E5E5E5', padding: '0.75rem 1.5rem', fontSize: '0.8rem' }}
+            style={{ 
+              color: '#E5E5E5', 
+              padding: '0.75rem 1.5rem', 
+              fontSize: '0.8rem',
+              cursor: 'pointer',
+              pointerEvents: 'auto',
+              zIndex: 10000,
+              position: 'relative',
+              touchAction: 'none'
+            }}
           >
             CLOSE
           </button>
@@ -2207,8 +2240,8 @@ const AManProject = () => {
     );
   };
 
-  // Memoized wrapper to isolate from parent re-renders
-  const IntelligenceGraph = React.memo(IntelligenceGraphComponent);
+  // Direct export - memo was blocking click events
+  const IntelligenceGraph = IntelligenceGraphComponent;
 
 
   const renderContent = () => {
@@ -3572,7 +3605,7 @@ const AManProject = () => {
             </div>
           )}
           {/* Intelligence Graph */}
-          {showIntelGraph && <IntelligenceGraph />}
+          {showIntelGraph && <IntelligenceGraph key="intel-graph-singleton" onClose={() => { console.log('🚪 Close handler called'); setShowIntelGraph(false); setSelectedGraphNode(null); }} />}
           {/* Command Palette */}
           {isPaletteOpen && (
             <div onClick={() => setIsPaletteOpen(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', zIndex: 5, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: '10vh' }}>
