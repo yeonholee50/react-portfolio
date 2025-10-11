@@ -39,9 +39,7 @@
 .floating-element--3 {
   width: 60px;
   height: 60px;
-  background: linear-gradient(45deg, 
-    hsla(var(--accent-hue), 85%, 60%, 0.3), 
-    hsla(var(--primary-hue), 75%, 70%, 0.3));
+  background: radial-gradient(circle, rgba(64, 255, 218, 0.3), rgba(255, 184, 28, 0.2));
   top: 20%;
   left: 70%;
   animation-duration: 30s;
@@ -71,9 +69,7 @@
 .floating-element--6 {
   width: 90px;
   height: 90px;
-  background: linear-gradient(135deg, 
-    hsla(var(--secondary-hue), 75%, 60%, 0.3), 
-    hsla(var(--accent-hue), 75%, 70%, 0.3));
+  background: radial-gradient(circle, rgba(255, 184, 28, 0.3), rgba(64, 255, 218, 0.2));
   top: 15%;
   left: 40%;
   animation-duration: 35s;

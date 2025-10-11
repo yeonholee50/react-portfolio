@@ -27,13 +27,13 @@
 
 .scanner-container {
   width: 350px;
-  background: rgba(10, 15, 25, 0.95);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 255, 255, 0.3);
+  border: 1px solid rgba(64, 255, 218, 0.3);
   border-radius: 8px;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(0, 255, 255, 0.2);
+    0 0 20px rgba(64, 255, 218, 0.3);
   font-family: 'JetBrains Mono', monospace;
   overflow: hidden;
 }
@@ -41,17 +41,17 @@
 .scanner-header {
   padding: 10px 15px;
   background: linear-gradient(90deg, 
-    rgba(0, 255, 255, 0.1), 
-    rgba(128, 0, 255, 0.1)
+    rgba(64, 255, 218, 0.1), 
+    rgba(255, 184, 28, 0.1)
   );
-  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(64, 255, 218, 0.3);
 }
 
 .scanner-status {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #00ffff;
+  color: #40FFDA;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -62,7 +62,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #00ff88;
+  background: #40FFDA;
   animation: statusPulse 1.5s infinite;
 }
 
@@ -73,14 +73,14 @@
 
 .scanner-progress {
   height: 3px;
-  background: rgba(0, 255, 255, 0.1);
+  background: rgba(64, 255, 218, 0.1);
   border-radius: 2px;
   overflow: hidden;
 }
 
 .progress-line {
   height: 100%;
-  background: linear-gradient(90deg, #00ffff, #8000ff);
+  background: linear-gradient(90deg, #40FFDA, #FFB81C);
   animation: progressScan 4s ease-in-out;
 }
 
@@ -98,8 +98,8 @@
   align-items: center;
   margin-bottom: 15px;
   padding: 8px;
-  background: rgba(0, 255, 255, 0.05);
-  border-left: 3px solid #00ffff;
+  background: rgba(64, 255, 218, 0.05);
+  border-left: 3px solid #40FFDA;
   border-radius: 3px;
 }
 
@@ -111,16 +111,16 @@
 }
 
 .code-text {
-  color: #00ff88;
+  color: #40FFDA;
   font-size: 13px;
   font-weight: 500;
-  text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
+  text-shadow: 0 0 5px rgba(64, 255, 218, 0.3);
   animation: codeGlow 2s ease-in-out infinite alternate;
 }
 
 @keyframes codeGlow {
-  0% { text-shadow: 0 0 5px rgba(0, 255, 136, 0.3); }
-  100% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.6); }
+  0% { text-shadow: 0 0 5px rgba(64, 255, 218, 0.3); }
+  100% { text-shadow: 0 0 10px rgba(64, 255, 218, 0.6); }
 }
 
 .analysis-results {
@@ -134,7 +134,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px 0;
-  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(64, 255, 218, 0.1);
 }
 
 .analysis-item:last-child {
@@ -161,13 +161,13 @@
 }
 
 .value.confidence {
-  color: #4ecdc4;
+  color: #40FFDA;
   font-weight: 600;
 }
 
 .value.status {
-  color: #00ff88;
-  background: rgba(0, 255, 136, 0.1);
+  color: #40FFDA;
+  background: rgba(64, 255, 218, 0.1);
   padding: 2px 6px;
   border-radius: 3px;
 }
@@ -187,9 +187,9 @@
   height: 100%;
   background: linear-gradient(90deg, 
     transparent, 
-    rgba(0, 255, 255, 0.8), 
+    rgba(64, 255, 218, 0.8), 
     rgba(255, 255, 255, 0.9), 
-    rgba(0, 255, 255, 0.8), 
+    rgba(64, 255, 218, 0.8), 
     transparent
   );
   animation: scanBeam 4s ease-in-out;

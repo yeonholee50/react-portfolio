@@ -10,13 +10,50 @@
     transition: .4s;
 }
 
+[data-theme="light"] .scrollup {
+    background: var(--gradient-primary);
+    opacity: 0.9;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+[data-theme="light"] .scrollup__icon {
+    color: white;
+}
+
+[data-theme="dark"] .scrollup {
+    background: linear-gradient(135deg, #111111, #000000);
+    border: 1px solid rgba(64, 255, 218, 0.3);
+    opacity: 0.9;
+}
+
 .scrollup__icon {
     font-size: 1.5rem;
     color: var(--container-color);
 }
 
+[data-theme="dark"] .scrollup__icon {
+    color: #40FFDA;
+}
+
 .scrollup:hover {
     background-color: var(--title-color-dark);
+}
+
+[data-theme="light"] .scrollup:hover {
+    background: var(--gradient-secondary);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6), 0 0 40px rgba(236, 72, 153, 0.4);
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+[data-theme="dark"] .scrollup:hover {
+    background: linear-gradient(135deg, #40FFDA, #FFB81C);
+    box-shadow: 0 0 15px rgba(64, 255, 218, 0.3);
+    opacity: 1;
+}
+
+[data-theme="dark"] .scrollup:hover .scrollup__icon {
+    color: #000000;
 }
 
 /* SHOW SCROLL */

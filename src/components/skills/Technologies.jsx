@@ -35,8 +35,6 @@ const Technologies = () => {
                             <span className="skills__level">Advanced</span>
                         </div>
                     </div>
-                </div>
-                <div className="skills__group">
                     <div className="skills__data">
                         <HiCheckBadge />
                         <div>
@@ -44,18 +42,13 @@ const Technologies = () => {
                             <span className="skills__level">Basic</span>
                         </div>
                     </div>
+                </div>
+                <div className="skills__group">
                     <div className="skills__data">
                         <HiCheckBadge />
                         <div>
                             <h3 className="skills__name">Git 🌲</h3>
                             <span className="skills__level">Advanced</span>
-                        </div>
-                    </div>
-                    <div className="skills__data">
-                        <HiCheckBadge />
-                        <div>
-                            <h3 className="skills__name">Docker 🐳</h3>
-                            <span className="skills__level">Intermediate</span>
                         </div>
                     </div>
                     <div className="skills__data">

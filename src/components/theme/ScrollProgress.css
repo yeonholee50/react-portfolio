@@ -19,11 +19,12 @@
 
 /* Removed shimmer effect to prevent flashing */
 
-/* Enhance for dark theme */
+/* Enhance for dark theme - Palantir */
 [data-theme="dark"] .scroll-progress {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 [data-theme="dark"] .scroll-progress__bar {
-  box-shadow: 0 0 10px var(--glow-color);
+  background: linear-gradient(90deg, #40FFDA, #FFB81C);
+  box-shadow: 0 0 15px rgba(64, 255, 218, 0.5);
 }

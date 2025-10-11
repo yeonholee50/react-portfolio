@@ -1,5 +1,14 @@
 .qualification__container {
     max-width: 768px;
+    overflow: visible;
+}
+
+.qualification {
+    overflow-x: hidden;
+}
+
+.qualification .section {
+    overflow-x: hidden;
 }
 
 .qualification__tabs {
@@ -72,12 +81,21 @@
     border-radius: 50%;
 }
 
+[data-theme="dark"] .qualification__rounder {
+    background-color: #40FFDA;
+    box-shadow: 0 0 10px rgba(64, 255, 218, 0.3);
+}
+
 .qualification__line {
     display: block;
     width: 1px;
     height: 100%;
     background-color: var(--text-color);
     transform: translate(6px, -7px);
+}
+
+[data-theme="dark"] .qualification__line {
+    background: linear-gradient(180deg, #40FFDA, rgba(64, 255, 218, 0.3));
 }
 
 /* BREAK POINTS */

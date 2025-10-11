@@ -3,6 +3,29 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+[data-theme="dark"] .footer {
+    border-top: 2px solid rgba(64, 255, 218, 0.3);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 1));
+    box-shadow: 0 -10px 40px rgba(64, 255, 218, 0.1);
+    position: relative;
+}
+
+[data-theme="dark"] .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #40FFDA, #FFB81C, #40FFDA, transparent);
+    animation: footer-scan 3s linear infinite;
+}
+
+@keyframes footer-scan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
 .footer__container {
     padding: 2rem 0 6rem;
 }
@@ -34,16 +57,36 @@
 }
 
 .footer__social-link {
-    background-color: var(--title-color);
-    color: var(--container-color);
     font-size: 1.25rem;
-    padding: 04rem;
+    padding: 0.4rem;
     border-radius: 0.5rem;
     display: inline-flex;
+    transition: all 0.3s ease;
 }
 
-.footer__social-link:hover {
-    background-color: var(--title-color-dark);
+[data-theme="light"] .footer__social-link {
+    background: linear-gradient(135deg, #8B5CF6, #EC4899);
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    border: none;
+}
+
+[data-theme="light"] .footer__social-link:hover {
+    background: linear-gradient(135deg, #EC4899, #F59E0B);
+    box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6), 0 0 35px rgba(236, 72, 153, 0.4);
+    transform: translateY(-3px) scale(1.05);
+}
+
+[data-theme="dark"] .footer__social-link {
+    background: linear-gradient(135deg, #111111, #000000);
+    color: #40FFDA;
+    border: 1px solid rgba(64, 255, 218, 0.3);
+}
+
+[data-theme="dark"] .footer__social-link:hover {
+    background: linear-gradient(135deg, #40FFDA, #FFB81C);
+    color: #000000;
+    box-shadow: 0 0 15px rgba(64, 255, 218, 0.3);
 }
 
 .footer__copy {
@@ -52,6 +95,12 @@
     color: var(--title-color);
     text-align: center;
     font-size: var(--smaller-font-size);
+}
+
+[data-theme="dark"] .footer__copy {
+    color: #40FFDA;
+    font-family: var(--code-font);
+    letter-spacing: 1px;
 }
 
 /* BREAK POINTS */

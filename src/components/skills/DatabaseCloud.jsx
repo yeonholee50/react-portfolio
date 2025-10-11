@@ -28,8 +28,6 @@ const DatabaseCloud = () => {
                             <span className="skills__level">Intermediate</span>
                         </div>
                     </div>
-                </div>
-                <div className="skills__group">
                     <div className="skills__data">
                         <HiCheckBadge />
                         <div>
@@ -37,6 +35,8 @@ const DatabaseCloud = () => {
                             <span className="skills__level">Intermediate</span>
                         </div>
                     </div>
+                </div>
+                <div className="skills__group">
                     <div className="skills__data">
                         <HiCheckBadge />
                         <div>

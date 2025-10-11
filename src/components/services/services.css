@@ -6,9 +6,20 @@
 
 .services__content {
     position: relative;
-    border: 1px sold rgba(0, 0, 0, 1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: var(--container-color);
     padding: 6rem 0 2rem 2.5rem;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .services__content {
+    border: 1px solid rgba(64, 255, 218, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .services__content:hover {
+    border-color: rgba(64, 255, 218, 0.4);
+    box-shadow: 0 4px 20px rgba(64, 255, 218, 0.2);
 }
 
 .services__icon {
@@ -59,12 +70,22 @@
     transition: .3s;
 }
 
+[data-theme="dark"] .services__modal {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
 .services__modal-content {
     width: 500px;
     position: relative;
     background-color: var(--container-color);
     padding: 4.5rem 2.5rem 2.5rem;
     border-radius: 1.5rem;
+}
+
+[data-theme="dark"] .services__modal-content {
+    border: 1px solid rgba(64, 255, 218, 0.3);
+    box-shadow: 0 0 30px rgba(64, 255, 218, 0.2);
 }
 
 .services__modal-close {

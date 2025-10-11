@@ -5,6 +5,14 @@
     left: 0;
     z-index: var(--z-fixed);
     background-color: var(--body-color);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .header {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 2px solid rgba(64, 255, 218, 0.3);
+    box-shadow: 0 0 30px rgba(64, 255, 218, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .nav {
@@ -18,6 +26,19 @@
 .nav__logo, .nav__toggle {
     color: var(--title-color);
     font-weight: var(--font-medium);
+}
+
+[data-theme="dark"] .nav__logo {
+    color: #40FFDA;
+    font-family: var(--code-font);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(64, 255, 218, 0.5);
+}
+
+[data-theme="dark"] .nav__logo::before {
+    content: '> ';
+    color: #FFB81C;
 }
 
 .nav__list {
@@ -42,6 +63,53 @@
 /* ACTIVE LINK */
 .active-link, .nav__link:hover {
     color: var(--title-color-dark);
+}
+
+[data-theme="light"] .nav__link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .nav__link:hover {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+[data-theme="light"] .active-link {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .nav__link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #40FFDA, transparent);
+    transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .nav__link:hover::after,
+[data-theme="dark"] .active-link::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+[data-theme="dark"] .active-link {
+    color: #40FFDA;
+    text-shadow: 0 0 10px rgba(64, 255, 218, 0.5);
 }
 
 /* CHANGE HEADER */
