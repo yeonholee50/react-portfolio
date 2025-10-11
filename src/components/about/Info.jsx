@@ -16,8 +16,8 @@ const Info = () => {
         </div>
         <div className="about__box">
             <HiOutlineSparkles className="about__icon" />
-            <h3 className="about__title">Support</h3>
-            <span className="about__subtitle">Online 24/7</span>
+            <h3 className="about__title">Open Sourcet</h3>
+            <span className="about__subtitle">Active Contributor</span>
         </div>
     </div>
   );
