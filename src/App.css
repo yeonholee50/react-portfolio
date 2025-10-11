@@ -187,15 +187,29 @@ body {
 [data-theme="dark"] body {
     background-color: #000000;
     background-image: 
-        /* Hexagonal grid pattern */
-        repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(64, 255, 218, 0.03) 50px, rgba(64, 255, 218, 0.03) 51px),
-        repeating-linear-gradient(60deg, transparent, transparent 50px, rgba(64, 255, 218, 0.03) 50px, rgba(64, 255, 218, 0.03) 51px),
-        repeating-linear-gradient(120deg, transparent, transparent 50px, rgba(64, 255, 218, 0.03) 50px, rgba(64, 255, 218, 0.03) 51px),
-        /* Glowing orbs */
-        radial-gradient(circle at 20% 80%, rgba(64, 255, 218, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 184, 28, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(64, 255, 218, 0.08) 0%, transparent 70%);
+        /* Tactical grid */
+        repeating-linear-gradient(0deg, transparent, transparent 99px, rgba(64, 255, 218, 0.08) 99px, rgba(64, 255, 218, 0.08) 100px),
+        repeating-linear-gradient(90deg, transparent, transparent 99px, rgba(64, 255, 218, 0.08) 99px, rgba(64, 255, 218, 0.08) 100px),
+        /* Diagonal data streams */
+        repeating-linear-gradient(45deg, transparent, transparent 150px, rgba(64, 255, 218, 0.02) 150px, rgba(64, 255, 218, 0.02) 152px),
+        repeating-linear-gradient(-45deg, transparent, transparent 150px, rgba(255, 184, 28, 0.02) 150px, rgba(255, 184, 28, 0.02) 152px),
+        /* Hexagonal pattern */
+        repeating-linear-gradient(60deg, transparent, transparent 80px, rgba(64, 255, 218, 0.03) 80px, rgba(64, 255, 218, 0.03) 81px),
+        repeating-linear-gradient(120deg, transparent, transparent 80px, rgba(64, 255, 218, 0.03) 80px, rgba(64, 255, 218, 0.03) 81px),
+        /* Strategic lighting - multiple focal points */
+        radial-gradient(ellipse at 10% 10%, rgba(64, 255, 218, 0.12) 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 10%, rgba(255, 184, 28, 0.10) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 90%, rgba(64, 255, 218, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 60%, rgba(64, 255, 218, 0.06) 0%, transparent 45%),
+        /* Deep space gradient */
+        radial-gradient(circle at center, rgba(5, 5, 5, 0) 0%, rgba(0, 0, 0, 1) 100%);
     position: relative;
+    animation: tactical-pulse 20s ease-in-out infinite;
+}
+
+@keyframes tactical-pulse {
+    0%, 100% { background-size: 100px 100px, 100px 100px, 150px 150px, 150px 150px, 80px 80px, 80px 80px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%; }
+    50% { background-size: 102px 102px, 102px 102px, 152px 152px, 152px 152px, 82px 82px, 82px 82px, 105% 105%, 105% 105%, 105% 105%, 105% 105%, 100% 100%; }
 }
 
 /* Scanline overlay effect */
@@ -208,20 +222,53 @@ body {
     height: 100%;
     background: repeating-linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.2) 0px,
         transparent 1px,
         transparent 2px,
-        rgba(0, 0, 0, 0.15) 3px
+        rgba(0, 0, 0, 0.2) 3px
     );
     pointer-events: none;
     z-index: 1;
+    opacity: 0.25;
+    animation: scanlines 8s linear infinite;
+}
+
+/* Radar sweep effect */
+[data-theme="dark"] body::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 60vh;
+    background: linear-gradient(to bottom, transparent, rgba(64, 255, 218, 0.3) 50%, transparent);
+    transform-origin: top center;
+    pointer-events: none;
+    z-index: 0;
+    animation: radar-sweep 15s linear infinite;
     opacity: 0.3;
-    animation: scanlines 10s linear infinite;
 }
 
 @keyframes scanlines {
     0% { transform: translateY(0); }
     100% { transform: translateY(10px); }
+}
+
+@keyframes radar-sweep {
+    0% { 
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% { 
+        transform: translate(-50%, -50%) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 h1, h2, h3 {

@@ -16,7 +16,7 @@ const Header = () => {
     return(
         <header className="header">
             <nav className="nav container">
-                <a href="index.html" className="nav__logo">My Portfolio</a>
+                <a href="#home" onClick={() => setActiveNav("#home")} className="nav__logo">My Portfolio</a>
                 <div className={Toggle ? "nav__menu show-menu" : "nav__menu"}>
                     <ul className="nav__list grid">
                         <li className="nav__item">
