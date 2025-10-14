@@ -104,7 +104,7 @@ export const projectsData = [
     {
         id: 10,
         image: Project10,
-        link: "https://youtu.be/1oapv1quKkc",
+        link: "https://youtu.be/8eoaaHSm4mU",
         title: "MiniDog",
         category: "MiniDog",
         github: "https://github.com/yeonholee50/MiniDog",

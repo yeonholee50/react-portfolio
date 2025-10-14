@@ -3051,7 +3051,7 @@ const AManProject = () => {
           <iframe
             width="100%"
             height="315"
-            src="https://www.youtube.com/embed/hj6Tmm90tOE"
+            src="https://www.youtube.com/embed/8eoaaHSm4mU"
             title={`A-Man Project ${activeSection.charAt(0).toUpperCase() + activeSection.slice(1)} Inspiration`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
