@@ -1042,21 +1042,37 @@ const AManProject = () => {
       content: [
         '⚡ WHEN MARKET CRASHES - Deploy Cash Reserve (90% SGOV, 10% BAR):',
         '',
-        '📉 Cash Reserve Deployment:',
-        '   • VIX ≥ 30: Deploy 25% of Cash Reserve',
-        '   • VIX ≥ 35: Deploy 37.5% of remaining Cash Reserve',
-        '   • VIX ≥ 40: Deploy 100% of remaining Cash Reserve',
+        '📉 Cash Reserve Deployment (Staged Approach):',
+        '   • VIX ≥ 25: Sell 25% of Cash Reserve → HOLD (don\'t invest yet)',
+        '   • VIX ≥ 30: Sell 37.5% of Cash Reserve → Invest the 25% already sold',
+        '   • VIX ≥ 35: Sell 100% of Cash Reserve → Invest the 37.5% already sold',
         '',
-        '💎 Deployment Ratios (ALWAYS):',
+        '💎 Brokerage Investment Ratios (ALWAYS):',
         '   • 5% → Speculative investments',
         '   • 30% → Technology investments',
         '   • 15% → Healthcare investments',
         '   • 50% → Exchange Traded Funds',
         '',
+        '📊 Detailed Investment Process:',
+        '   • VIX ≥ 25: Sell 25% of Cash Reserve → HOLD proceeds (don\'t invest)',
+        '   • VIX ≥ 30: Sell 37.5% of Cash Reserve → Invest the 25% from previous step',
+        '   • VIX ≥ 35: Sell 100% of Cash Reserve → Invest the 37.5% from previous step',
+        '   • VIX < 15: Invest remaining sold amounts back to Cash Reserve',
+        '   • Staged approach prevents premature investment during market volatility',
+        '',
+        '🏦 Fundamental Bank Insurance Reserve:',
+        '   • When VIX ≥ 30: Can invest using Fundamental Bank Insurance Reserve',
+        '   • This is in addition to cash reserve deployment',
+        '   • Use for additional market opportunities during high volatility',
+        '   • Only available AFTER cash reserve deployment is complete',
+        '   • Must maintain minimum $600 emergency fund requirement',
+        '   • Invest excess above $600 minimum in same brokerage ratios',
+        '',
         '🛡️ Note on Emergency Reserves:',
-        '   • Fundamental Reserve ($600): PRIMARY emergency fund - NOT for market deployment',
+        '   • Fundamental Reserve ($600 minimum): PRIMARY emergency fund - Can invest excess when VIX ≥ 30',
         '   • Secondary Reserve ($300): SECONDARY emergency fund - NOT for market deployment',
-        '   • These reserves are for life emergencies ONLY',
+        '   • Secondary reserve is for life emergencies ONLY',
+        '   • Fundamental reserve excess (above $600) available for investment during high VIX',
         '',
         '🔒 IRON RULE: We NEVER EVER sell investments. NEVER.'
       ]
@@ -1155,8 +1171,9 @@ const AManProject = () => {
         '',
         '🔒 Brokerage Access Protocol:',
         '   • We DO NOT look at brokerage accounts regularly',
-        '   • Only check brokerage when VIX Index > 30',
-        '   • VIX > 30 = Market crash = Deploy cash reserve time',
+        '   • Only check brokerage when VIX Index ≥ 25 or VIX < 15',
+        '   • VIX ≥ 25 = Market crash = Staged cash reserve deployment',
+        '   • VIX < 15 = Return sold amounts to cash reserve',
         '   • Monitor VIX at: https://finance.yahoo.com/quote/%5EVIX/',
         '',
         '⚠️ CRITICAL REMINDERS:',
@@ -1905,11 +1922,11 @@ const AManProject = () => {
       { 
         id: 'vix-trigger', 
         position: { x: 969, y: 344 }, 
-        data: { label: `VIX ${frozenVix || '—'}\n${frozenVix >= 40 ? '🚨 100%' : frozenVix >= 35 ? '⚠️ 37.5%' : frozenVix >= 30 ? '📢 25%' : '✅'}` },
+        data: { label: `VIX ${frozenVix || '—'}\n${frozenVix >= 35 ? '🚨 100% SELL' : frozenVix >= 30 ? '⚠️ 37.5% SELL' : frozenVix >= 25 ? '📢 25% SELL' : frozenVix < 15 ? '🔄 RETURN TO CASH' : '✅'}` },
         style: { 
-          background: frozenVix >= 30 ? '#3d0a0a' : '#0a0a0a', 
-          color: frozenVix >= 30 ? '#FF0000' : '#40FFDA', 
-          border: `1px solid ${frozenVix >= 30 ? '#FF0000' : '#40FFDA'}`, 
+          background: frozenVix >= 25 ? '#3d0a0a' : '#0a0a0a', 
+          color: frozenVix >= 25 ? '#FF0000' : '#40FFDA', 
+          border: `1px solid ${frozenVix >= 25 ? '#FF0000' : '#40FFDA'}`, 
           borderRadius: '5px', 
           padding: '6px 9px',
           fontSize: '7px',
@@ -2107,8 +2124,8 @@ const AManProject = () => {
         style: { stroke: '#E5E5E5', strokeWidth: 0.94, strokeDasharray: '2.5' },
         markerEnd: { type: MarkerType.ArrowClosed, color: '#E5E5E5' }
       },
-      // VIX triggered deployments (only show when VIX >= 30)
-      ...(frozenVix >= 30 ? [
+      // VIX triggered deployments (show when VIX >= 25 or VIX < 15)
+      ...(frozenVix >= 25 || frozenVix < 15 ? [
         { 
           id: 'e-cash-portfolio-vix', 
           source: 'cash-reserve', 
@@ -2678,7 +2695,7 @@ const AManProject = () => {
                           displayedVix >= 35 ? '#FFFFFF' :
                           displayedVix >= 30 ? '#FFFFFF' : '#E5E5E5'
                         ) : '#FFFFFF',
-                        textShadow: displayedVix && displayedVix >= 30 ? '0 0 10px rgba(255,255,255,0.6)' : 'none'
+                        textShadow: displayedVix && displayedVix >= 25 ? '0 0 10px rgba(255,255,255,0.6)' : 'none'
                       }}>
                         {displayedVix !== null && displayedVix !== undefined ? displayedVix.toFixed(2) : '⚠️ FETCH FAILED'}
                       </div>
@@ -2686,13 +2703,14 @@ const AManProject = () => {
                         fontSize: '0.8rem', 
                         opacity: 0.7, 
                         marginTop: '0.3rem',
-                        fontWeight: displayedVix && displayedVix >= 30 ? 'bold' : 'normal',
-                        color: displayedVix && displayedVix >= 30 ? '#FFFFFF' : displayedVix === null ? '#FFFFFF' : 'inherit'
+                        fontWeight: displayedVix && displayedVix >= 25 ? 'bold' : 'normal',
+                        color: displayedVix && displayedVix >= 25 ? '#FFFFFF' : displayedVix === null ? '#FFFFFF' : 'inherit'
                       }}>
                         {displayedVix !== null && displayedVix !== undefined ? (
-                          displayedVix >= 40 ? '🚨 DEPLOY 100% CASH RESERVE!' :
-                          displayedVix >= 35 ? '⚠️ DEPLOY 37.5% CASH RESERVE' :
-                          displayedVix >= 30 ? '📢 DEPLOY 25% CASH RESERVE' :
+                          displayedVix >= 35 ? '🚨 SELL 100% CASH RESERVE → INVEST 37.5%!' :
+                          displayedVix >= 30 ? '⚠️ SELL 37.5% CASH RESERVE → INVEST 25%' :
+                          displayedVix >= 25 ? '📢 SELL 25% CASH RESERVE → HOLD' :
+                          displayedVix < 15 ? '🔄 RETURN TO CASH RESERVE' :
                           '✅ Normal Market - Stay The Course'
                         ) : 'Check browser console for error details'}
                       </div>
