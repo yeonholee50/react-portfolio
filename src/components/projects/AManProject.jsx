@@ -1044,8 +1044,8 @@ const AManProject = () => {
         '',
         '📉 Cash Reserve Deployment (Staged Approach):',
         '   • VIX ≥ 25: Sell 25% of Cash Reserve → HOLD (don\'t invest yet)',
-        '   • VIX ≥ 30: Sell 37.5% of Cash Reserve → Invest the 25% already sold',
-        '   • VIX ≥ 35: Sell 100% of Cash Reserve → Invest the 37.5% already sold',
+        '   • VIX ≥ 30: Sell 33.33% of Cash Reserve → Invest the 25% already sold',
+        '   • VIX ≥ 35: Sell 100% of Cash Reserve → Invest the 33.33% already sold',
         '',
         '💰 Cash Reserve Selling Order:',
         '   • ALWAYS sell SGOV first (90% of cash reserve)',
@@ -1060,8 +1060,8 @@ const AManProject = () => {
         '',
         '📊 Detailed Investment Process:',
         '   • VIX ≥ 25: Sell 25% of Cash Reserve → HOLD proceeds (don\'t invest)',
-        '   • VIX ≥ 30: Sell 37.5% of Cash Reserve → Invest the 25% from previous step',
-        '   • VIX ≥ 35: Sell 100% of Cash Reserve → Invest the 37.5% from previous step',
+        '   • VIX ≥ 30: Sell 33.33% of Cash Reserve → Invest the 25% from previous step',
+        '   • VIX ≥ 35: Sell 100% of Cash Reserve → Invest the 33.33% from previous step',
         '   • VIX < 15: Invest remaining sold amounts back to Cash Reserve',
         '   • Staged approach prevents premature investment during market volatility',
         '',
@@ -1927,7 +1927,7 @@ const AManProject = () => {
       { 
         id: 'vix-trigger', 
         position: { x: 969, y: 344 }, 
-        data: { label: `VIX ${frozenVix || '—'}\n${frozenVix >= 35 ? '🚨 100% SELL' : frozenVix >= 30 ? '⚠️ 37.5% SELL' : frozenVix >= 25 ? '📢 25% SELL' : frozenVix < 15 ? '🔄 RETURN TO CASH' : '✅'}` },
+        data: { label: `VIX ${frozenVix || '—'}\n${frozenVix >= 35 ? '🚨 100% SELL' : frozenVix >= 30 ? '⚠️ 33.33% SELL' : frozenVix >= 25 ? '📢 25% SELL' : frozenVix < 15 ? '🔄 RETURN TO CASH' : '✅'}` },
         style: { 
           background: frozenVix >= 25 ? '#3d0a0a' : '#0a0a0a', 
           color: frozenVix >= 25 ? '#FF0000' : '#40FFDA', 
@@ -2712,8 +2712,8 @@ const AManProject = () => {
                         color: displayedVix && displayedVix >= 25 ? '#FFFFFF' : displayedVix === null ? '#FFFFFF' : 'inherit'
                       }}>
                         {displayedVix !== null && displayedVix !== undefined ? (
-                          displayedVix >= 35 ? '🚨 SELL 100% CASH RESERVE → INVEST 37.5%!' :
-                          displayedVix >= 30 ? '⚠️ SELL 37.5% CASH RESERVE → INVEST 25%' :
+                          displayedVix >= 35 ? '🚨 SELL 100% CASH RESERVE → INVEST 33.33%!' :
+                          displayedVix >= 30 ? '⚠️ SELL 33.33% CASH RESERVE → INVEST 25%' :
                           displayedVix >= 25 ? '📢 SELL 25% CASH RESERVE → HOLD' :
                           displayedVix < 15 ? '🔄 RETURN TO CASH RESERVE' :
                           '✅ Normal Market - Stay The Course'
