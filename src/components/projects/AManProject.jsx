@@ -925,8 +925,8 @@ const AManProject = () => {
         '💰 Bank of America Checking: Daily expenses & buffer. NEVER exceed $7,500. Once exceeded, split 80% to Fidelity Brokerage, 20% to Charles Schwab.',
         '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Tech, Healthcare, Speculative, ETFs).',
         '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). Deploys in specific ratios: 5% Speculative, 30% Tech, 15% Healthcare, 50% ETFs. NO CAP - build as much as desired.',
-        '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR. Market cap: $600. Fund when excess in Charles Schwab or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
-        '🚨 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Market cap: $300. Held in SPAXX (highly liquid). Depleted FIRST in emergencies, then Fundamental. NEVER touch unless absolute emergency.',
+        '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in Charles Schwab or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
+        '🚨 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted FIRST in emergencies, then Fundamental. NEVER touch unless absolute emergency.',
         '💎 Charles Schwab Account: Savings account extension (NOT investment account). All funds in SGOV. Higher yield than traditional savings. Pull from here for discretionary spending.'
       ]
     },
@@ -938,8 +938,8 @@ const AManProject = () => {
         '💎 Charles Schwab: Savings in SGOV (for spending)',
         '📈 Fidelity Brokerage: All investments (stocks + ETFs)',
         '💰 Cash Reserve (Fidelity): Market crash deployment - 90% SGOV, 10% BAR (NO CAP)',
-        '🛡️ Fundamental Reserve: PRIMARY emergency fund - $600 cap - 90% SGOV, 10% BAR',
-        '🚨 Secondary Reserve: SECONDARY emergency fund - $300 cap (100% SPAXX) - depleted FIRST',
+        '🛡️ Fundamental Reserve: PRIMARY emergency fund - $600 cap - 90% SGOV, 10% BAR (gold)',
+        '🚨 Secondary Reserve: SECONDARY emergency fund - $300 cap (100% SGOV) - depleted FIRST',
         '🎯 Personal Roth IRA: $700/month (tax-free retirement)',
         '👨‍👦 Dad\'s Roth IRA: $500/month (until 2032)'
       ]
@@ -1043,9 +1043,9 @@ const AManProject = () => {
         '⚡ WHEN MARKET CRASHES - Deploy Cash Reserve (90% SGOV, 10% BAR):',
         '',
         '📉 Cash Reserve Deployment (Staged Approach):',
-        '   • VIX ≥ 25: Sell 25% of Cash Reserve → HOLD (don\'t invest yet)',
-        '   • VIX ≥ 30: Sell 33.33% of Cash Reserve → Invest the 25% already sold',
-        '   • VIX ≥ 35: Sell 100% of Cash Reserve → Invest the 33.33% already sold',
+        '   • VIX ≥ 30: Sell 25% of Cash Reserve → Invest with that',
+        '   • VIX ≥ 35: Sell 33.33% of remaining Cash Reserve → Invest with that',
+        '   • VIX ≥ 40: Sell 100% of remaining Cash Reserve → Invest with that',
         '',
         '💰 Cash Reserve Selling Order:',
         '   • ALWAYS sell SGOV first (90% of cash reserve)',
@@ -1059,25 +1059,23 @@ const AManProject = () => {
         '   • 50% → Exchange Traded Funds',
         '',
         '📊 Detailed Investment Process:',
-        '   • VIX ≥ 25: Sell 25% of Cash Reserve → HOLD proceeds (don\'t invest)',
-        '   • VIX ≥ 30: Sell 33.33% of Cash Reserve → Invest the 25% from previous step',
-        '   • VIX ≥ 35: Sell 100% of Cash Reserve → Invest the 33.33% from previous step',
+        '   • VIX ≥ 30: Sell 25% of Cash Reserve → Invest immediately with that amount',
+        '   • VIX ≥ 35: Sell 33.33% of remaining Cash Reserve → Invest immediately with that amount',
+        '   • VIX ≥ 40: Sell 100% of remaining Cash Reserve → Invest immediately with that amount',
         '   • VIX < 15: Invest remaining sold amounts back to Cash Reserve',
-        '   • Staged approach prevents premature investment during market volatility',
+        '   • Staged approach with immediate investment at each threshold',
         '',
         '🏦 Fundamental Bank Insurance Reserve:',
-        '   • When VIX ≥ 30: Can invest using Fundamental Bank Insurance Reserve',
-        '   • This is in addition to cash reserve deployment',
-        '   • Use for additional market opportunities during high volatility',
-        '   • Only available AFTER cash reserve deployment is complete',
+        '   • NEVER used for market deployment or investment',
+        '   • PRIMARY emergency fund - life emergencies ONLY',
         '   • Must maintain minimum $600 emergency fund requirement',
-        '   • Invest excess above $600 minimum in same brokerage ratios',
+        '   • NOT connected to portfolio investments',
         '',
         '🛡️ Note on Emergency Reserves:',
-        '   • Fundamental Reserve ($600 minimum): PRIMARY emergency fund - Can invest excess when VIX ≥ 30',
-        '   • Secondary Reserve ($300): SECONDARY emergency fund - NOT for market deployment',
-        '   • Secondary reserve is for life emergencies ONLY',
-        '   • Fundamental reserve excess (above $600) available for investment during high VIX',
+        '   • Fundamental Reserve ($600 minimum): PRIMARY emergency fund - life emergencies ONLY',
+        '   • Secondary Reserve ($300): SECONDARY emergency fund - life emergencies ONLY',
+        '   • Neither reserve is used for market deployment or investment',
+        '   • Both reserves are strictly for life emergencies',
         '',
         '🔒 IRON RULE: We NEVER EVER sell investments. NEVER.'
       ]
@@ -1110,8 +1108,8 @@ const AManProject = () => {
         '⚠️ USE CHARLES SCHWAB FIRST - That\'s what it\'s for!',
         '',
         '🔻 If you MUST withdraw from emergency reserves (in order):',
-        '   1. Secondary Bank Insurance Reserve - SECONDARY emergency fund (100% SPAXX - $300 cap) - DEPLETE FIRST',
-        '   2. Fundamental Bank Insurance Reserve - PRIMARY emergency fund (90% SGOV, 10% BAR - $600 cap) - DEPLETE SECOND',
+        '   1. Secondary Bank Insurance Reserve - SECONDARY emergency fund (100% SGOV - $300 cap) - DEPLETE FIRST',
+        '   2. Fundamental Bank Insurance Reserve - PRIMARY emergency fund (90% SGOV, 10% BAR gold - $600 cap) - DEPLETE SECOND',
         '   3. Speculative investments (already have 3-month hold)',
         '   4. Cash Reserve (Fidelity - 90% SGOV, 10% BAR - but this defeats the purpose)',
         '   5. Healthcare investments',
@@ -1122,13 +1120,19 @@ const AManProject = () => {
         '💡 When to Fund Fundamental Reserve:',
         '   • When Charles Schwab has excess savings we won\'t need',
         '   • When Bank of America exceeds $7,500',
-        '   • Market cap: $600 (90% SGOV, 10% BAR)',
+        '   • Market cap: $600 (90% SGOV, 10% BAR gold)',
         '   • This is PRIMARY emergency fund - for life emergencies ONLY',
         '',
         '💡 When to Fund Secondary Reserve:',
         '   • Fund as backup after Fundamental Reserve is maxed',
-        '   • Market cap: $300 (100% SPAXX)',
+        '   • Market cap: $300 (100% SGOV)',
         '   • This is SECONDARY emergency fund - depleted FIRST in emergencies',
+        '',
+        '🚨 CRITICAL: Emergency Reserves Usage:',
+        '   • These reserves are ONLY for life-threatening emergencies',
+        '   • NEVER touch them for any other reason - they are sacred',
+        '   • Use Charles Schwab for all non-emergency spending',
+        '   • These funds should remain untouched unless absolutely necessary',
         '',
         '✅ Valid Emergency Reasons:',
         '   • Cannot afford rent/insurance/food/water',
@@ -1137,7 +1141,9 @@ const AManProject = () => {
         '❌ INVALID Reasons (Use Charles Schwab instead):',
         '   • Gadgets, headphones, electronics',
         '   • Casual flights, vacations',
-        '   • "Want" vs "Need" purchases'
+        '   • "Want" vs "Need" purchases',
+        '   • Market opportunities or investments',
+        '   • Any discretionary spending'
       ]
     },
     {
@@ -1176,8 +1182,8 @@ const AManProject = () => {
         '',
         '🔒 Brokerage Access Protocol:',
         '   • We DO NOT look at brokerage accounts regularly',
-        '   • Only check brokerage when VIX Index ≥ 25 or VIX < 15',
-        '   • VIX ≥ 25 = Market crash = Staged cash reserve deployment',
+        '   • Only check brokerage when VIX Index ≥ 30 or VIX < 15',
+        '   • VIX ≥ 30 = Market crash = Staged cash reserve deployment',
         '   • VIX < 15 = Return sold amounts to cash reserve',
         '   • Monitor VIX at: https://finance.yahoo.com/quote/%5EVIX/',
         '',
@@ -1927,11 +1933,11 @@ const AManProject = () => {
       { 
         id: 'vix-trigger', 
         position: { x: 969, y: 344 }, 
-        data: { label: `VIX ${frozenVix || '—'}\n${frozenVix >= 35 ? '🚨 100% SELL' : frozenVix >= 30 ? '⚠️ 33.33% SELL' : frozenVix >= 25 ? '📢 25% SELL' : frozenVix < 15 ? '🔄 RETURN TO CASH' : '✅'}` },
+        data: { label: `VIX ${frozenVix || '—'}\n${frozenVix >= 40 ? '🚨 100% SELL' : frozenVix >= 35 ? '⚠️ 33.33% SELL' : frozenVix >= 30 ? '📢 25% SELL' : frozenVix < 15 ? '🔄 RETURN TO CASH' : '✅'}` },
         style: { 
-          background: frozenVix >= 25 ? '#3d0a0a' : '#0a0a0a', 
-          color: frozenVix >= 25 ? '#FF0000' : '#40FFDA', 
-          border: `1px solid ${frozenVix >= 25 ? '#FF0000' : '#40FFDA'}`, 
+          background: frozenVix >= 30 ? '#3d0a0a' : '#0a0a0a', 
+          color: frozenVix >= 30 ? '#FF0000' : '#40FFDA', 
+          border: `1px solid ${frozenVix >= 30 ? '#FF0000' : '#40FFDA'}`, 
           borderRadius: '5px', 
           padding: '6px 9px',
           fontSize: '7px',
@@ -2129,24 +2135,14 @@ const AManProject = () => {
         style: { stroke: '#E5E5E5', strokeWidth: 0.94, strokeDasharray: '2.5' },
         markerEnd: { type: MarkerType.ArrowClosed, color: '#E5E5E5' }
       },
-      // VIX triggered deployments (show when VIX >= 25 or VIX < 15)
-      ...(frozenVix >= 25 || frozenVix < 15 ? [
+      // VIX triggered deployments (show when VIX >= 30 or VIX < 15)
+      ...(frozenVix >= 30 || frozenVix < 15 ? [
         { 
           id: 'e-cash-portfolio-vix', 
           source: 'cash-reserve', 
           target: 'portfolio',
           sourceHandle: 'top',
           targetHandle: 'bottom',
-          type: 'smoothstep',
-          style: { stroke: '#FF0000', strokeWidth: 1.88, strokeDasharray: '4,4' },
-          markerEnd: { type: MarkerType.ArrowClosed, color: '#FF0000' }
-        },
-        { 
-          id: 'e-fundamental-portfolio-vix', 
-          source: 'fundamental', 
-          target: 'portfolio',
-          sourceHandle: 'right',
-          targetHandle: 'left',
           type: 'smoothstep',
           style: { stroke: '#FF0000', strokeWidth: 1.88, strokeDasharray: '4,4' },
           markerEnd: { type: MarkerType.ArrowClosed, color: '#FF0000' }
@@ -2700,7 +2696,7 @@ const AManProject = () => {
                           displayedVix >= 35 ? '#FFFFFF' :
                           displayedVix >= 30 ? '#FFFFFF' : '#E5E5E5'
                         ) : '#FFFFFF',
-                        textShadow: displayedVix && displayedVix >= 25 ? '0 0 10px rgba(255,255,255,0.6)' : 'none'
+                        textShadow: displayedVix && displayedVix >= 30 ? '0 0 10px rgba(255,255,255,0.6)' : 'none'
                       }}>
                         {displayedVix !== null && displayedVix !== undefined ? displayedVix.toFixed(2) : '⚠️ FETCH FAILED'}
                       </div>
@@ -2708,13 +2704,13 @@ const AManProject = () => {
                         fontSize: '0.8rem', 
                         opacity: 0.7, 
                         marginTop: '0.3rem',
-                        fontWeight: displayedVix && displayedVix >= 25 ? 'bold' : 'normal',
-                        color: displayedVix && displayedVix >= 25 ? '#FFFFFF' : displayedVix === null ? '#FFFFFF' : 'inherit'
+                        fontWeight: displayedVix && displayedVix >= 30 ? 'bold' : 'normal',
+                        color: displayedVix && displayedVix >= 30 ? '#FFFFFF' : displayedVix === null ? '#FFFFFF' : 'inherit'
                       }}>
                         {displayedVix !== null && displayedVix !== undefined ? (
-                          displayedVix >= 35 ? '🚨 SELL 100% CASH RESERVE → INVEST 33.33%!' :
-                          displayedVix >= 30 ? '⚠️ SELL 33.33% CASH RESERVE → INVEST 25%' :
-                          displayedVix >= 25 ? '📢 SELL 25% CASH RESERVE → HOLD' :
+                          displayedVix >= 40 ? '🚨 SELL 100% CASH RESERVE → INVEST!' :
+                          displayedVix >= 35 ? '⚠️ SELL 33.33% CASH RESERVE → INVEST!' :
+                          displayedVix >= 30 ? '📢 SELL 25% CASH RESERVE → INVEST!' :
                           displayedVix < 15 ? '🔄 RETURN TO CASH RESERVE' :
                           '✅ Normal Market - Stay The Course'
                         ) : 'Check browser console for error details'}
@@ -2995,32 +2991,32 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "October 18, 2025 at 12:00 PM EST",
-        effective: "October 18, 2025 at 12:00 PM EST"
+        signed: "October 18, 2025 at 10:00 PM EST",
+        effective: "October 18, 2025 at 10:00 PM EST"
       },
       physical: {
-        signed: "October 18, 2025 at 12:00 PM EST",
-        effective: "October 18, 2025 at 12:00 PM EST"
+        signed: "October 18, 2025 at 10:00 PM EST",
+        effective: "October 18, 2025 at 10:00 PM EST"
       },
       mental: {
-        signed: "October 18, 2025 at 12:00 PM EST",
-        effective: "October 18, 2025 at 12:00 PM EST"
+        signed: "October 18, 2025 at 10:00 PM EST",
+        effective: "October 18, 2025 at 10:00 PM EST"
       },
       financial: {
-        signed: "October 18, 2025 at 12:00 PM EST",
-        effective: "October 18, 2025 at 12:00 PM EST"
+        signed: "October 18, 2025 at 10:00 PM EST",
+        effective: "October 18, 2025 at 10:00 PM EST"
       },
       career: {
-        signed: "October 18, 2025 at 12:00 PM EST",
-        effective: "October 18, 2025 at 12:00 PM EST"
+        signed: "October 18, 2025 at 10:00 PM EST",
+        effective: "October 18, 2025 at 10:00 PM EST"
       },
       'daily-os': {
-        signed: "October 18, 2025 at 12:00 PM EST",
-        effective: "October 18, 2025 at 12:00 PM EST"
+        signed: "October 18, 2025 at 10:00 PM EST",
+        effective: "October 18, 2025 at 10:00 PM EST"
       },
       workout: {
-        signed: "October 18, 2025 at 12:00 PM EST",
-        effective: "October 18, 2025 at 12:00 PM EST"
+        signed: "October 18, 2025 at 10:00 PM EST",
+        effective: "October 18, 2025 at 10:00 PM EST"
       }
     };
 
