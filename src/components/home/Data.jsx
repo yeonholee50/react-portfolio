@@ -59,7 +59,7 @@ const Data = () => {
             Thinker + Developer
         </h3>
         <p className="home__description">
-        Developer passionate about building products that change the world. I seek my next role working on something impactful and exciting—something I'll wake up excited to build every day.
+        Developer passionate about building products that change the world. Seeking my next role—work that matters, problems worth solving, products I genuinely believe in.
         </p>
 
         <a href="#contact" className="button button--flex">

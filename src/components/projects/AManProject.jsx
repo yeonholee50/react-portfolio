@@ -403,7 +403,6 @@ const AManProject = () => {
   const [expandedPhysicalSection, setExpandedPhysicalSection] = useState(null);
   const [expandedFinancialRule, setExpandedFinancialRule] = useState(null);
   const [expandedCareerRule, setExpandedCareerRule] = useState(null);
-  const [expandedAmpyfinPlan, setExpandedAmpyfinPlan] = useState(null);
   const [expandedWorkoutDay, setExpandedWorkoutDay] = useState(null);
   const [bulkMode, setBulkMode] = useState(false);
   const [cycleStartDate, setCycleStartDate] = useState(null);
@@ -1356,65 +1355,6 @@ const AManProject = () => {
     }
   ];
 
-  const ampyfinPlans = [
-    {
-      id: 'august-september',
-      title: 'August-September 2025: OSS Models Release',
-      content: [
-        'Release all OSS Models:',
-        '• Running golang to fetch data, not hardcoded',
-        '• Pipelined designs, fully customizable',
-        '• Can run GUI mode using PyQt5 or golang equivalent',
-        '• Can run quietly on console to feed to enterprise system',
-        '• Have enterprise system running on Oracle Cloud trading actual securities ($1000 upfront)',
-        '• Documentation of how to run each system',
-        '• Supports plugin architecture to enterprise system (also open source)'
-      ]
-    },
-    {
-      id: 'berber',
-      title: 'October 2025: Mobile-First Infrastructure',
-      content: [
-        'Mobile-First Infrastructure & Website Revamp:',
-        '• RESTful API support for v3.0.1 short term, medium term, and long term decisions',
-        '• WebSocket for real-time data streaming of live trades',
-        '• Set up secure API gateway',
-        '• Implement real-time notification system',
-        '• Complete API documentation',
-        '• Overall make the website robust'
-      ]
-    },
-    {
-      id: 'november',
-      title: 'November 2025: Monetization & App Features',
-      content: [
-        'Monetization & App Features:',
-        '• Implement account management system',
-        '• Set up billing and subscription system',
-        '• Configure automated payment processing',
-        '• Begin Android app development',
-        '• Begin iOS app development',
-        '• Optimize user experience across all platforms',
-        '• Implement analytics and tracking'
-      ]
-    },
-    {
-      id: 'december',
-      title: 'December 2025: Finalization & Launch',
-      content: [
-        'System Finalization & Launch:',
-        '• Complete Android app development',
-        '• Complete iOS app development',
-        '• Conduct comprehensive testing',
-        '• Implement user feedback system',
-        '• Finalize security measures',
-        '• Complete performance optimization',
-        '• December 31, 2025: Launch date of AmpyFin App and Billing',
-        '• Plan marketing campaign - announce on LinkedIn',
-        '• Announce in YCombinator application'
-      ]
-    }
-  ];
 
   const workoutSchedule = [
     {
@@ -1629,7 +1569,8 @@ const AManProject = () => {
     financial: "Wealth is not built in the moments of fear or greed, but in the patient execution of a plan—where discipline outlasts emotion, and time in the market defeats timing the market.",
     career: "Mastery is not accidental brilliance, but deliberate architecture—where every system you build teaches others, every decision compounds your credibility, and every project extends your reach.",
     'daily-os': "Excellence is not an event but an operating system—where morning clarity sets intention, midday movement resets focus, and evening reflection compounds wisdom.",
-    workout: "Strength is not forged in single heroic efforts, but in the accumulation of disciplined repetitions—where progressive overload meets unwavering consistency, and patience transforms into power."
+    workout: "Strength is not forged in single heroic efforts, but in the accumulation of disciplined repetitions—where progressive overload meets unwavering consistency, and patience transforms into power.",
+    ampyfin: "Every hour not claimed by work, training, or recovery belongs to one thing—building what others say can't be built, solving what others won't attempt, creating what the world doesn't know it needs yet."
   };
 
   // Intelligence Graph - Starting fresh with ReactFlow
@@ -2983,6 +2924,204 @@ const AManProject = () => {
             ))}
           </div>
         );
+      case 'ampyfin':
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <SectionQuote quote={sectionQuotes.ampyfin} />
+            
+            {/* Core Philosophy */}
+            <div style={{
+              background: 'rgba(6,0,32,0.8)',
+              borderRadius: '1rem',
+              padding: '2rem',
+              border: '1px solid rgba(64,255,218,0.4)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <h3 style={{
+                color: '#40FFDA',
+                marginBottom: '1.5rem',
+                fontFamily: 'monospace',
+                fontSize: '1.3rem',
+                letterSpacing: '2px'
+              }}>
+                🎯 THE SINGULAR FOCUS
+              </h3>
+              
+              <div style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.8',
+                color: '#E5E5E5',
+                marginBottom: '1.5rem'
+              }}>
+                <p style={{ marginBottom: '1rem' }}>
+                  Every free hour—after work obligations are met, after training is complete, after recovery is honored—belongs to AmpyFin.
+                </p>
+                <p style={{ marginBottom: '1rem' }}>
+                  Not scattered across side projects. Not diluted by distractions. Not split between "maybe someday" ideas.
+                </p>
+                <p style={{ fontWeight: 'bold', color: '#40FFDA' }}>
+                  One mission. One focus. One relentless pursuit.
+                </p>
+              </div>
+
+              <div style={{
+                background: 'rgba(0,0,0,0.3)',
+                padding: '1.5rem',
+                borderRadius: '0.5rem',
+                borderLeft: '3px solid #40FFDA'
+              }}>
+                <div style={{ 
+                  fontSize: '0.95rem',
+                  lineHeight: '1.8',
+                  color: 'rgba(255,255,255,0.9)'
+                }}>
+                  <p style={{ marginBottom: '0.75rem' }}>
+                    <strong style={{ color: '#40FFDA' }}>The Rule:</strong> If it's not AmpyFin, it doesn't get built. No exceptions.
+                  </p>
+                  <p style={{ marginBottom: '0.75rem' }}>
+                    <strong style={{ color: '#40FFDA' }}>The Commitment:</strong> This is the work that matters. The problem worth solving. The product I genuinely believe in.
+                  </p>
+                  <p style={{ marginBottom: 0 }}>
+                    <strong style={{ color: '#40FFDA' }}>The Promise:</strong> Every line of code, every algorithm refined, every user experience perfected—all in service of making AmpyFin the most powerful financial intelligence system ever built.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* What AmpyFin Is */}
+            <div style={{
+              background: 'rgba(6,0,32,0.6)',
+              borderRadius: '1rem',
+              padding: '2rem',
+              border: '1px solid rgba(255,255,255,0.2)'
+            }}>
+              <h3 style={{
+                color: '#FFFFFF',
+                marginBottom: '1.5rem',
+                fontFamily: 'monospace',
+                fontSize: '1.2rem'
+              }}>
+                💡 WHAT IS AMPYFIN?
+              </h3>
+              
+              <div style={{
+                fontSize: '0.95rem',
+                lineHeight: '1.8',
+                color: '#E5E5E5'
+              }}>
+                <p style={{ marginBottom: '1rem' }}>
+                  AmpyFin is an AI-powered financial intelligence platform that analyzes market data, identifies undervalued opportunities, and provides actionable investment recommendations.
+                </p>
+                <p style={{ marginBottom: '1rem' }}>
+                  Built from the ground up with:
+                </p>
+                <ul style={{ 
+                  listStyle: 'none', 
+                  padding: '0 0 0 1.5rem',
+                  marginBottom: '1rem'
+                }}>
+                  <li style={{ marginBottom: '0.5rem' }}>• Real-time data pipelines processing millions of financial signals</li>
+                  <li style={{ marginBottom: '0.5rem' }}>• Machine learning models trained on decades of market patterns</li>
+                  <li style={{ marginBottom: '0.5rem' }}>• Open-source core components for transparency and community trust</li>
+                  <li style={{ marginBottom: '0.5rem' }}>• Enterprise-grade infrastructure deployed on Oracle Cloud</li>
+                  <li style={{ marginBottom: '0.5rem' }}>• Mobile-first architecture for decisions anywhere, anytime</li>
+                </ul>
+                <p style={{ 
+                  fontWeight: 'bold', 
+                  color: '#40FFDA',
+                  marginBottom: 0
+                }}>
+                  This isn't a side project. This is the project.
+                </p>
+              </div>
+            </div>
+
+            {/* Time Allocation */}
+            <div style={{
+              background: 'rgba(6,0,32,0.6)',
+              borderRadius: '1rem',
+              padding: '2rem',
+              border: '1px solid rgba(255,255,255,0.2)'
+            }}>
+              <h3 style={{
+                color: '#FFFFFF',
+                marginBottom: '1.5rem',
+                fontFamily: 'monospace',
+                fontSize: '1.2rem'
+              }}>
+                ⏰ FREE TIME = AMPYFIN TIME
+              </h3>
+              
+              <div style={{
+                display: 'grid',
+                gap: '1rem'
+              }}>
+                <div style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  padding: '1rem',
+                  borderRadius: '0.5rem',
+                  borderLeft: '3px solid rgba(255,255,255,0.3)'
+                }}>
+                  <div style={{ 
+                    fontSize: '0.9rem',
+                    color: '#E5E5E5',
+                    lineHeight: '1.6'
+                  }}>
+                    <strong>Weekday Evenings (After Work & Gym):</strong> 2-4 hours of focused development
+                  </div>
+                </div>
+                
+                <div style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  padding: '1rem',
+                  borderRadius: '0.5rem',
+                  borderLeft: '3px solid rgba(255,255,255,0.3)'
+                }}>
+                  <div style={{ 
+                    fontSize: '0.9rem',
+                    color: '#E5E5E5',
+                    lineHeight: '1.6'
+                  }}>
+                    <strong>Weekends:</strong> Deep work sessions on architecture, algorithms, and system design
+                  </div>
+                </div>
+                
+                <div style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  padding: '1rem',
+                  borderRadius: '0.5rem',
+                  borderLeft: '3px solid rgba(255,255,255,0.3)'
+                }}>
+                  <div style={{ 
+                    fontSize: '0.9rem',
+                    color: '#E5E5E5',
+                    lineHeight: '1.6'
+                  }}>
+                    <strong>Mental Downtime:</strong> Reading financial research, studying market patterns, refining models
+                  </div>
+                </div>
+
+                <div style={{
+                  background: 'rgba(64,255,218,0.1)',
+                  padding: '1.25rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid rgba(64,255,218,0.3)',
+                  marginTop: '0.5rem'
+                }}>
+                  <div style={{ 
+                    fontSize: '1rem',
+                    color: '#40FFDA',
+                    fontWeight: 'bold',
+                    textAlign: 'center'
+                  }}>
+                    Everything else is noise. AmpyFin is the signal.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
       default:
         return null;
     }
@@ -2991,32 +3130,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "October 23, 2025 at 10:00 PM EST",
-        effective: "October 23, 2025 at 10:00 PM EST"
+        signed: "October 24, 2025 at 10:00 PM EST",
+        effective: "October 24, 2025 at 10:00 PM EST"
       },
       physical: {
-        signed: "October 23, 2025 at 10:00 PM EST",
-        effective: "October 23, 2025 at 10:00 PM EST"
+        signed: "October 24, 2025 at 10:00 PM EST",
+        effective: "October 24, 2025 at 10:00 PM EST"
       },
       mental: {
-        signed: "October 23, 2025 at 10:00 PM EST",
-        effective: "October 23, 2025 at 10:00 PM EST"
+        signed: "October 24, 2025 at 10:00 PM EST",
+        effective: "October 24, 2025 at 10:00 PM EST"
       },
       financial: {
-        signed: "October 23, 2025 at 10:00 PM EST",
-        effective: "October 23, 2025 at 10:00 PM EST"
+        signed: "October 24, 2025 at 10:00 PM EST",
+        effective: "October 24, 2025 at 10:00 PM EST"
       },
       career: {
-        signed: "October 23, 2025 at 10:00 PM EST",
-        effective: "October 23, 2025 at 10:00 PM EST"
+        signed: "October 24, 2025 at 10:00 PM EST",
+        effective: "October 24, 2025 at 10:00 PM EST"
       },
       'daily-os': {
-        signed: "October 23, 2025 at 10:00 PM EST",
-        effective: "October 23, 2025 at 10:00 PM EST"
+        signed: "October 24, 2025 at 10:00 PM EST",
+        effective: "October 24, 2025 at 10:00 PM EST"
       },
       workout: {
-        signed: "October 23, 2025 at 10:00 PM EST",
-        effective: "October 23, 2025 at 10:00 PM EST"
+        signed: "October 24, 2025 at 10:00 PM EST",
+        effective: "October 24, 2025 at 10:00 PM EST"
+      },
+      ampyfin: {
+        signed: "October 24, 2025 at 10:00 PM EST",
+        effective: "October 24, 2025 at 10:00 PM EST"
       }
     };
 
@@ -3451,7 +3594,7 @@ const AManProject = () => {
             flexWrap: 'wrap',
             position: 'relative'
           }}>
-            {['social', 'physical', 'mental', 'financial', 'career', 'daily-os', 'workout'].map((section) => (
+            {['social', 'physical', 'mental', 'financial', 'career', 'daily-os', 'workout', 'ampyfin'].map((section) => (
               <button
                 key={section}
                 onClick={() => setActiveSection(section)}
