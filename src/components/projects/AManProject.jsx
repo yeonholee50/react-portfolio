@@ -1149,9 +1149,9 @@ const AManProject = () => {
       id: 'milestone-rewards',
       title: '🎯 Milestone Rewards',
       content: [
-        '$12.5k → 250 push-ups (10×25)',
-        '$15k → 300 push-ups (12×25)',
-        '$20k → 400 push-ups (16×25)',
+        '$12.5k → 125 push-ups (5×25)',
+        '$15k → 150 push-ups (6×25)',
+        '$20k → 200 push-ups (8×25)',
         '$25k → Mom AirPods Pro 2 (<$200)',
         '$50k → Dad AirPods Pro 2 (<$200)',
         '$75k → Self AirPods Pro 2 (<$200)',
