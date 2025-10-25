@@ -921,25 +921,25 @@ const AManProject = () => {
       id: 'account-structure',
       title: '🏦 Account Structure',
       content: [
-        '💰 Bank of America Checking: Daily expenses & buffer. NEVER exceed $7,500. Once exceeded, split 80% to Fidelity Brokerage, 20% to Charles Schwab.',
+        '💰 Bank of America Checking: Daily expenses & buffer. MAX CAP: $5,000. Once exceeded, split 80% to Fidelity Brokerage, 20% to Charles Schwab.',
         '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Tech, Healthcare, Speculative, ETFs).',
         '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). Deploys in specific ratios: 5% Speculative, 30% Tech, 15% Healthcare, 50% ETFs. NO CAP - build as much as desired.',
         '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in Charles Schwab or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
         '🚨 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted FIRST in emergencies, then Fundamental. NEVER touch unless absolute emergency.',
-        '💎 Charles Schwab Account: Savings account extension (NOT investment account). All funds in SGOV. Higher yield than traditional savings. Pull from here for discretionary spending.'
+        '💎 Charles Schwab Account: Savings account extension (NOT investment account). All funds in SGOV. Higher yield than traditional savings. MAX CAP: $30,000. Pull from here for discretionary spending.'
       ]
     },
     {
       id: 'key-accounts-summary',
       title: '🗂️ Key Accounts Summary',
       content: [
-        '🏦 Bank of America: ≤$7,500 (daily expenses)',
-        '💎 Charles Schwab: Savings in SGOV (for spending)',
-        '📈 Fidelity Brokerage: All investments (stocks + ETFs)',
+        '🏦 Bank of America: ≤$5,000 (daily expenses)',
+        '💎 Charles Schwab: Savings in SGOV (for spending) - MAX CAP: $30,000',
+        '📈 Fidelity Brokerage: All investments (stocks + ETFs) - NO CAP',
         '💰 Cash Reserve (Fidelity): Market crash deployment - 90% SGOV, 10% BAR (NO CAP)',
         '🛡️ Fundamental Reserve: PRIMARY emergency fund - $600 cap - 90% SGOV, 10% BAR (gold)',
         '🚨 Secondary Reserve: SECONDARY emergency fund - $300 cap (100% SGOV) - depleted FIRST',
-        '🎯 Personal Roth IRA: $700/month (tax-free retirement)',
+        '🎯 Personal Roth IRA: $700/month (tax-free retirement) - MAX OUT ANNUALLY',
         '👨‍👦 Dad\'s Roth IRA: $500/month (until 2032)'
       ]
     },
@@ -1092,7 +1092,7 @@ const AManProject = () => {
         '💎 BROKERAGE STAYS BROKERAGE:',
         '   • No discretionary withdrawals for lifestyle',
         '   • Charles Schwab is for spending, NOT brokerage',
-        '   • Bank of America checking: ≤ $7,500 maximum',
+        '   • Bank of America checking: ≤ $5,000 maximum',
         '',
         '🔄 Reinvest ALL dividends until $5M portfolio',
         '📊 Invest as scheduled/triggered. NO EXCEPTIONS.',
@@ -1118,7 +1118,7 @@ const AManProject = () => {
         '',
         '💡 When to Fund Fundamental Reserve:',
         '   • When Charles Schwab has excess savings we won\'t need',
-        '   • When Bank of America exceeds $7,500',
+        '   • When Bank of America exceeds $5,000',
         '   • Market cap: $600 (90% SGOV, 10% BAR gold)',
         '   • This is PRIMARY emergency fund - for life emergencies ONLY',
         '',
@@ -3213,7 +3213,7 @@ const AManProject = () => {
           <iframe
             width="100%"
             height="315"
-            src="https://www.youtube.com/embed/8eoaaHSm4mU"
+            src="https://www.youtube.com/embed/PnCn9q7KMQI"
             title={`A-Man Project ${activeSection.charAt(0).toUpperCase() + activeSection.slice(1)} Inspiration`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
