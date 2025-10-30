@@ -922,8 +922,8 @@ const AManProject = () => {
       title: '🏦 Account Structure',
       content: [
         '💰 Bank of America Checking: Daily expenses & buffer. MAX CAP: $5,000. Once exceeded, split 80% to Fidelity Brokerage, 20% to General Savings Account (Fidelity).',
-        '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Tech, Healthcare, Actively Managed, ETFs).',
-        '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). Deploys in specific ratios: 5% Actively Managed, 30% Tech, 15% Healthcare, 50% ETFs. NO CAP - build as much as desired.',
+        '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Tech, Healthcare, Secondary Technology Investments, ETFs).',
+        '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). Deploys in specific ratios: 5% Secondary Technology Investments, 30% Tech, 15% Healthcare, 50% ETFs. NO CAP - build as much as desired.',
         '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Fidelity) or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
         '🚨 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted FIRST in emergencies, then Fundamental. NEVER touch unless absolute emergency.',
         '💎 General Savings Account (Fidelity): Savings account extension (NOT investment account). All assets invested in SGOV. Higher yield than traditional savings. MAX CAP: $30,000. Pull from here for discretionary spending.'
@@ -987,9 +987,10 @@ const AManProject = () => {
         '   • Future considerations: PFE (Pfizer), NVO (Novo Nordisk) if criteria met',
         '   • 🔒 HOLD FOREVER - never sell unless fundamentals break',
         '',
-        '🎯 5% Actively Managed Investments:',
-        '   • Focus: undervalued or oversold assets you believe are long-term big players in their field',
-        '   • Not a forever hold like Tech; actively managed based on thesis and opportunity',
+        '🎯 5% Secondary Technology Investments:',
+        '   • Only invest in technology companies we believe are undervalued with market cap ≥ $50B',
+        '   • Focus on high-quality tech leaders trading below intrinsic value; allocate opportunistically based on relative undervaluation',
+        '   • 🔒 HOLD FOREVER — long-term compounders; sell only if fundamentals permanently break',
         '   • ⚠️ EXCEPTION: Can sell after 3-month minimum hold period',
         '   • Lock period: Cannot sell until 3 months expire from purchase date'
       ]
@@ -1053,7 +1054,7 @@ const AManProject = () => {
         '   • Maintain the 90% SGOV, 10% BAR composition until deployment',
         '',
         '💎 Brokerage Investment Ratios (ALWAYS):',
-        '   • 5% → Actively Managed investments',
+        '   • 5% → Secondary Technology Investments',
         '   • 30% → Technology investments',
         '   • 15% → Healthcare investments',
         '   • 50% → Exchange Traded Funds',
@@ -1110,7 +1111,7 @@ const AManProject = () => {
         '🔻 If you MUST withdraw from emergency reserves (in order):',
         '   1. Secondary Bank Insurance Reserve - SECONDARY emergency fund (100% SGOV - $300 cap) - DEPLETE FIRST',
         '   2. Fundamental Bank Insurance Reserve - PRIMARY emergency fund (90% SGOV, 10% BAR gold - $600 cap) - DEPLETE SECOND',
-        '   3. Actively Managed investments (already have 3-month hold)',
+        '   3. Secondary Technology Investments (already have 3-month hold)',
         '   4. Cash Reserve (Fidelity - 90% SGOV, 10% BAR - but this defeats the purpose)',
         '   5. Healthcare investments',
         '   6. Technology investments (GOOGL, GOOG, TSM)',
@@ -1861,7 +1862,7 @@ const AManProject = () => {
       { 
         id: 'speculative', 
         position: { x: 1281, y: 213 }, 
-        data: { label: 'Actively Managed 5%' },
+        data: { label: 'Secondary Technology Investments 5%' },
         style: { 
           background: '#111', 
           color: '#E5E5E5', 
