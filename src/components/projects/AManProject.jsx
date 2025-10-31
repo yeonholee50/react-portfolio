@@ -927,7 +927,7 @@ const AManProject = () => {
         '🚨 High Volatility Bank Insurance Reserve: FIRST emergency fund to deplete. Composition: 50% SGOV, 10% GLDM, 20% IBIT, 20% ETHA. Market cap: $100. Depleted FIRST in emergencies. NEVER touch unless absolute emergency.',
         '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Charles Schwab) or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
         '💎 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted SECOND in emergencies, after High Volatility Reserve, then Fundamental. NEVER touch unless absolute emergency.',
-        '💎 General Savings Account (Charles Schwab): Savings account extension (NOT investment account). All assets invested in SGOV. Higher yield than traditional savings. MAX CAP: $30,000. NOT CREATED until Bank of America reaches at least $5,000. Pull from here for discretionary spending.'
+        '💎 General Savings Account (Charles Schwab): Savings account extension (NOT investment account). Contains two sub-accounts: Fundamental Savings (80%) and Secondary Savings (20%). Both invested in SGOV. Higher yield than traditional savings. MAX CAP: $30,000. NOT CREATED until Bank of America reaches at least $5,000. Pull from here for discretionary spending.'
       ]
     },
     {
@@ -935,7 +935,7 @@ const AManProject = () => {
       title: '🗂️ Key Accounts Summary',
       content: [
         '🏦 Bank of America: ≤$5,000 (daily expenses)',
-        '💎 General Savings Account (Charles Schwab): Savings in SGOV (for spending) - MAX CAP: $30,000 - NOT CREATED until Bank of America reaches $5,000',
+        '💎 General Savings Account (Charles Schwab): Savings in SGOV (for spending) - MAX CAP: $30,000 - NOT CREATED until Bank of America reaches $5,000 - Split: 80% Fundamental Savings, 20% Secondary Savings',
         '📈 Fidelity Brokerage: All investments (stocks + ETFs) - NO CAP',
         '💰 Cash Reserve (Fidelity): Market crash deployment - 90% SGOV, 10% BAR (NO CAP)',
         '🚨 High Volatility Bank Insurance Reserve: FIRST emergency fund - $100 cap (50% SGOV, 10% GLDM, 20% IBIT, 20% ETHA) - depleted FIRST',
@@ -952,7 +952,7 @@ const AManProject = () => {
         '📥 After all monthly expenses (rent, food, water, transportation, Roth IRA contributions, Dad\'s Roth IRA, emergency $500 buffer)...',
         '📊 Split remaining net income:',
         '   • 80% → Fidelity Brokerage Account (investment ratio based on Buffett Indicator)',
-        '   • 20% → General Savings Account (Charles Schwab) (buy SGOV) - ONLY if Bank of America has reached at least $5,000',
+        '   • 20% → General Savings Account (Charles Schwab) (buy SGOV) - Split: 80% to Fundamental Savings, 20% to Secondary Savings - ONLY if Bank of America has reached at least $5,000',
         '',
         '🎚️ Buffett Indicator Investment Ratios (Investment:Cash Reserve):',
         '   • >200%: 2:1 ratio (more conservative, build cash reserve)',
