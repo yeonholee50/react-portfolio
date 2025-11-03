@@ -922,8 +922,8 @@ const AManProject = () => {
       title: '🏦 Account Structure',
       content: [
         '💰 Bank of America Checking: Daily expenses & buffer. MAX CAP: $5,000. Build to at least $5,000 FIRST before filling savings. Once exceeded, split 80% to Fidelity Brokerage, 20% to General Savings Account (Charles Schwab).',
-        '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Large Cap Investments, Speculative Investments, ETFs).',
-        '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). Deploys in specific ratios: 10% Speculative Investments, 40% Large Cap Investments, 50% ETFs. NO CAP - build as much as desired.',
+        '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Large Cap Investments, Small Cap, ETFs).',
+        '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). Deploys in specific ratios: 10% Small Cap, 40% Large Cap Investments, 50% ETFs. NO CAP - build as much as desired.',
         '🚨 High Volatility Bank Insurance Reserve: FIRST emergency fund to deplete. Composition: 50% SGOV, 10% GLDM, 20% IBIT, 20% ETHA. Market cap: $100. Depleted FIRST in emergencies. NEVER touch unless absolute emergency.',
         '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Charles Schwab) or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
         '💎 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted SECOND in emergencies, after High Volatility Reserve, then Fundamental. NEVER touch unless absolute emergency.',
@@ -985,7 +985,7 @@ const AManProject = () => {
         '   • Only invest when all conditions are met: (1) Market cap > $1T AND (2) P/E ratio < 30 AND (3) Growing revenue AND (4) Undervalued',
         '   • 🔒 HOLD FOREVER - never sell these positions',
         '',
-        '🎲 10% Speculative Investments:',
+        '🎲 10% Small Cap:',
         '   • Requirements: Companies (large cap or small cap) with technology we believe will be massive in the long term',
         '   • Must hold for at least 3 months minimum - can choose to hold longer or sell after 3 months',
         '   • Focus on breakthrough technologies, emerging trends, or disruptive innovations with transformative potential',
@@ -1053,7 +1053,7 @@ const AManProject = () => {
         '   • Maintain the 90% SGOV, 10% BAR composition until deployment',
         '',
         '💎 Brokerage Investment Ratios (ALWAYS):',
-        '   • 10% → Speculative Investments',
+        '   • 10% → Small Cap',
         '   • 40% → Large Cap Investments',
         '   • 50% → Exchange Traded Funds',
         '',
@@ -1110,7 +1110,7 @@ const AManProject = () => {
         '   1. High Volatility Bank Insurance Reserve - FIRST emergency fund (50% SGOV, 10% GLDM, 20% IBIT, 20% ETHA - $100 cap) - DEPLETE FIRST',
         '   2. Secondary Bank Insurance Reserve - SECONDARY emergency fund (100% SGOV - $300 cap) - DEPLETE SECOND',
         '   3. Fundamental Bank Insurance Reserve - PRIMARY emergency fund (90% SGOV, 10% BAR gold - $600 cap) - DEPLETE THIRD',
-        '   4. Speculative Investments (already have 3-month hold)',
+        '   4. Small Cap (already have 3-month hold)',
         '   5. Cash Reserve (Fidelity - 90% SGOV, 10% BAR - but this defeats the purpose)',
         '   6. Large Cap Investments',
         '   7. ETFs (core holdings)',
@@ -1850,9 +1850,9 @@ const AManProject = () => {
         }
       },
       { 
-        id: 'speculative', 
+        id: 'small-cap', 
         position: { x: 1281, y: 163 }, 
-        data: { label: 'Speculative Investments 10%' },
+        data: { label: 'Small Cap 10%' },
         style: { 
           background: '#111', 
           color: '#E5E5E5', 
@@ -2049,9 +2049,9 @@ const AManProject = () => {
         markerEnd: { type: MarkerType.ArrowClosed, color: '#E5E5E5' }
       },
       { 
-        id: 'e-portfolio-speculative', 
+        id: 'e-portfolio-small-cap', 
         source: 'portfolio', 
-        target: 'speculative',
+        target: 'small-cap',
         sourceHandle: 'right',
         targetHandle: 'left',
         type: 'smoothstep',
