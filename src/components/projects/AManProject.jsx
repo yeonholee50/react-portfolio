@@ -986,12 +986,13 @@ const AManProject = () => {
         '   • 🔒 HOLD FOREVER - never sell these positions',
         '',
         '🎲 10% Small Cap:',
-        '   • Requirements: Companies (large cap or small cap) with technology we believe will be massive in the long term',
-        '   • Must hold for at least 3 months minimum - can choose to hold longer or sell after 3 months',
-        '   • Focus on breakthrough technologies, emerging trends, or disruptive innovations with transformative potential',
-        '   • Lock period: Cannot sell until 3 months expire from purchase date',
-        '   • After 3 months: Evaluate fundamentals, thesis, and market conditions - decision to hold longer or sell is flexible',
-        '   • Risk/Reward: Higher risk positions with potential for significant long-term returns if thesis proves correct'
+        '   • Requirements:',
+        '     - Market cap below $50 billion',
+        '     - Company must have growing revenue',
+        '     - Company must be undervalued',
+        '     - Companies we believe will become big players in their fields',
+        '   • Only invest when all conditions are met: (1) Market cap < $50B AND (2) Growing revenue AND (3) Undervalued AND (4) Potential to be big players in their fields',
+        '   • 🔒 HOLD FOREVER - never sell these positions'
       ]
     },
     {
@@ -1110,7 +1111,7 @@ const AManProject = () => {
         '   1. High Volatility Bank Insurance Reserve - FIRST emergency fund (50% SGOV, 10% GLDM, 20% IBIT, 20% ETHA - $100 cap) - DEPLETE FIRST',
         '   2. Secondary Bank Insurance Reserve - SECONDARY emergency fund (100% SGOV - $300 cap) - DEPLETE SECOND',
         '   3. Fundamental Bank Insurance Reserve - PRIMARY emergency fund (90% SGOV, 10% BAR gold - $600 cap) - DEPLETE THIRD',
-        '   4. Small Cap (already have 3-month hold)',
+        '   4. Small Cap',
         '   5. Cash Reserve (Fidelity - 90% SGOV, 10% BAR - but this defeats the purpose)',
         '   6. Large Cap Investments',
         '   7. ETFs (core holdings)',
