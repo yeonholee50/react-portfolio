@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--text-color-light);
 }
@@ -42,21 +42,227 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.cv-viewer-content {
-  flex: 1;
-  width: 100%;
-  height: calc(100vh - 120px);
-  border: 1px solid var(--text-color-light);
-  border-radius: 0.5rem;
-  overflow: hidden;
+.cv-content {
+  max-width: 900px;
+  margin: 0 auto;
   background: var(--container-color);
+  padding: 2.5rem;
+  border-radius: 0.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+  color: var(--text-color);
 }
 
-.cv-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+.cv-section {
+  margin-bottom: 2rem;
+}
+
+.cv-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--text-color-light);
+}
+
+.cv-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cv-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.cv-contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cv-contact-row a {
+  color: var(--title-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.cv-contact-row a:hover {
+  color: var(--title-color-dark);
+  text-decoration: underline;
+}
+
+.cv-contact-row span {
+  color: var(--text-color-light);
+}
+
+.cv-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--title-color);
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--text-color-light);
+}
+
+.cv-paragraph {
+  margin: 0;
+  text-align: justify;
+}
+
+.cv-experience-item {
+  margin-bottom: 2rem;
+}
+
+.cv-experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cv-experience-company {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--title-color);
+  margin: 0 0 0.25rem 0;
+}
+
+.cv-experience-role {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.cv-experience-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  text-align: right;
+}
+
+.cv-experience-location {
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.cv-experience-date {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.cv-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cv-bullet-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  text-align: justify;
+}
+
+.cv-bullet-list li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--title-color);
+  font-weight: bold;
+}
+
+.cv-bullet-list li strong {
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+.cv-bullet-list li em {
+  font-style: italic;
+}
+
+.cv-bullet-list li code {
+  background: var(--body-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  color: var(--title-color);
+}
+
+.cv-bullet-list li a {
+  color: var(--title-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.cv-bullet-list li a:hover {
+  color: var(--title-color-dark);
+  text-decoration: underline;
+}
+
+.cv-project-item {
+  margin-bottom: 2rem;
+}
+
+.cv-project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cv-project-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--title-color);
+  margin: 0;
+}
+
+.cv-project-links {
+  font-size: 0.95rem;
+}
+
+.cv-project-links a {
+  color: var(--title-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.cv-project-links a:hover {
+  color: var(--title-color-dark);
+  text-decoration: underline;
+}
+
+.cv-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cv-skills p {
+  margin: 0;
+}
+
+.cv-skills strong {
+  color: var(--title-color);
+  font-weight: 600;
 }
 
 /* Responsive */
@@ -80,8 +286,24 @@
     justify-content: center;
   }
 
-  .cv-viewer-content {
-    height: calc(100vh - 180px);
+  .cv-content {
+    padding: 1.5rem;
+  }
+
+  .cv-name {
+    font-size: 2rem;
+  }
+
+  .cv-experience-header {
+    flex-direction: column;
+  }
+
+  .cv-experience-meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .cv-project-header {
+    flex-direction: column;
   }
 }
-
