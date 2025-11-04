@@ -127,26 +127,12 @@ const Qualification = () => {
                             <span className="qualification__line"></span>
                         </div>
                         <div>
-                            <h3 className="qualification__title">Software Developer</h3>
-                            <span className="qualification__subtitle">Techrupt Innovations 📈💹</span>
-                            <div className="qualification__calendar">
-                                <HiOutlineCalendar className="qualification__calendar-icon" />
-                                Dec. 2024 - February 2025
-                            </div>
-                        </div>
-                    </div>
-                    <div className="qualification__data">
-                        <div>
                             <h3 className="qualification__title">Software Engineer - AI Schema</h3>
                             <span className="qualification__subtitle">Attachments King 📦</span>
                             <div className="qualification__calendar">
                                 <HiOutlineCalendar className="qualification__calendar-icon" />
                                 Feb. 2025 - July 2025
                             </div>
-                        </div>
-                        <div>
-                            <span className="qualification__rounder"></span>
-                            <span className="qualification__line"></span>
                         </div>
                     </div>
                 </div>
