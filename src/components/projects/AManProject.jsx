@@ -988,7 +988,6 @@ const AManProject = () => {
         '   We believe in their thesis - they will dominate an underlying field',
         '   🔒 HOLD FOREVER - never sell these positions',
         '   NO CAP - invest unlimited amounts in suitable companies',
-        '   If no suitable company found: Make sure total cost basis matches, then split the money across all existing holdings equally (1/n)',
         '',
         '🎲 10% Small Cap Investments:',
         '   Approach: Act like YCombinator - investing (not trading) in early-stage companies',
