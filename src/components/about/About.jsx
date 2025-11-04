@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "./about.css";
 import AboutImg from "../../assets/aboutBW.jpeg";
-import CV from "../../assets/resume.pdf";
 import Info from "./Info";
 
 const About = () => {
+
   return (
     <section className="about section" id="about">
         <h2 className="section__title">About Me</h2>
@@ -23,8 +24,8 @@ const About = () => {
                     I'm not afraid of being left behind—I'm excited about what I can build with the emerging technologies of tomorrow. Every new framework, every breakthrough, every innovation is an opportunity to create something that didn't exist yesterday and solve problems we haven't even discovered yet.
                 </p>
                      
-                <a download="" href={CV} className="button button--flex">
-                    Download CV
+                <Link to="/cv" className="button button--flex">
+                    See My CV
                     <svg
                         className="button__icon"
                         xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +51,7 @@ const About = () => {
                             fill="var(--container-color)"
                         ></path>
                     </svg>
-                </a>
+                </Link>
             </div>
         </div>
     </section>

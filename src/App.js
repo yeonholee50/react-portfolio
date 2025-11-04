@@ -11,6 +11,7 @@ import ScrollUp from './components/scrollup/ScrollUp';
 import Portfolio from './components/projects/Portfolio';
 import PasswordProtection from './components/projects/PasswordProtection';
 import AManProject from './components/projects/AManProject';
+import CVViewer from './components/cv/CVViewer';
 import ThemeToggle from './components/theme/ThemeToggle';
 // import FloatingElements from './components/theme/FloatingElements';
 import ScrollProgress from './components/theme/ScrollProgress';
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="/" element={<MainContent />} />
         <Route path="/password-protection" element={<PasswordProtection />} />
         <Route path="/aman-project" element={<AManProject />} />
+        <Route path="/cv" element={<CVViewer />} />
       </Routes>
     </Router>
   );
