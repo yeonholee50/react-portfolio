@@ -927,7 +927,7 @@ const AManProject = () => {
         '🚨 High Volatility Bank Insurance Reserve: FIRST emergency fund to deplete. Composition: 50% SGOV, 10% GLDM, 20% IBIT, 20% ETHA. Market cap: $100. Depleted FIRST in emergencies. NEVER touch unless absolute emergency.',
         '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Charles Schwab) or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
         '💎 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted SECOND in emergencies, after High Volatility Reserve, then Fundamental. NEVER touch unless absolute emergency.',
-        '💎 General Savings Account (Charles Schwab): Savings account extension (NOT investment account). Contains two sub-accounts: Fundamental Savings (80%) and Invested Savings (20%). Fundamental Savings: 100% SGOV. Invested Savings: 50% SGOV, 50% SPYM. Higher yield than traditional savings. MAX CAP: $30,000. START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000. Pull from here for discretionary spending.'
+        '💎 General Savings Account (Charles Schwab): Savings account extension (NOT investment account). Contains two sub-accounts: Fundamental Savings (80%) and Secondary Savings (20%). Fundamental Savings: 100% SGOV. Secondary Savings: 100% SGOV. Higher yield than traditional savings. MAX CAP: $30,000. START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000. Pull from here for discretionary spending.'
       ]
     },
     {
@@ -935,7 +935,7 @@ const AManProject = () => {
       title: '🗂️ Key Accounts Summary',
       content: [
         '🏦 Bank of America: ≤$5,000 (daily expenses)',
-        '💎 General Savings Account (Charles Schwab): Savings (for spending) - MAX CAP: $30,000 - START FILLING ONLY AFTER Bank of America checking reaches at least $5,000 - Split: 80% Fundamental Savings (100% SGOV), 20% Invested Savings (50% SGOV, 50% SPYM)',
+        '💎 General Savings Account (Charles Schwab): Savings (for spending) - MAX CAP: $30,000 - START FILLING ONLY AFTER Bank of America checking reaches at least $5,000 - Split: 80% Fundamental Savings (100% SGOV), 20% Secondary Savings (100% SGOV)',
         '📈 Fidelity Brokerage: All investments (stocks + ETFs) - NO CAP',
         '💰 Cash Reserve (Fidelity): Market crash deployment - 90% SGOV, 10% BAR (NO CAP)',
         '🚨 High Volatility Bank Insurance Reserve: FIRST emergency fund - $100 cap (50% SGOV, 10% GLDM, 20% IBIT, 20% ETHA) - depleted FIRST',
@@ -952,7 +952,7 @@ const AManProject = () => {
         '📥 After all monthly expenses (rent, food, water, transportation, Roth IRA contributions, Dad\'s Roth IRA, emergency $500 buffer)...',
         '📊 Split remaining net income:',
         '   80% → Fidelity Brokerage Account (investment ratio based on Buffett Indicator)',
-        '   20% → General Savings Account (Charles Schwab) - Split: 80% to Fundamental Savings (buy SGOV), 20% to Invested Savings (50% SGOV, 50% SPYM) - START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000',
+        '   20% → General Savings Account (Charles Schwab) - Split: 80% to Fundamental Savings (buy SGOV), 20% to Secondary Savings (buy SGOV) - START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000',
         '',
         '💰 DEPOSIT RULE: All deposits must be in increments of $500',
         '',
@@ -991,14 +991,15 @@ const AManProject = () => {
         '',
         '🎲 10% Small Cap Investments:',
         '   Approach: Act like YCombinator - investing (not trading) in early-stage companies',
-        '   Market cap below $50 billion',
+        '   Market cap below $10 billion but above $1 billion',
         '   Company must be profitable',
         '   Company has potential that hasn\'t been realized yet',
         '   Be in the field of tech/science - something disruptive',
         '   We believe in their thesis',
         '   🔒 HOLD FOREVER - never sell these positions',
         '   Invest in NEW opportunities only',
-        '   HARD CAP: $200 per investment (maximum $200 per company)'
+        '   HARD CAP: $100 per investment (maximum $100 per company)',
+        '   Investment amounts: $25, $50, $75, or $100 based on conviction'
       ]
     },
     {
@@ -1758,7 +1759,7 @@ const AManProject = () => {
       { 
         id: 'schwab', 
         position: { x: 813, y: 125 }, 
-        data: { label: 'General Savings Account (Charles Schwab) (20%)\nSGOV' },
+        data: { label: 'General Savings Account (Charles Schwab) (20%)\nSecondary Savings: 100% SGOV' },
         style: { 
           background: '#1a1a00', 
           color: '#FFB81C', 
