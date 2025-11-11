@@ -3124,36 +3124,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "November 10, 2025 at 10:00 PM EST",
-        effective: "November 10, 2025 at 10:00 PM EST"
+        signed: "November 11, 2025 at 11:00 AM EST",
+        effective: "November 11, 2025 at 11:00 AM EST"
       },
       physical: {
-        signed: "November 10, 2025 at 10:00 PM EST",
-        effective: "November 10, 2025 at 10:00 PM EST"
+        signed: "November 11, 2025 at 11:00 AM EST",
+        effective: "November 11, 2025 at 11:00 AM EST"
       },
       mental: {
-        signed: "November 10, 2025 at 10:00 PM EST",
-        effective: "November 10, 2025 at 10:00 PM EST"
+        signed: "November 11, 2025 at 11:00 AM EST",
+        effective: "November 11, 2025 at 11:00 AM EST"
       },
       financial: {
-        signed: "November 10, 2025 at 10:00 PM EST",
-        effective: " EST"
+        signed: "November 11, 2025 at 11:00 AM EST",
+        effective: "November 11, 2025 at 11:00 AM EST"
       },
       career: {
-        signed: "November 10, 2025 at 10:00 PM EST",
-        effective: "November 10, 2025 at 10:00 PM EST"
+        signed: "November 11, 2025 at 11:00 AM EST",
+        effective: "November 11, 2025 at 11:00 AM EST"
       },
       'daily-os': {
-        signed: "November 10, 2025 at 10:00 PM EST",
-        effective: "November 10, 2025 at 10:00 PM EST"
+        signed: "November 11, 2025 at 11:00 AM EST",
+        effective: "November 11, 2025 at 11:00 AM EST"
       },
       workout: {
-        signed: "November 10, 2025 at 10:00 PM EST",
-        effective: "November 10, 2025 at 10:00 PM EST"
+        signed: "November 11, 2025 at 11:00 AM EST",
+        effective: "November 11, 2025 at 11:00 AM EST"
       },
       ampyfin: {
-        signed: "November 10, 2025 at 10:00 PM EST",
-        effective: "November 10, 2025 at 10:00 PM EST"
+        signed: "November 11, 2025 at 11:00 AM EST",
+        effective: "November 11, 2025 at 11:00 AM EST"
       }
     };
 
