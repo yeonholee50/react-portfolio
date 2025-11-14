@@ -987,7 +987,7 @@ const AManProject = () => {
         '   Revenue that is growing',
         '   We believe in their thesis - they will dominate an underlying field',
         '   🔒 HOLD FOREVER - never sell these positions',
-        '   MAX CAP: $2,000 per investment (maximum $2,000 per company)',
+        '   MAX CAP: $1,000 per investment (maximum $1,000 per company)',
         '',
         '🎲 10% Small Cap Investments:',
         '   Approach: Act like YCombinator - investing (not trading) in early-stage companies',
@@ -998,9 +998,7 @@ const AManProject = () => {
         '   We believe in their thesis',
         '   🔒 HOLD FOREVER - never sell these positions',
         '   Invest in NEW opportunities only',
-        '   HARD CAP: $100 per investment (maximum $100 per company)',
-        '   Investment amounts: $25, $50, $75, or $100 based on conviction'
-      ]
+        '   HARD CAP: $100 per investment (maximum $100 per company)']
     },
     {
       id: 'roth-ira-personal',
