@@ -987,7 +987,7 @@ const AManProject = () => {
         '   Revenue that is growing',
         '   We believe in their thesis - they will dominate an underlying field',
         '   🔒 HOLD FOREVER - never sell these positions',
-        '   MAX CAP: $2,000 per investment (maximum $2,000 per company)',
+        '   MAX CAP: $1,000 per investment (maximum $1,000 per company)',
         '',
         '🎲 10% Small Cap Investments:',
         '   Approach: Act like YCombinator - investing (not trading) in early-stage companies',
