@@ -924,9 +924,9 @@ const AManProject = () => {
         '💰 Bank of America Checking: Daily expenses & buffer. MAX CAP: $5,000. Build to at least $5,000 FIRST before filling savings. Once exceeded, split 80% to Fidelity Brokerage, 20% to General Savings Account (Charles Schwab).',
         '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Large Cap Investments, Small Cap Investments, ETFs).',
         '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). Deploys in specific ratios: 10% Small Cap Investments, 40% Large Cap Investments, 50% ETFs. NO CAP - build as much as desired.',
-        '🚨 High Volatility Bank Insurance Reserve: FIRST emergency fund to deplete. Composition: 100% SGOV. Market cap: $100. Depleted FIRST in emergencies. NEVER touch unless absolute emergency.',
+        '🚨 Primary Bank Insurance Reserve: FIRST emergency fund to deplete. Composition: 100% SGOV. Market cap: $100. Depleted FIRST in emergencies. NEVER touch unless absolute emergency.',
         '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Charles Schwab) or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
-        '💎 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted SECOND in emergencies, after High Volatility Reserve, then Fundamental. NEVER touch unless absolute emergency.',
+        '💎 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted SECOND in emergencies, after Primary Reserve, then Fundamental. NEVER touch unless absolute emergency.',
         '💎 General Savings Account (Charles Schwab): Savings account extension (NOT investment account). Contains two sub-accounts: Fundamental Savings (80%) and Secondary Savings (20%). Fundamental Savings: 100% SGOV. Secondary Savings: 100% SGOV. Higher yield than traditional savings. MAX CAP: $30,000. START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000. Pull from here for discretionary spending.'
       ]
     },
@@ -938,7 +938,7 @@ const AManProject = () => {
         '💎 General Savings Account (Charles Schwab): Savings (for spending) - MAX CAP: $30,000 - START FILLING ONLY AFTER Bank of America checking reaches at least $5,000 - Split: 80% Fundamental Savings (100% SGOV), 20% Secondary Savings (100% SGOV)',
         '📈 Fidelity Brokerage: All investments (stocks + ETFs) - NO CAP',
         '💰 Cash Reserve (Fidelity): Market crash deployment - 90% SGOV, 10% BAR (NO CAP)',
-        '🚨 High Volatility Bank Insurance Reserve: FIRST emergency fund - $100 cap (100% SGOV) - depleted FIRST',
+        '🚨 Primary Bank Insurance Reserve: FIRST emergency fund - $100 cap (100% SGOV) - depleted FIRST',
         '🛡️ Fundamental Reserve: PRIMARY emergency fund - $600 cap - 90% SGOV, 10% BAR (gold)',
         '💎 Secondary Reserve: SECONDARY emergency fund - $300 cap (100% SGOV) - depleted SECOND',
         '🎯 Personal Roth IRA: $700/month (tax-free retirement) - MAX OUT ANNUALLY',
@@ -1113,7 +1113,7 @@ const AManProject = () => {
         '⚠️ USE GENERAL SAVINGS ACCOUNT FIRST - That\'s what it\'s for!',
         '',
         '🔻 If you MUST withdraw from emergency reserves (in order):',
-        '   1. High Volatility Bank Insurance Reserve - FIRST emergency fund (100% SGOV - $100 cap) - DEPLETE FIRST',
+        '   1. Primary Bank Insurance Reserve - FIRST emergency fund (100% SGOV - $100 cap) - DEPLETE FIRST',
         '   2. Secondary Bank Insurance Reserve - SECONDARY emergency fund (100% SGOV - $300 cap) - DEPLETE SECOND',
         '   3. Fundamental Bank Insurance Reserve - PRIMARY emergency fund (90% SGOV, 10% BAR gold - $600 cap) - DEPLETE THIRD',
         '   4. Small Cap Investments',
@@ -1128,13 +1128,13 @@ const AManProject = () => {
         '   Market cap: $600 (90% SGOV, 10% BAR gold)',
         '   This is PRIMARY emergency fund - for life emergencies ONLY',
         '',
-        '💡 When to Fund High Volatility Bank Insurance Reserve:',
+        '💡 When to Fund Primary Bank Insurance Reserve:',
         '   Fund as the first tier emergency fund',
         '   Market cap: $100 (100% SGOV)',
         '   This is FIRST emergency fund - depleted FIRST in emergencies',
         '',
         '💡 When to Fund Secondary Reserve:',
-        '   Fund as backup after High Volatility Bank Insurance Reserve is maxed',
+        '   Fund as backup after Primary Bank Insurance Reserve is maxed',
         '   Market cap: $300 (100% SGOV)',
         '   This is SECONDARY emergency fund - depleted SECOND in emergencies',
         '',
@@ -3122,36 +3122,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "November 15, 2025 at 12:00 PM EST",
-        effective: "November 15, 2025 at 12:00 PM EST"
+        signed: "November 19, 2025 at 12:00 PM EST",
+        effective: "November 19, 2025 at 12:00 PM EST"
       },
       physical: {
-        signed: "November 15, 2025 at 12:00 PM EST",
-        effective: "November 15, 2025 at 12:00 PM EST"
+        signed: "November 19, 2025 at 12:00 PM EST",
+        effective: "November 19, 2025 at 12:00 PM EST"
       },
       mental: {
-        signed: "November 15, 2025 at 12:00 PM EST",
-        effective: "November 15, 2025 at 12:00 PM EST"
+        signed: "November 19, 2025 at 12:00 PM EST",
+        effective: "November 19, 2025 at 12:00 PM EST"
       },
       financial: {
-        signed: "November 15, 2025 at 12:00 PM EST",
-        effective: "November 15, 2025 at 12:00 PM EST"
+        signed: "November 19, 2025 at 12:00 PM EST",
+        effective: "November 19, 2025 at 12:00 PM EST"
       },
       career: {
-        signed: "November 15, 2025 at 12:00 PM EST",
-        effective: "November 15, 2025 at 12:00 PM EST"
+        signed: "November 19, 2025 at 12:00 PM EST",
+        effective: "November 19, 2025 at 12:00 PM EST"
       },
       'daily-os': {
-        signed: "November 15, 2025 at 12:00 PM EST",
-        effective: "November 15, 2025 at 12:00 PM EST"
+        signed: "November 19, 2025 at 12:00 PM EST",
+        effective: "November 19, 2025 at 12:00 PM EST"
       },
       workout: {
-        signed: "November 15, 2025 at 12:00 PM EST",
-        effective: "November 15, 2025 at 12:00 PM EST"
+        signed: "November 19, 2025 at 12:00 PM EST",
+        effective: "November 19, 2025 at 12:00 PM EST"
       },
       ampyfin: {
-        signed: "November 15, 2025 at 12:00 PM EST",
-        effective: "November 15, 2025 at 12:00 PM EST"
+        signed: "November 19, 2025 at 12:00 PM EST",
+        effective: "November 19, 2025 at 12:00 PM EST"
       }
     };
 
