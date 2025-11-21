@@ -923,7 +923,7 @@ const AManProject = () => {
       content: [
         '💰 Bank of America Checking: Daily expenses & buffer. MAX CAP: $5,000. Build to at least $5,000 FIRST before filling savings. Once exceeded, split 80% to Fidelity Brokerage, 20% to General Savings Account (Charles Schwab).',
         '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Large Cap Investments, Small Cap Investments, ETFs).',
-        '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). Deploys in specific ratios: 10% Small Cap Investments, 40% Large Cap Investments, 50% ETFs. NO CAP - build as much as desired.',
+        '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). When VIX ≥ 30: Deploy $100 daily from Cash Reserve. Deploys in specific ratios: 10% Small Cap Investments, 40% Large Cap Investments, 50% ETFs. NO CAP - build as much as desired.',
         '🚨 Primary Bank Insurance Reserve: FIRST emergency fund to deplete. Composition: 100% SGOV. Market cap: $100. Depleted FIRST in emergencies. NEVER touch unless absolute emergency.',
         '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Charles Schwab) or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
         '💎 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted SECOND in emergencies, after Primary Reserve, then Fundamental. NEVER touch unless absolute emergency.',
@@ -953,8 +953,6 @@ const AManProject = () => {
         '📊 Split remaining net income:',
         '   80% → Fidelity Brokerage Account (investment ratio based on Buffett Indicator)',
         '   20% → General Savings Account (Charles Schwab) - Split: 80% to Fundamental Savings (buy SGOV), 20% to Secondary Savings (buy SGOV) - START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000',
-        '',
-        '💰 DEPOSIT RULE: All deposits must be in increments of $500',
         '',
         '🎚️ Buffett Indicator Investment Ratios (Investment:Cash Reserve):',
         '   >200%: 2:1 ratio (more conservative, build cash reserve)',
@@ -1048,10 +1046,10 @@ const AManProject = () => {
       content: [
         '⚡ WHEN MARKET CRASHES - Deploy Cash Reserve (90% SGOV, 10% BAR):',
         '',
-        '📉 Cash Reserve Deployment (Staged Approach):',
-        '   VIX ≥ 30: Sell 25% of Cash Reserve → Invest with that',
-        '   VIX ≥ 35: Sell 33.33% of remaining Cash Reserve → Invest with that',
-        '   VIX ≥ 40: Sell 100% of remaining Cash Reserve → Invest with that',
+        '📉 Cash Reserve Deployment (Daily Fixed Amount):',
+        '   VIX ≥ 30: Deploy $100 from Cash Reserve → Invest with that amount',
+        '   Deploy $100 each day while VIX ≥ 30',
+        '   Simple, consistent approach - no percentages',
         '',
         '💰 Cash Reserve Selling Order:',
         '   ALWAYS sell SGOV first (90% of cash reserve)',
@@ -1064,11 +1062,10 @@ const AManProject = () => {
         '   50% → Exchange Traded Funds',
         '',
         '📊 Detailed Investment Process:',
-        '   VIX ≥ 30: Sell 25% of Cash Reserve → Invest immediately with that amount',
-        '   VIX ≥ 35: Sell 33.33% of remaining Cash Reserve → Invest immediately with that amount',
-        '   VIX ≥ 40: Sell 100% of remaining Cash Reserve → Invest immediately with that amount',
+        '   VIX ≥ 30: Deploy $100 from Cash Reserve → Invest immediately with that amount',
+        '   Repeat daily: Deploy $100 each day while VIX ≥ 30',
         '   VIX < 15: Invest remaining sold amounts back to Cash Reserve',
-        '   Staged approach with immediate investment at each threshold',
+        '   Simple daily deployment approach',
         '',
         '🏦 Fundamental Bank Insurance Reserve:',
         '   NEVER used for market deployment or investment',
@@ -1193,7 +1190,7 @@ const AManProject = () => {
         '🔒 Brokerage Access Protocol:',
         '   We DO NOT look at brokerage accounts regularly',
         '   Only check brokerage when VIX Index ≥ 30 or VIX < 15',
-        '   VIX ≥ 30 = Market crash = Staged cash reserve deployment',
+        '   VIX ≥ 30 = Market crash = Deploy $100 from cash reserve daily',
         '   VIX < 15 = Return sold amounts to cash reserve',
         '   Monitor VIX at: https://finance.yahoo.com/quote/%5EVIX/',
         '',
@@ -1872,7 +1869,7 @@ const AManProject = () => {
       { 
         id: 'vix-trigger', 
         position: { x: 969, y: 344 }, 
-        data: { label: `VIX ${frozenVix || '—'}\n${frozenVix >= 40 ? '🚨 100% SELL' : frozenVix >= 35 ? '⚠️ 33.33% SELL' : frozenVix >= 30 ? '📢 25% SELL' : frozenVix < 15 ? '🔄 RETURN TO CASH' : '✅'}` },
+        data: { label: `VIX ${frozenVix || '—'}\n${frozenVix >= 30 ? '📢 $100 DEPLOY' : frozenVix < 15 ? '🔄 RETURN TO CASH' : '✅'}` },
         style: { 
           background: frozenVix >= 30 ? '#3d0a0a' : '#0a0a0a', 
           color: frozenVix >= 30 ? '#FF0000' : '#40FFDA', 
@@ -2124,9 +2121,9 @@ const AManProject = () => {
                  </div>
                  <div style={{ color: frozenVix >= 30 ? '#FF0000' : frozenVix >= 20 ? '#FFB81C' : '#40FFDA' }}>
                    <span style={{ fontWeight: 'bold' }}>VIX:</span> {Number.isFinite(frozenVix) ? frozenVix.toFixed(2) : '—'}
-                   <span style={{ marginLeft: '0.5rem', opacity: 0.7 }}>
-                     {frozenVix >= 40 ? '🚨 CRISIS' : frozenVix >= 35 ? '⚠️ HIGH' : frozenVix >= 30 ? '📢 ELEVATED' : '✅ NORMAL'}
-                   </span>
+                  <span style={{ marginLeft: '0.5rem', opacity: 0.7 }}>
+                    {frozenVix >= 30 ? '📢 DEPLOY $100' : '✅ NORMAL'}
+                  </span>
                  </div>
                </div>
           </div>
@@ -2637,9 +2634,7 @@ const AManProject = () => {
                         color: displayedVix && displayedVix >= 30 ? '#FFFFFF' : displayedVix === null ? '#FFFFFF' : 'inherit'
                       }}>
                         {displayedVix !== null && displayedVix !== undefined ? (
-                          displayedVix >= 40 ? '🚨 SELL 100% CASH RESERVE → INVEST!' :
-                          displayedVix >= 35 ? '⚠️ SELL 33.33% CASH RESERVE → INVEST!' :
-                          displayedVix >= 30 ? '📢 SELL 25% CASH RESERVE → INVEST!' :
+                          displayedVix >= 30 ? '📢 DEPLOY $100 FROM CASH RESERVE → INVEST!' :
                           displayedVix < 15 ? '🔄 RETURN TO CASH RESERVE' :
                           '✅ Normal Market - Stay The Course'
                         ) : 'Check browser console for error details'}
