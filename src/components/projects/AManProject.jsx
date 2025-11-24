@@ -3117,36 +3117,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "November 22, 2025 at 11:00 PM EST",
-        effective: "November 22, 2025 at 11:00 PM EST"
+        signed: "November 23, 2025 at 11:00 PM EST",
+        effective: "November 23, 2025 at 11:00 PM EST"
       },
       physical: {
-        signed: "November 22, 2025 at 11:00 PM EST",
-        effective: "November 22, 2025 at 11:00 PM EST"
+        signed: "November 23, 2025 at 11:00 PM EST",
+        effective: "November 23, 2025 at 11:00 PM EST"
       },
       mental: {
-        signed: "November 22, 2025 at 11:00 PM EST",
-        effective: "November 22, 2025 at 11:00 PM EST"
+        signed: "November 23, 2025 at 11:00 PM EST",
+        effective: "November 23, 2025 at 11:00 PM EST"
       },
       financial: {
-        signed: "November 22, 2025 at 11:00 PM EST",
-        effective: "November 22, 2025 at 11:00 PM EST"
+        signed: "November 23, 2025 at 11:00 PM EST",
+        effective: "November 23, 2025 at 11:00 PM EST"
       },
       career: {
-        signed: "November 22, 2025 at 11:00 PM EST",
-        effective: "November 22, 2025 at 11:00 PM EST"
+        signed: "November 23, 2025 at 11:00 PM EST",
+        effective: "November 23, 2025 at 11:00 PM EST"
       },
       'daily-os': {
-        signed: "November 22, 2025 at 11:00 PM EST",
-        effective: "November 22, 2025 at 11:00 PM EST"
+        signed: "November 23, 2025 at 11:00 PM EST",
+        effective: "November 23, 2025 at 11:00 PM EST"
       },
       workout: {
-        signed: "November 22, 2025 at 11:00 PM EST",
-        effective: "November 22, 2025 at 11:00 PM EST"
+        signed: "November 23, 2025 at 11:00 PM EST",
+        effective: "November 23, 2025 at 11:00 PM EST"
       },
       ampyfin: {
-        signed: "November 22, 2025 at 11:00 PM EST",
-        effective: "November 22, 2025 at 11:00 PM EST"
+        signed: "November 23, 2025 at 11:00 PM EST",
+        effective: "November 23, 2025 at 11:00 PM EST"
       }
     };
 
