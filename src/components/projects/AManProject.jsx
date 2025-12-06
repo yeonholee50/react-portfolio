@@ -3117,36 +3117,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "December 5, 2025 at 10:00 PM EST",
-        effective: "December 5, 2025 at 10:00 PM EST"
+        signed: "December 6, 2025 at 10:00 PM EST",
+        effective: "December 6, 2025 at 10:00 PM EST"
       },
       physical: {
-        signed: "December 5, 2025 at 10:00 PM EST",
-        effective: "December 5, 2025 at 10:00 PM EST"
+        signed: "December 6, 2025 at 10:00 PM EST",
+        effective: "December 6, 2025 at 10:00 PM EST"
       },
       mental: {
-        signed: "December 5, 2025 at 10:00 PM EST",
-        effective: "December 5, 2025 at 10:00 PM EST"
+        signed: "December 6, 2025 at 10:00 PM EST",
+        effective: "December 6, 2025 at 10:00 PM EST"
       },
       financial: {
-        signed: "December 5, 2025 at 10:00 PM EST",
-        effective: "December 5, 2025 at 10:00 PM EST"
+        signed: "December 6, 2025 at 10:00 PM EST",
+        effective: "December 6, 2025 at 10:00 PM EST"
       },
       career: {
-        signed: "December 5, 2025 at 10:00 PM EST",
-        effective: "December 5, 2025 at 10:00 PM EST"
+        signed: "December 6, 2025 at 10:00 PM EST",
+        effective: "December 6, 2025 at 10:00 PM EST"
       },
       'daily-os': {
-        signed: "December 5, 2025 at 10:00 PM EST",
-        effective: "December 5, 2025 at 10:00 PM EST"
+        signed: "December 6, 2025 at 10:00 PM EST",
+        effective: "December 6, 2025 at 10:00 PM EST"
       },
       workout: {
-        signed: "December 5, 2025 at 10:00 PM EST",
-        effective: "December 5, 2025 at 10:00 PM EST"
+        signed: "December 6, 2025 at 10:00 PM EST",
+        effective: "December 6, 2025 at 10:00 PM EST"
       },
       ampyfin: {
-        signed: "December 5, 2025 at 10:00 PM EST",
-        effective: "December 5, 2025 at 10:00 PM EST"
+        signed: "December 6, 2025 at 10:00 PM EST",
+        effective: "December 6, 2025 at 10:00 PM EST"
       }
     };
 
