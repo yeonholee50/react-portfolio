@@ -3117,36 +3117,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "December 14 at 10:00 PM EST",
-        effective: "December 14 at 10:00 PM EST"
+        signed: "December 15 at 10:00 PM EST",
+        effective: "December 15 at 10:00 PM EST"
       },
       physical: {
-        signed: "December 14 at 10:00 PM EST",
-        effective: "December 14 at 10:00 PM EST"
+        signed: "December 15 at 10:00 PM EST",
+        effective: "December 15 at 10:00 PM EST"
       },
       mental: {
-        signed: "December 14 at 10:00 PM EST",
-        effective: "December 14 at 10:00 PM EST"
+        signed: "December 15 at 10:00 PM EST",
+        effective: "December 15 at 10:00 PM EST"
       },
       financial: {
-        signed: "December 14 at 10:00 PM EST",
-        effective: "December 14 at 10:00 PM EST"
+        signed: "December 15 at 10:00 PM EST",
+        effective: "December 15 at 10:00 PM EST"
       },
       career: {
-        signed: "December 14 at 10:00 PM EST",
-        effective: "December 14 at 10:00 PM EST"
+        signed: "December 15 at 10:00 PM EST",
+        effective: "December 15 at 10:00 PM EST"
       },
       'daily-os': {
-        signed: "December 14 at 10:00 PM EST",
-        effective: "December 14 at 10:00 PM EST"
+        signed: "December 15 at 10:00 PM EST",
+        effective: "December 15 at 10:00 PM EST"
       },
       workout: {
-        signed: "December 14 at 10:00 PM EST",
-        effective: "December 14 at 10:00 PM EST"
+        signed: "December 15 at 10:00 PM EST",
+        effective: "December 15 at 10:00 PM EST"
       },
       ampyfin: {
-        signed: "December 14 at 10:00 PM EST",
-        effective: "December 14 at 10:00 PM EST"
+        signed: "December 15 at 10:00 PM EST",
+        effective: "December 15 at 10:00 PM EST"
       }
     };
 
