@@ -50,14 +50,6 @@ const CVViewer = () => {
                 <span className="cv-experience-date">Jul 2025 – Present</span>
               </div>
             </div>
-            <ul className="cv-bullet-list">
-              <li>Contracted on weekends by a buy-side firm to design and build a <strong>proprietary, modular Go trading platform</strong> that standardizes service contracts, message-bus envelopes, and observability hooks, <strong>cutting new subsystem bring-up from ~1–2 days to &lt;30 minutes</strong> via plug-and-play templates and linted schemas.</li>
-              <li>Shipped source adapters across <em>news, historical, and fundamental</em> domains and normalized outputs to canonical schemas, <strong>lifting schema-valid ingest to &gt;99.9%</strong> with drift/orphan detection, fixed-precision prices, and strict UTC/event-time gating.</li>
-              <li>Implemented a bounded-concurrency worker pool with token-bucket rate limiting, session rotation, and backoff/circuit breakers, <strong>improving multi-source throughput by 3–4×</strong> while holding p99 latency targets and protecting vendor quotas.</li>
-              <li>Enabled <strong>three run modes</strong>—GUI, console, and headless—with a one-command <em>trace dump</em> that stitches logs/metrics/traces; <strong>reduced MTTR from hours to minutes</strong> on ingest and streaming incidents.</li>
-              <li>Delivered a real-time market analysis and risk module (breadth, momentum, regime, volatility, macro). <strong>Standardized indicator outputs and dashboards</strong> to lower decision latency and enable same-day tuning.</li>
-              <li>Hardened production streaming with ordered publishing, backpressure, and graceful shutdown, plus config/secret indirection (no keys in code); <strong>achieved loss-free soak runs</strong> and reproducible replays with run IDs and schema versioning.</li>
-            </ul>
           </div>
 
           <div className="cv-experience-item">
@@ -71,30 +63,19 @@ const CVViewer = () => {
                 <span className="cv-experience-date">Feb 2025 – Jul 2025</span>
               </div>
             </div>
-            <ul className="cv-bullet-list">
-              <li>Unified AI rule authoring behind a centralized cursor-rule router; org-wide adoption as the single pathway <strong>reduced fragmentation and simplified maintenance</strong> across teams.</li>
-              <li>Replaced ad-hoc logic with a tree-based constraints engine on a graph store that encodes power/interface/mechanical limits and emits valid combos dynamically, <strong>cutting test-matrix generation from days to &lt;1 hour</strong>.</li>
-              <li>Enabled same-day price updates for ~20k SKUs/week and <strong>reduced bad-data incidents by &gt;86%</strong> by standardizing PDF/CSV/HTML pipelines with drift/orphan detection and auto-publishing of clean SKUs.</li>
-              <li>Eliminated manual CSR checks for 12+ vendors and <strong>improved availability freshness to p95 &lt;10 min</strong> by deploying a reusable, real-time ingestion pipeline for non-API suppliers.</li>
-            </ul>
           </div>
 
           <div className="cv-experience-item">
             <div className="cv-experience-header">
               <div>
                 <h3 className="cv-experience-company">LymphaTech</h3>
-                <p className="cv-experience-role">Backend Developer</p>
+                <p className="cv-experience-role">Backend Developer (Junior Capstone Contract)</p>
               </div>
               <div className="cv-experience-meta">
                 <span className="cv-experience-location">Atlanta, GA</span>
                 <span className="cv-experience-date">Aug 2023 – May 2024</span>
               </div>
             </div>
-            <ul className="cv-bullet-list">
-              <li>Enabled reliable multi-device access with fewer synchronization conflicts and lower resource use by introducing a two-stage UI–server pattern with flag-based sync.</li>
-              <li>Held contour-measurement error within <strong>≤4% of ground truth</strong> by tuning the model pipeline and integrating point-cloud contour-line generation.</li>
-              <li>Improved delivery predictability across biweekly sprints by coordinating Scrum ceremonies and aligning stakeholder feedback through transparent Jira workflows.</li>
-            </ul>
           </div>
         </div>
 
