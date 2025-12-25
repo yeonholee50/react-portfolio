@@ -989,7 +989,7 @@ const AManProject = () => {
         '',
         '🎲 10% Small Cap Investments:',
         '   Approach: Act like YCombinator - investing (not trading) in early-stage companies',
-        '   Market cap below $50 billion',
+        '   Market cap below $10 billion',
         '   Company must be profitable',
         '   Company has potential that hasn\'t been realized yet',
         '   Be in the field of tech/science - something disruptive',
