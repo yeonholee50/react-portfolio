@@ -979,7 +979,7 @@ const AManProject = () => {
         '',
         '📊 40% Large Cap Investments:',
         '   Approach: Value investing in established market leaders - investing in profitable, undervalued large-cap companies with growing revenue that we believe will dominate their fields',
-        '   Market cap at least $300 billion',
+        '   Market cap at least $100 billion',
         '   As little debt as possible',
         '   Undervalued (P/E ratio below 30)',
         '   Revenue that is growing',
