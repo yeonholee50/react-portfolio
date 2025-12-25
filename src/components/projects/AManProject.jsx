@@ -3117,36 +3117,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "December 22, 2025 at 10:00 PM",
-        effective: "December 22, 2025 at 10:00 PM"
+        signed: "December 24, 2025 (Christmas Eve) at 10:00 PM",
+        effective: "December 24, 2025 (Christmas Eve) at 10:00 PM"
       },
       physical: {
-        signed: "December 22, 2025 at 10:00 PM",
-        effective: "December 22, 2025 at 10:00 PM"
+        signed: "December 24, 2025 (Christmas Eve) at 10:00 PM",
+        effective: "December 24, 2025 (Christmas Eve) at 10:00 PM"
       },
       mental: {
-        signed: "December 22, 2025 at 10:00 PM",
-        effective: "December 22, 2025 at 10:00 PM"
+        signed: "December 24, 2025 (Christmas Eve) at 10:00 PM",
+        effective: "December 24, 2025 (Christmas Eve) at 10:00 PM"
       },
       financial: {
-        signed: "December 22, 2025 at 10:00 PM",
-        effective: "December 22, 2025 at 10:00 PM"
+        signed: "December 24, 2025 (Christmas Eve) at 10:00 PM",
+        effective: "December 24, 2025 (Christmas Eve) at 10:00 PM"
       },
       career: {
-        signed: "December 22, 2025 at 10:00 PM",
-        effective: "December 22, 2025 at 10:00 PM"
+        signed: "December 24, 2025 (Christmas Eve) at 10:00 PM",
+        effective: "December 24, 2025 (Christmas Eve) at 10:00 PM"
       },
       'daily-os': {
-        signed: "December 22, 2025 at 10:00 PM",
-        effective: "December 22, 2025 at 10:00 PM"
+        signed: "December 24, 2025 (Christmas Eve) at 10:00 PM",
+        effective: "December 24, 2025 (Christmas Eve) at 10:00 PM"
       },
       workout: {
-        signed: "December 22, 2025 at 10:00 PM",
-        effective: "December 22, 2025 at 10:00 PM"
+        signed: "December 24, 2025 (Christmas Eve) at 10:00 PM",
+        effective: "December 24, 2025 (Christmas Eve) at 10:00 PM"
       },
       ampyfin: {
-        signed: "December 22, 2025 at 10:00 PM",
-        effective: "December 22, 2025 at 10:00 PM"
+        signed: "December 24, 2025 (Christmas Eve) at 10:00 PM",
+        effective: "December 24, 2025 (Christmas Eve) at 10:00 PM"
       }
     };
 
