@@ -3118,35 +3118,35 @@ const AManProject = () => {
     const dates = {
       social: {
         signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 28, 2025 at 10:00 PM"
+        effective: "December 29, 2025 at 10:00 PM"
       },
       physical: {
         signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 28, 2025 at 10:00 PM"
+        effective: "December 29, 2025 at 10:00 PM"
       },
       mental: {
         signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 28, 2025 at 10:00 PM"
+        effective: "December 29, 2025 at 10:00 PM"
       },
       financial: {
         signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 28, 2025 at 10:00 PM"
+        effective: "December 29, 2025 at 10:00 PM"
       },
       career: {
         signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 28, 2025 at 10:00 PM"
+        effective: "December 29, 2025 at 10:00 PM"
       },
       'daily-os': {
         signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 28, 2025 at 10:00 PM"
+        effective: "December 29, 2025 at 10:00 PM"
       },
       workout: {
         signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 28, 2025 at 10:00 PM"
+        effective: "December 29, 2025 at 10:00 PM"
       },
       ampyfin: {
         signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 28, 2025 at 10:00 PM"
+        effective: "December 29, 2025 at 10:00 PM"
       }
     };
 
