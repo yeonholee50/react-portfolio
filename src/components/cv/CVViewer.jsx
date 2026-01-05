@@ -47,7 +47,7 @@ const CVViewer = () => {
               </div>
               <div className="cv-experience-meta">
                 <span className="cv-experience-location">Atlanta, Georgia</span>
-                <span className="cv-experience-date">Jul 2025 – Present</span>
+                <span className="cv-experience-date">Jun 2025 – Present</span>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@ const CVViewer = () => {
               </div>
               <div className="cv-experience-meta">
                 <span className="cv-experience-location">San Francisco, CA</span>
-                <span className="cv-experience-date">Feb 2025 – Jul 2025</span>
+                <span className="cv-experience-date">Mar 2025 – Jul 2025</span>
               </div>
             </div>
           </div>

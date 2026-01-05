@@ -131,7 +131,7 @@ const Qualification = () => {
                             <span className="qualification__subtitle">Attachments King 📦</span>
                             <div className="qualification__calendar">
                                 <HiOutlineCalendar className="qualification__calendar-icon" />
-                                Feb. 2025 - July 2025
+                                Mar. 2025 - July 2025
                             </div>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ const Qualification = () => {
                             <span className="qualification__subtitle">Alpha Quant 📈💹</span>
                             <div className="qualification__calendar">
                                 <HiOutlineCalendar className="qualification__calendar-icon" />
-                                July 2025 - Present
+                                June 2025 - Present
                             </div>
                         </div>
                         <div>
