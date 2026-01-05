@@ -3117,36 +3117,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 31, 2025 at 10:00 PM"
+        signed: "January 5, 2025 at 10:00 PM",
+        effective: "January 5, 2025 at 10:00 PM"
       },
       physical: {
-        signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 31, 2025 at 10:00 PM"
+        signed: "January 5, 2025 at 10:00 PM",
+        effective: "January 5, 2025 at 10:00 PM"
       },
       mental: {
-        signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 31, 2025 at 10:00 PM"
+        signed: "January 5, 2025 at 10:00 PM",
+        effective: "January 5, 2025 at 10:00 PM"
       },
       financial: {
-        signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 31, 2025 at 10:00 PM"
+        signed: "January 5, 2025 at 10:00 PM",
+        effective: "January 5, 2025 at 10:00 PM"
       },
       career: {
-        signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 31, 2025 at 10:00 PM"
+        signed: "January 5, 2025 at 10:00 PM",
+        effective: "January 5, 2025 at 10:00 PM"
       },
       'daily-os': {
-        signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 31, 2025 at 10:00 PM"
+        signed: "January 5, 2025 at 10:00 PM",
+        effective: "January 5, 2025 at 10:00 PM"
       },
       workout: {
-        signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 31, 2025 at 10:00 PM"
+        signed: "January 5, 2025 at 10:00 PM",
+        effective: "January 5, 2025 at 10:00 PM"
       },
       ampyfin: {
-        signed: "December 25, 2025 (Christmas) at 10:00 PM",
-        effective: "December 31, 2025 at 10:00 PM"
+        signed: "January 5, 2025 at 10:00 PM",
+        effective: "January 5, 2025 at 10:00 PM"
       }
     };
 
