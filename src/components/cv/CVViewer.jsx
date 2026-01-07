@@ -55,19 +55,6 @@ const CVViewer = () => {
           <div className="cv-experience-item">
             <div className="cv-experience-header">
               <div>
-                <h3 className="cv-experience-company">Alpha Quant</h3>
-                <p className="cv-experience-role">Software Developer</p>
-              </div>
-              <div className="cv-experience-meta">
-                <span className="cv-experience-location">Atlanta, Georgia</span>
-                <span className="cv-experience-date">Jun 2025 – Present</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="cv-experience-item">
-            <div className="cv-experience-header">
-              <div>
                 <h3 className="cv-experience-company">Attachments King</h3>
                 <p className="cv-experience-role">Software Engineer — AI Schema</p>
               </div>
