@@ -59,7 +59,7 @@ const Data = () => {
             Thinker + Developer
         </h3>
         <p className="home__description">
-        Developer passionate about building products that change the world. Seeking my next role—work that matters, problems worth solving, products I genuinely believe in.
+        Software Engineer @ Google (YouTube). Developer passionate about building products that change the world.
         </p>
 
         <a href="#contact" className="button button--flex">
