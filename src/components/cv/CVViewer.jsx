@@ -46,7 +46,7 @@ const CVViewer = () => {
                 <p className="cv-experience-role">Software Engineer</p>
               </div>
               <div className="cv-experience-meta">
-                <span className="cv-experience-location">Mountain View, CA</span>
+                <span className="cv-experience-location">San Bruno, CA</span>
                 <span className="cv-experience-date">Present</span>
               </div>
             </div>
