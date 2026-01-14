@@ -141,7 +141,7 @@ const Qualification = () => {
                             <span className="qualification__subtitle">Google (YouTube) 🎥</span>
                             <div className="qualification__calendar">
                                 <HiOutlineCalendar className="qualification__calendar-icon" />
-                                Present
+                                Jan. 2025 - Present
                             </div>
                         </div>
                         <div>
