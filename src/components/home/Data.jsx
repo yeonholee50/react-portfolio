@@ -59,7 +59,7 @@ const Data = () => {
             Thinker + Developer
         </h3>
         <p className="home__description">
-        Software Engineer @ Google (YouTube). Developer passionate about building products that change the world.
+        Software Engineer @ Google (YouTube). I cook and code.
         </p>
 
         <a href="#contact" className="button button--flex">
