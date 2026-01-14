@@ -927,7 +927,8 @@ const AManProject = () => {
         '🚨 Primary Bank Insurance Reserve: FIRST emergency fund to deplete. Composition: 100% SGOV. Market cap: $100. Depleted FIRST in emergencies. NEVER touch unless absolute emergency.',
         '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Charles Schwab) or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
         '💎 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted SECOND in emergencies, after Primary Reserve, then Fundamental. NEVER touch unless absolute emergency.',
-        '💎 General Savings Account (Charles Schwab): Savings account extension (NOT investment account). Contains two sub-accounts: Fundamental Savings (80%) and Secondary Savings (20%). Fundamental Savings: 100% SGOV. Secondary Savings: 100% SGOV. Higher yield than traditional savings. MAX CAP: $30,000. START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000. Pull from here for discretionary spending.'
+        '💎 General Savings Account (Charles Schwab): Savings account extension (NOT investment account). Contains two sub-accounts: Fundamental Savings (80%) and Secondary Savings (20%). Fundamental Savings: 100% SGOV. Secondary Savings: 100% SGOV. Higher yield than traditional savings. MAX CAP: $30,000. START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000. Pull from here for discretionary spending.',
+        '👨‍👩‍👦 Mom and Dad Investment Account: Monthly contribution of $300. Investment allocation: $100 each in SCHD, QQQM, and SPYM. This is a separate investment account for parents\' retirement planning.'
       ]
     },
     {
@@ -942,14 +943,15 @@ const AManProject = () => {
         '🛡️ Fundamental Reserve: PRIMARY emergency fund - $600 cap - 90% SGOV, 10% BAR (gold)',
         '💎 Secondary Reserve: SECONDARY emergency fund - $300 cap (100% SGOV) - depleted SECOND',
         '💼 401k: MAX OUT ANNUALLY (employer match + tax advantages)',
-        '🏥 HSA: MAX OUT ANNUALLY (triple tax advantage)'
+        '🏥 HSA: MAX OUT ANNUALLY (triple tax advantage)',
+        '👨‍👩‍👦 Mom and Dad Investment: $300/month - $100 each in SCHD, QQQM, SPYM'
       ]
     },
     {
       id: 'income-allocation',
       title: '💸 Monthly Income Allocation',
       content: [
-        '📥 After all monthly expenses (rent, food, water, transportation, 401k contributions, HSA contributions, emergency $500 buffer)...',
+        '📥 After all monthly expenses (rent, food, water, transportation, 401k contributions, HSA contributions, Mom and Dad Investment $300/month, emergency $500 buffer)...',
         '📊 Split remaining net income:',
         '   80% → Fidelity Brokerage Account (investment ratio based on Buffett Indicator)',
         '   20% → General Savings Account (Charles Schwab) - Split: 80% to Fundamental Savings (buy SGOV), 20% to Secondary Savings (buy SGOV) - START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000',
@@ -997,6 +999,22 @@ const AManProject = () => {
         '   🔒 HOLD FOREVER - never sell these positions',
         '   Invest in NEW opportunities only',
         '   HARD CAP: $100 per investment (maximum $100 per company)']
+    },
+    {
+      id: 'mom-dad-investment',
+      title: '👨‍👩‍👦 Mom and Dad Investment Account',
+      content: [
+        '💰 Monthly Contribution: $300/month',
+        '',
+        '📊 Investment Allocation ($100 each):',
+        '   SCHD: $100/month',
+        '   QQQM: $100/month',
+        '   SPYM: $100/month',
+        '',
+        '🎯 Purpose: Separate investment account for parents\' retirement planning',
+        '🔒 HOLD FOREVER - long-term investment for parents\' future',
+        '📈 Consistent monthly contributions regardless of market conditions'
+      ]
     },
     {
       id: 'vix-deployment',
