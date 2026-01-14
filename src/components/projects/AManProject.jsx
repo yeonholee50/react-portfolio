@@ -923,7 +923,7 @@ const AManProject = () => {
       content: [
         '💰 Bank of America Checking: Daily expenses & buffer. MAX CAP: $5,000. Build to at least $5,000 FIRST before filling savings. Once exceeded, split 80% to Fidelity Brokerage, 20% to General Savings Account (Charles Schwab).',
         '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Large Cap Investments, Small Cap Investments, ETFs).',
-        '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). When VIX ≥ 30: Deploy $100 daily from Cash Reserve. Deploys in specific ratios: 10% Small Cap Investments, 40% Large Cap Investments, 50% ETFs. NO CAP - build as much as desired.',
+        '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). When VIX ≥ 30: Deploy $100 daily from Cash Reserve. Deploys in specific ratios: 10% Small Cap Investments, 50% Large Cap Investments, 40% ETFs. NO CAP - build as much as desired.',
         '🚨 Primary Bank Insurance Reserve: FIRST emergency fund to deplete. Composition: 100% SGOV. Market cap: $100. Depleted FIRST in emergencies. NEVER touch unless absolute emergency.',
         '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Charles Schwab) or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
         '💎 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted SECOND in emergencies, after Primary Reserve, then Fundamental. NEVER touch unless absolute emergency.',
@@ -941,15 +941,15 @@ const AManProject = () => {
         '🚨 Primary Bank Insurance Reserve: FIRST emergency fund - $100 cap (100% SGOV) - depleted FIRST',
         '🛡️ Fundamental Reserve: PRIMARY emergency fund - $600 cap - 90% SGOV, 10% BAR (gold)',
         '💎 Secondary Reserve: SECONDARY emergency fund - $300 cap (100% SGOV) - depleted SECOND',
-        '🎯 Personal Roth IRA: $700/month (tax-free retirement) - MAX OUT ANNUALLY',
-        '👨‍👦 Dad\'s Roth IRA: $500/month (until 2032)'
+        '💼 401k: MAX OUT ANNUALLY (employer match + tax advantages)',
+        '🏥 HSA: MAX OUT ANNUALLY (triple tax advantage)'
       ]
     },
     {
       id: 'income-allocation',
       title: '💸 Monthly Income Allocation',
       content: [
-        '📥 After all monthly expenses (rent, food, water, transportation, Roth IRA contributions, Dad\'s Roth IRA, emergency $500 buffer)...',
+        '📥 After all monthly expenses (rent, food, water, transportation, 401k contributions, HSA contributions, emergency $500 buffer)...',
         '📊 Split remaining net income:',
         '   80% → Fidelity Brokerage Account (investment ratio based on Buffett Indicator)',
         '   20% → General Savings Account (Charles Schwab) - Split: 80% to Fundamental Savings (buy SGOV), 20% to Secondary Savings (buy SGOV) - START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000',
@@ -970,14 +970,14 @@ const AManProject = () => {
       id: 'investment-splits',
       title: '📈 Investment Portfolio Splits',
       content: [
-        '🔷 50% Exchange Traded Funds (ETFs):',
+        '🔷 40% Exchange Traded Funds (ETFs):',
         '   Approach: Allocate assets in accordance with set plan',
-        '   QQQM: 37.5% of the 50%',
-        '   SCHG: 25% of the 50%',
-        '   SPLG: 25% of the 50%',
-        '   VT: 12.5% of the 50%',
+        '   QQQM: 37.5% of the 40%',
+        '   SCHG: 25% of the 40%',
+        '   SPLG: 25% of the 40%',
+        '   VT: 12.5% of the 40%',
         '',
-        '📊 40% Large Cap Investments:',
+        '📊 50% Large Cap Investments:',
         '   Approach: Value investing in established market leaders - investing in profitable, undervalued large-cap companies with growing revenue that we believe will dominate their fields',
         '   Market cap at least $100 billion',
         '   As little debt as possible',
@@ -999,48 +999,6 @@ const AManProject = () => {
         '   HARD CAP: $100 per investment (maximum $100 per company)']
     },
     {
-      id: 'roth-ira-personal',
-      title: '🎯 Personal Roth IRA (Starting 2026)',
-      content: [
-        '💰 Monthly Contribution: $700/month',
-        '⏰ Goal: Fully funded by end of October each year',
-        '',
-        '📊 50% Nasdaq Roth IRA ($3,500 annually):',
-        '   QQQM: $2,100',
-        '   SCHG: $1,050',
-        '   XLC: $350',
-        '',
-        '📊 30% SPY Roth IRA ($2,100 annually):',
-        '   SPLG: $1,680',
-        '   VIG: $210',
-        '   SPYV: $210',
-        '',
-        '📊 20% Dow Jones Roth IRA ($1,400 annually):',
-        '   DJD: $560',
-        '   SCHD: $560',
-        '   VTV: $280',
-        '',
-        '✅ Once Roth IRA is maxed: Redirect $700/month to Brokerage/Cash Reserve per Buffet Indicator ratio'
-      ]
-    },
-    {
-      id: 'roth-ira-dad',
-      title: '👨‍👦 Dad\'s Roth IRA (Starting 2026)',
-      content: [
-        '💰 Our Contribution: $500/month until Dad reaches age 60 (year 2032)',
-        '⚠️ Contingency: Dad MUST contribute $2,000 of his own money',
-        '',
-        '📊 Investment Allocation (Total $8,000 annually):',
-        '   50% QQQM: $3,500',
-        '   30% SPLG: $2,100',
-        '   20% SCHD: $1,400',
-        '',
-        '🔐 Management: Mom executes trades in Fidelity, we control what to buy',
-        '🔒 HOLD UNTIL DAD IS 60 - This is his retirement fund',
-        '💡 After Roth IRA maxed: Redirect $500/month to Brokerage/Cash Reserve'
-      ]
-    },
-    {
       id: 'vix-deployment',
       title: '🚨 Market Crash Deployment Protocol (VIX-Based)',
       content: [
@@ -1058,8 +1016,8 @@ const AManProject = () => {
         '',
         '💎 Brokerage Investment Ratios (ALWAYS):',
         '   10% → Small Cap Investments',
-        '   40% → Large Cap Investments',
-        '   50% → Exchange Traded Funds',
+        '   50% → Large Cap Investments',
+        '   40% → Exchange Traded Funds',
         '',
         '📊 Detailed Investment Process:',
         '   VIX ≥ 30: Deploy $100 from Cash Reserve → Invest immediately with that amount',
@@ -1117,7 +1075,7 @@ const AManProject = () => {
         '   5. Cash Reserve (Fidelity - 90% SGOV, 10% BAR - but this defeats the purpose)',
         '   6. Large Cap Investments',
         '   7. ETFs (core holdings)',
-        '   8. ☢️ NUCLEAR OPTION: Roth IRA (penalty + lost contribution space)',
+        '   8. ☢️ NUCLEAR OPTION: 401k/HSA (penalty + lost contribution space)',
         '',
         '💡 When to Fund Fundamental Reserve:',
         '   When General Savings Account has excess savings we won\'t need',
@@ -1170,7 +1128,7 @@ const AManProject = () => {
         '$1M → Use $5k to host family dinner for special occasion like Grandma\'s 80th birthday. Give to Mom and Dad to pay. 80 years only comes around once.',
         '$2M → Use up to $15k to send Dad and Mom on a one week vacation of their choosing - one country',
         '$5M → Decrease amount we\'re putting into investment portfolio. Draft plans on settling down, where to retire, how to budget etc. Use up to $10k for a Dream PC setup',
-        '$10M → Retire (keep building AmpyFin). Stop dividend reinvestment in Roth IRA; live on dividends + AmpyFin + bank savings. Donate $50k of school supplies to Korean orphanages'
+        '$10M → Retire (keep building AmpyFin). Stop dividend reinvestment in 401k/HSA; live on dividends + AmpyFin + bank savings. Donate $50k of school supplies to Korean orphanages'
       ]
     },
     {
@@ -1602,8 +1560,6 @@ const AManProject = () => {
       return val;
     });
     
-    const now = new Date();
-    const isRothSeason = now.getMonth() >= 0 && now.getMonth() <= 9; // Jan (0) - Oct (9)
     const ratio = frozenRatio.split(':');
     const ratioInvest = parseInt(ratio[0] || '3', 10);
     const ratioCash = parseInt(ratio[1] || '1', 10);
@@ -1724,34 +1680,6 @@ const AManProject = () => {
         }
       },
       { 
-        id: 'roth', 
-        position: { x: 656, y: 94 }, 
-        data: { label: `Roth IRA $700/month\n${isRothSeason ? '(Jan-Oct ACTIVE)' : '(Nov-Dec INACTIVE)'}` },
-        style: { 
-          background: isRothSeason ? '#0a3d2e' : '#1a1a1a', 
-          color: isRothSeason ? '#40FFDA' : '#666', 
-          border: `1px solid ${isRothSeason ? '#40FFDA' : '#333'}`, 
-          borderRadius: '4px', 
-          padding: '6px 9px',
-          fontSize: '7.5px',
-          whiteSpace: 'pre-line',
-          textAlign: 'center'
-        }
-      },
-      { 
-        id: 'remaining2', 
-        position: { x: 656, y: 188 }, 
-        data: { label: 'After Roth' },
-        style: { 
-          background: '#111', 
-          color: '#E5E5E5', 
-          border: '1px solid #E5E5E5', 
-          borderRadius: '4px', 
-          padding: '6px 9px',
-          fontSize: '7.5px'
-        }
-      },
-      { 
         id: 'schwab', 
         position: { x: 813, y: 125 }, 
         data: { label: 'General Savings Account (Charles Schwab) (20%)\nSecondary Savings: 100% SGOV' },
@@ -1829,7 +1757,7 @@ const AManProject = () => {
       { 
         id: 'etfs', 
         position: { x: 1281, y: 63 }, 
-        data: { label: 'ETFs 50%' },
+        data: { label: 'ETFs 40%' },
         style: { 
           background: '#111', 
           color: '#E5E5E5', 
@@ -1842,7 +1770,7 @@ const AManProject = () => {
       { 
         id: 'large-cap', 
         position: { x: 1281, y: 113 }, 
-        data: { label: 'Large Cap 40%' },
+        data: { label: 'Large Cap 50%' },
         style: { 
           background: '#111', 
           color: '#E5E5E5', 
@@ -1961,28 +1889,8 @@ const AManProject = () => {
         markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
       },
       { 
-        id: 'e-remaining-roth', 
+        id: 'e-remaining-schwab', 
         source: 'remaining', 
-        target: 'roth',
-        sourceHandle: 'right',
-        targetHandle: 'left',
-        type: 'smoothstep',
-        style: { stroke: isRothSeason ? '#40FFDA' : '#333', strokeWidth: 1.25 },
-        markerEnd: { type: MarkerType.ArrowClosed, color: isRothSeason ? '#40FFDA' : '#333' }
-      },
-      { 
-        id: 'e-remaining-remaining2', 
-        source: 'remaining', 
-        target: 'remaining2',
-        sourceHandle: 'right',
-        targetHandle: 'left',
-        type: 'smoothstep',
-        style: { stroke: '#fff', strokeWidth: 1.25 },
-        markerEnd: { type: MarkerType.ArrowClosed, color: '#fff' }
-      },
-      { 
-        id: 'e-remaining2-schwab', 
-        source: 'remaining2', 
         target: 'schwab',
         sourceHandle: 'right',
         targetHandle: 'left',
@@ -1991,8 +1899,8 @@ const AManProject = () => {
         markerEnd: { type: MarkerType.ArrowClosed, color: '#FFB81C' }
       },
       { 
-        id: 'e-remaining2-brokerage', 
-        source: 'remaining2', 
+        id: 'e-remaining-brokerage', 
+        source: 'remaining', 
         target: 'brokerage',
         sourceHandle: 'right',
         targetHandle: 'left',
