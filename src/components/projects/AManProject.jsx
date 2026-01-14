@@ -921,13 +921,13 @@ const AManProject = () => {
       id: 'account-structure',
       title: '🏦 Account Structure',
       content: [
-        '💰 Bank of America Checking: Daily expenses & buffer. MAX CAP: $5,000. Build to at least $5,000 FIRST before filling savings. Once exceeded, split 80% to Fidelity Brokerage, 20% to General Savings Account (Charles Schwab).',
+        '💰 Bank of America Checking: Daily expenses & buffer. MAX CAP: $15,000. Build to at least $15,000 FIRST before filling savings.',
         '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Large Cap Investments, Small Cap Investments, ETFs).',
         '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). When VIX ≥ 30: Deploy $100 daily from Cash Reserve. Deploys in specific ratios: 10% Small Cap Investments, 50% Large Cap Investments, 40% ETFs. NO CAP - build as much as desired.',
         '🚨 Primary Bank Insurance Reserve: FIRST emergency fund to deplete. Composition: 100% SGOV. Market cap: $100. Depleted FIRST in emergencies. NEVER touch unless absolute emergency.',
-        '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Charles Schwab) or over $7,500 in Bank of America. NOT for investment - strictly for emergencies only.',
+        '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Charles Schwab) or over $15,000 in Bank of America. NOT for investment - strictly for emergencies only.',
         '💎 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted SECOND in emergencies, after Primary Reserve, then Fundamental. NEVER touch unless absolute emergency.',
-        '💎 General Savings Account (Charles Schwab): Savings account extension (NOT investment account). Contains two sub-accounts: Fundamental Savings (80%) and Secondary Savings (20%). Fundamental Savings: 100% SGOV. Secondary Savings: 100% SGOV. Higher yield than traditional savings. MAX CAP: $30,000. START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000. Pull from here for discretionary spending.',
+        '💎 General Savings Account (Charles Schwab): Savings account extension (NOT investment account). Contains two sub-accounts: Fundamental Savings and Secondary Savings. Fundamental Savings: 100% SGOV. Secondary Savings: 100% SGOV. Higher yield than traditional savings. MAX CAP: $30,000. START FILLING ONLY AFTER Bank of America checking account has reached at least $15,000. Pull from here for discretionary spending.',
         '👨‍👩‍👦 Mom and Dad Investment Account: Monthly contribution of $300. Investment allocation: $100 each in SCHD, QQQM, and SPYM. This is a separate investment account for parents\' retirement planning.'
       ]
     },
@@ -935,8 +935,8 @@ const AManProject = () => {
       id: 'key-accounts-summary',
       title: '🗂️ Key Accounts Summary',
       content: [
-        '🏦 Bank of America: ≤$5,000 (daily expenses)',
-        '💎 General Savings Account (Charles Schwab): Savings (for spending) - MAX CAP: $30,000 - START FILLING ONLY AFTER Bank of America checking reaches at least $5,000 - Split: 80% Fundamental Savings (100% SGOV), 20% Secondary Savings (100% SGOV)',
+        '🏦 Bank of America: ≤$15,000 (daily expenses)',
+        '💎 General Savings Account (Charles Schwab): Savings (for spending) - MAX CAP: $30,000 - START FILLING ONLY AFTER Bank of America checking reaches at least $15,000',
         '📈 Fidelity Brokerage: All investments (stocks + ETFs) - NO CAP',
         '💰 Cash Reserve (Fidelity): Market crash deployment - 90% SGOV, 10% BAR (NO CAP)',
         '🚨 Primary Bank Insurance Reserve: FIRST emergency fund - $100 cap (100% SGOV) - depleted FIRST',
@@ -952,9 +952,9 @@ const AManProject = () => {
       title: '💸 Monthly Income Allocation',
       content: [
         '📥 After all monthly expenses (rent, food, water, transportation, 401k contributions, HSA contributions, Mom and Dad Investment $300/month, emergency $500 buffer)...',
-        '📊 Split remaining net income:',
-        '   80% → Fidelity Brokerage Account (investment ratio based on Buffett Indicator)',
-        '   20% → General Savings Account (Charles Schwab) - Split: 80% to Fundamental Savings (buy SGOV), 20% to Secondary Savings (buy SGOV) - START FILLING ONLY AFTER Bank of America checking account has reached at least $5,000',
+        '📊 Allocate remaining net income to Fidelity Brokerage Account and General Savings Account (Charles Schwab) based on your own discretion.',
+        '   Fidelity Brokerage Account: Investment ratio based on Buffett Indicator',
+        '   General Savings Account: START FILLING ONLY AFTER Bank of America checking account has reached at least $15,000',
         '',
         '🎚️ Buffett Indicator Investment Ratios (Investment:Cash Reserve):',
         '   >200%: 2:1 ratio (more conservative, build cash reserve)',
@@ -1071,7 +1071,7 @@ const AManProject = () => {
         '💎 BROKERAGE STAYS BROKERAGE:',
         '   No discretionary withdrawals for lifestyle',
         '   General Savings Account is for spending, NOT brokerage',
-        '   Bank of America checking: ≤ $5,000 maximum',
+        '   Bank of America checking: ≤ $15,000 maximum',
         '',
         '🔄 Reinvest ALL dividends until $5M portfolio',
         '📊 Invest as scheduled/triggered. NO EXCEPTIONS.',
@@ -1097,7 +1097,7 @@ const AManProject = () => {
         '',
         '💡 When to Fund Fundamental Reserve:',
         '   When General Savings Account has excess savings we won\'t need',
-        '   When Bank of America exceeds $5,000',
+        '   When Bank of America exceeds $15,000',
         '   Market cap: $600 (90% SGOV, 10% BAR gold)',
         '   This is PRIMARY emergency fund - for life emergencies ONLY',
         '',
@@ -1700,7 +1700,7 @@ const AManProject = () => {
       { 
         id: 'schwab', 
         position: { x: 813, y: 125 }, 
-        data: { label: 'General Savings Account (Charles Schwab) (20%)\nSecondary Savings: 100% SGOV' },
+        data: { label: 'General Savings Account (Charles Schwab)\nSecondary Savings: 100% SGOV' },
         style: { 
           background: '#1a1a00', 
           color: '#FFB81C', 
@@ -1715,7 +1715,7 @@ const AManProject = () => {
       { 
         id: 'brokerage', 
         position: { x: 813, y: 219 }, 
-        data: { label: 'Fidelity Brokerage (80%)' },
+        data: { label: 'Fidelity Brokerage' },
         style: { 
           background: '#0a2a2a', 
           color: '#40FFDA', 
