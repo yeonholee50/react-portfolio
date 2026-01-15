@@ -923,7 +923,7 @@ const AManProject = () => {
       content: [
         '💰 Bank of America Checking: Daily expenses & buffer. MAX CAP: $15,000. Build to at least $15,000 FIRST before filling savings.',
         '🎯 Fidelity Brokerage Account: Primary investment account. Contains all stock investments (Large Cap Investments, Small Cap Investments, ETFs).',
-        '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). When VIX ≥ 30: Deploy $100 daily from Cash Reserve. Deploys in specific ratios: 10% Small Cap Investments, 50% Large Cap Investments, 40% ETFs. NO CAP - build as much as desired.',
+        '📊 Cash Reserve (Fidelity): Market crash deployment fund. Composition: 90% SGOV, 10% BAR. ONLY used when market crashes (VIX-based triggers). When VIX ≥ 30: Deploy $100 daily from Cash Reserve. Deploys in specific ratios: 10% Small Cap Investments, 40% Large Cap Investments, 50% ETFs. NO CAP - build as much as desired.',
         '🚨 Primary Bank Insurance Reserve: FIRST emergency fund to deplete. Composition: 100% SGOV. Market cap: $100. Depleted FIRST in emergencies. NEVER touch unless absolute emergency.',
         '🛡️ Fundamental Bank Insurance Reserve: PRIMARY emergency fund. Composition: 90% SGOV, 10% BAR (gold). Market cap: $600. Fund when excess in General Savings Account (Charles Schwab) or over $15,000 in Bank of America. NOT for investment - strictly for emergencies only.',
         '💎 Secondary Bank Insurance Reserve: SECONDARY emergency fund. Composition: 100% SGOV. Market cap: $300. Depleted SECOND in emergencies, after Primary Reserve, then Fundamental. NEVER touch unless absolute emergency.',
@@ -972,14 +972,14 @@ const AManProject = () => {
       id: 'investment-splits',
       title: '📈 Investment Portfolio Splits',
       content: [
-        '🔷 40% Exchange Traded Funds (ETFs):',
+        '🔷 50% Exchange Traded Funds (ETFs):',
         '   Approach: Allocate assets in accordance with set plan',
-        '   QQQM: 37.5% of the 40%',
-        '   SCHG: 25% of the 40%',
-        '   SPLG: 25% of the 40%',
-        '   VT: 12.5% of the 40%',
+        '   QQQM: 37.5% of the 50%',
+        '   SCHG: 25% of the 50%',
+        '   SPLG: 25% of the 50%',
+        '   VT: 12.5% of the 50%',
         '',
-        '📊 50% Large Cap Investments:',
+        '📊 40% Large Cap Investments:',
         '   Approach: Value investing in established market leaders - investing in profitable, undervalued large-cap companies with growing revenue that we believe will dominate their fields',
         '   Market cap at least $100 billion',
         '   As little debt as possible',
@@ -1034,8 +1034,8 @@ const AManProject = () => {
         '',
         '💎 Brokerage Investment Ratios (ALWAYS):',
         '   10% → Small Cap Investments',
-        '   50% → Large Cap Investments',
-        '   40% → Exchange Traded Funds',
+        '   40% → Large Cap Investments',
+        '   50% → Exchange Traded Funds',
         '',
         '📊 Detailed Investment Process:',
         '   VIX ≥ 30: Deploy $100 from Cash Reserve → Invest immediately with that amount',
@@ -1775,7 +1775,7 @@ const AManProject = () => {
       { 
         id: 'etfs', 
         position: { x: 1281, y: 63 }, 
-        data: { label: 'ETFs 40%' },
+        data: { label: 'ETFs 50%' },
         style: { 
           background: '#111', 
           color: '#E5E5E5', 
@@ -1788,7 +1788,7 @@ const AManProject = () => {
       { 
         id: 'large-cap', 
         position: { x: 1281, y: 113 }, 
-        data: { label: 'Large Cap 50%' },
+        data: { label: 'Large Cap 40%' },
         style: { 
           background: '#111', 
           color: '#E5E5E5', 
