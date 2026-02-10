@@ -933,15 +933,16 @@ const AManProject = () => {
         '   🔒 HOLD FOREVER - long-term investment for parents\' future',
         '',
         '📊 Fidelity Brokerage Account:',
-        '   $1,000/month → Large Cap Investments',
-        '   $100/month → Small Cap Investments',
-        '   10:1 ratio (for every $1,000 in Large Cap, $100 in Small Cap)',
+        '   $500 per paycheck → Large Cap Investments',
+        '   Either: 5 small companies * $100 each OR 1 large cap company',
+        '   $100 max for each small cap company',
+        '   $1,000 max for each large cap company',
         '   ETFs are covered in 401k and HSA, not in Fidelity Brokerage'
       ]
     },
     {
       id: 'large-cap-investments',
-      title: '📊 Large Cap Investments ($1,000/month)',
+      title: '📊 Large Cap Investments ($500 per paycheck)',
       content: [
         '🎯 Approach: Value investing in established market leaders - investing in profitable, undervalued large-cap companies with growing revenue that we believe will dominate their fields',
         '',
@@ -953,12 +954,12 @@ const AManProject = () => {
         '   We believe in their thesis - they will dominate an underlying field',
         '',
         '🔒 HOLD FOREVER - never sell these positions',
-        '💰 Invest in your choosing - up to $1,000/month total'
+        '💰 Invest in your choosing - up to $1,000 max per large cap company'
       ]
     },
     {
       id: 'small-cap-investments',
-      title: '🎲 Small Cap Investments ($100/month)',
+      title: '🎲 Small Cap Investments ($100 max per company)',
       content: [
         '🎯 Approach: Act like YCombinator - investing (not trading) in early-stage companies',
         '',
@@ -970,7 +971,7 @@ const AManProject = () => {
         '   We believe in their thesis',
         '',
         '🔒 HOLD FOREVER - never sell these positions',
-        '💰 Invest in your choosing - up to $100/month total',
+        '💰 Invest in your choosing - up to $100 max per small cap company',
         '   Invest in NEW opportunities only'
       ]
     },
@@ -989,7 +990,7 @@ const AManProject = () => {
         '   General Savings Account is for spending, NOT brokerage',
         '',
         '🔄 Reinvest ALL dividends until $5M portfolio',
-        '📊 Invest monthly as scheduled. NO EXCEPTIONS.',
+        '📊 Invest $500 per paycheck as scheduled. NO EXCEPTIONS.',
         '',
         '🔒 WE NEVER SELL. NEVER EVER. NEVER.'
       ]
@@ -1034,7 +1035,7 @@ const AManProject = () => {
         '',
         '⚠️ CRITICAL REMINDERS:',
         '   NEVER SELL - DO NOT PANIC',
-        '   We invest monthly amounts as planned ($1,000 Large Cap, $100 Small Cap)',
+        '   We invest $500 per paycheck (either 5 small companies * $100 each OR 1 large cap)',
         '   DO NOT try to time the market',
         '   Time in the market TRIUMPHS over timing the market',
         '   Our wealth is built through consistency, not timing',
@@ -2882,36 +2883,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "February 7, 2026 at 10:00 PM",
-        effective: "February 7, 2026 at 10:00 PM"
+        signed: "February 9, 2026 at 10:00 PM",
+        effective: "February 9, 2026 at 10:00 PM"
       },
       physical: {
-        signed: "February 7, 2026 at 10:00 PM",
-        effective: "February 7, 2026 at 10:00 PM"
+        signed: "February 9, 2026 at 10:00 PM",
+        effective: "February 9, 2026 at 10:00 PM"
       },
       mental: {
-        signed: "February 7, 2026 at 10:00 PM",
-        effective: "February 7, 2026 at 10:00 PM"
+        signed: "February 9, 2026 at 10:00 PM",
+        effective: "February 9, 2026 at 10:00 PM"
       },
       financial: {
-        signed: "February 7, 2026 at 10:00 PM",
-        effective: "February 7, 2026 at 10:00 PM"
+        signed: "February 9, 2026 at 10:00 PM",
+        effective: "February 9, 2026 at 10:00 PM"
       },
       career: {
-        signed: "February 7, 2026 at 10:00 PM",
-        effective: "February 7, 2026 at 10:00 PM"
+        signed: "February 9, 2026 at 10:00 PM",
+        effective: "February 9, 2026 at 10:00 PM"
       },
       'daily-os': {
-        signed: "February 7, 2026 at 10:00 PM",
-        effective: "February 7, 2026 at 10:00 PM"
+        signed: "February 9, 2026 at 10:00 PM",
+        effective: "February 9, 2026 at 10:00 PM"
       },
       workout: {
-        signed: "February 7, 2026 at 10:00 PM",
-        effective: "February 7, 2026 at 10:00 PM"
+        signed: "February 9, 2026 at 10:00 PM",
+        effective: "February 9, 2026 at 10:00 PM"
       },
       ampyfin: {
-        signed: "February 7, 2026 at 10:00 PM",
-        effective: "February 7, 2026 at 10:00 PM"
+        signed: "February 9, 2026 at 10:00 PM",
+        effective: "February 9, 2026 at 10:00 PM"
       }
     };
 
