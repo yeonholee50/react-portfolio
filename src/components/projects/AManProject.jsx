@@ -933,16 +933,17 @@ const AManProject = () => {
         '   🔒 HOLD FOREVER - long-term investment for parents\' future',
         '',
         '📊 Fidelity Brokerage Account:',
-        '   $500 per paycheck → Large Cap Investments',
-        '   Either: 5 small companies * $100 each OR 1 large cap company',
+        '   $500 per paycheck → Investment Options',
+        '   Either: 5 small companies * $100 each OR 1 large cap company OR 1 medium cap company',
         '   $100 max for each small cap company',
+        '   $500 max for each medium cap company',
         '   $1,000 max for each large cap company',
         '   ETFs are covered in 401k and HSA, not in Fidelity Brokerage'
       ]
     },
     {
       id: 'large-cap-investments',
-      title: '📊 Large Cap Investments ($500 per paycheck)',
+      title: '📊 Large Cap Investments ($1,000 max per company)',
       content: [
         '🎯 Approach: Value investing in established market leaders - investing in profitable, undervalued large-cap companies with growing revenue that we believe will dominate their fields',
         '',
@@ -955,6 +956,23 @@ const AManProject = () => {
         '',
         '🔒 HOLD FOREVER - never sell these positions',
         '💰 Invest in your choosing - up to $1,000 max per large cap company'
+      ]
+    },
+    {
+      id: 'medium-cap-investments',
+      title: '📈 Medium Cap Investments ($500 max per company)',
+      content: [
+        '🎯 Approach: Value investing in established market leaders - investing in profitable, undervalued medium-cap companies with growing revenue that we believe will dominate their fields',
+        '',
+        '📋 Investment Criteria:',
+        '   Market cap between $100 billion and $300 billion',
+        '   As little debt as possible',
+        '   Undervalued (P/E ratio below 30)',
+        '   Revenue that is growing',
+        '   We believe in their thesis - they will dominate an underlying field',
+        '',
+        '🔒 HOLD FOREVER - never sell these positions',
+        '💰 Invest in your choosing - up to $500 max per medium cap company'
       ]
     },
     {
@@ -1035,7 +1053,7 @@ const AManProject = () => {
         '',
         '⚠️ CRITICAL REMINDERS:',
         '   NEVER SELL - DO NOT PANIC',
-        '   We invest $500 per paycheck (either 5 small companies * $100 each OR 1 large cap)',
+        '   We invest $500 per paycheck (either 5 small companies * $100 each OR 1 large cap OR 1 medium cap)',
         '   DO NOT try to time the market',
         '   Time in the market TRIUMPHS over timing the market',
         '   Our wealth is built through consistency, not timing',
@@ -2883,36 +2901,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "February 13, 2026 at 8:00 PM",
-        effective: "February 13, 2026 at 8:00 PM"
+        signed: "February 14, 2026 at 12:00 PM",
+        effective: "February 14, 2026 at 12:00 PM"
       },
       physical: {
-        signed: "February 13, 2026 at 8:00 PM",
-        effective: "February 13, 2026 at 8:00 PM"
+        signed: "February 14, 2026 at 12:00 PM",
+        effective: "February 14, 2026 at 12:00 PM"
       },
       mental: {
-        signed: "February 13, 2026 at 8:00 PM",
-        effective: "February 13, 2026 at 8:00 PM"
+        signed: "February 14, 2026 at 12:00 PM",
+        effective: "February 14, 2026 at 12:00 PM"
       },
       financial: {
-        signed: "February 13, 2026 at 8:00 PM",
-        effective: "February 13, 2026 at 8:00 PM"
+        signed: "February 14, 2026 at 12:00 PM",
+        effective: "February 14, 2026 at 12:00 PM"
       },
       career: {
-        signed: "February 13, 2026 at 8:00 PM",
-        effective: "February 13, 2026 at 8:00 PM"
+        signed: "February 14, 2026 at 12:00 PM",
+        effective: "February 14, 2026 at 12:00 PM"
       },
       'daily-os': {
-        signed: "February 13, 2026 at 8:00 PM",
-        effective: "February 13, 2026 at 8:00 PM"
+        signed: "February 14, 2026 at 12:00 PM",
+        effective: "February 14, 2026 at 12:00 PM"
       },
       workout: {
-        signed: "February 13, 2026 at 8:00 PM",
-        effective: "February 13, 2026 at 8:00 PM"
+        signed: "February 14, 2026 at 12:00 PM",
+        effective: "February 14, 2026 at 12:00 PM"
       },
       ampyfin: {
-        signed: "February 13, 2026 at 8:00 PM",
-        effective: "February 13, 2026 at 8:00 PM"
+        signed: "February 14, 2026 at 12:00 PM",
+        effective: "February 14, 2026 at 12:00 PM"
       }
     };
 
