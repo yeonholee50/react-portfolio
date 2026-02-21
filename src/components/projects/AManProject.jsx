@@ -844,6 +844,17 @@ const AManProject = () => {
         "View recovery as investment, not luxury",
         "Never skip recovery for more training"
       ]
+    },
+    {
+      id: 'weekend-fasting',
+      title: 'Weekend Fasting Protocol',
+      why: "Discipline through controlled fasting; eat like Ronaldo, not for gluttony.",
+      how: [
+        "During Saturday and Sunday, we fast",
+        "Only eat if someone offers - we don't explicitly ask for food",
+        "Otherwise maintain the fast",
+        "Remember to eat like Ronaldo would - not whatever satisfies gluttony"
+      ]
     }
   ];
 
