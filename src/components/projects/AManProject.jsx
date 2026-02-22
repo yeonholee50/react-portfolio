@@ -846,14 +846,14 @@ const AManProject = () => {
       ]
     },
     {
-      id: 'weekend-fasting',
-      title: 'Weekend Fasting Protocol',
-      why: "Discipline through controlled fasting; eat like Ronaldo, not for gluttony.",
+      id: 'nutrition-protocol',
+      title: 'Nutrition Protocol',
+      why: "Eat like Ronaldo - protein-focused, clean nutrition for performance, not gluttony.",
       how: [
-        "During Saturday and Sunday, we fast",
-        "Only eat if someone offers - we don't explicitly ask for food",
-        "Otherwise maintain the fast",
-        "Remember to eat like Ronaldo would - not whatever satisfies gluttony"
+        "Saturday and Sunday: Only eat lunch from a clean place that offers rice, lots of veggies, and lots of protein",
+        "Weekdays: Eat breakfast and lunch - both must be protein-focused, something Ronaldo would eat",
+        "During cuts: No dinner",
+        "During bulk: Can eat dinner also"
       ]
     }
   ];
