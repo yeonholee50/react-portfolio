@@ -2912,36 +2912,36 @@ const AManProject = () => {
   const renderSignature = () => {
     const dates = {
       social: {
-        signed: "February 26, 2026 at 10:00 PM",
-        effective: "February 26, 2026 at 10:00 PM"
+        signed: "February 27, 2027 at 10:00 PM",
+        effective: "February 27, 2027 at 10:00 PM"
       },
       physical: {
-        signed: "February 26, 2026 at 10:00 PM",
-        effective: "February 26, 2026 at 10:00 PM"
+        signed: "February 27, 2027 at 10:00 PM",
+        effective: "February 27, 2027 at 10:00 PM"
       },
       mental: {
-        signed: "February 26, 2026 at 10:00 PM",
-        effective: "February 26, 2026 at 10:00 PM"
+        signed: "February 27, 2027 at 10:00 PM",
+        effective: "February 27, 2027 at 10:00 PM"
       },
       financial: {
-        signed: "February 26, 2026 at 10:00 PM",
-        effective: "February 26, 2026 at 10:00 PM"
+        signed: "February 27, 2027 at 10:00 PM",
+        effective: "February 27, 2027 at 10:00 PM"
       },
       career: {
-        signed: "February 26, 2026 at 10:00 PM",
-        effective: "February 26, 2026 at 10:00 PM"
+        signed: "February 27, 2027 at 10:00 PM",
+        effective: "February 27, 2027 at 10:00 PM"
       },
       'daily-os': {
-        signed: "February 26, 2026 at 10:00 PM",
-        effective: "February 26, 2026 at 10:00 PM"
+        signed: "February 27, 2027 at 10:00 PM",
+        effective: "February 27, 2027 at 10:00 PM"
       },
       workout: {
-        signed: "February 26, 2026 at 10:00 PM",
-        effective: "February 26, 2026 at 10:00 PM"
+        signed: "February 27, 2027 at 10:00 PM",
+        effective: "February 27, 2027 at 10:00 PM"
       },
       ampyfin: {
-        signed: "February 26, 2026 at 10:00 PM",
-        effective: "February 26, 2026 at 10:00 PM"
+        signed: "February 27, 2027 at 10:00 PM",
+        effective: "February 27, 2027 at 10:00 PM"
       }
     };
 
