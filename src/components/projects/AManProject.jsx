@@ -405,7 +405,7 @@ const AManProject = () => {
   const [expandedCareerRule, setExpandedCareerRule] = useState(null);
   const [expandedWorkoutDay, setExpandedWorkoutDay] = useState(null);
   const [bulkMode, setBulkMode] = useState(false);
-  const [cycleStartDate, setCycleStartDate] = useState(null);
+  const [cycleStartDate, setCycleStartDate] = useState(new Date('2026-03-03T22:00:00'));
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [time, setTime] = useState(0);
   const [buffettIndicator, setBuffettIndicator] = useState(null);
